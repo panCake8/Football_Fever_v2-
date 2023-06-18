@@ -2,9 +2,12 @@ package com.pancake.footballfever.data.local.mappers.leagueMapper
 
 import com.example.footboolfever.data.local.database.entity.LeagueEntity
 import com.example.footboolfever.data.remote.dto.league.LeaguesDto
-import com.pancake.footballfever.data.local.mappers.IMapper
+import com.pancake.footballfever.data.local.mappers.Mapper
+import dagger.hilt.android.scopes.ViewModelScoped
+import javax.inject.Inject
 
-class LeagueMapper : IMapper<LeaguesDto, LeagueEntity> {
+@ViewModelScoped
+class LeagueMapper @Inject constructor() : Mapper<LeaguesDto, LeagueEntity> {
     override fun map(input: LeaguesDto): LeagueEntity {
         return LeagueEntity(
             id = input.league?.id,

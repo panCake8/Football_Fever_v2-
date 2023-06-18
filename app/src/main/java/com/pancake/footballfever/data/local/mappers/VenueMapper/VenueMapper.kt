@@ -2,9 +2,12 @@ package com.pancake.footballfever.data.local.mappers.VenueMapper
 
 import com.example.footboolfever.data.local.database.entity.VenueEntity
 import com.example.footboolfever.data.remote.dto.VenueDto
-import com.pancake.footballfever.data.local.mappers.IMapper
+import com.pancake.footballfever.data.local.mappers.Mapper
+import dagger.hilt.android.scopes.ViewModelScoped
+import javax.inject.Inject
 
-class VenueMapper : IMapper<VenueDto, VenueEntity> {
+@ViewModelScoped
+class VenueMapper @Inject constructor() : Mapper<VenueDto, VenueEntity> {
     override fun map(input: VenueDto): VenueEntity {
         return VenueEntity(
             id = input.id,
