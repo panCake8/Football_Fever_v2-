@@ -2,4 +2,41 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--APP colors-->
+    <color name="green">#49B931</color>
+    <color name="white87">#DEF9F9F9</color>
+    <color name="white60">#99F9F9F9</color>
+    <color name="white38">#61F9F9F9</color>
+    <color name="Primary_color">#171827</color>
+    <color name="Secondary_color">#222232</color>
+    <color name="dark_gray">#414158</color>
+
+    <!--background color-->
+    <color name="color_primary">#49B931</color>
+    <color name="background_color">@color/Primary_color</color>
+    <color name="background_main_card">@color/Secondary_color</color>
+    <color name="background_highlight">@color/dark_gray</color>
+    <color name="chip_stroke">#797979</color>
+    <color name="background_Bottom_navigation_selected">#1FE8DEF8</color>
+    <color name="search_bar_background">#212234</color>
+
+    <!--text color-->
+    <color name="text_title">@color/white87</color>
+    <color name="text_side_title">@color/white60</color>
+    <color name="text_item_card">@color/white60</color>
+    <color name="text_body">@color/white38</color>
+    <color name="text_green">@color/green</color>
+    <color name="input_text_color">@color/white60</color>
+    <color name="hint_search_color">@color/white38</color>
+    <color name="chip_text_color">@color/white38</color>
+    <color name="statistic_text_color">@color/chip_stroke</color>
+
+
+    <color name="icons_color">@color/white60</color>
+    <color name="light_green">#67D014</color>
+    <color name="light_white">#F9F9F9</color>
+    <color name="light_grey">#4A4444</color>
+    <color name="elapsed_color">#00C566</color>
+
 </resources>

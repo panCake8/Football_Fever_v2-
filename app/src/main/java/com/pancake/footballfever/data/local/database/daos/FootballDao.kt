@@ -4,21 +4,14 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.footboolfever.data.local.database.entity.CountryEntity
-import com.example.footboolfever.data.local.database.entity.FavoriteTeamEntity
-import com.example.footboolfever.data.local.database.entity.FixtureHomeEntity
-import com.example.footboolfever.data.local.database.entity.LeagueEntity
-import com.example.footboolfever.data.local.database.entity.VenueEntity
+import com.pancake.footballfever.data.local.database.entity.CountryEntity
+import com.pancake.footballfever.data.local.database.entity.FavoriteTeamEntity
+import com.pancake.footballfever.data.local.database.entity.FixtureHomeEntity
+import com.pancake.footballfever.data.local.database.entity.VenueEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface FootballDao {
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertLeagues(leagues: List<LeagueEntity>)
-
-    @Query("SELECT * FROM LEAGUE_TABLE ORDER BY id DESC")
-    fun getAllLeagues(): List<LeagueEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertVenues(venues: List<VenueEntity>)
@@ -44,9 +37,9 @@ interface FootballDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addFixtureHome(teams: List<FixtureHomeEntity>)
 
-    @Query("select * from FIXTURE_TEAM_ENTITY")
+    @Query("select * from FIXTURE_TEAM_TABLE")
     fun getAllFixtureHome(): Flow<List<FixtureHomeEntity>>
 
-    @Query("delete from FIXTURE_TEAM_ENTITY ")
+    @Query("delete from FIXTURE_TEAM_TABLE ")
     fun deleteAllFixtureHome()
 }

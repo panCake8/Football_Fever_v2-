@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="screen_title" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/text_large</item>
+        <item name="android:textColor">@color/text_title</item>
+        <item name="fontFamily">@font/poppins_semibold</item>
+    </style>
+
+    <style name="Side_title" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/text_large</item>
+        <item name="android:textColor">@color/text_side_title</item>
+        <item name="fontFamily">@font/poppins_semibold</item>
+    </style>
+
+    <style name="select_favorite_item_text" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:textColor">@color/white87</item>
+        <item name="fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <style name="back_text" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/text_large</item>
+        <item name="android:textColor">@color/white87</item>
+        <item name="fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <style name="teams_score" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/text_xlarge</item>
+        <item name="android:textColor">@color/white87</item>
+        <item name="fontFamily">@font/poppins_semibold</item>
+    </style>
+
+    <!-- app bar-->
+    <style name="AppBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/app_bar_height</item>
+        <item name="android:backgroundTint">@color/background_color</item>
+        <item name="titleTextColor">@color/text_title</item>
+        <item name="elevation">@dimen/elevation_small</item>
+    </style>
+
+    <style name="AppBar.Home" parent="AppBar">
+        <item name="navigationIcon">@drawable/more</item>
+        <item name="menu">@menu/notification_menu</item>
+    </style>
+
+    <style name="AppBar.ScreenWithNotification" parent="AppBar">
+        <item name="navigationIcon">@drawable/back_icon</item>
+        <item name="menu">@menu/notification_menu</item>
+    </style>
+
+    <style name="AppBar.ScreenWithoutNotification" parent="AppBar">
+        <item name="navigationIcon">@drawable/back_icon</item>
+    </style>
+    <!-- app bar stroke-->
+    <style name="AppBarStroke">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/app_bar_stroke</item>
+    </style>
+    <!--    Recycler style-->
+    <style name="RecyclerStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:padding">@dimen/large_padding</item>
+        <item name="spanCount">1</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <!--    chips style-->
+    <style name="Chips_style" parent="Base.Widget.MaterialComponents.Chip">
+        <item name="android:checkable">true</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/chip_text_size</item>
+        <item name="chipStrokeColor">@color/chip_stroke</item>
+        <item name="android:textColor">@color/chip_text_color</item>
+        <item name="chipIconVisible">false</item>
+        <item name="closeIconVisible">false</item>
+        <item name="android:height">@dimen/height_chip</item>
+    </style>
+
+    <!--    Card Parent-->
+    <style name="CardRecItem" parent="Widget.MaterialComponents.CardView">
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <!-- table layout-->
+    <style name="table_column">
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#F9F9F9</item>
+        <item name="android:textSize">@dimen/text_small</item>
+    </style>
+</resources>

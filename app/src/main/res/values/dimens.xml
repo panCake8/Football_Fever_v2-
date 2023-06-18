@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--spacing dimens-->
+    <dimen name="tiny_small_margin">2dp</dimen>
+    <dimen name="small_margin">4dp</dimen>
+    <dimen name="medium_margin">8dp</dimen>
+    <dimen name="semi_large_margin">12dp</dimen>
+    <dimen name="large_margin">16dp</dimen>
+    <dimen name="semi_huge">24dp</dimen>
+    <dimen name="huge_margin">32dp</dimen>
+
+    <dimen name="small_padding">4dp</dimen>
+    <dimen name="medium_padding">8dp</dimen>
+    <dimen name="medium_12_padding">12dp</dimen>
+    <dimen name="large_padding">16dp</dimen>
+
+
+    <!--text dimens-->
+    <dimen name="text_tiny">12sp</dimen>
+    <dimen name="text_small">14sp</dimen>
+    <dimen name="text_medium">16sp</dimen>
+    <dimen name="text_large">18sp</dimen>
+    <dimen name="text_xlarge">20sp</dimen>
+    <dimen name="text_xxxLarge">32dp</dimen>
+
+
+    <!--radius dimens-->
+    <dimen name="radius_tiny">4dp</dimen>
+    <dimen name="radius_small">8dp</dimen>
+    <dimen name="radius_medium">12dp</dimen>
+    <dimen name="radius_semi_large">16dp</dimen>
+    <dimen name="radius_large">20dp</dimen>
+
+
+    <!--elevation dimens-->
+    <dimen name="no_elevation">0dp</dimen>
+    <dimen name="elevation_small">4dp</dimen>
+    <dimen name="elevation_semi_medium">8dp</dimen>
+    <dimen name="elevation_medium">10dp</dimen>
+    <dimen name="elevation_semi_large">12dp</dimen>
+    <dimen name="elevation_large">14dp</dimen>
+    <dimen name="elevation_giant">16dp</dimen>
+
+
+    <dimen name="chip_stroke">1dp</dimen>
+    <dimen name="app_bar_stroke">1dp</dimen>
+    <dimen name="button_height">44dp</dimen>
+
+    <dimen name="app_bar_height">64dp</dimen>
+    <dimen name="height_search_box">56dp</dimen>
+    <dimen name="radius_search_box">28dp</dimen>
+    <dimen name="chip_group_height">56dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
+    <dimen name="navigation_bottom_height">80dp</dimen>
+    <dimen name="chip_text_size">14sp</dimen>
+    <dimen name="height_chip">30dp</dimen>
+    <dimen name="team_logo_width">65dp</dimen>
+    <dimen name="team_logo_height">65dp</dimen>
+    <dimen name="text_xxlarge">24sp</dimen>
+    <dimen name="height_country_card">56dp</dimen>
+    <dimen name="dimens_country_image">32dp</dimen>
+    <dimen name="dimens_team_image">50dp</dimen>
+    <dimen name="height_bottom_view_favorite_teams">32dp</dimen>
+    <dimen name="width_favorite_team">58dp</dimen>
+
+
+
+</resources>

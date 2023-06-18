@@ -1,8 +1,8 @@
 package com.pancake.footballfever.di
 
 import com.pancake.footballfever.BuildConfig
+import com.pancake.footballfever.data.remote.interceptor.AuthInterceptor
 import com.pancake.footballfever.data.remote.service.ApiService
-import com.pancake.footballfever.data.remote.Interceptor.AuthInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,7 +17,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object RemoteModule {
-
     @Singleton
     @Provides
     fun provideFootballApiService(retrofit: Retrofit): ApiService {
@@ -58,7 +57,9 @@ object RemoteModule {
 
     @Singleton
     @Provides
+    fun provideAuthInterceptor(): AuthInterceptor = AuthInterceptor()
+
+    @Singleton
+    @Provides
     fun provideGsonConverter(): GsonConverterFactory = GsonConverterFactory.create()
-
-
 }

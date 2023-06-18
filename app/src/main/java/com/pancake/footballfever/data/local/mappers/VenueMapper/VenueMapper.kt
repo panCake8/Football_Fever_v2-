@@ -1,6 +1,6 @@
 package com.pancake.footballfever.data.local.mappers.VenueMapper
 
-import com.example.footboolfever.data.local.database.entity.VenueEntity
+import com.pancake.footballfever.data.local.database.entity.VenueEntity
 import com.example.footboolfever.data.remote.dto.VenueDto
 import com.pancake.footballfever.data.local.mappers.Mapper
 import dagger.hilt.android.scopes.ViewModelScoped
