@@ -21,6 +21,7 @@ android {
         Properties properties = new Properties()
         properties.load(project.rootProject.file("local.properties").newDataInputStream())
         buildConfigField "String", "BASE_URL", "${properties.getProperty('baseUrl')}"
+        buildConfigField "String", "API_HOST", "${properties.getProperty('apiHost')}"
         buildConfigField "String", "API_KEY", "${properties.getProperty('apikey')}"
     }
 
