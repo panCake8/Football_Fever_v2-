@@ -5,19 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 
-abstract class BaseActivity<DB: ViewDataBinding>: AppCompatActivity() {
-    abstract val layoutIdActivity: Int
+abstract class BaseActivity<DB : ViewDataBinding> : AppCompatActivity() {
+    protected lateinit var binding: DB
 
-    private lateinit var _binding: DB
-    protected val binding get() = _binding
+    abstract val layoutId: Int
 
-
-
-    override fun onCreate(savedInstanceState: Bundle?,) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        _binding = DataBindingUtil.setContentView(this, layoutIdActivity)
+        binding = DataBindingUtil.setContentView(this, layoutId)
         binding.lifecycleOwner = this@BaseActivity
-
     }
 }

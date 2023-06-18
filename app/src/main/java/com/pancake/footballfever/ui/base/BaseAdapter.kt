@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.pancake.footballfever.BR
 
 
-interface BaseAdapterListener
+
 
 abstract class BaseAdapter<T>(
     private val listener: BaseAdapterListener
