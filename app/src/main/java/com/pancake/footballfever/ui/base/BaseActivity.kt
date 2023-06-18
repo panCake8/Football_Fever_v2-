@@ -9,6 +9,7 @@ abstract class BaseActivity<DB : ViewDataBinding> : AppCompatActivity() {
     abstract val layoutId: Int
 
     private lateinit var _binding: DB
+
     protected val binding get() = _binding
 
     override fun onCreate(savedInstanceState: Bundle?) {

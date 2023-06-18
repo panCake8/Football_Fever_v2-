@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.pancake.footballfever.BR
 
+
+
+
 abstract class BaseAdapter<T>(
     private val listener: BaseAdapterListener
 ) : ListAdapter<T, BaseAdapter.BaseViewHolder>(BaseDiffUtil()) {
