@@ -1,6 +1,6 @@
 package com.pancake.footballfever.data.local.mappers.fixtureMapper
 
-import com.example.footboolfever.data.local.database.entity.FixtureHomeEntity
+import com.pancake.footballfever.data.local.database.entity.FixtureHomeEntity
 import com.example.footboolfever.data.remote.dto.FixturesDto
 import com.pancake.footballfever.data.local.mappers.Mapper
 import dagger.hilt.android.scopes.ViewModelScoped

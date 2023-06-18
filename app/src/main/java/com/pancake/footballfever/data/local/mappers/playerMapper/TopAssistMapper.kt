@@ -1,6 +1,6 @@
 package com.pancake.footballfever.data.local.mappers.playerMapper
 
-import com.example.footboolfever.data.local.database.entity.TopAssistEntity
+import com.pancake.footballfever.data.local.database.entity.TopAssistEntity
 import com.example.footboolfever.data.remote.dto.TopAssistsDto
 import com.pancake.footballfever.data.local.mappers.Mapper
 import dagger.hilt.android.scopes.ViewModelScoped

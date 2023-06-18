@@ -4,22 +4,22 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.footboolfever.data.local.database.entity.TopAssistEntity
-import com.example.footboolfever.data.local.database.entity.TopScorerEntity
+import com.pancake.footballfever.data.local.database.entity.TopAssistEntity
+import com.pancake.footballfever.data.local.database.entity.TopGoalsEntity
 
 @Dao
 interface PlayerDao {
 
     //region player top scorer
-    @Query("SELECT * FROM TOP_SCORER")
-    suspend fun getAllTopScorers(): List<TopScorerEntity>
+    @Query("SELECT * FROM TOP_PLAYERS_GOAL_TABLE")
+    suspend fun getAllTopScorers(): List<TopGoalsEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTopScorer(topScorerEntity: TopScorerEntity)
+    suspend fun insertTopScorer(topGoalsEntity: TopGoalsEntity)
     // endregion
 
     //region player top Assists
-    @Query("SELECT * FROM TOP_ASSIST")
+    @Query("SELECT * FROM TOP_PLAYERS_ASSIST_TABLE")
     suspend fun getAllTopAssists(): List<TopAssistEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

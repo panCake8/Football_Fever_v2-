@@ -26,7 +26,7 @@ abstract class BaseFragment<DB : ViewDataBinding, VM : ViewModel> : Fragment() {
         _binding = DataBindingUtil.inflate<DB>(inflater, layoutId, container, false)
             .apply {
                 lifecycleOwner = viewLifecycleOwner
-                setVariable(BR.viewModel, viewModel)
+                setVariable(BR._all, viewModel)
             }
         return _binding?.root
     }
@@ -38,8 +38,8 @@ abstract class BaseFragment<DB : ViewDataBinding, VM : ViewModel> : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initViews()
+        setup()
     }
 
-    open fun initViews() {}
+    open fun setup() {}
 }

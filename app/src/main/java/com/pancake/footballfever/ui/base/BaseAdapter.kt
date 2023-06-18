@@ -37,15 +37,12 @@ abstract class BaseAdapter<T>(
     open fun bind(holder: ItemViewHolder, position: Int) {
         holder.binding.apply {
             val currentItem = getItem(position)
-            setVariable(BR.item, currentItem)
-            setVariable(BR.listener, listener)
+            setVariable(BR._all, currentItem)
+            setVariable(BR._all, listener)
         }
     }
 
-    open fun areTheSameItem(oldItem: T, newItem: T) = oldItem?.equals(newItem) == true
-
     abstract class BaseViewHolder(binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root)
     class ItemViewHolder(val binding: ViewDataBinding) : BaseViewHolder(binding)
-
 
 }

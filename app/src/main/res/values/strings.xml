@@ -1,3 +1,31 @@
 <resources>
-    <string name="app_name">Football Fever</string>
+    <string name="app_name">FootBool Fever</string>
+    <string name="goal">Goal</string>
+    <string name="assist">Assist</string>
+    <string name="choose_your_favorite_leagues">Choose your favorite leagues</string>
+    <string name="choose_country">Choose country</string>
+    <string name="back">Back</string>
+    <string name="next">Next</string>
+    <string name="home_team_logo">home team logo</string>
+    <string name="away_team_logo">away team logo</string>
+    <string name="corner_kick">Corner Kick</string>
+    <string name="offside">Offside</string>
+    <string name="red_card">Red Card</string>
+    <string name="yellow_card">Yellow Card</string>
+    <string name="fouls">Fouls</string>
+    <string name="pass_accuracy">Pass Accuracy</string>
+    <string name="pass">Pass</string>
+    <string name="ball_possession">Ball Possession</string>
+    <string name="shots_on_target">shots on target</string>
+    <string name="total_shots">Total Shots</string>
+    <string name="logo">logo</string>
+    <string name="dash">-</string>
+    <string name="summary_time">%s\'</string>
+    <string name="live_score">Live Score</string>
+    <string name="home">Home</string>
+    <string name="column">:</string>
+    <string name="away">Away</string>
+    <string name="match_schedule">Match Schedule</string>
+    <string name="notification">notification</string>
+
 </resources>

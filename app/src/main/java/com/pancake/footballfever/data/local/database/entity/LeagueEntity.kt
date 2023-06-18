@@ -1,4 +1,4 @@
-package com.example.footboolfever.data.local.database.entity
+package com.pancake.footballfever.data.local.database.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
