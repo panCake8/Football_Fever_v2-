@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.example.footboolfever.domain.models.Standings" />
+
+    </data>
+
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/Primary_color"
+        android:padding="@dimen/semi_large_padding">
+
+        <TextView
+            style="@style/table_column"
+            android:text="@{String.valueOf(item.rank)}"
+            tools:text="@string/rank_value" />
+
+        <LinearLayout
+            android:layout_width="@dimen/no_width"
+            android:layout_marginStart="@dimen/semi_large_margin"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="@dimen/standings_team_logo_width"
+                android:layout_height="@dimen/standings_team_logo_height"
+                app:setImageUrl="@{item.team.logo}"
+                tools:src="@drawable/arsenal_logo" />
+
+            <TextView
+                android:layout_width="@dimen/no_width"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small_margin"
+                android:layout_weight="1"
+                android:text="@{item.team.name}"
+                android:textColor="@color/white87"
+                android:textSize="@dimen/text_small"
+                tools:text="Arsenal" />
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/table_column"
+            android:layout_marginStart="@dimen/semi_large_margin"
+            android:text="@{String.valueOf(item.played)}"
+            tools:text="@string/played_value" />
+
+        <TextView
+            style="@style/table_column"
+            android:layout_marginStart="@dimen/semi_large_margin"
+            android:text="@{String.valueOf(item.win)}"
+            tools:text="@string/win_value" />
+
+        <TextView
+            android:layout_width="@dimen/width_text_header_standings_table"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/semi_large_margin"
+            android:gravity="center"
+            android:text="@{String.valueOf(item.points)}"
+            android:textColor="@color/white87"
+            tools:text="@string/pts_value" />
+        <!--        -->
+
+
+    </TableRow>
+
+</layout>
