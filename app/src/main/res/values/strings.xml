@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">FootBool Fever</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="goal">Goal</string>
     <string name="assist">Assist</string>
     <string name="choose_your_favorite_leagues">Choose your favorite leagues</string>
@@ -29,6 +27,5 @@
     <string name="away">Away</string>
     <string name="match_schedule">Match Schedule</string>
     <string name="notification">notification</string>
-
 
 </resources>
