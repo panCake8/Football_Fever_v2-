@@ -1,7 +1,8 @@
-package com.pancake.footballfever
+package com.pancake.footballfever.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.pancake.footballfever.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
