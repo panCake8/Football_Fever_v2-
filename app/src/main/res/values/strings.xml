@@ -34,4 +34,8 @@
     <string name="club_text">Club</string>
     <string name="coach_text">Coach</string>
 
+    <string name="pep_guardiola">pep guardiola</string>
+    <string name="barcelona">Barcelona</string>
+    <string name="coaches">Coaches</string>
+
 </resources>
