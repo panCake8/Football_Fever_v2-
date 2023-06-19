@@ -8,5 +8,15 @@
         android:id="@+id/leagueStateFragment"
         android:name="com.pancake.footballfever.ui.league_state.LeagueStateFragment"
         android:label="fragment_league_state"
-        tools:layout="@layout/fragment_league_state" />
+        tools:layout="@layout/fragment_league_state" >
+        <action
+            android:id="@+id/action_leagueStateFragment_to_standingFragment"
+            app:destination="@id/standingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/standingFragment"
+        android:name="com.pancake.footballfever.ui.league_state.standing.StandingFragment"
+        android:label="StandingFragment"
+        tools:layout="@layout/fragment_standing"
+        />
 </navigation>
