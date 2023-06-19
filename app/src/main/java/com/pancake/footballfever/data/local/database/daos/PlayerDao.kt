@@ -15,7 +15,7 @@ interface PlayerDao {
     suspend fun getAllTopScorers(): List<TopGoalsEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTopScorer(topGoalsEntity: TopGoalsEntity)
+    suspend fun insertTopScorer(topGoalsEntity: List<TopGoalsEntity>)
     // endregion
 
     //region player top Assists
@@ -23,6 +23,6 @@ interface PlayerDao {
     suspend fun getAllTopAssists(): List<TopAssistEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTopAssists(topScorerEntity: TopAssistEntity)
+    suspend fun insertTopAssists(topScorerEntity: List<TopAssistEntity>)
     // endregion
 }
