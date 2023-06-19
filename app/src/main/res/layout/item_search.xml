@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="item"
+            type="com.pancake.footballfever.domain.models.SearchItem" />
 
     </data>
 
@@ -28,6 +31,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/semi_huge"
                 android:scaleType="fitXY"
+                app:setImageUrl="@{item.logo}"
                 app:roundPercent="1"
                 app:srcCompat="@drawable/arsenal_logo" />
 
@@ -40,6 +44,7 @@
                 android:layout_marginHorizontal="4dp"
                 android:ellipsize="end"
                 android:maxLines="1"
+                android:text="@{item.name}"
                 android:layout_gravity="center"
                 tools:text="Real Madrid" />
         </LinearLayout>
