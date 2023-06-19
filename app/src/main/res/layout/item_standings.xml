@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.example.footboolfever.domain.models.Standings" />
+            type="com.pancake.footballfever.data.local.database.entity.StandingsEntity" />
 
     </data>
 
@@ -31,7 +31,7 @@
             <ImageView
                 android:layout_width="@dimen/standings_team_logo_width"
                 android:layout_height="@dimen/standings_team_logo_height"
-                app:setImageUrl="@{item.team.logo}"
+                app:setImageUrl="@{item.teamLogoUrl}"
                 tools:src="@drawable/arsenal_logo" />
 
             <TextView
@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/small_margin"
                 android:layout_weight="1"
-                android:text="@{item.team.name}"
+                android:text="@{item.teamName}"
                 android:textColor="@color/white87"
                 android:textSize="@dimen/text_small"
                 tools:text="Arsenal" />
