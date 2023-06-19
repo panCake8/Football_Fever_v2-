@@ -1,4 +1,4 @@
-package com.pancake.footballfever.ui.standings
+package com.pancake.footballfever.ui.league_state.standing
 
 import com.pancake.footballfever.R
 import com.pancake.footballfever.domain.models.Standings

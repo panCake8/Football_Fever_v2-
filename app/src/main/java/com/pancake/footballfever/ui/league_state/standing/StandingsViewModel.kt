@@ -1,7 +1,9 @@
-package com.pancake.footballfever.ui.standings
+package com.pancake.footballfever.ui.league_state.standing
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.pancake.footballfever.ui.league_state.standing.StandingsListener
+import com.pancake.footballfever.ui.league_state.standing.StandingsUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
