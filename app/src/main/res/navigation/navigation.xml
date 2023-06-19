@@ -30,4 +30,8 @@
         android:name="com.pancake.footballfever.ui.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/aboutFragment3"
+        android:name="com.pancake.footballfever.ui.about.AboutFragment"
+        android:label="AboutFragment" />
 </navigation>
