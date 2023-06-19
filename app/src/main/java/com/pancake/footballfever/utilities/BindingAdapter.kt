@@ -9,7 +9,9 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.pancake.footballfever.R
+import com.pancake.footballfever.domain.models.FixtureEvents
 import com.pancake.footballfever.ui.base.BaseAdapter
+import com.pancake.footballfever.ui.fixture_events.FixtureEventsAdapter
 
 @BindingAdapter(value = ["app:setRecyclerItems"])
 fun <T> setRecyclerItems(recyclerView: RecyclerView, items: List<T?>?) {
@@ -60,4 +62,14 @@ fun ImageView.bindFixtureEventImg(type: String) {
             else -> null
         }
     )
+}
+
+@BindingAdapter(value = ["summaryItems", "homeId"], requireAll = true)
+fun RecyclerView.bindSummaryAdapterItems(summaryItems: List<FixtureEvents>?, homeId: Int) {
+    summaryItems?.let {
+        adapter = FixtureEventsAdapter(homeId).also {
+            it.submitList(summaryItems)
+        }
+
+    }
 }

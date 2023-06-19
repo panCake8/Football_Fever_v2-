@@ -192,4 +192,15 @@ interface ApiService {
     ) : Response<BaseResponse<TeamsDto>>
 
     // endregion
+
+    @GET("fixtures")
+    suspend fun getTeamFixtures(
+        @Query("season") season: String? = null,
+        @Query("team") team: String? = null,
+    ): Response<BaseResponse<FixturesDto>>
+
+    @GET("fixtures/players")
+    suspend fun getTeamPlayerStatisticsFixtures(@Query("fixture") fixture: String,
+                                                @Query("team") team: String): Response<BaseResponse<PlayerStatisticsDto>>
+
 }

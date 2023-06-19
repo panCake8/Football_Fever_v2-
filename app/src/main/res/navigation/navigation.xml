@@ -2,4 +2,42 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation" />
+    android:id="@+id/navigation"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/fixtureEventsFragment"
+        android:name="com.pancake.footballfever.ui.fixture_events.FixtureEventsFragment"
+        android:label="FixtureEventsFragment"
+        tools:layout="@layout/fragment_fixture_events" >
+        <argument
+            android:name="fixtureId"
+            app:argType="string" />
+        <argument
+            android:name="homeId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/playersFragment"
+        android:name="com.pancake.footballfever.ui.player.PlayersFragment"
+        android:label="PlayersFragment"
+        tools:layout="@layout/fragment_players" >
+        <argument
+            android:name="fixtureId"
+            app:argType="string" />
+        <argument
+            android:name="teamId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/teamFixturesFragment"
+        android:name="com.pancake.footballfever.ui.team_fixture.TeamFixturesFragment"
+        android:label="TeamFixturesFragment"
+        tools:layout="@layout/fragment_team_fixtures">
+        <argument
+            android:name="season"
+            app:argType="string" />
+        <argument
+            android:name="team"
+            app:argType="string" />
+    </fragment>
+</navigation>
