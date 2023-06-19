@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_homeFragment_to_fixtureFragment"
             app:destination="@id/fixtureFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_leagueStateFragment"
+            app:destination="@id/leagueStateFragment" />
     </fragment>
 
 
@@ -35,6 +38,10 @@
         android:id="@+id/leagueStateFragment"
         android:name="com.pancake.footballfever.ui.league_state.LeagueStateFragment"
         android:label="LeagueStateFragment"
-        tools:layout="@layout/fragment_league_state"/>
+        tools:layout="@layout/fragment_league_state">
+        <argument
+            android:name="leagueId"
+            app:argType="integer" />
+    </fragment>
 
 </navigation>
