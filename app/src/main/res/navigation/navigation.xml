@@ -3,41 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/fixtureFragment">
     <fragment
-        android:id="@+id/fixtureEventsFragment"
-        android:name="com.pancake.footballfever.ui.fixture_events.FixtureEventsFragment"
-        android:label="FixtureEventsFragment"
-        tools:layout="@layout/fragment_fixture_events" >
+        android:id="@+id/fixtureFragment"
+        android:name="com.pancake.footballfever.ui.fixture.FixtureFragment"
+        android:label="fragment_fixture"
+        tools:layout="@layout/fragment_fixture" >
         <argument
             android:name="fixtureId"
-            app:argType="string" />
-        <argument
-            android:name="homeId"
-            app:argType="string" />
+            app:argType="integer" />
     </fragment>
     <fragment
-        android:id="@+id/playersFragment"
-        android:name="com.pancake.footballfever.ui.player.PlayersFragment"
-        android:label="PlayersFragment"
-        tools:layout="@layout/fragment_players" >
-        <argument
-            android:name="fixtureId"
-            app:argType="string" />
-        <argument
-            android:name="teamId"
-            app:argType="string" />
-    </fragment>
-    <fragment
-        android:id="@+id/teamFixturesFragment"
-        android:name="com.pancake.footballfever.ui.team_fixture.TeamFixturesFragment"
-        android:label="TeamFixturesFragment"
-        tools:layout="@layout/fragment_team_fixtures">
-        <argument
-            android:name="season"
-            app:argType="string" />
-        <argument
-            android:name="team"
-            app:argType="string" />
+        android:id="@+id/homeFragment"
+        android:name="com.pancake.footballfever.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_fixtureFragment"
+            app:destination="@id/fixtureFragment" />
     </fragment>
 </navigation>
