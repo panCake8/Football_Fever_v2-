@@ -11,21 +11,24 @@ class PlayerRepositoryImpl @Inject constructor(
     private val apiService: ApiService,
     private val playerDao: PlayerDao,
     private val topScorerMapper: TopScorerMapper,
-): PlayerRepository {
+) : PlayerRepository {
 
-    override suspend fun fetchTopGoalsDataAndCache(league: Int, season: Int): Result<List<TopGoalsEntity>> {
+    override suspend fun fetchTopGoalsDataAndCache(
+        league: Int,
+        season: Int
+    ): Result<List<TopGoalsEntity>> {
         try {
-
             val response = apiService.getTopScorerPlayers(league, season)
             if (response.isSuccessful) {
+
                 val data = response.body()?.response
-                data?.let {
-                    playerDao.insertTopScorer(it.map(topScorerMapper::map))
-                    return Result.success(it.map(topScorerMapper::map))
-                }
+                    ?: return Result.failure(Exception("No data found"))
+
+                playerDao.insertTopScorer(data.map(topScorerMapper::map))
+
+                return Result.success(data.map(topScorerMapper::map))
             }
             return Result.failure(Exception("Failed to retrieve data"))
-
         } catch (e: Exception) {
             return Result.failure(e)
         }
