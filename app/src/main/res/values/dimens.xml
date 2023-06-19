@@ -64,6 +64,11 @@
     <dimen name="height_bottom_view_favorite_teams">32dp</dimen>
     <dimen name="width_favorite_team">58dp</dimen>
 
+    <dimen name="no_height">0dp</dimen>
+    <dimen name="coaches_card_height">76dp</dimen>
+    <dimen name="coach_image_width">60dp</dimen>
+    <dimen name="coach_image_height">60dp</dimen>
+
 
 
 </resources>
