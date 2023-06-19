@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/width_search_card"
+        android:layout_height="@dimen/height_search_card"
+        android:backgroundTint="@color/background_main_card"
+        android:layout_margin="@dimen/large_margin"
+        app:cardCornerRadius="@dimen/radius_semi_large">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/selector_favorite_team"
+            android:orientation="vertical"
+            >
+
+            <androidx.constraintlayout.utils.widget.ImageFilterView
+                android:id="@+id/card_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/semi_huge"
+                android:scaleType="fitXY"
+                app:roundPercent="1"
+                app:srcCompat="@drawable/arsenal_logo" />
+
+            <TextView
+                android:id="@+id/card_text"
+                style="@style/select_favorite_item_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:layout_marginHorizontal="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:layout_gravity="center"
+                tools:text="Real Madrid" />
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</layout>
