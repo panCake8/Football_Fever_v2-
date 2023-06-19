@@ -29,32 +29,17 @@ class StandingsViewModel @Inject constructor(
 
 
     init {
-        _uiState.update { it.copy(isLoading = true) }
+
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 fetchStandingsAndCacheUseCase.invoke(39, 2019)
-
+                _uiState.update { it.copy(isLoading = true) }
                 _uiState.update { it.copy(response = getCachedStandingsUseCase.invoke(39, 2019), isLoading = false) }
-                Log.i("test","${_uiState.value}")
+                Log.i("test","${ uiState.value.response?.get(0)?.teamName}")
 
             }
         }
     }
-
-
-
-
-//    private suspend fun showStandingsLeague(league: Int, season: Int) {
-//        viewModelScope.launch {
-//            _uiState.update { it.copy(isLoading = true) }
-//            _uiState.update {
-//                it.copy(response = getStandingsUseCase.invoke(league, season), isLoading = false)
-//            }
-//        }
-//    }
-
-
-
 
 
 

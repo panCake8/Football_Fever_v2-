@@ -1,7 +1,5 @@
 package com.pancake.footballfever.domain.models
 
-import com.example.footboolfever.data.remote.dto.standings.Team
-import com.google.gson.annotations.SerializedName
 
 
 data class Standings(
