@@ -1,7 +1,6 @@
 package com.pancake.footballfever.ui.league_state
 
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
 import com.pancake.footballfever.R
 import com.pancake.footballfever.databinding.FragmentLeagueStateBinding
@@ -20,10 +19,8 @@ class LeagueStateFragment : BaseFragment<FragmentLeagueStateBinding, LeagueState
     override val layoutId: Int = R.layout.fragment_league_state
     override val viewModel: LeagueStateViewModel by viewModels()
 
-    private val arguments by navArgs<LeagueStateFragmentArgs>()
 
     override fun setup() {
-        val leagueId = arguments.leagueId
         initViewPager()
         initTabLayout()
     }
