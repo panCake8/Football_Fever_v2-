@@ -67,7 +67,7 @@
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:setRecyclerItems="@{viewModel.uiState.response}"
-            tools:listitem="@layout/item_standing" />
+            tools:listitem="@layout/item_standings" />
     </TableLayout>
 
 </layout>
