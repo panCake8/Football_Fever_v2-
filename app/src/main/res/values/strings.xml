@@ -28,4 +28,18 @@
     <string name="match_schedule">Match Schedule</string>
     <string name="notification">notification</string>
 
+
+
+
+    <string name="pos">Pos</string>
+    <string name="team">Team</string>
+    <string name="p">P</string>
+    <string name="w">W</string>
+    <string name="pts">Pts</string>
+    <string name="rank_value">1</string>
+    <string name="pts_value">31</string>
+    <string name="win_value">10</string>
+    <string name="played_value">12</string>
+
+
 </resources>
