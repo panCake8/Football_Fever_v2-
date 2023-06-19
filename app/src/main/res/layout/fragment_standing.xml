@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.footboolfever.ui.league_state.standings.StandingsViewModel" />
+            type="com.pancake.footballfever.ui.league_state.standing.StandingsViewModel" />
 
 
     </data>
