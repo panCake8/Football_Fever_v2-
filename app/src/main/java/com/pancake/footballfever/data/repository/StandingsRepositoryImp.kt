@@ -13,12 +13,12 @@ class StandingsRepositoryImp @Inject constructor(
 ) : StandingsRepository {
 
 
-    override suspend fun getAllStandings(league: Int, season: Int): List<StandingsEntity> {
-        return dao.getAllStandings(league, season)
+    override suspend fun getCachedStandings(leagueId:Int,season:Int): List<StandingsEntity> {
+        return dao.getAllStandings(leagueId, season)
     }
 
-    override suspend fun fetchStandingsAndCache(league: Int, season: Int) {
-        val response = apiService.getStandingsLeague(league, season)
+    override suspend fun fetchStandingsAndCache(leagueId:Int,season:Int){
+        val response = apiService.getStandingsLeague(leagueId, season)
         val items = response.body()?.response?.let { mapper.map(it.get(0)) }
         items?.let { dao.insertStandings(items) }
     }
