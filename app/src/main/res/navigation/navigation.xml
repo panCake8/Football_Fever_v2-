@@ -30,4 +30,11 @@
         android:name="com.pancake.footballfever.ui.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
+
+    <fragment
+        android:id="@+id/leagueStateFragment"
+        android:name="com.pancake.footballfever.ui.league_state.LeagueStateFragment"
+        android:label="LeagueStateFragment"
+        tools:layout="@layout/fragment_league_state"/>
+
 </navigation>
