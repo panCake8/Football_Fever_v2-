@@ -13,10 +13,13 @@
             android:name="fixtureId"
             app:argType="integer" />
     </fragment>
-
     <fragment
-        android:id="@+id/searchFragment"
-        android:name="com.pancake.footballfever.ui.search.SearchFragment"
-        android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        android:id="@+id/homeFragment"
+        android:name="com.pancake.footballfever.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_fixtureFragment"
+            app:destination="@id/fixtureFragment" />
+    </fragment>
 </navigation>
