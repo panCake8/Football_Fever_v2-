@@ -8,6 +8,7 @@ import com.pancake.footballfever.data.local.database.entity.FavoriteTeamEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureEventsEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureHomeEntity
 import com.pancake.footballfever.data.local.database.entity.LeagueEntity
+import com.pancake.footballfever.data.local.database.entity.StandingsEntity
 import com.pancake.footballfever.data.local.database.entity.TopAssistEntity
 import com.pancake.footballfever.data.local.database.entity.TopGoalsEntity
 import com.pancake.footballfever.data.local.database.entity.VenueEntity
@@ -23,6 +24,7 @@ import com.pancake.footballfever.data.local.database.entity.VenueEntity
         TopGoalsEntity::class,
         TopAssistEntity::class,
         VenueEntity::class,
+        StandingsEntity::class
     ],
     version = 1,
 )
