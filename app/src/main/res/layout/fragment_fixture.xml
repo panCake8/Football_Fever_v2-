@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+    <variable
+        name="viewModel"
+        type="com.pancake.footballfever.ui.fixture.FixtureViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
