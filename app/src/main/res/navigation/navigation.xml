@@ -60,9 +60,6 @@
         android:name="com.pancake.footballfever.ui.league_state.LeagueStateFragment"
         android:label="LeagueStateFragment"
         tools:layout="@layout/fragment_league_state">
-        <argument
-            android:name="leagueId"
-            app:argType="integer" />
         <action
             android:id="@+id/action_leagueStateFragment_to_clubTablesFragment"
             app:destination="@id/clubFragment" />
