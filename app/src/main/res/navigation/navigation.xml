@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/clubTablesFragment"
-        android:name="com.pancake.footballfever.ClubTablesFragment"
+        android:name="com.pancake.footballfever.ui.club.tables.ClubTablesFragment"
         android:label="fragment_club_tables"
         tools:layout="@layout/fragment_club_tables" >
         <argument
@@ -21,7 +21,7 @@
             android:defaultValue="2023" />
     </fragment>
 
-    app:startDestination="@id/fixtureFragment">
+
     <fragment
         android:id="@+id/fixtureFragment"
         android:name="com.pancake.footballfever.ui.fixture.FixtureFragment"
