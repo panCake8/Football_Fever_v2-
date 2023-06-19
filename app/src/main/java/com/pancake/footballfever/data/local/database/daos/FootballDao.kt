@@ -42,4 +42,9 @@ interface FootballDao {
 
     @Query("delete from FIXTURE_TEAM_TABLE ")
     fun deleteAllFixtureHome()
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertStandings(standings: List<StandingsEntity>)
+
+    @Query("SELECT * FROM STANDINGS_TABLE   ")
+    fun getAllStandings(leagueId:Int,season:Int): List<StandingsEntity>
 }
