@@ -3,20 +3,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/leagueStateFragment">
+    app:startDestination="@id/fixtureFragment">
+    <fragment
+        android:id="@+id/fixtureFragment"
+        android:name="com.pancake.footballfever.ui.fixture.FixtureFragment"
+        android:label="fragment_fixture"
+        tools:layout="@layout/fragment_fixture" >
+        <argument
+            android:name="fixtureId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.pancake.footballfever.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_fixtureFragment"
+            app:destination="@id/fixtureFragment" />
+    </fragment>
+
+
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.pancake.footballfever.ui.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+
     <fragment
         android:id="@+id/leagueStateFragment"
         android:name="com.pancake.footballfever.ui.league_state.LeagueStateFragment"
-        android:label="fragment_league_state"
-        tools:layout="@layout/fragment_league_state" >
-        <action
-            android:id="@+id/action_leagueStateFragment_to_standingFragment"
-            app:destination="@id/standingFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/standingFragment"
-        android:name="com.pancake.footballfever.ui.league_state.standing.StandingFragment"
-        android:label="StandingFragment"
-        tools:layout="@layout/fragment_standing"
-        />
+        android:label="LeagueStateFragment"
+        tools:layout="@layout/fragment_league_state"/>
+
 </navigation>

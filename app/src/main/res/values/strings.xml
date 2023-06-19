@@ -27,6 +27,12 @@
     <string name="away">Away</string>
     <string name="match_schedule">Match Schedule</string>
     <string name="notification">notification</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_text">Search</string>
+    <string name="player_text">Player</string>
+    <string name="club_text">Club</string>
+    <string name="coach_text">Coach</string>
 
 
 
