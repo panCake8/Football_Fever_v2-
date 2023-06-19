@@ -63,6 +63,8 @@
     <dimen name="dimens_team_image">50dp</dimen>
     <dimen name="height_bottom_view_favorite_teams">32dp</dimen>
     <dimen name="width_favorite_team">58dp</dimen>
+    <dimen name="width_search_card">156dp</dimen>
+    <dimen name="height_search_card">176dp</dimen>
 
 
 
