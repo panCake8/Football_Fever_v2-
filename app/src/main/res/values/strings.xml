@@ -29,9 +29,12 @@
     <string name="notification">notification</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="search_text">Search</string>
-    <string name="player_text">Player</string>
-    <string name="club_text">Club</string>
-    <string name="coach_text">Coach</string>
+<<<<<<<<< Temporary merge branch 1
+    <string name="feature_three">Offline Access and Saving Content: The ability to save articles, videos, or match highlights for offline access allows users to enjoy content even without an internet connection. This feature ensures that fans can access their favorite content anytime, anywhere.</string>
+    <string name="feature_two">Customization and Personalization: Football applications often allow users to personalize their experience by selecting their favorite teams, players, or leagues. This feature ensures that users receive tailored news, alerts, and updates relevant to their preferences.</string>
+    <string name="feature_one">Real-time Updates: The ability to deliver instant and accurate information, including live scores, match events, and player statistics, ensures that users stay up-to-date with the latest developments in their favorite leagues and teams.</string>
+    <string name="description_of_app">Football applications have revolutionized the way we engage with the beautiful game, bringing convenience, interactivity, and a wealth of information to the fingertips of fans worldwide. These applications, often available on smartphones or other devices, have become an essential part of a football enthusiast\'s digital toolkit.</string>
+=========
+>>>>>>>>> Temporary merge branch 2
 
 </resources>

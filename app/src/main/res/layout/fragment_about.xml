@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/Primary_color"
+        tools:context=".ui.about.AboutFragment">
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/large_margin"
+            android:layout_marginTop="@dimen/huge_margin"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/white60"
+            android:textSize="@dimen/text_large"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Best Football app that will have with strong features for football fans" />
+
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/image_about"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginHorizontal="@dimen/large_margin"
+            android:layout_marginTop="@dimen/large_margin"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_title"
+            app:roundPercent="0.2"
+            tools:srcCompat="@drawable/about_picture" />
+
+        <TextView
+            android:id="@+id/text_title2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/large_margin"
+            android:layout_marginTop="@dimen/large_margin"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/description_of_app"
+            android:textColor="@color/white60"
+            android:textSize="@dimen/text_medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_about" />
+
+        <TextView
+            android:id="@+id/text_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/large_margin"
+            android:layout_marginTop="@dimen/large_margin"
+            android:text="@string/feature_one"
+            android:textColor="@color/white60"
+            android:textSize="@dimen/text_small"
+            android:fontFamily="@font/poppins"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_title2" />
+
+        <TextView
+            android:id="@+id/text_body2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/large_margin"
+            android:layout_marginTop="@dimen/large_margin"
+            android:text="@string/feature_two"
+            android:textColor="@color/white60"
+            android:textSize="@dimen/text_small"
+            android:fontFamily="@font/poppins"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_body" />
+
+        <TextView
+            android:id="@+id/text_body3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/large_margin"
+            android:layout_marginTop="@dimen/large_margin"
+            android:text="@string/feature_three"
+            android:textColor="@color/white60"
+            android:textSize="@dimen/text_small"
+            android:fontFamily="@font/poppins"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_body2"
+            android:layout_marginBottom="@dimen/large_margin"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>
