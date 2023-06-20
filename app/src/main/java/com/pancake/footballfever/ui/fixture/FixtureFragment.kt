@@ -8,7 +8,9 @@ import com.pancake.footballfever.databinding.FragmentFixtureBinding
 import com.pancake.footballfever.ui.base.BaseFragment
 import com.pancake.footballfever.ui.fixture.lineup.FragmentFixtureLineup
 import com.pancake.footballfever.ui.fixture.stats.FragmentFixtureStats
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FixtureFragment : BaseFragment<FragmentFixtureBinding, FixtureViewModel>() {
 
     private val arguments by navArgs<FixtureFragmentArgs>()
