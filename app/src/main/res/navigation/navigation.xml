@@ -66,7 +66,7 @@
     </fragment>
     <fragment
         android:id="@+id/selectCountryFragment"
-        android:name="com.pancake.footballfever.ui.select_country.SelectCountryFragment"
+        android:name="com.pancake.footballfever.ui.selectCountry.SelectCountryFragment"
         android:label="SelectCountryFragment"
         tools:layout="@layout/fragment_select_country"
         >
@@ -76,7 +76,7 @@
     </fragment>
     <fragment
         android:id="@+id/selectFavoriteTeamsFragment"
-        android:name="com.pancake.footballfever.ui.select_favorite_teams.SelectFavoriteTeamsFragment"
+        android:name="com.pancake.footballfever.ui.selectFavoriteTeams.SelectFavoriteTeamsFragment"
         android:label="fragment_select_favorite_teams"
         tools:layout="@layout/fragment_select_favorite_teams" >
         <argument
