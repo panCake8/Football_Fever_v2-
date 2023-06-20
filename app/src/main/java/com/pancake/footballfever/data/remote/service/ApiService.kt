@@ -152,8 +152,8 @@ interface ApiService {
 
     @GET("coachs")
     suspend fun getCoaches(
-        @Query("id") id: Int,
-        @Query("team") teamId: Int,
+        @Query("id") id: Int? = null,
+        @Query("team") teamId: Int? = null,
     ): Response<BaseResponse<CoachsDto>>
 
     // endregion
