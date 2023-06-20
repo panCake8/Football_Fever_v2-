@@ -10,8 +10,8 @@ import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 class FetchFixtureWorker @Inject constructor(
-    private val context: Context,
-    private val params: WorkerParameters,
+    context: Context,
+    params: WorkerParameters,
     private val fetchAndCacheFixtureUseCase: FetchAndCacheFixtureUseCase
 ) : Worker(context, params) {
     override fun doWork(): Result {
