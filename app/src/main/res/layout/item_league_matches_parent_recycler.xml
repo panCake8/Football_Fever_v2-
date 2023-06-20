@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_color">
+
+
+    <ImageView
+        android:id="@+id/calender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/large_margin"
+        android:layout_marginTop="@dimen/large_margin"
+        android:src="@drawable/calendar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/medium_margin"
+        android:textColor="@color/text_side_title"
+        app:layout_constraintStart_toEndOf="@id/calender"
+        app:layout_constraintTop_toTopOf="@id/calender"
+        tools:text="29 oct 2022 "
+
+        />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/league_matches_recycler"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/calender"
+        android:layout_height="@dimen/no_elevation"
+        android:layout_marginTop="@dimen/large_margin"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_league_matches" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

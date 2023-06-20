@@ -33,5 +33,7 @@
     <string name="player_text">Player</string>
     <string name="club_text">Club</string>
     <string name="coach_text">Coach</string>
+    <string name="chelsea">chelsea</string>
+    <string name="_06_30">06:30</string>
 
 </resources>

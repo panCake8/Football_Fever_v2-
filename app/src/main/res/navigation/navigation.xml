@@ -62,4 +62,15 @@
             app:argType="integer" />
     </fragment>
 
+    <fragment
+        android:id="@+id/leagueMatch"
+        android:name="com.pancake.footballfever.ui.league_state.match.LeagueMatchesFragment"
+        android:label="fragment_league_match"
+        tools:layout="@layout/fragment_league_match" >
+        <argument
+            android:name="LeagueID"
+            app:argType="integer"
+            android:defaultValue="39" />
+    </fragment>
+
 </navigation>
