@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/clubFragment"
-        android:name="com.pancake.footballfever.ui.club.tables.ClubFragment"
+        android:name="com.pancake.footballfever.ui.Club_stats.ClubFragment"
         android:label="fragment_club"
         tools:layout="@layout/fragment_club">
         <argument
