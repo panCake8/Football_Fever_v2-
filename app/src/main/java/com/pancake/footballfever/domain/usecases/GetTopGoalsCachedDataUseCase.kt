@@ -18,7 +18,9 @@ class GetTopGoalsCachedDataUseCase @Inject constructor(
             id = this.id,
             playerName = this.playerName,
             teamName = this.teamName,
-            totalGoals = this.totalGoals
+            totalGoals = this.totalGoals,
+            playerImg = this.playerImg,
         )
     }
+
 }

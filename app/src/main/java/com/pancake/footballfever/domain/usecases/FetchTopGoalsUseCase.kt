@@ -8,6 +8,7 @@ import javax.inject.Inject
 class FetchTopGoalsUseCase @Inject constructor(
     private val playerRepository: PlayerRepository,
 ) {
+
     suspend operator fun invoke(league: Int, season: Int): Result<List<TopGoals>> {
         return try {
             val result = playerRepository.fetchTopGoalsDataAndCache(league, season)
@@ -24,7 +25,8 @@ class FetchTopGoalsUseCase @Inject constructor(
             id = this.id,
             playerName = this.playerName,
             teamName = this.teamName,
-            totalGoals = this.totalGoals
+            totalGoals = this.totalGoals,
+            playerImg = this.playerImg
         )
     }
 }
