@@ -185,6 +185,10 @@ interface ApiService {
     //endregion
 
     // region teams requests
+    @GET("team")
+    suspend fun  getTeamById(
+        @Query("id") TeamId: Int,
+    ):Response<TeamsDto>
     @GET("teams")
     suspend fun getPremierLeagueTeams(
         @Query("league") leagueId :Int,
