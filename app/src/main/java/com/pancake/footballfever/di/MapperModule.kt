@@ -25,7 +25,3 @@ object MapperModule {
     @Provides
     fun provideFavoriteTeamUiToEntityMapper() = FavoriteTeamUiToEntityMapper()
 }
-
-
-
-}
