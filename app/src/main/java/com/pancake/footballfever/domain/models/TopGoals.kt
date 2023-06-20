@@ -5,5 +5,5 @@ data class TopGoals(
     val playerName: String?,
     val teamName: String?,
     val totalGoals: Int?,
-//    val playerImg: String?
+    val playerImg: String?
 )
