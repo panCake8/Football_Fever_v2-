@@ -4,6 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="viewModel"
+            type="com.pancake.footballfever.ui.search.SearchViewModel" />
+
 
     </data>
 
@@ -25,6 +29,7 @@
             android:inputType="text"
             android:imeOptions="actionSearch"
             android:textColorHint="@color/hint_search_color"
+            android:text="@={viewModel.searchText}"
             android:textSize="@dimen/text_medium"
             android:textColor="@color/text_title"
             android:hint="@string/search_text"
@@ -43,11 +48,12 @@
             >
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/chip_player"
+                android:id="@+id/chip_league"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/Chips_style"
-                android:text="@string/player_text"
+                android:text="@string/league_text"
+                android:onClick="@{()-> viewModel.onClickLeagueChip()}"
                 android:checked="true"
                 android:layout_marginEnd="@dimen/semi_large_margin"
                 app:checkedIconVisible="false"
@@ -60,7 +66,8 @@
                 android:layout_height="wrap_content"
                 style="@style/Chips_style"
                 android:layout_marginEnd="@dimen/semi_large_margin"
-                android:text="@string/club_text"
+                android:text="@string/team_text"
+                android:onClick="@{()-> viewModel.onClickTeamChip()}"
                 app:checkedIconVisible="false"
                 app:chipBackgroundColor="@color/chip_background_color"
                 android:textSize="@dimen/text_small"
@@ -71,8 +78,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/Chips_style"
-                android:layout_marginEnd="@dimen/semi_large_margin"
+                android:layout_marginEnd="@dimen/large_margin"
                 android:text="@string/coach_text"
+                android:onClick="@{()-> viewModel.onClickCoachChip()}"
                 app:checkedIconVisible="false"
                 app:chipBackgroundColor="@color/chip_background_color"
                 android:textSize="@dimen/text_small"
@@ -81,17 +89,51 @@
 
         </com.google.android.material.chip.ChipGroup>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/search_recycler"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="@dimen/large_margin"
-            android:clipToPadding="false"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="2"
-            tools:listitem="@layout/item_search"
-            />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/search_recycler"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="@dimen/large_margin"
+                android:clipToPadding="false"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setRecyclerItems="@{viewModel.searchResult.toDate()}"
+                app:showWhenSearchSuccess="@{viewModel.searchResult}"
+                app:spanCount="2"
+                tools:listitem="@layout/item_search" />
+            <ImageView
+                android:id="@+id/image_view_error"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:src="@drawable/image_search_error"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:showWhenSearchError="@{viewModel.searchResult}" />
+
+
+            <ImageView
+                android:id="@+id/image_view_loading"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:src="@drawable/image_search_loading"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:showWhenSearchLoading="@{viewModel.searchResult}" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
