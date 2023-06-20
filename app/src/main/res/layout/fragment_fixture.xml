@@ -36,12 +36,14 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/text_team_away_score"
             app:layout_constraintTop_toTopOf="@+id/text_team_away_score"
+            app:setImageUrl="@{viewModel.fixtureUiState.fixture.teamAwayLogo}"
             tools:src="@drawable/realmadrid" />
 
         <TextView
             android:id="@+id/text_team_away_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{viewModel.fixtureUiState.fixture.teamAwayGoals}"
             android:textColor="@color/light_white"
             android:textSize="@dimen/text_xxlarge"
             app:layout_constraintBottom_toBottomOf="@+id/text_dash"
@@ -69,6 +71,7 @@
             android:id="@+id/text_team_home_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{viewModel.fixtureUiState.fixture.teamHomeGoals}"
             android:textColor="@color/light_white"
             android:textSize="@dimen/text_xxlarge"
             app:layout_constraintBottom_toBottomOf="@+id/text_dash"
@@ -88,6 +91,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/text_team_home_score"
+            app:setImageUrl="@{viewModel.fixtureUiState.fixture.teamHomeLogo}"
             tools:src="@drawable/realmadrid" />
 
         <com.google.android.material.tabs.TabLayout
