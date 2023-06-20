@@ -13,6 +13,8 @@ class TopScorerMapper @Inject constructor(): Mapper<TopScoresDto, TopGoalsEntity
             id = input.player?.id,
             playerName = input.player?.name,
             teamName = input.statistics?.get(0)?.team?.name,
+            totalGoals = input.statistics?.get(0)?.goals?.total,
+            playerImg = input.player?.photo
         )
     }
 
