@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.pancake.footballfever.domain.models.SelectCountry" />
+
+        <variable
+            name="listener"
+            type="com.pancake.footballfever.ui.selectCountry.adapter.SelectCountryListener" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/small_margin"
+        android:backgroundTint="@color/background_main_card"
+        android:onClick="@{()->listener.onClickCountry(item)}"
+        app:cardCornerRadius="@dimen/radius_medium">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.utils.widget.ImageFilterView
+                android:id="@+id/country_image"
+                tools:srcCompat="@drawable/arsenal_logo"
+                android:layout_width="@dimen/dimens_country_image"
+                android:layout_height="@dimen/dimens_country_image"
+                android:layout_marginVertical="@dimen/semi_large_margin"
+                android:layout_marginStart="@dimen/semi_large_margin"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:roundPercent="1"
+                app:setImageUrl="@{item.flag}" />
+
+            <TextView
+                android:id="@+id/country_name"
+                style="@style/select_favorite_item_text"
+                tools:text="Egypt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:text="@{item.name}"
+                app:layout_constraintBottom_toBottomOf="@id/country_image"
+                app:layout_constraintStart_toEndOf="@id/country_image"
+                app:layout_constraintTop_toTopOf="@id/country_image" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/semi_large_margin"
+                android:src="@drawable/ic_forward_ios_gray"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
