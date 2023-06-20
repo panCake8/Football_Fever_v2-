@@ -5,7 +5,7 @@ import androidx.fragment.app.viewModels
 import com.pancake.footballfever.R
 import com.pancake.footballfever.databinding.FragmentFixtureLineupBinding
 import com.pancake.footballfever.ui.base.BaseFragment
-import com.pancake.footballfever.utilities.Constants
+import com.pancake.footballfever.domain.Constants
 
 class FragmentFixtureLineup : BaseFragment<FragmentFixtureLineupBinding, FixtureLineupViewModel>() {
     override val layoutId: Int
