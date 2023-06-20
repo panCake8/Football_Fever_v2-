@@ -4,6 +4,8 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.footboolfever.data.remote.dto.BaseResponse
+import com.example.footboolfever.data.remote.dto.CoachsDto
 import com.pancake.footballfever.data.local.database.entity.CoachEntity
 import com.pancake.footballfever.data.local.database.entity.CountryEntity
 import com.pancake.footballfever.data.local.database.entity.FavoriteTeamEntity
@@ -48,5 +50,5 @@ interface FootballDao {
     suspend fun insertCoaches(coaches: List<CoachEntity>)
 
     @Query("SELECT * FROM COACHES_TABLE ORDER BY id DESC")
-    fun getAllCoaches(): List<CoachEntity>
+    suspend fun getAllCoaches(): List<CoachEntity>
 }
