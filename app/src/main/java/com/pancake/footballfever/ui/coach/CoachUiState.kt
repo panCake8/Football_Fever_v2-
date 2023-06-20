@@ -1,4 +1,4 @@
-package com.pancake.footballfever.ui.coach.adapter
+package com.pancake.footballfever.ui.coach
 
 import com.pancake.footballfever.domain.models.Coaches
 

@@ -1,9 +1,8 @@
-package com.pancake.footballfever.ui.coach
+package com.pancake.footballfever.ui.coach.adapter
 
 import com.pancake.footballfever.R
 import com.pancake.footballfever.domain.models.Coaches
 import com.pancake.footballfever.ui.base.BaseAdapter
-import com.pancake.footballfever.ui.base.BaseAdapterListener
 
 class CoachAdapter(listener: CoachesListener) : BaseAdapter<Coaches>(listener) {
 
