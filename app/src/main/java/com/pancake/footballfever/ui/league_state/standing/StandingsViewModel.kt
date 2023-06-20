@@ -2,8 +2,8 @@ package com.pancake.footballfever.ui.league_state.standing
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.pancake.footballfever.domain.usecase.FetchStandingsAndCacheUseCase
-import com.pancake.footballfever.domain.usecase.GetCachedStandingsUseCase
+import com.pancake.footballfever.domain.usecases.FetchStandingsAndCacheUseCase
+import com.pancake.footballfever.domain.usecases.GetCachedStandingsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

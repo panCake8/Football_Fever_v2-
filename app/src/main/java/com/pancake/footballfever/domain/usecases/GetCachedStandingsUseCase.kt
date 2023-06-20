@@ -1,4 +1,4 @@
-package com.pancake.footballfever.domain.usecase
+package com.pancake.footballfever.domain.usecases
 
 import com.pancake.footballfever.data.repository.StandingsRepository
 import com.pancake.footballfever.domain.models.Standings
