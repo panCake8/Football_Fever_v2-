@@ -1,7 +1,6 @@
 package com.pancake.footballfever.ui.fixture
 
-import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.navArgs
+import androidx.fragment.app.viewModels
 import androidx.work.Constraints
 import androidx.work.Data
 import androidx.work.ExistingPeriodicWorkPolicy
@@ -22,23 +21,24 @@ import java.util.concurrent.TimeUnit
 @AndroidEntryPoint
 class FixtureFragment : BaseFragment<FragmentFixtureBinding, FixtureViewModel>() {
 
-    private val arguments by navArgs<FixtureFragmentArgs>()
+//    private val arguments by navArgs<FixtureFragmentArgs>()
 
     override val layoutId = R.layout.fragment_fixture
 
-    override val viewModel by activityViewModels<FixtureViewModel>()
+    override val viewModel by viewModels<FixtureViewModel>()
 
-    private val tabItems = listOf(STATS, SUMMARY, LINEUP, TABLE, H2H)
+    private val tabItems = listOf(STATS, LINEUP)
 
     private lateinit var fixtureStatsPagerAdapter: FixtureStatsPagerAdapter
 
     private var fixtureId: Int? = null
 
     override fun setup() {
-        fixtureId = arguments.fixtureId
+//        fixtureId = arguments.fixtureId
         initViewPager()
         initTabLayout()
-        initWorkManager(fixtureId)
+//        initWorkManager(239625)
+        viewModel.fetchFixture(239625)
     }
 
     private fun initViewPager() {
@@ -50,9 +50,9 @@ class FixtureFragment : BaseFragment<FragmentFixtureBinding, FixtureViewModel>()
     private fun addFragmentsToViewPager() {
         fixtureStatsPagerAdapter.addFragment(FragmentFixtureLineup.newInstance(fixtureId))
         fixtureStatsPagerAdapter.addFragment(FragmentFixtureStats.newInstance(fixtureId))
-        fixtureStatsPagerAdapter.addFragment(FragmentFixtureLineup.newInstance(fixtureId))
-        fixtureStatsPagerAdapter.addFragment(FragmentFixtureLineup.newInstance(fixtureId))
-        fixtureStatsPagerAdapter.addFragment(FragmentFixtureLineup.newInstance(fixtureId))
+//        fixtureStatsPagerAdapter.addFragment(FragmentFixtureLineup.newInstance(fixtureId))
+//        fixtureStatsPagerAdapter.addFragment(FragmentFixtureLineup.newInstance(fixtureId))
+//        fixtureStatsPagerAdapter.addFragment(FragmentFixtureLineup.newInstance(fixtureId))
     }
 
     private fun initTabLayout() {

@@ -17,7 +17,7 @@ class FixtureRepository @Inject constructor(
                 val data = response.body()?.response?.map { it.toFixtureEntity() }
                 data?.let {
                     dao.insertFixture(it)
-                    Result.success(it)
+                    return Result.success(it)
                 }
             }
             Result.failure(Exception(response.message().toString()))
