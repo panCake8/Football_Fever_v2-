@@ -19,10 +19,10 @@ object MapperModule {
 
     @Singleton
     @Provides
+    fun provideStandingsMapper() = StandingsMapper()
 
-    fun provideStandingsMapper()= StandingsMapper()
-}
-
+    @Singleton
+    @Provides
     fun provideSelectCountryDtoToUiMapper() = SelectCountryDtoToUiMapper()
 
     @Singleton
