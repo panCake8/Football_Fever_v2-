@@ -11,7 +11,7 @@
 
         <variable
             name="listener"
-            type="com.pancake.footballfever.ui.select_country.adapter.SelectCountryListener" />
+            type="com.pancake.footballfever.ui.selectCountry.adapter.SelectCountryListener" />
 
     </data>
 
