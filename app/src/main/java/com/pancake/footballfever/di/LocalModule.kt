@@ -1,6 +1,6 @@
 package com.pancake.footballfever.di
 
-import android.app.Application
+import android.content.Context
 import androidx.room.Room
 import com.pancake.footballfever.data.Constants
 import com.pancake.footballfever.data.local.database.FootballDatabase
@@ -20,10 +20,10 @@ object LocalModule {
     @Singleton
     @Provides
     fun provideFootballDatabase(
-        @ApplicationContext application: Application
+        @ApplicationContext context: Context
     ): FootballDatabase =
         Room.databaseBuilder(
-            application,
+            context,
             FootballDatabase::class.java,
             Constants.DATABASE_NAME,
         ).build()
@@ -33,6 +33,5 @@ object LocalModule {
     fun provideFootBallDao(footballDataBase: FootballDatabase): FootballDao {
         return footballDataBase.footballDao
     }
-
 
 }
