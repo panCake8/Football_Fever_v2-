@@ -23,7 +23,7 @@ fun setImageUrl(image: ImageView, url: String?) {
     }
 }
 
-@BindingAdapter("showIfLoading")
+@BindingAdapter("app:showIfLoading")
 fun ProgressBar.showIfLoading(isLoading: Boolean) {
     visibility = when (isLoading) {
         true -> View.VISIBLE
@@ -31,7 +31,7 @@ fun ProgressBar.showIfLoading(isLoading: Boolean) {
     }
 }
 
-@BindingAdapter("showIfError")
+@BindingAdapter("app:showIfError")
 fun ImageView.showIfError(errorMsg: String?) {
     visibility = when (errorMsg) {
         null -> View.INVISIBLE
@@ -39,7 +39,7 @@ fun ImageView.showIfError(errorMsg: String?) {
     }
 }
 
-@BindingAdapter("errorMessage")
+@BindingAdapter("app:errorMessage")
 fun TextView.errorMessage(errorMsg: String?) {
     when (errorMsg) {
         null -> visibility = View.INVISIBLE
@@ -50,7 +50,7 @@ fun TextView.errorMessage(errorMsg: String?) {
     }
 }
 
-@BindingAdapter("bindFixtureEventImg")
+@BindingAdapter("app:bindFixtureEventImg")
 fun ImageView.bindFixtureEventImg(type: String) {
     setImageDrawable(
         when (type) {
