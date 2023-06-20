@@ -2,6 +2,7 @@ package com.pancake.footballfever.data.local.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.pancake.footballfever.data.local.database.daos.FixtureDao
 import com.pancake.footballfever.data.local.database.daos.FootballDao
 import com.pancake.footballfever.data.local.database.daos.LeagueDao
 import com.pancake.footballfever.data.local.database.daos.PlayerDao
@@ -28,6 +29,8 @@ import com.pancake.footballfever.data.local.database.entity.VenueEntity
         TopAssistEntity::class,
         VenueEntity::class,
         TeamEntity::class,
+        StandingsEntity::class,
+        FixtureEntity::class,
     ],
     version = 1,
 )
@@ -35,5 +38,6 @@ abstract class FootballDatabase : RoomDatabase() {
     abstract val footballDao: FootballDao
     abstract val playerDao: PlayerDao
     abstract val leagueDao: LeagueDao
-    abstract val teamDao :TeamDao
+    abstract val teamDao: TeamDao
+    abstract val fixtureDao: FixtureDao
 }

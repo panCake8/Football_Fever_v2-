@@ -27,25 +27,25 @@
             tools:text="FullTime" />
 
         <ImageView
-            android:id="@+id/image_team_one"
+            android:id="@+id/image_team_away"
             android:layout_width="@dimen/team_logo_width"
             android:layout_height="@dimen/team_logo_height"
             android:contentDescription="@string/logo"
-            app:layout_constraintBottom_toBottomOf="@+id/text_team_one_score"
+            app:layout_constraintBottom_toBottomOf="@+id/text_team_away_score"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/text_team_one_score"
-            app:layout_constraintTop_toTopOf="@+id/text_team_one_score"
+            app:layout_constraintStart_toEndOf="@+id/text_team_away_score"
+            app:layout_constraintTop_toTopOf="@+id/text_team_away_score"
             tools:src="@drawable/realmadrid" />
 
         <TextView
-            android:id="@+id/text_team_one_score"
+            android:id="@+id/text_team_away_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/light_white"
             android:textSize="@dimen/text_xxlarge"
             app:layout_constraintBottom_toBottomOf="@+id/text_dash"
-            app:layout_constraintEnd_toStartOf="@+id/image_team_one"
+            app:layout_constraintEnd_toStartOf="@+id/image_team_away"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/text_dash"
             app:layout_constraintTop_toTopOf="@+id/text_dash"
@@ -59,14 +59,14 @@
             android:text="@string/dash"
             android:textColor="@color/light_white"
             android:textSize="@dimen/text_xxlarge"
-            app:layout_constraintEnd_toStartOf="@+id/text_team_one_score"
+            app:layout_constraintEnd_toStartOf="@+id/text_team_away_score"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toEndOf="@+id/text_team_two_score"
+            app:layout_constraintStart_toEndOf="@+id/text_team_home_score"
             app:layout_constraintTop_toBottomOf="@id/text_time" />
 
         <TextView
-            android:id="@+id/text_team_two_score"
+            android:id="@+id/text_team_home_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/light_white"
@@ -74,20 +74,20 @@
             app:layout_constraintBottom_toBottomOf="@+id/text_dash"
             app:layout_constraintEnd_toStartOf="@+id/text_dash"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/image_team_two"
+            app:layout_constraintStart_toEndOf="@+id/image_team_home"
             app:layout_constraintTop_toTopOf="@+id/text_dash"
             tools:text="2" />
 
         <ImageView
-            android:id="@+id/image_team_two"
+            android:id="@+id/image_team_home"
             android:layout_width="@dimen/team_logo_height"
             android:layout_height="@dimen/team_logo_width"
             android:contentDescription="@string/logo"
-            app:layout_constraintBottom_toBottomOf="@+id/text_team_two_score"
-            app:layout_constraintEnd_toStartOf="@+id/text_team_two_score"
+            app:layout_constraintBottom_toBottomOf="@+id/text_team_home_score"
+            app:layout_constraintEnd_toStartOf="@+id/text_team_home_score"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/text_team_two_score"
+            app:layout_constraintTop_toTopOf="@+id/text_team_home_score"
             tools:src="@drawable/realmadrid" />
 
         <com.google.android.material.tabs.TabLayout
@@ -99,7 +99,7 @@
             android:background="@android:color/transparent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image_team_one"
+            app:layout_constraintTop_toBottomOf="@id/image_team_away"
             app:tabBackground="@drawable/tab_background_unselected"
             app:tabIndicator="@drawable/tab_background_selected"
             app:tabIndicatorAnimationMode="linear"
