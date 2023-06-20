@@ -5,7 +5,6 @@ import androidx.room.Room
 import com.pancake.footballfever.data.Constants
 import com.pancake.footballfever.data.local.database.FootballDatabase
 import com.pancake.footballfever.data.local.database.daos.FootballDao
-import com.pancake.footballfever.data.local.database.daos.PlayerDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,12 +32,6 @@ object LocalModule {
     @Provides
     fun provideFootBallDao(footballDataBase: FootballDatabase): FootballDao {
         return footballDataBase.footballDao
-    }
-
-    @Singleton
-    @Provides
-    fun providePlayerDao(footballDataBase: FootballDatabase): PlayerDao {
-        return footballDataBase.playerDao
     }
 
 }
