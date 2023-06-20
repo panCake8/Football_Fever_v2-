@@ -14,7 +14,9 @@ class TopAssistsMapper @Inject constructor(): Mapper<TopAssistsDto, TopAssistEnt
             id = input.player?.id,
             playerName = input.player?.name,
             teamName = input.statistics?.get(0)?.team?.name,
-            totalAssists = input.statistics?.get(0)?.passes?.total
+            totalAssists = input.statistics?.get(0)?.passes?.total,
+            playerImg = input.player?.photo
+
         )
     }
 }
