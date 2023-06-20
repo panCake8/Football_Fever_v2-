@@ -68,7 +68,7 @@ class FixtureFragment : BaseFragment<FragmentFixtureBinding, FixtureViewModel>()
             .build()
         val inputData = fixtureId?.let {
             Data.Builder()
-                .putInt(Constants.KEY_FIXTURE_ID, it)
+                .putInt(Constants.KEY_FIXTURE_ID, 239625)
                 .build()
         }
         val request = inputData?.let {
