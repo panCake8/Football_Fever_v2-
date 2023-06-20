@@ -7,8 +7,9 @@ import com.pancake.footballfever.ui.base.BaseAdapterListener
 
 class PlayersAdapter(listener: PlayerClickListener) : BaseAdapter<Player>(listener) {
     override val getLayoutId = R.layout.item_player
+
+    interface PlayerClickListener : BaseAdapterListener {
+        fun onClick(player: Player)
+    }
 }
 
-interface PlayerClickListener : BaseAdapterListener {
-    fun onClick(player: Player)
-}

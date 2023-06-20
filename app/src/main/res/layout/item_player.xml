@@ -9,7 +9,7 @@
 
         <variable
             name="listener"
-            type="com.pancake.footballfever.ui.player.PlayerClickListener" />
+            type="com.pancake.footballfever.ui.player.PlayersAdapter.PlayerClickListener" />
 
     </data>
 

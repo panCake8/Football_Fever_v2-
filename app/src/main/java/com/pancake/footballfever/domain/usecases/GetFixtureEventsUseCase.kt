@@ -1,6 +1,6 @@
 package com.pancake.footballfever.domain.usecases
 
-import com.example.footboolfever.data.remote.dto.EventsDto
+import com.pancake.footballfever.data.local.database.entity.FixtureEventsEntity
 import com.pancake.footballfever.data.repository.FixtureEventsRepository
 import com.pancake.footballfever.domain.models.FixtureEvents
 import javax.inject.Inject
@@ -15,13 +15,13 @@ class GetFixtureEventsUseCase @Inject constructor(
         )
     }
 
-    private fun EventsDto.toDomain() =
+    private fun FixtureEventsEntity.toDomain() =
         FixtureEvents(
-            time = time?.elapsed ?: 0,
-            teamId = team?.id ?: -1,
-            playerName = player?.name ?: "",
-            type = type ?: "",
-            typeDetail = detail ?: "",
+            time = time,
+            teamId = teamId,
+            playerName = playerName,
+            type = type,
+            typeDetail = detail,
         )
 }
 

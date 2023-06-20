@@ -41,4 +41,18 @@ object LocalModule {
         return footballDataBase.playerDao
     }
 
+
+    @Singleton
+    @Provides
+    fun provideFixtureEventsDao(footballDataBase: FootballDatabase) = footballDataBase.fixtureEventsDao
+
+    @Singleton
+    @Provides
+    fun providePlayersDao(footballDataBase: FootballDatabase) = footballDataBase.playersDao
+
+    @Singleton
+    @Provides
+    fun provideTeamFixtureDao(footballDataBase: FootballDatabase) = footballDataBase.teamFixtureEventsDao
+
+
 }

@@ -2,13 +2,18 @@ package com.pancake.footballfever.data.local.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.pancake.footballfever.data.local.database.daos.FixtureEventsDao
 import com.pancake.footballfever.data.local.database.daos.FootballDao
 import com.pancake.footballfever.data.local.database.daos.PlayerDao
+import com.pancake.footballfever.data.local.database.daos.PlayersDao
+import com.pancake.footballfever.data.local.database.daos.TeamFixtureDao
 import com.pancake.footballfever.data.local.database.entity.CountryEntity
 import com.pancake.footballfever.data.local.database.entity.FavoriteTeamEntity
+import com.pancake.footballfever.data.local.database.entity.FixtureEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureEventsEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureHomeEntity
 import com.pancake.footballfever.data.local.database.entity.LeagueEntity
+import com.pancake.footballfever.data.local.database.entity.PlayerEntity
 import com.pancake.footballfever.data.local.database.entity.TopAssistEntity
 import com.pancake.footballfever.data.local.database.entity.TopGoalsEntity
 import com.pancake.footballfever.data.local.database.entity.VenueEntity
@@ -24,10 +29,15 @@ import com.pancake.footballfever.data.local.database.entity.VenueEntity
         TopGoalsEntity::class,
         TopAssistEntity::class,
         VenueEntity::class,
+        FixtureEntity::class,
+        PlayerEntity::class
     ],
     version = 1,
 )
 abstract class FootballDatabase : RoomDatabase() {
     abstract val footballDao: FootballDao
     abstract val playerDao: PlayerDao
+    abstract val fixtureEventsDao: FixtureEventsDao
+    abstract val playersDao: PlayersDao
+    abstract val teamFixtureEventsDao: TeamFixtureDao
 }

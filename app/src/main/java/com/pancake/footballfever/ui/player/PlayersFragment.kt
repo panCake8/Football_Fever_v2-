@@ -9,14 +9,14 @@ import com.pancake.footballfever.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PlayersFragment : BaseFragment<FragmentPlayersBinding, PlayerViewModel>() {
+class PlayersFragment : BaseFragment<FragmentPlayersBinding, PlayersViewModel>() {
     override val layoutId = R.layout.fragment_players
-    override val viewModel: PlayerViewModel by viewModels()
+    override val viewModel: PlayersViewModel by viewModels()
     private val args: PlayersFragmentArgs by navArgs()
 
     override fun setup() {
         viewModel.getPlayers(args.fixtureId, args.teamId)
-        val adapter = PlayersAdapter(object : PlayerClickListener {
+        val adapter = PlayersAdapter(object : PlayersAdapter.PlayerClickListener {
             override fun onClick(player: Player) {
 
             }

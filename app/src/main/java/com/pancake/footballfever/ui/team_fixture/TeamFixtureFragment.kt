@@ -9,14 +9,14 @@ import com.pancake.footballfever.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TeamFixturesFragment : BaseFragment<FragmentTeamFixturesBinding, TeamFixturesViewModel>() {
+class TeamFixtureFragment : BaseFragment<FragmentTeamFixturesBinding, TeamFixturesViewModel>() {
     override val layoutId = R.layout.fragment_team_fixtures
     override val viewModel: TeamFixturesViewModel by viewModels()
-    private val args: TeamFixturesFragmentArgs by navArgs()
+    private val args: TeamFixtureFragmentArgs by navArgs()
 
     override fun setup() {
         viewModel.getFixtures(args.season, args.team)
-        val adapter = TeamFixturesAdapter(object : FixturesClickListener {
+        val adapter = TeamFixtureAdapter(object : TeamFixtureAdapter.FixturesClickListener {
             override fun onClick(fixture: Fixture) {
 
             }

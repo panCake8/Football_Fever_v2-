@@ -2,7 +2,6 @@ package com.pancake.footballfever.ui.fixture_events
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.pancake.footballfever.domain.models.FixtureEvents
 import com.pancake.footballfever.domain.usecases.GetFixtureEventsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -24,7 +23,7 @@ class FixtureEventsViewModel @Inject constructor(
         _fixtureEventsUiState.update { it.copy(isLoading = true) }
         viewModelScope.launch {
             try {
-                val e =fixtureEventsUseCase(fixtureId)
+                val e = fixtureEventsUseCase(fixtureId)
                 _fixtureEventsUiState.update {
                     it.copy(
                         isLoading = false,
@@ -45,8 +44,3 @@ class FixtureEventsViewModel @Inject constructor(
 
 }
 
-data class FixtureEventsUiState(
-    val isLoading: Boolean = false,
-    val items: List<FixtureEvents> = emptyList(),
-    val errorMsg: String? = null
-)

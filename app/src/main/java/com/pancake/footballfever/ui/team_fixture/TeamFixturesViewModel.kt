@@ -2,7 +2,6 @@ package com.pancake.footballfever.ui.team_fixture
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.pancake.footballfever.domain.models.Fixture
 import com.pancake.footballfever.domain.usecases.GetTeamFixturesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,7 +14,7 @@ import javax.inject.Inject
 class TeamFixturesViewModel @Inject constructor(
     private val fixturesUseCase: GetTeamFixturesUseCase
 ) : ViewModel() {
-    private var _fixturesUiState = MutableStateFlow(FixturesUiState())
+    private var _fixturesUiState = MutableStateFlow(TeamFixtureUiState())
     val fixturesUiState = _fixturesUiState.asStateFlow()
 
 
@@ -41,9 +40,3 @@ class TeamFixturesViewModel @Inject constructor(
 
     }
 }
-
-data class FixturesUiState(
-    val isLoading: Boolean = false,
-    val items: List<Fixture> = emptyList(),
-    val errorMsg: String? = null
-)

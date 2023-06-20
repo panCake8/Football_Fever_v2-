@@ -2,7 +2,6 @@ package com.pancake.footballfever.ui.player
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.pancake.footballfever.domain.models.Player
 import com.pancake.footballfever.domain.usecases.GetPlayersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,10 +12,10 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class PlayerViewModel @Inject constructor(
+class PlayersViewModel @Inject constructor(
     private val playersUseCase: GetPlayersUseCase
 ) : ViewModel() {
-    private var _playersUiState = MutableStateFlow(PlayersUiState())
+    private var _playersUiState = MutableStateFlow(PlayerUiState())
     val playersUiState = _playersUiState.asStateFlow()
 
 
@@ -43,8 +42,3 @@ class PlayerViewModel @Inject constructor(
     }
 }
 
-data class PlayersUiState(
-    val isLoading: Boolean = false,
-    val items: List<Player> = emptyList(),
-    val errorMsg: String? = null
-)
