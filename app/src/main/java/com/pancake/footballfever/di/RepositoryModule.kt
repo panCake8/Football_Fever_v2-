@@ -13,6 +13,8 @@ import com.pancake.footballfever.data.repository.LeaguesRepository
 import com.pancake.footballfever.data.repository.LeaguesRepositoryImpl
 import com.pancake.footballfever.data.repository.TeamRepository
 import com.pancake.footballfever.data.repository.TeamRepositoryImpl
+import com.pancake.footballfever.data.repository.fixtureRepo.FixtureRepository
+import com.pancake.footballfever.data.repository.fixtureRepo.IFixtureRepository
 import dagger.Binds
 
 import dagger.Module
@@ -59,4 +61,10 @@ abstract class RepositoryModule {
     abstract fun bindsLeaguesRepository(
         leaguesRepositoryImpl: LeaguesRepositoryImpl
     ): LeaguesRepository
+
+    @Singleton
+    @Binds
+    abstract fun bindsFixtureRepository(
+        fixtureRepository: FixtureRepository
+    ): IFixtureRepository
 }
