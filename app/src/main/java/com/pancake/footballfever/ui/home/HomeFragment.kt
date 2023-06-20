@@ -24,7 +24,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val action = HomeFragmentDirections.actionHomeFragmentToFixtureFragment(0)
+        val action = HomeFragmentDirections.actionHomeFragmentToTeamFixturesFragment("2022","16")
         findNavController().navigate(action)
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
