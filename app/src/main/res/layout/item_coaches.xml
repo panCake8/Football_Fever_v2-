@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
-
+        <variable
+            name="item"
+            type="com.pancake.footballfever.domain.models.Coaches" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -28,6 +29,7 @@
                 android:layout_width="@dimen/coach_image_width"
                 android:layout_height="@dimen/coach_image_height"
                 android:scaleType="fitXY"
+                app:setImageUrl="@{item.photo}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:roundPercent="1"
@@ -39,6 +41,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_medium"
                 android:textColor="@color/white60"
+                android:text="@{item.name}"
                 android:layout_marginTop="@dimen/small_margin"
                 android:layout_marginStart="@dimen/large_margin"
                 app:layout_constraintStart_toEndOf="@+id/image_coach"
@@ -51,6 +54,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_small"
                 android:textColor="@color/white38"
+                android:text="@{item.teamName}"
                 android:layout_marginTop="@dimen/small_margin"
                 android:layout_marginStart="@dimen/large_margin"
                 app:layout_constraintStart_toEndOf="@+id/image_coach"
