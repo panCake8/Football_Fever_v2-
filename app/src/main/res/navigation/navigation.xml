@@ -64,5 +64,14 @@
             android:id="@+id/action_leagueStateFragment_to_clubTablesFragment"
             app:destination="@id/clubFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/getAllLeaguesFragment"
+        android:name="com.pancake.footballfever.ui.get_all_leagues.GetAllLeaguesFragment"
+        android:label="fragment_get_all_leagues"
+        tools:layout="@layout/fragment_get_all_leagues" >
+        <action
+            android:id="@+id/action_getAllLeaguesFragment_to_leagueStateFragment"
+            app:destination="@id/leagueStateFragment" />
+    </fragment>
 
 </navigation>

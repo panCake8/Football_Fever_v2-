@@ -33,5 +33,6 @@
     <string name="player_text">Player</string>
     <string name="club_text">Club</string>
     <string name="coach_text">Coach</string>
+    <string name="follow">Follow</string>
 
 </resources>

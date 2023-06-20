@@ -1,0 +1,86 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.pancake.footballfever.domain.models.League" />
+
+        <variable
+            name="listener"
+            type="com.pancake.footballfever.ui.get_all_leagues.adapter.AllLeaguesListener" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/no_elevation"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            app:cardCornerRadius="@dimen/semi_large_margin"
+            app:cardElevation="@dimen/small_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Secondary_color"
+                android:padding="@dimen/large_margin">
+
+                <ImageView
+                    android:id="@+id/logo_league"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_margin="@dimen/elevation_giant"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:setImageUrl="@{item.logo.toString()}"
+                    tools:src="@drawable/pngwing" />
+
+
+                <TextView
+                    android:id="@+id/name_league"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/elevation_giant"
+                    android:fontFamily="@font/poppins"
+                    android:text="@{item.name.toString()}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_small"
+                    app:layout_constraintBottom_toBottomOf="@+id/logo_league"
+                    app:layout_constraintStart_toEndOf="@id/logo_league"
+                    app:layout_constraintTop_toTopOf="@id/logo_league"
+                    tools:text="Chelsea" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_follow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/elevation_large"
+                    android:layout_marginEnd="@dimen/elevation_semi_large"
+                    android:layout_marginBottom="@dimen/elevation_large"
+                    android:background="@drawable/button_shape_round"
+                    android:text="@string/follow"
+                    android:textAllCaps="false"
+                    android:textColor="@color/chip_stroke"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
