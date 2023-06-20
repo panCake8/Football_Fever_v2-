@@ -3,6 +3,7 @@ package com.example.footboolfever.data.remote.dto
 import com.example.footboolfever.data.remote.dto.utils.Birth
 import com.example.footboolfever.data.remote.dto.utils.Team
 import com.google.gson.annotations.SerializedName
+import com.pancake.footballfever.data.local.database.entity.CoachEntity
 
 
 data class CoachsDto(
@@ -55,3 +56,12 @@ data class CareerItem(
 	@field:SerializedName("team")
 	val team: Team? = null
 )
+
+fun CoachsDto.toCoachEntity() : CoachEntity{
+	return CoachEntity(
+		id = id,
+		name = name,
+		teamName = team?.name,
+		photo = photo,
+	)
+}
