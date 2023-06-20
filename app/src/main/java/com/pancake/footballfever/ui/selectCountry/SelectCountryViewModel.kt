@@ -1,11 +1,11 @@
-package com.pancake.footballfever.ui.select_country
+package com.pancake.footballfever.ui.selectCountry
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pancake.footballfever.domain.models.SelectCountry
 import com.pancake.footballfever.domain.usecases.GetAllCountriesUseCase
-import com.pancake.footballfever.ui.select_country.adapter.SelectCountryListener
+import com.pancake.footballfever.ui.selectCountry.adapter.SelectCountryListener
 import com.pancake.footballfever.utilities.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

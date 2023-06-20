@@ -1,4 +1,4 @@
-package com.pancake.footballfever.ui.select_country
+package com.pancake.footballfever.ui.selectCountry
 
 import android.os.Bundle
 import android.view.View
@@ -7,7 +7,7 @@ import androidx.navigation.fragment.findNavController
 import com.pancake.footballfever.R
 import com.pancake.footballfever.databinding.FragmentSelectCountryBinding
 import com.pancake.footballfever.ui.base.BaseFragment
-import com.pancake.footballfever.ui.select_country.adapter.SelectCountryAdapter
+import com.pancake.footballfever.ui.selectCountry.adapter.SelectCountryAdapter
 import com.pancake.footballfever.utilities.EventObserver
 import dagger.hilt.android.AndroidEntryPoint
 

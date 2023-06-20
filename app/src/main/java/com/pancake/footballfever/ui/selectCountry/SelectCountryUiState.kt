@@ -1,4 +1,4 @@
-package com.pancake.footballfever.ui.select_country
+package com.pancake.footballfever.ui.selectCountry
 
 import com.pancake.footballfever.domain.models.SelectCountry
 
