@@ -1,4 +1,4 @@
-package com.pancake.footballfever.ui.club.tables
+package com.pancake.footballfever.ui.Club_stats
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.pancake.footballfever.R
+import com.pancake.footballfever.ui.club.tables.ClubFragmentArgs
 
 class ClubFragment : Fragment() {
     private val arguments by navArgs<ClubFragmentArgs>()
