@@ -16,17 +16,7 @@ class StandingFragment : BaseFragment<FragmentStandingBinding, StandingsViewMode
 
         val adapter = StandingsAdapter(viewModel)
         binding.recyclerStandingLeague.adapter = adapter
-//        viewModel.fetchData()
-
     }
-
-
-
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        viewModel.cancelFetchingData()
-//    }
-
 
 
 
