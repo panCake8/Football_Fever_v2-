@@ -33,5 +33,10 @@
     <string name="player_text">Player</string>
     <string name="club_text">Club</string>
     <string name="coach_text">Coach</string>
+    <string name="hint">Hint</string>
+    <string name="hint_to_select_favorite_teams">you can choose with a long press to select teams</string>
+    <string name="ok">ok</string>
+    <string name="alert">Alert</string>
+    <string name="alert_selection">you must select at least one favorite team</string>
 
 </resources>
