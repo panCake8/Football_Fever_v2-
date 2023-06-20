@@ -24,7 +24,7 @@ class PlayersRepositoryImpl @Inject constructor(
                 if (isNotEmpty()) Result.success(this) else Result.failure(Exception("Please check your internet connection"))
             }
         } catch (e: Exception) {
-            Log.e("getFixtures", "getFixtures: ${e.message}", e)
+            Log.e("getPlayers", e.message, e)
             Result.failure(Exception("An unexpected error has occurred"))
         }
     }

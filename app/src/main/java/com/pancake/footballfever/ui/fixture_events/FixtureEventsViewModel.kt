@@ -23,11 +23,10 @@ class FixtureEventsViewModel @Inject constructor(
         _fixtureEventsUiState.update { it.copy(isLoading = true) }
         viewModelScope.launch {
             try {
-                val e = fixtureEventsUseCase(fixtureId)
                 _fixtureEventsUiState.update {
                     it.copy(
                         isLoading = false,
-                        items = e
+                        items = fixtureEventsUseCase(fixtureId)
                     )
                 }
             } catch (e: Exception) {

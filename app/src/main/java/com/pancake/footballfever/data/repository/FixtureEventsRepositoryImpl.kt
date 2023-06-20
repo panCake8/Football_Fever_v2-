@@ -21,7 +21,7 @@ class FixtureEventsRepositoryImpl @Inject constructor(
                 if (isNotEmpty()) Result.success(this) else Result.failure(Exception("Please check your internet connection"))
             }
         } catch (e: Exception) {
-            Log.e("getEventsFixtures", "getEventsFixtures: ${e.message}", e)
+            Log.e("getEventsFixtures", e.message, e)
             Result.failure(Exception("An unexpected error has occurred"))
         }
     }
