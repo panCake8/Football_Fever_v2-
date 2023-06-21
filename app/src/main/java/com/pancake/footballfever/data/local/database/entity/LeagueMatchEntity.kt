@@ -5,7 +5,6 @@ import androidx.room.PrimaryKey
 
 @Entity("LEAGUE_MATCH_TABLE")
 data class LeagueMatchEntity(
-
     @PrimaryKey
     val id: Int?,
     val homeTeamName: String?,

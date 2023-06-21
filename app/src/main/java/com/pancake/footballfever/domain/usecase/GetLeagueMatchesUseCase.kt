@@ -8,10 +8,14 @@ import javax.inject.Inject
 class GetLeagueMatchesUseCase @Inject constructor(
     private val repository: LeagueMatchesRepository,
     private val mapper: LeagueMatchMapper,
+    private val cacheLeagueMatchesUseCase: CacheLeagueMatchesUseCase,
 ) {
 
 
-    suspend fun getLeagueMatches(season: Int, league: Int): List<LeagueMatch>? {
-        return repository.getAllLeagueMatches(season, league)?.map { mapper.map(it) }
+    suspend fun getLeagueMatches(season: Int, league: Int): Map<String?, List<LeagueMatch>>? {
+        val leagueMatches = repository.getAllLeagueMatches(season, league)
+        cacheLeagueMatchesUseCase.cacheLeagueMatches(leagueMatches)
+        return leagueMatches?.map { mapper.map(it) }?.groupBy { it.date }
+
     }
 }
