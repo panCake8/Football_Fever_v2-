@@ -25,6 +25,7 @@ fun StandingsDto.toStandingsEntity() :List<StandingsEntity>? {
 fun StandingsEntity.toStandings(): Standings {
     return Standings(
         rank = rank,
+        season= season,
         teamName = teamName,
         teamLogoUrl = teamLogoUrl,
         teamId = teamId,
