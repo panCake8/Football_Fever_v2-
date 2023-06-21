@@ -2,6 +2,7 @@ package com.pancake.footballfever.data.local.database.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.pancake.footballfever.domain.models.FixtureModel
 
 
 @Entity(tableName = "FIXTURE_TABLE")
@@ -26,3 +27,13 @@ data class FixtureEntity(
     val teamHomeGoals: Int? = null,
     val teamAwayGoals: Int? = null,
 )
+
+fun FixtureEntity.toFixtureModel(): FixtureModel {
+    return FixtureModel(
+        teamAwayGoals = teamAwayGoals,
+        teamHomeGoals = teamHomeGoals,
+        teamAwayLogo = teamAwayLogo,
+        teamHomeLogo = teamHomeLogo,
+        timeStamp = timeStamp,
+    )
+}
