@@ -4,12 +4,12 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.footboolfever.data.remote.dto.BaseResponse
-import com.example.footboolfever.data.remote.dto.CoachsDto
+
 import com.pancake.footballfever.data.local.database.entity.CoachEntity
 import com.pancake.footballfever.data.local.database.entity.CountryEntity
 import com.pancake.footballfever.data.local.database.entity.FavoriteTeamEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureHomeEntity
+import com.pancake.footballfever.data.local.database.entity.StandingsEntity
 import com.pancake.footballfever.data.local.database.entity.VenueEntity
 import kotlinx.coroutines.flow.Flow
 
