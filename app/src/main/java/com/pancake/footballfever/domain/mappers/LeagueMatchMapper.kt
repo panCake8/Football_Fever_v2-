@@ -7,12 +7,13 @@ class LeagueMatchMapper:Mapper<FixturesDto,LeagueMatch> {
 
     override fun map(input: FixturesDto): LeagueMatch {
         return LeagueMatch(
-            matchTime = input.fixture?.timestamp,
+            matchTime = input.fixture?.timestamp.toString(),
             homeTeamName = input.teams?.home?.name,
             homeTeamLogo = input.teams?.home?.logo,
             awayTeamName = input.teams?.away?.name,
             awayTeamLogo = input.teams?.away?.logo,
-            date = input.fixture?.date
+            date = input.fixture?.date,
+            id = input.fixture?.id
         )
     }
 }

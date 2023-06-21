@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pancake.footballfever.domain.models.LeagueMatch
+import com.pancake.footballfever.domain.usecase.GetLeagueMatchesUseCase
 import com.pancake.footballfever.ui.league_state.match.adapter.LeagueMatchesListener
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -23,10 +24,10 @@ class LeagueMatchesViewModel @Inject constructor(private val leagueMatchesUseCas
     val dayDate: LiveData<String>
         get() = _dayDate
 
-    fun getAllLeagueMatches(season: Int, league: Int, date: String) {
+    fun getAllLeagueMatches(season: Int, league: Int,) {
 
         viewModelScope.launch {
-            leagueMatchesUseCase.getLeagueMatches(season, league, date).let {
+            leagueMatchesUseCase.getLeagueMatches(season, league).let {
 
                 _leagueMatches.postValue(it)
                 Log.i("TAG", "$it")

@@ -6,5 +6,7 @@ data class LeagueMatch(
     val homeTeamLogo: String?,
     val awayTeamName: String?,
     val awayTeamLogo: String?,
-    val matchTime: Int?,
-)
+    val matchTime: String?,
+    val id: Int?,
+
+    )

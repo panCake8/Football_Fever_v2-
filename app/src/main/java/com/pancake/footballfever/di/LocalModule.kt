@@ -27,7 +27,7 @@ object LocalModule {
     @Singleton
     @Provides
     fun provideFootballDatabase(
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,
     ): FootballDatabase =
         Room.databaseBuilder(
             context,
@@ -64,5 +64,9 @@ object LocalModule {
     fun provideFixtureDao(footballDataBase: FootballDatabase): FixtureDao {
         return footballDataBase.fixtureDao
     }
+
+    @Singleton
+    @Provides
+    fun provideLeagueMatchesDao(footballDataBase: FootballDatabase) = footballDataBase.leagueMatches
 
 }
