@@ -1,7 +1,6 @@
-package com.pancake.footballfever.domain.usecases
+package com.pancake.footballfever.domain.usecase
 
-import com.pancake.footballfever.data.local.database.entity.TopGoalsEntity
-import com.pancake.footballfever.data.local.database.repository.PlayerRepository
+import com.pancake.footballfever.data.repository.PlayerRepository
 import com.pancake.footballfever.domain.models.TopGoals
 import javax.inject.Inject
 
@@ -18,15 +17,5 @@ class FetchTopGoalsUseCase @Inject constructor(
         } catch (e: Exception) {
             Result.failure(e)
         }
-    }
-
-    private fun TopGoalsEntity.toTopGoals(): TopGoals {
-        return TopGoals(
-            id = this.id,
-            playerName = this.playerName,
-            teamName = this.teamName,
-            totalGoals = this.totalGoals,
-            playerImg = this.playerImg
-        )
     }
 }
