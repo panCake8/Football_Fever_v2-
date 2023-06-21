@@ -15,7 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/coaches_card_height"
         android:layout_marginVertical="@dimen/small_margin"
-
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,7 +28,7 @@
                 android:layout_width="@dimen/coach_image_width"
                 android:layout_height="@dimen/coach_image_height"
                 android:scaleType="fitXY"
-                app:setImageUrl="@{item.photo}"
+                app:setImageUrl="@{item.photo.toString()}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:roundPercent="1"
