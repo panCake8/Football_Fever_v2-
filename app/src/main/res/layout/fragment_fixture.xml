@@ -1,19 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-    <variable
-        name="viewModel"
-        type="com.pancake.footballfever.ui.fixture.FixtureViewModel" />
+
+        <variable
+            name="viewModel"
+            type="com.pancake.footballfever.ui.fixture.FixtureViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_color"
-        tools:context=".ui.fixture.FixtureFragment">
+        android:background="@color/background_color">
 
+        <TextView
+            android:id="@+id/text_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:textColor="@color/light_green"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="FullTime" />
 
+        <ImageView
+            android:id="@+id/image_team_away"
+            android:layout_width="@dimen/team_logo_width"
+            android:layout_height="@dimen/team_logo_height"
+            android:contentDescription="@string/logo"
+            app:layout_constraintBottom_toBottomOf="@+id/text_team_away_score"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/text_team_away_score"
+            app:layout_constraintTop_toTopOf="@+id/text_team_away_score"
+            app:setImageUrl="@{viewModel.fixtureUiState.fixture.teamAwayLogo}"
+            tools:src="@drawable/realmadrid" />
+
+        <TextView
+            android:id="@+id/text_team_away_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.fixtureUiState.fixture.teamAwayGoals.toString()}"
+            android:textColor="@color/light_white"
+            android:textSize="@dimen/text_xxlarge"
+            app:layout_constraintBottom_toBottomOf="@+id/text_dash"
+            app:layout_constraintEnd_toStartOf="@+id/image_team_away"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/text_dash"
+            app:layout_constraintTop_toTopOf="@+id/text_dash"
+            tools:text="2" />
+
+        <TextView
+            android:id="@+id/text_dash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large_margin"
+            android:text="@string/dash"
+            android:textColor="@color/light_white"
+            android:textSize="@dimen/text_xxlarge"
+            app:layout_constraintEnd_toStartOf="@+id/text_team_away_score"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/text_team_home_score"
+            app:layout_constraintTop_toBottomOf="@id/text_time" />
+
+        <TextView
+            android:id="@+id/text_team_home_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.fixtureUiState.fixture.teamHomeGoals.toString()}"
+            android:textColor="@color/light_white"
+            android:textSize="@dimen/text_xxlarge"
+            app:layout_constraintBottom_toBottomOf="@+id/text_dash"
+            app:layout_constraintEnd_toStartOf="@+id/text_dash"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/image_team_home"
+            app:layout_constraintTop_toTopOf="@+id/text_dash"
+            tools:text="2" />
+
+        <ImageView
+            android:id="@+id/image_team_home"
+            android:layout_width="@dimen/team_logo_height"
+            android:layout_height="@dimen/team_logo_width"
+            android:contentDescription="@string/logo"
+            app:layout_constraintBottom_toBottomOf="@+id/text_team_home_score"
+            app:layout_constraintEnd_toStartOf="@+id/text_team_home_score"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/text_team_home_score"
+            app:setImageUrl="@{viewModel.fixtureUiState.fixture.teamHomeLogo}"
+            tools:src="@drawable/realmadrid" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/large_margin"
+            android:background="@android:color/transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_team_away"
+            app:tabBackground="@drawable/tab_background_unselected"
+            app:tabIndicator="@drawable/tab_background_selected"
+            app:tabIndicatorAnimationMode="linear"
+            app:tabIndicatorColor="@color/green"
+            app:tabIndicatorFullWidth="true"
+            app:tabIndicatorGravity="stretch"
+            app:tabMode="scrollable"
+            app:tabPaddingEnd="@dimen/large_padding"
+            app:tabPaddingStart="@dimen/large_padding"
+            app:tabSelectedTextColor="@color/white" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/large_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tab_layout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
