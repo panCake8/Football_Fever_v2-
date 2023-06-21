@@ -95,3 +95,15 @@ fun <T> showWhenError(view: View,dataState: DataState<T>){
         view.visibility=View.GONE
 
 }
+
+
+@BindingAdapter(value = ["app:showWhenSearchInSearchSuggests"])
+fun <T> showWhenSearchInSearchSuggests(view: View, dataState: DataState<T>) {
+
+    if(dataState is DataState.ShowKeywordSuggests){
+        view.visibility=View.VISIBLE
+    }
+    else
+        view.visibility=View.GONE
+
+}
