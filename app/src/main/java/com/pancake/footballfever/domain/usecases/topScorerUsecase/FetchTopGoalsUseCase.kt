@@ -1,6 +1,6 @@
-package com.pancake.footballfever.domain.usecase.topScorerUsecase
+package com.pancake.footballfever.domain.usecases.topScorerUsecase
 
-import com.pancake.footballfever.data.repository.PlayerRepository
+import com.pancake.footballfever.data.repository.PlayerRepo.PlayerRepository
 import com.pancake.footballfever.domain.models.TopGoals
 import com.pancake.footballfever.utilities.toTopGoals
 import javax.inject.Inject

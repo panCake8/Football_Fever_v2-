@@ -2,8 +2,8 @@ package com.pancake.footballfever.ui.league_state.top_score
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.pancake.footballfever.domain.usecase.topScorerUsecase.FetchTopGoalsUseCase
-import com.pancake.footballfever.domain.usecase.topScorerUsecase.GetTopGoalsCachedDataUseCase
+import com.pancake.footballfever.domain.usecases.topScorerUsecase.FetchTopGoalsUseCase
+import com.pancake.footballfever.domain.usecases.topScorerUsecase.GetTopGoalsCachedDataUseCase
 import com.pancake.footballfever.ui.league_state.top_score.adapter.TopScorerListener
 import com.pancake.footballfever.ui.league_state.top_score.ui_state.TopScorerUiState
 import dagger.hilt.android.lifecycle.HiltViewModel

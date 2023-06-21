@@ -43,14 +43,13 @@
 
         <ProgressBar
             android:id="@+id/progress_bar_loading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:showWhenLoading="@{viewModel.uiState.loading}"
+            android:layout_width="43dp"
+            android:layout_height="42dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            />
+            app:showIfLoading="@{viewModel.uiState.loading}" />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_scorers"
             android:layout_width="0dp"
