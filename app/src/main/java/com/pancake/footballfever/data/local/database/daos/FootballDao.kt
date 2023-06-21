@@ -7,6 +7,7 @@ import androidx.room.Query
 import com.pancake.footballfever.data.local.database.entity.CountryEntity
 import com.pancake.footballfever.data.local.database.entity.FavoriteTeamEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureHomeEntity
+import com.pancake.footballfever.data.local.database.entity.StandingsEntity
 import com.pancake.footballfever.data.local.database.entity.VenueEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -42,4 +43,9 @@ interface FootballDao {
 
     @Query("delete from FIXTURE_HOME_TABLE ")
     fun deleteAllFixtureHome()
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertStandings(standings: List<StandingsEntity>)
+
+    @Query("SELECT * FROM STANDINGS_TABLE WHERE leagueId =:leagueId AND season =:season")
+    fun getAllStandings(leagueId:Int,season:Int): List<StandingsEntity>
 }

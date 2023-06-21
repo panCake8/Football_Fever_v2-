@@ -9,9 +9,11 @@ import com.pancake.footballfever.data.local.database.daos.PlayerDao
 import com.pancake.footballfever.data.local.database.daos.TeamDao
 import com.pancake.footballfever.data.local.database.entity.CountryEntity
 import com.pancake.footballfever.data.local.database.entity.FavoriteTeamEntity
+import com.pancake.footballfever.data.local.database.entity.FixtureEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureEventsEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureHomeEntity
 import com.pancake.footballfever.data.local.database.entity.LeagueEntity
+import com.pancake.footballfever.data.local.database.entity.StandingsEntity
 import com.pancake.footballfever.data.local.database.entity.TopAssistEntity
 import com.pancake.footballfever.data.local.database.entity.TopGoalsEntity
 import com.pancake.footballfever.data.local.database.entity.VenueEntity
@@ -27,6 +29,8 @@ import com.pancake.footballfever.data.local.database.entity.VenueEntity
         TopGoalsEntity::class,
         TopAssistEntity::class,
         VenueEntity::class,
+        StandingsEntity::class,
+        FixtureEntity::class,
     ],
     version = 1,
 )
@@ -36,4 +40,6 @@ abstract class FootballDatabase : RoomDatabase() {
     abstract val leagueDao: LeagueDao
     abstract val teamDao :TeamDao
     abstract val fixtureDao:FixtureDao
+    abstract val teamDao: TeamDao
+    abstract val fixtureDao: FixtureDao
 }

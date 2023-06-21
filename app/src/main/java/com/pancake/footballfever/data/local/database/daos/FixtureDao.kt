@@ -18,4 +18,13 @@ interface FixtureDao {
 
     @Query("delete from FIXTURE_HOME_TABLE ")
     suspend fun deleteAllFixtureHome()
+import com.pancake.footballfever.data.local.database.entity.FixtureEntity
+
+@Dao
+interface FixtureDao {
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertFixture(fixtures: List<FixtureEntity>)
+
+    @Query("SELECT * FROM FIXTURE_TABLE ORDER BY id DESC")
+    suspend fun getFixtures(): List<FixtureEntity>
 }
