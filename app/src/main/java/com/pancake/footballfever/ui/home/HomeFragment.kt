@@ -3,9 +3,12 @@ package com.pancake.footballfever.ui.home
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.pancake.footballfever.R
 import com.pancake.footballfever.databinding.FragmentHomeBinding
+import com.pancake.footballfever.domain.models.FixtureHome
 import com.pancake.footballfever.ui.base.BaseFragment
+import com.pancake.footballfever.utilities.EventObserver
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
@@ -22,6 +25,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         callFixtures()
         setUpCalender()
         onCalenderClick()
+        observeEvents()
     }
 
     private fun callFixtures() {
@@ -59,5 +63,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         calender.set(Calendar.SECOND, 0)
         calender.set(Calendar.MINUTE, 0)
         calender.set(Calendar.HOUR, 0)
+    }
+
+    private fun observeEvents() {
+        viewModel.fixtureEvent.observe(viewLifecycleOwner, EventObserver<FixtureHome> {
+            val dateFormatter = SimpleDateFormat("YYYY-MM-dd").format(calender.time)
+            val seasonFormatter = SimpleDateFormat("YYYY").format(calender.time).toInt().minus(1)
+
+            val nav = HomeFragmentDirections.actionHomeFragmentToFixtureFragment(
+                1,
+                seasonFormatter,
+                dateFormatter
+            )
+            findNavController().navigate(nav)
+        })
     }
 }
