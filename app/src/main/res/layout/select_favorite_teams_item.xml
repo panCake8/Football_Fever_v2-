@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.pancake.footballfever.domain.models.FavoriteTeam" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/medium_margin"
+        android:backgroundTint="@color/background_main_card"
+        app:cardCornerRadius="@dimen/radius_semi_large">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/selector_favorite_team"
+            >
+
+            <androidx.constraintlayout.utils.widget.ImageFilterView
+                android:id="@+id/team_image"
+                android:layout_width="@dimen/dimens_team_image"
+                android:layout_height="@dimen/dimens_team_image"
+                android:layout_marginHorizontal="@dimen/semi_huge"
+                android:layout_marginTop="@dimen/semi_large_margin"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:roundPercent="1"
+                app:setImageUrl="@{item.logo}"
+                tools:srcCompat="@drawable/arsenal_logo" />
+
+            <TextView
+                android:id="@+id/team_name"
+                style="@style/select_favorite_item_text"
+                android:layout_width="@dimen/width_favorite_team"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{item.name}"
+                app:layout_constraintEnd_toEndOf="@id/team_image"
+                app:layout_constraintStart_toStartOf="@id/team_image"
+                app:layout_constraintTop_toBottomOf="@id/team_image"
+                tools:text="Real Madrid" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
