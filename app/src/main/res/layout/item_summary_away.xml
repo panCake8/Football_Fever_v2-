@@ -60,7 +60,7 @@
             android:id="@+id/playerNameTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/medium_12_padding"
+            android:layout_marginStart="12dp"
             android:fontFamily="@font/poppins_medium"
             android:text="@{item.playerName}"
             android:textColor="@color/text_title"
