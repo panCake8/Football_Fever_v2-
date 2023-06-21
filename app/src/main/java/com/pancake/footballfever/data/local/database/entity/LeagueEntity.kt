@@ -10,5 +10,6 @@ data class LeagueEntity(
     val id: Int? = 0,
     val name: String? = "",
     val logo: String? = "",
+    val country: String? = "",
     val type: String? = "",
 )

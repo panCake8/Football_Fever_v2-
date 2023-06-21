@@ -10,6 +10,9 @@ interface LeagueDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertLeagues(leagues: List<LeagueEntity>)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertALeagues(leagues: LeagueEntity)
+
     @Query("SELECT * FROM LEAGUE_TABLE ORDER BY id DESC")
     fun getAllLeagues(): List<LeagueEntity>
 }

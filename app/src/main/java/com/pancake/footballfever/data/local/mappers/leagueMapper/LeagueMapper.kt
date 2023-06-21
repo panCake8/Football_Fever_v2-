@@ -13,6 +13,7 @@ class LeagueMapper @Inject constructor() : Mapper<LeaguesDto, LeagueEntity> {
             id = input.league?.id,
             name = input.league?.name,
             logo = input.league?.logo,
+            country = input.country?.name,
             type = input.league?.type,
         )
     }
