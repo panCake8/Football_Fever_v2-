@@ -67,7 +67,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
             val chip = Chip(context).apply {
                 text = searchKeyword.keyword
                 isCloseIconVisible = false
-                setTextColor(ContextCompat.getColor(context, R.color.black))
+                setTextColor(ContextCompat.getColor(context, R.color.white87))
+                setChipBackgroundColorResource(R.color.search_bar_background)
                 setOnClickListener{
                     binding.searchBar.setText(searchKeyword.keyword)
                     makeSearch(searchKeyword.keyword!!)
