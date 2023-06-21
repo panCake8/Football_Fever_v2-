@@ -10,4 +10,6 @@ sealed class DataState<out T>{
 
     fun toDate():List<T>? = if (this is Success) data else null
 
+    object ShowKeywordSuggests : DataState<Nothing>()
+
 }
