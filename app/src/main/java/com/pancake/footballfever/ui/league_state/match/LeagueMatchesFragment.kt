@@ -22,15 +22,11 @@ class LeagueMatchesFragment : BaseFragment<FragmentLeagueMatchBinding, LeagueMat
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setRecycler()
 
 
 
     }
 
-    private fun setRecycler() {
-
-    }
 
     private fun setDropDown(dropdown: AutoCompleteTextView) {
 
@@ -50,10 +46,10 @@ class LeagueMatchesFragment : BaseFragment<FragmentLeagueMatchBinding, LeagueMat
 
     }
 
-    private fun updateScreen(year: Int, league: Int, date: String) {
-        viewModel.getAllLeagueMatches(year - 1 , league, date)
+    private fun updateScreen(year: Int, league: Int, ) {
+        viewModel.getAllLeagueMatches(year - 1 , league)
 
-        viewModel.updateDate(date)
+//        viewModel.updateDate(date)
 
     }
 
