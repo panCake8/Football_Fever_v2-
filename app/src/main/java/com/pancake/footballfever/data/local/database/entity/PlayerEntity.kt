@@ -1,11 +1,12 @@
 package com.pancake.footballfever.data.local.database.entity
 
 import androidx.room.Entity
-import androidx.room.PrimaryKey
 
-@Entity("PLAYER_TABLE")
+@Entity("PLAYER_TABLE", primaryKeys = ["fixtureId","teamId", "playerId"])
 data class PlayerEntity(
-    @PrimaryKey val id: Int? = -1,
+    val fixtureId: String,
+    val teamId: String,
+    val playerId: Int,
     val name: String? = "",
     val photo: String? = "",
     val goals: Int? = 0

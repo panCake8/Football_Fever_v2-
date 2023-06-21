@@ -15,10 +15,10 @@ class TeamFixturesRepositoryImpl @Inject constructor(
 
     override suspend fun getFixtures(season: String, team: String): Result<List<FixtureEntity>> {
         return try {
-            dao.insertFixtures(apiService.getTeamFixtures(season, team).body()?.response?.map { it.toEntity() }!!)
-            Result.success(dao.getFixtures())
+            dao.insertFixtures(apiService.getTeamFixtures(season, team).body()?.response?.map { it.toEntity(season,team) }!!)
+            Result.success(dao.getFixtures(season,team))
         } catch (e: IOException) {
-            with(dao.getFixtures()) {
+            with(dao.getFixtures(season, team)) {
                 if (isNotEmpty()) Result.success(this) else Result.failure(Exception("Please check your internet connection"))
             }
         } catch (e: Exception) {
@@ -28,10 +28,12 @@ class TeamFixturesRepositoryImpl @Inject constructor(
 
     }
 
-    private fun FixturesDto.toEntity() =
+    private fun FixturesDto.toEntity(season: String, team: String) =
         FixtureEntity(
-            id = fixture?.id!!,
+            fixtureId = fixture?.id!!,
             timestamp = fixture.timestamp!!,
+            season = season,
+            team = team,
             homeId = teams?.home?.id!!,
             homeName = teams.home.name!!,
             homeLogo = teams.home.logo!!,

@@ -5,9 +5,11 @@ import androidx.room.PrimaryKey
 
 @Entity("FIXTURE_TABLE")
 data class FixtureEntity(
-    @PrimaryKey val id: Int,
+    @PrimaryKey val fixtureId: Int,
     val timestamp: Int,
 
+    val season: String,
+    val team: String,
     val homeId: Int,
     val homeName: String,
     val homeLogo: String,

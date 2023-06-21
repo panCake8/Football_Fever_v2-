@@ -17,10 +17,12 @@ class PlayersRepositoryImpl @Inject constructor(
 
     override suspend fun getPlayers(fixture: String, team: String): Result<List<PlayerEntity>> {
         return try {
-            dao.insertPlayers(apiService.getTeamPlayerStatisticsFixtures(fixture, team).body()?.response?.get(0)?.players?.map { it?.toEntity()!! }!!)
-            Result.success(dao.getPlayers())
+            dao.insertPlayers(
+                apiService.getTeamPlayerStatisticsFixtures(fixture, team).body()?.response?.get(0)?.players?.map { it?.toEntity(fixture, team)!! }!!
+            )
+            Result.success(dao.getPlayers(fixture, team))
         } catch (e: IOException) {
-            with(dao.getPlayers()) {
+            with(dao.getPlayers(fixture, team)) {
                 if (isNotEmpty()) Result.success(this) else Result.failure(Exception("Please check your internet connection"))
             }
         } catch (e: Exception) {
@@ -29,11 +31,13 @@ class PlayersRepositoryImpl @Inject constructor(
         }
     }
 
-    private fun StatisticPlayersItem.toEntity() =
+    private fun StatisticPlayersItem.toEntity(fixtureId: String, teamId: String) =
         PlayerEntity(
-            id = player?.id,
-            name = player?.name,
-            photo = player?.photo,
+            fixtureId = fixtureId,
+            teamId = teamId,
+            playerId = player?.id!!,
+            name = player.name,
+            photo = player.photo,
             goals = statistics?.get(0)?.goals?.total ?: 0,
         )
 

@@ -11,7 +11,7 @@ interface PlayersDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPlayers(players: List<PlayerEntity>)
 
-    @Query("SELECT * FROM PLAYER_TABLE ORDER BY goals DESC")
-    suspend fun getPlayers(): List<PlayerEntity>
+    @Query("SELECT * FROM PLAYER_TABLE WHERE fixtureId = :fixtureId AND teamId = :teamId ORDER BY goals DESC")
+    suspend fun getPlayers(fixtureId: String, teamId: String): List<PlayerEntity>
 
 }

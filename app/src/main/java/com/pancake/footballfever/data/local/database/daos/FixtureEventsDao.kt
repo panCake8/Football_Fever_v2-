@@ -11,7 +11,7 @@ interface FixtureEventsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFixtureEvents(fixtureEvents: List<FixtureEventsEntity>)
 
-    @Query("SELECT * FROM FIXTURE_EVENT_TABLE ORDER BY time ASC")
-    suspend fun getFixtureEvents() : List<FixtureEventsEntity>
+    @Query("SELECT * FROM FIXTURE_EVENT_TABLE WHERE fixtureId = :fixtureId ORDER BY time ASC")
+    suspend fun getFixtureEvents(fixtureId: String) : List<FixtureEventsEntity>
 
 }
