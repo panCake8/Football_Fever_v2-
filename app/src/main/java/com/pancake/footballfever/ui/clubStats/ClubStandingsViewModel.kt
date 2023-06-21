@@ -24,6 +24,10 @@ class ClubStandingsViewModel @Inject constructor(
     private val clubStandingArgs = ClubStandingFragmentArgs.fromSavedStateHandle(state)
 
     init {
+        getStandings()
+    }
+
+    private fun getStandings() {
         val teamId = clubStandingArgs.teamId
         val season = clubStandingArgs.seasonId
         viewModelScope.launch(Dispatchers.IO) {
@@ -36,4 +40,6 @@ class ClubStandingsViewModel @Inject constructor(
             }
         }
     }
+
+
 }
