@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
 
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/selectCountryFragment">
 
     <fragment
         android:id="@+id/clubFragment"
@@ -63,6 +63,27 @@
         <action
             android:id="@+id/action_leagueStateFragment_to_clubTablesFragment"
             app:destination="@id/clubFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectCountryFragment"
+        android:name="com.pancake.footballfever.ui.selectCountry.SelectCountryFragment"
+        android:label="SelectCountryFragment"
+        tools:layout="@layout/fragment_select_country">
+        <action
+            android:id="@+id/action_selectCountryFragment_to_selectFavoriteTeamsFragment"
+            app:destination="@id/selectFavoriteTeamsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectFavoriteTeamsFragment"
+        android:name="com.pancake.footballfever.ui.selectFavoriteTeams.SelectFavoriteTeamsFragment"
+        android:label="fragment_select_favorite_teams"
+        tools:layout="@layout/fragment_select_favorite_teams">
+        <argument
+            android:name="countryName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_selectFavoriteTeamsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 
 </navigation>

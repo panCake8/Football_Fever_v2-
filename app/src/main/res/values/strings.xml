@@ -27,11 +27,28 @@
     <string name="away">Away</string>
     <string name="match_schedule">Match Schedule</string>
     <string name="notification">notification</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search_text">Search</string>
     <string name="player_text">Player</string>
     <string name="club_text">Club</string>
     <string name="coach_text">Coach</string>
+    <string name="hint">Hint</string>
+    <string name="hint_to_select_favorite_teams">you can choose with a long press to select teams</string>
+    <string name="ok">ok</string>
+    <string name="alert">Alert</string>
+    <string name="alert_selection">you must select at least one favorite team</string>
+
+
+
+
+    <string name="pos">Pos</string>
+    <string name="team">Team</string>
+    <string name="p">P</string>
+    <string name="w">W</string>
+    <string name="pts">Pts</string>
+    <string name="rank_value">1</string>
+    <string name="pts_value">31</string>
+    <string name="win_value">10</string>
+    <string name="played_value">12</string>
+
 
 </resources>

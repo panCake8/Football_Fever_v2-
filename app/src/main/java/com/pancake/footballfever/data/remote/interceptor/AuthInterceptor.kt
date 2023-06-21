@@ -14,7 +14,7 @@ class AuthInterceptor @Inject constructor() : Interceptor {
     }
 
     companion object {
-        private const val API_HEADER_KEY = "X-RapidAPI-Key"
-        private const val API_HEADER_HOST = "X-RapidAPI-Host"
+        private const val API_HEADER_KEY = "x-rapidapi-key"
+        private const val API_HEADER_HOST = "x-rapidapi-host"
     }
 }
