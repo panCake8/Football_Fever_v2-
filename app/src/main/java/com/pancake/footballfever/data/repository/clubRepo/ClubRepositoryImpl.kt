@@ -1,4 +1,4 @@
-package com.pancake.footballfever.data.repository
+package com.pancake.footballfever.data.repository.clubRepo
 
 import com.example.footboolfever.data.remote.dto.teams.TeamsDto
 import com.pancake.footballfever.data.local.database.daos.ClubDao
@@ -9,7 +9,7 @@ import javax.inject.Inject
 class ClubRepositoryImpl @Inject constructor(
     private val ApiService: ApiService,
     private val dao: ClubDao
-) : ClubRepository {
+) : IClubRepository {
     override suspend fun getClubById(clubId: Int): Result<TeamsDto> {
         try {
             val response = ApiService.getTeamById(clubId)
