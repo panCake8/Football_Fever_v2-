@@ -2,6 +2,7 @@ package com.pancake.footballfever.di
 
 import com.pancake.footballfever.domain.usecase.GetCoachSearchUseCase
 import com.pancake.footballfever.domain.usecase.GetLeagueSearchUseCase
+import com.pancake.footballfever.domain.usecase.GetSearchKeywordsUseCase
 import com.pancake.footballfever.domain.usecase.GetTeamSearchUseCase
 import com.pancake.footballfever.ui.search.SearchViewModel
 import dagger.Module
@@ -18,6 +19,11 @@ object ViewModelModule {
     fun provideSearchViewModel(
         getTeamSearchUseCase: GetTeamSearchUseCase,
         getCoachSearchUseCase: GetCoachSearchUseCase,
-        getLeagueSearchUseCase: GetLeagueSearchUseCase
-    ) = SearchViewModel(getTeamSearchUseCase,getCoachSearchUseCase,getLeagueSearchUseCase)
+        getLeagueSearchUseCase: GetLeagueSearchUseCase,
+        getSearchKeywordsUseCase: GetSearchKeywordsUseCase
+    ) = SearchViewModel(getTeamSearchUseCase,
+        getCoachSearchUseCase,
+        getLeagueSearchUseCase,
+        getSearchKeywordsUseCase)
+
 }
