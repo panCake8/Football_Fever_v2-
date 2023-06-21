@@ -1,4 +1,4 @@
-package com.pancake.footballfever.data.repository
+package com.pancake.footballfever.data.repository.PlayerRepo
 
 import com.example.footboolfever.data.remote.dto.TopScoresDto
 import com.pancake.footballfever.data.local.database.entity.TopGoalsEntity
