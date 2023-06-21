@@ -10,6 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.pancake.footballfever.R
 import com.pancake.footballfever.ui.base.BaseAdapter
+import com.pancake.footballfever.ui.home.HomeUiState
+import com.pancake.footballfever.ui.home.HomeViewModel
+import com.pancake.footballfever.ui.home.adapter.FixtureHomeListener
+import com.pancake.footballfever.ui.home.adapter.ParentHomeAdapter
 
 @BindingAdapter(value = ["app:setRecyclerItems"])
 fun <T> setRecyclerItems(recyclerView: RecyclerView, items: List<T?>?) {
@@ -60,4 +64,9 @@ fun ImageView.bindFixtureEventImg(type: String) {
             else -> null
         }
     )
+}
+
+@BindingAdapter(value = ["app:setHomeItem", "app:setHomeListener"], requireAll = true)
+fun RecyclerView.setHomeItem(item: HomeUiState, listener: FixtureHomeListener) {
+    adapter = ParentHomeAdapter(item, listener)
 }
