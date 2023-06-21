@@ -1,4 +1,4 @@
-package com.pancake.footballfever.ui.club.tables
+package com.pancake.footballfever.ui.Club_stats
 
 import android.os.Bundle
 import android.view.LayoutInflater
