@@ -1,25 +1,26 @@
+
 package com.pancake.footballfever.ui.clubStats
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.pancake.footballfever.R
+import com.pancake.footballfever.databinding.FragmentClubStandingBinding
+import com.pancake.footballfever.ui.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
 
-class ClubStandingFragment: Fragment() {
+@AndroidEntryPoint
+class ClubStandingFragment:BaseFragment<FragmentClubStandingBinding , ClubStandingsViewModel>(){
+
+    override val layoutId: Int= R.layout.fragment_club_standing
+    override val viewModel: ClubStandingsViewModel by viewModels()
+    val argument : ClubStandingFragmentArgs by navArgs()
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun setup() {
+        super.setup()
+
+        val adapter = ClubStandingAdapter(viewModel ,argument.teamId )
+        binding.recyclerStandingLeague.adapter = adapter
     }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_blank, container, false)
-    }
-
 }
