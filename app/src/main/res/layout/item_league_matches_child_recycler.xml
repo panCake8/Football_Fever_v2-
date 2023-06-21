@@ -34,8 +34,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/semi_large_margin"
-                    android:layout_marginTop="@dimen/spacing_mediumx"
-                    android:layout_marginBottom="@dimen/spacing_mediumx"
+                    android:layout_marginTop="@dimen/large_margin"
+                    android:layout_marginBottom="@dimen/large_margin"
                     android:ellipsize="end"
                     android:maxWidth="70dp"
                     android:maxLines="1"
@@ -59,7 +59,7 @@
                     app:layout_constraintStart_toEndOf="@+id/name_team"
                     app:layout_constraintTop_toTopOf="@+id/name_team"
                     app:setImageUrl="@{item.awayTeamLogo}"
-                    tools:src="@drawable/badges" />
+                    tools:src="@drawable/chelsea_badge" />
 
                 <TextView
                     android:id="@+id/result"
@@ -80,7 +80,7 @@
                     android:layout_width="@dimen/dimens_country_image"
                     android:layout_height="@dimen/dimens_country_image"
                     android:layout_marginStart="@dimen/semi_large_margin"
-                    android:src="@drawable/image"
+                    android:src="@drawable/man_utd_badge"
                     app:layout_constraintBottom_toBottomOf="@+id/result"
                     app:layout_constraintEnd_toStartOf="@+id/name_team2"
                     app:layout_constraintStart_toEndOf="@+id/result"
@@ -92,8 +92,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/semi_large_margin"
-                    android:layout_marginTop="@dimen/spacing_mediumx"
-                    android:layout_marginBottom="@dimen/spacing_mediumx"
+                    android:layout_marginTop="@dimen/large_margin"
+                    android:layout_marginBottom="@dimen/large_margin"
                     android:ellipsize="end"
                     android:maxWidth="70dp"
                     android:maxLines="1"
