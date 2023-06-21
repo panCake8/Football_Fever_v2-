@@ -1,7 +1,8 @@
-package com.pancake.footballfever.domain.usecase
+package com.pancake.footballfever.domain.usecase.topScorerUsecase
 
 import com.pancake.footballfever.data.repository.PlayerRepository
 import com.pancake.footballfever.domain.models.TopGoals
+import com.pancake.footballfever.utilities.toTopGoals
 import javax.inject.Inject
 
 class GetTopGoalsCachedDataUseCase @Inject constructor(
