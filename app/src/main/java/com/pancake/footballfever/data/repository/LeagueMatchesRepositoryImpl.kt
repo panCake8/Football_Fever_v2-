@@ -19,11 +19,16 @@ class LeagueMatchesRepositoryImpl @Inject constructor(
         return apiService.getFixturesByLeague(league, season).body()?.response
     }
 
-    override suspend fun addAllLeagueMatches(leagueMatches: List<LeagueMatchEntity>) {
+    override suspend fun cacheAllLeagueMatches(leagueMatches: List<LeagueMatchEntity>) {
         return dao.addLeagueMatch(leagueMatches)
     }
 
     override suspend fun getAllLocalLeagueMatches(): List<LeagueMatchEntity> {
         return dao.getAllLeagueMatches()
     }
+
+    override suspend fun deleteAllLeagueMatches() {
+        return dao.deleteAllLeagueMatches()
+    }
+
 }
