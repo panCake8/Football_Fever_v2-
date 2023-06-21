@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-<variable
-    name="item"
-    type="com.pancake.footballfever.domain.models.LeagueMatch" />
+
+        <variable
+            name="item"
+            type="com.pancake.footballfever.domain.models.LeagueMatch" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
