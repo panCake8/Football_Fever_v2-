@@ -38,5 +38,6 @@
     <string name="ok">ok</string>
     <string name="alert">Alert</string>
     <string name="alert_selection">you must select at least one favorite team</string>
+    <string name="there_is_no_matches_in_this_date">there is no matches in this date</string>
 
 </resources>
