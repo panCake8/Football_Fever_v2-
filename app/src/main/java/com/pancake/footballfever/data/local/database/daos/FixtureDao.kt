@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.pancake.footballfever.data.local.database.entity.FixtureEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureHomeEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -18,10 +19,7 @@ interface FixtureDao {
 
     @Query("delete from FIXTURE_HOME_TABLE ")
     suspend fun deleteAllFixtureHome()
-import com.pancake.footballfever.data.local.database.entity.FixtureEntity
 
-@Dao
-interface FixtureDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFixture(fixtures: List<FixtureEntity>)
 
