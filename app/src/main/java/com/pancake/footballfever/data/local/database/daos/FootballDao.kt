@@ -51,4 +51,9 @@ interface FootballDao {
 
     @Query("SELECT * FROM COACHES_TABLE ORDER BY id DESC")
     suspend fun getAllCoaches(): List<CoachEntity>
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertStandings(standings: List<StandingsEntity>)
+
+    @Query("SELECT * FROM STANDINGS_TABLE WHERE leagueId =:leagueId AND season =:season")
+    fun getAllStandings(leagueId:Int,season:Int): List<StandingsEntity>
 }

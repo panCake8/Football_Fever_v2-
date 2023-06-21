@@ -39,6 +39,7 @@ abstract class BaseAdapter<T>(
             val currentItem = getItem(position)
             setVariable(BR.item, currentItem)
             setVariable(BR.listener, listener)
+
         }
     }
 

@@ -12,7 +12,7 @@
 
     <dimen name="small_padding">4dp</dimen>
     <dimen name="medium_padding">8dp</dimen>
-    <dimen name="medium_12_padding">12dp</dimen>
+    <dimen name="semi_large_padding">12dp</dimen>
     <dimen name="large_padding">16dp</dimen>
 
 
@@ -66,6 +66,10 @@
     <dimen name="width_search_card">156dp</dimen>
     <dimen name="height_search_card">176dp</dimen>
 
+    <dimen name="no_width">0dp</dimen>
+    <dimen name="standings_team_logo_width">20dp</dimen>
+    <dimen name="standings_team_logo_height">20dp</dimen>
+    <dimen name="width_text_header_standings_table">32dp</dimen>
     <dimen name="no_height">0dp</dimen>
     <dimen name="coaches_card_height">76dp</dimen>
     <dimen name="coach_image_width">60dp</dimen>
