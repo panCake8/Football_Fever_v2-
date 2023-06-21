@@ -1,14 +1,17 @@
 package com.pancake.footballfever.data.local.database.daos
 
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.pancake.footballfever.data.local.database.entity.TeamEntity
+import com.pancake.footballfever.data.local.database.entity.FavoriteTeamEntity
 
-interface teamDao {
+@Dao
+interface TeamDao {
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTeam(team: TeamEntity)
+    suspend fun addFavoriteTeam(team: List<FavoriteTeamEntity>)
 
-    @Query("SELECT * FROM TEAM_TABLE ORDER BY teamId DESC")
-    fun getTeam(): TeamEntity
+    @Query("select * from FAVORITE_TEAM_TABLE")
+    suspend fun getAllFavoriteTeams(): List<FavoriteTeamEntity>
 }
