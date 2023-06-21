@@ -9,7 +9,7 @@ import com.pancake.footballfever.data.local.database.daos.PlayersDao
 import com.pancake.footballfever.data.local.database.daos.TeamFixtureDao
 import com.pancake.footballfever.data.local.database.entity.CountryEntity
 import com.pancake.footballfever.data.local.database.entity.FavoriteTeamEntity
-import com.pancake.footballfever.data.local.database.entity.FixtureEntity
+import com.pancake.footballfever.data.local.database.entity.TeamFixtureEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureEventsEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureHomeEntity
 import com.pancake.footballfever.data.local.database.entity.LeagueEntity
@@ -29,7 +29,7 @@ import com.pancake.footballfever.data.local.database.entity.VenueEntity
         TopGoalsEntity::class,
         TopAssistEntity::class,
         VenueEntity::class,
-        FixtureEntity::class,
+        TeamFixtureEntity::class,
         PlayerEntity::class
     ],
     version = 1,

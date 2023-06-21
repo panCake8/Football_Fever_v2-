@@ -3,8 +3,8 @@ package com.pancake.footballfever.data.local.database.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity("FIXTURE_TABLE")
-data class FixtureEntity(
+@Entity("TEAM_FIXTURE_TABLE")
+data class TeamFixtureEntity(
     @PrimaryKey val fixtureId: Int,
     val timestamp: Int,
 

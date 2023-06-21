@@ -3,7 +3,7 @@ package com.pancake.footballfever.data.repository
 import android.util.Log
 import com.example.footboolfever.data.remote.dto.FixturesDto
 import com.pancake.footballfever.data.local.database.daos.TeamFixtureDao
-import com.pancake.footballfever.data.local.database.entity.FixtureEntity
+import com.pancake.footballfever.data.local.database.entity.TeamFixtureEntity
 import com.pancake.footballfever.data.remote.service.ApiService
 import java.io.IOException
 import javax.inject.Inject
@@ -13,7 +13,7 @@ class TeamFixturesRepositoryImpl @Inject constructor(
     private val dao: TeamFixtureDao
 ) : TeamFixturesRepository {
 
-    override suspend fun getFixtures(season: String, team: String): Result<List<FixtureEntity>> {
+    override suspend fun getFixtures(season: String, team: String): Result<List<TeamFixtureEntity>> {
         return try {
             dao.insertFixtures(apiService.getTeamFixtures(season, team).body()?.response?.map { it.toEntity(season,team) }!!)
             Result.success(dao.getFixtures(season,team))
@@ -29,7 +29,7 @@ class TeamFixturesRepositoryImpl @Inject constructor(
     }
 
     private fun FixturesDto.toEntity(season: String, team: String) =
-        FixtureEntity(
+        TeamFixtureEntity(
             fixtureId = fixture?.id!!,
             timestamp = fixture.timestamp!!,
             season = season,

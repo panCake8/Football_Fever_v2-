@@ -1,6 +1,6 @@
 package com.pancake.footballfever.domain.usecases
 
-import com.pancake.footballfever.data.local.database.entity.FixtureEntity
+import com.pancake.footballfever.data.local.database.entity.TeamFixtureEntity
 import com.pancake.footballfever.data.repository.TeamFixturesRepository
 import com.pancake.footballfever.domain.models.Fixture
 import javax.inject.Inject
@@ -18,7 +18,7 @@ class GetTeamFixturesUseCase @Inject constructor(
         )
     }
 
-    private fun FixtureEntity.toDomain() =
+    private fun TeamFixtureEntity.toDomain() =
         Fixture(
             timestamp = timestamp,
             homeId = homeId,
