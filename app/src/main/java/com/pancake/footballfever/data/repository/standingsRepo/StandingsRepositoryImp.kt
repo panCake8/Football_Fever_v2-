@@ -1,4 +1,4 @@
-package com.pancake.footballfever.data.repository
+package com.pancake.footballfever.data.repository.standingsRepo
 
 import com.pancake.footballfever.data.local.database.daos.FootballDao
 import com.pancake.footballfever.data.local.database.entity.StandingsEntity
