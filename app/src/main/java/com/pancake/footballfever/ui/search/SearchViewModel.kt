@@ -1,11 +1,16 @@
 package com.pancake.footballfever.ui.search
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.pancake.footballfever.data.local.database.entity.SearchKeywordEntity
 import com.pancake.footballfever.domain.models.SearchItem
+import com.pancake.footballfever.domain.models.SearchKeyword
 import com.pancake.footballfever.domain.usecase.GetCoachSearchUseCase
 import com.pancake.footballfever.domain.usecase.GetLeagueSearchUseCase
+import com.pancake.footballfever.domain.usecase.GetSearchKeywordsUseCase
 import com.pancake.footballfever.domain.usecase.GetTeamSearchUseCase
 import com.pancake.footballfever.utilities.DataState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,20 +23,33 @@ import javax.inject.Inject
 class SearchViewModel @Inject constructor(
     private val getTeamSearchUseCase: GetTeamSearchUseCase,
     private val getCoachSearchUseCase: GetCoachSearchUseCase,
-    private val getLeagueSearchUseCase: GetLeagueSearchUseCase
+    private val getLeagueSearchUseCase: GetLeagueSearchUseCase,
+    private val getSearchKeywordsUseCase: GetSearchKeywordsUseCase
 ):ViewModel(),SearchListener {
-
 
     private val _searchResult =
         MutableStateFlow<DataState<Any>>(DataState.Loading)
-    val searchResult: StateFlow<DataState<Any>> get() = _searchResult
+    val searchResult: StateFlow<DataState<Any>> = _searchResult
 
     val searchText = MutableStateFlow("")
 
-    private val _searchStatus =
+     private val _searchStatus =
         MutableStateFlow(SearchStatus.LEAGUE)
-    private val searchStatus: StateFlow<SearchStatus> get() = _searchStatus
+    private val searchStatus: StateFlow<SearchStatus>  = _searchStatus
 
+    private val _searchKeyword =
+        MutableStateFlow<List<SearchKeyword>>(emptyList())
+    val searchKeyword : StateFlow<List<SearchKeyword>> = _searchKeyword
+
+    init {
+
+        _searchResult.value=DataState.ShowKeywordSuggests
+        viewModelScope.launch {
+            _searchKeyword.value=  getSearchKeywordsUseCase.getSearchKeywords()
+             Log.i("aboood",_searchKeyword.value.toString())
+        }
+
+    }
 
     fun getDataBySearchText() {
         when (searchStatus.value) {
@@ -47,43 +65,36 @@ class SearchViewModel @Inject constructor(
         }
     }
 
-
     private fun getLeaguesData() {
         viewModelScope.launch {
-            try{
-                val list=getLeagueSearchUseCase.invoke(searchText.value)
-                Log.i("x3x",list.toString())
-                _searchResult.value=DataState.Success(list)
-            }catch (e:Exception){
-                Log.e("x3x", "Error occurred: ${e.message}")
-                _searchResult.value=DataState.Error("Error")
-            }
-        }
-    }
-    private fun getTeamsData() {
-        viewModelScope.launch {
-            try{
-                val list=getTeamSearchUseCase.invoke(searchText.value)
-                Log.i("x3x",list.toString())
-                _searchResult.value=DataState.Success(list)
-            }catch (e:Exception){
-                Log.e("x3x", "Error occurred: ${e.message}")
-                _searchResult.value=DataState.Error("Error")
-            }
+            executeSearch(getLeagueSearchUseCase.invoke(searchText.value))
         }
     }
 
+    private fun getTeamsData() {
+        viewModelScope.launch {
+            executeSearch(getTeamSearchUseCase.invoke(searchText.value))
+        }
+    }
 
     private fun getCoachsData() {
         viewModelScope.launch {
-            try{
-                val list=getCoachSearchUseCase.invoke(searchText.value)
-                Log.i("x3x",list.toString())
+            executeSearch(getCoachSearchUseCase.invoke(searchText.value))
+        }
+    }
+
+    private fun executeSearch(list:List<SearchItem>){
+        try{
+            _searchResult.value=DataState.Loading
+            Log.i("x3x",list.toString())
+            if(searchText.value.isNotEmpty()) {
                 _searchResult.value=DataState.Success(list)
-            }catch (e:Exception){
-                Log.e("x3x", "Error occurred: ${e.message}")
-                _searchResult.value=DataState.Error("Error")
+            }else{
+                _searchResult.value=DataState.ShowKeywordSuggests
             }
+        }catch (e:Exception){
+            Log.e("x3x", "Error occurred: ${e.message}")
+            _searchResult.value=DataState.Error("Error")
         }
     }
 
@@ -97,24 +108,32 @@ class SearchViewModel @Inject constructor(
         getDataBySearchText()
     }
 
-
-
     fun onClickCoachChip() {
         _searchStatus.value=SearchStatus.COACH
         getDataBySearchText()
     }
 
+     fun showKeywordSuggests() {
+         viewModelScope.launch {
+             _searchResult.value=DataState.ShowKeywordSuggests
+             _searchKeyword.value=  getSearchKeywordsUseCase.getSearchKeywords()
+             Log.i("xx3xx",_searchKeyword.value.toString())
+         }
+     }
 
-
-
-
-
-    override fun onClickClub(team: SearchItem) {
+     fun cacheKeyword(text: String){
+         viewModelScope.launch {
+             getSearchKeywordsUseCase.insertSearchKeywords(SearchKeyword(text))
+         }
     }
 
-    override fun onClickPlayer(player: SearchItem) {
+    override fun onClickTeam(team: SearchItem) {
+    }
+
+    override fun onClickLeague(player: SearchItem) {
     }
 
     override fun onClickCoach(player: SearchItem) {
     }
+
 }
