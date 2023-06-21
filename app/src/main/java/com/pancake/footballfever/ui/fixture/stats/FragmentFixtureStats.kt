@@ -5,8 +5,10 @@ import androidx.fragment.app.viewModels
 import com.pancake.footballfever.R
 import com.pancake.footballfever.databinding.FragmentStaticisFixtureBinding
 import com.pancake.footballfever.ui.base.BaseFragment
-import com.pancake.footballfever.utilities.Constants
+import com.pancake.footballfever.domain.Constants
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FragmentFixtureStats : BaseFragment<FragmentStaticisFixtureBinding, FixtureStatsViewModel>() {
     override val layoutId: Int
         get() = R.layout.fragment_staticis_fixture
