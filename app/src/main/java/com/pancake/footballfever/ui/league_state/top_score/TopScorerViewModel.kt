@@ -2,8 +2,8 @@ package com.pancake.footballfever.ui.league_state.top_score
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.pancake.footballfever.domain.usecase.FetchTopGoalsUseCase
-import com.pancake.footballfever.domain.usecase.GetTopGoalsCachedDataUseCase
+import com.pancake.footballfever.domain.usecase.topScorerUsecase.FetchTopGoalsUseCase
+import com.pancake.footballfever.domain.usecase.topScorerUsecase.GetTopGoalsCachedDataUseCase
 import com.pancake.footballfever.ui.league_state.top_score.adapter.TopScorerListener
 import com.pancake.footballfever.ui.league_state.top_score.ui_state.TopScorerUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -35,7 +35,7 @@ class TopScorerViewModel @Inject constructor(
                 val result = fetchTopGoalsUseCase(leagues, seasons)
                 if (result.isSuccess) {
                     _uiState.update { it.copy(isLoading = true) }
-                    _uiState.update { it.copy(response = getTopGoalsCachedDataUseCase(), isLoading = false) }
+                    _uiState.update { it.copy(topGoalsList = getTopGoalsCachedDataUseCase(), isLoading = false) }
                 } else if (result.isFailure) {
                     _uiState.update { it.copy(error = true) }
                 }
