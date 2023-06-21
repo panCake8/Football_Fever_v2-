@@ -68,6 +68,9 @@ dependencies {
     // recycler selection
     implementation 'androidx.recyclerview:recyclerview-selection:1.1.0'
 
+    // calender
+    implementation 'com.github.prolificinteractive:material-calendarview:2.0.0'
+
     //view model
     def lifecycle_version = "2.6.1"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
