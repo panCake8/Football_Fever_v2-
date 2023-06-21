@@ -7,6 +7,7 @@ import androidx.room.Query
 import com.pancake.footballfever.data.local.database.entity.CountryEntity
 import com.pancake.footballfever.data.local.database.entity.FavoriteTeamEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureHomeEntity
+import com.pancake.footballfever.data.local.database.entity.SearchKeywordEntity
 import com.pancake.footballfever.data.local.database.entity.VenueEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -42,4 +43,12 @@ interface FootballDao {
 
     @Query("delete from FIXTURE_TEAM_TABLE ")
     fun deleteAllFixtureHome()
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertSearchKeyword(keyword: SearchKeywordEntity)
+
+    @Query("SELECT * FROM KEYWORD_SEARCH_TABLE ORDER BY id DESC")
+    suspend fun getAllSearchKeywords(): List<SearchKeywordEntity>
+
+
 }
