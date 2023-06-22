@@ -12,6 +12,8 @@ import com.pancake.footballfever.R
 import com.pancake.footballfever.domain.models.LeagueMatchUiModel
 import com.pancake.footballfever.ui.base.BaseAdapter
 import com.pancake.footballfever.ui.base.BaseAdapterListener
+import com.pancake.footballfever.ui.fixture.head2head.adapter.HeadToHeadListener
+import com.pancake.footballfever.ui.fixture.head2head.adapter.HeadToHeadParentAdapter
 import com.pancake.footballfever.ui.home.HomeUiState
 import com.pancake.footballfever.ui.home.HomeViewModel
 import com.pancake.footballfever.ui.home.adapter.FixtureHomeListener
@@ -27,6 +29,11 @@ fun <T> setRecyclerItems(recyclerView: RecyclerView, items: List<T?>?) {
 @BindingAdapter(value = ["setLeagueChildAdapter"])
 fun setChildRecyclerAdapter(recyclerView: RecyclerView,items:LeagueMatchesListener) {
     recyclerView.adapter = LeagueMatchesParentAdapter(items)
+}
+
+@BindingAdapter(value = ["setHeadToHeadRecyclerAdapter"])
+fun setChildRecyclerAdapter(recyclerView: RecyclerView,items:HeadToHeadListener){
+    recyclerView.adapter = HeadToHeadParentAdapter(items)
 }
 
 @BindingAdapter(value = ["app:setImageUrl"])
