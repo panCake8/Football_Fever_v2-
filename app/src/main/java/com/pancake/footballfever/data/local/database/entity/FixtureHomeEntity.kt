@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "FIXTURE_HOME_TABLE")
 data class FixtureHomeEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Int?,
+    val id: Int,
     val fixture: Int?,
     val leagueName: String?,
     val round: String?,
