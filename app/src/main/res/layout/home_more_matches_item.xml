@@ -44,6 +44,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/semi_large_margin"
                     android:maxLines="2"
+                    android:maxWidth="@dimen/fixture_teams_width"
+                    android:ellipsize="end"
                     android:text="@{item.homeTeamName}"
                     android:textSize="@dimen/text_tiny"
                     tools:text="real madrid" />
