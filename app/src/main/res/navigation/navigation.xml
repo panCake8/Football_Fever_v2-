@@ -8,9 +8,9 @@
 
     <fragment
         android:id="@+id/clubFragment"
-        android:name="com.pancake.footballfever.ui.clubStats.ClubStandingFragment"
+        android:name="com.pancake.footballfever.ui.Club_stats.ClubFragment"
         android:label="fragment_club"
-        tools:layout="@layout/fragment_club_standing">
+        tools:layout="@layout/fragment_club">
         <argument
             android:name="teamId"
             app:argType="integer" />
@@ -92,11 +92,6 @@
             app:destination="@id/homeFragment" />
     </fragment>
     <fragment
-
-        android:id="@+id/standingFragment"
-        android:name="com.pancake.footballfever.ui.league_state.standing.StandingFragment"
-        android:label="StandingFragment" />
-
         android:id="@+id/splashFragment"
         android:name="com.pancake.footballfever.ui.splash.SplashFragment"
         android:label="fragment_splash"
@@ -122,6 +117,5 @@
             android:name="season"
             app:argType="integer" />
     </fragment>
-
 
 </navigation>
