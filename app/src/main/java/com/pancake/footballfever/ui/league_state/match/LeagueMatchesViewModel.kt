@@ -37,7 +37,7 @@ class LeagueMatchesViewModel @Inject constructor(private val leagueMatchesUseCas
             leagueMatchesUseCase.getLeagueMatches(season, league).let {
 
 //                _leagueMatches.postValue(it)
-                Log.i("TAG", "${it?.entries?.size}")
+                Log.i("TAG", "${it?.size}")
 
             }
         }

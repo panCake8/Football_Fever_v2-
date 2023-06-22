@@ -1,8 +1,12 @@
 package com.pancake.footballfever.domain.usecase
 
+import android.util.Log
 import com.pancake.footballfever.data.repository.LeagueMatchesRepository
 import com.pancake.footballfever.domain.mappers.LeagueMatchMapper
 import com.pancake.footballfever.domain.models.LeagueMatch
+import com.pancake.footballfever.domain.models.LeagueMatchUiModel
+import com.pancake.footballfever.domain.models.toLeagueMatchUi
+import java.io.IOException
 import javax.inject.Inject
 
 class GetLeagueMatchesUseCase @Inject constructor(
@@ -12,10 +16,17 @@ class GetLeagueMatchesUseCase @Inject constructor(
 ) {
 
 
-    suspend fun getLeagueMatches(season: Int, league: Int): Map<String?, List<LeagueMatch>>? {
-        val leagueMatches = repository.getAllLeagueMatches(season, league)
-        cacheLeagueMatchesUseCase.cacheLeagueMatches(leagueMatches)
-        return leagueMatches?.map { mapper.map(it) }?.groupBy { it.date }
+    suspend fun getLeagueMatches(season: Int, league: Int): List<LeagueMatchUiModel>? {
+        return try {
+
+            val leagueMatches = repository.getAllLeagueMatches(season, league)
+            cacheLeagueMatchesUseCase.cacheLeagueMatches(leagueMatches)
+            leagueMatches?.map { mapper.map(it) }?.groupBy { it.date }?.toLeagueMatchUi()
+
+
+        } catch (e: Exception) {
+            throw IOException("error while fetching league matches", e)
+        }
 
     }
 }
