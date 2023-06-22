@@ -51,5 +51,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="injuries">injuries</string>
+    <string name="injury_date">19/11/2022</string>
+    <string name="injury_player_name">Neymar</string>
+    <string name="injury">sprain in ankle</string>
+
 
 </resources>
