@@ -13,6 +13,8 @@ import com.pancake.footballfever.data.repository.StandingsRepository
 import com.pancake.footballfever.data.repository.StandingsRepositoryImp
 import com.pancake.footballfever.data.repository.TeamRepository
 import com.pancake.footballfever.data.repository.TeamRepositoryImpl
+import com.pancake.footballfever.data.repository.clubRepo.ClubRepository
+import com.pancake.footballfever.data.repository.clubRepo.ClubRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -58,4 +60,9 @@ abstract class RepositoryModule {
     abstract fun bindsFixtureRepository(
         fixtureRepositoryImpl: FixtureRepositoryImpl
     ): FixtureRepository
+    @Singleton
+    @Binds
+    abstract fun bindsClubRepository(
+        clubRepositoryImpl: ClubRepositoryImpl
+    ): ClubRepository
 }

@@ -9,20 +9,9 @@ import javax.inject.Inject
 class ClubRepositoryImpl @Inject constructor(
     private val ApiService: ApiService,
     private val dao: ClubDao
-) : IClubRepository {
-    override suspend fun getClubById(clubId: Int): Result<TeamsDto> {
-        try {
-            val response = ApiService.getTeamById(clubId)
-            if (response.isSuccessful){
-                val data = response.body()
-              data?.let {
-                  return Result.success(it)
-              }
-            }
-            return Result.failure(Throwable( response.message().toString()))
-        }catch (e: Throwable) {
-            return Result.failure(e)
-        }
+) : ClubRepository {
+    override suspend fun getClubById(clubId: Int): TeamsDto {
+        return ApiService.getTeamById(clubId).body()?.response?.get(0)!!
     }
 
     override suspend fun addClubData(clubData: ClubEntity) {

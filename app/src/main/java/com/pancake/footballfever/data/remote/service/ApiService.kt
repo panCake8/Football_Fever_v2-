@@ -190,10 +190,10 @@ interface ApiService {
     //endregion
 
     // region teams requests
-    @GET("team")
+    @GET("teams")
     suspend fun  getTeamById(
         @Query("id") TeamId: Int,
-    ):Response<TeamsDto>
+    ):Response<BaseResponse<TeamsDto>>
     @GET("teams")
     suspend fun getPremierLeagueTeams(
         @Query("league") leagueId: Int,

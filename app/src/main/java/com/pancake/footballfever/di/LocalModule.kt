@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.pancake.footballfever.data.Constants
 import com.pancake.footballfever.data.local.database.FootballDatabase
+import com.pancake.footballfever.data.local.database.daos.ClubDao
 import com.pancake.footballfever.data.local.database.daos.FixtureDao
 import com.pancake.footballfever.data.local.database.daos.FootballDao
 
@@ -63,6 +64,11 @@ object LocalModule {
     @Provides
     fun provideFixtureDao(footballDataBase: FootballDatabase): FixtureDao {
         return footballDataBase.fixtureDao
+    }
+    @Singleton
+    @Provides
+    fun provideClubDao(footballDataBase: FootballDatabase): ClubDao {
+        return footballDataBase.clubDao
     }
 
 }

@@ -3,10 +3,6 @@ package com.pancake.footballfever.di
 
 import com.pancake.footballfever.data.local.mappers.StandingsMapper
 
-import com.pancake.footballfever.data.local.mappers.teamMapper.FavoriteTeamUiToEntityMapper
-import com.pancake.footballfever.domain.mappers.club.ClubDtoToUiMapper
-import com.pancake.footballfever.domain.mappers.country.SelectCountryDtoToUiMapper
-import com.pancake.footballfever.domain.mappers.team.FavoriteTeamDtoToUiMapper
 
 import dagger.Module
 import dagger.Provides
@@ -22,19 +18,6 @@ object MapperModule {
     @Provides
     fun provideStandingsMapper() = StandingsMapper()
 
-    @Singleton
-    @Provides
-    fun provideSelectCountryDtoToUiMapper() = SelectCountryDtoToUiMapper()
 
-    @Singleton
-    @Provides
-    fun provideFavoriteTeamDtoToUiMapper() = FavoriteTeamDtoToUiMapper()
-
-    @Singleton
-    @Provides
-    fun provideFavoriteTeamUiToEntityMapper() = FavoriteTeamUiToEntityMapper()
-    @Singleton
-    @Provides
-    fun provideClubDataToUiMapper() = ClubDtoToUiMapper()
 }
 
