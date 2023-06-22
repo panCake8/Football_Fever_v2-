@@ -45,17 +45,12 @@ class HomeViewModel @Inject constructor(
     fun refreshFixtures(date: String, season: Int) {
         viewModelScope.launch {
             _fixtures.update { it.copy(isLoading = true) }
-            try {
-                val request = refreshFixtureUseCase.refreshAllFixtureHome(date, season)
-                if (request.isSuccess) {
-                   getFixtureLocal()
-                } else {
-                    _fixtures.update { it.copy(error = request.exceptionOrNull()?.message) }
-                }
-            } catch (e: Throwable) {
-                _fixtures.update { it.copy(error = e.message) }
+            val request = refreshFixtureUseCase.refreshAllFixtureHome(date, season)
+            if (request.isSuccess) {
+                getFixtureLocal()
+            } else {
+                _fixtures.update { it.copy(error = request.exceptionOrNull()?.message) }
             }
-
         }
     }
 

@@ -6,7 +6,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.pancake.footballfever.R
 import com.pancake.footballfever.databinding.FragmentHomeBinding
-import com.pancake.footballfever.domain.models.FixtureHome
 import com.pancake.footballfever.ui.base.BaseFragment
 import com.pancake.footballfever.utilities.EventObserver
 import com.prolificinteractive.materialcalendarview.CalendarDay
