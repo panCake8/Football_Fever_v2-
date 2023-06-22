@@ -5,6 +5,8 @@ import com.pancake.footballfever.data.repository.CountryRepository
 import com.pancake.footballfever.data.repository.CountryRepositoryImpl
 import com.pancake.footballfever.data.repository.FixtureRepository
 import com.pancake.footballfever.data.repository.FixtureRepositoryImpl
+import com.pancake.footballfever.data.repository.HeadToHeadRepository
+import com.pancake.footballfever.data.repository.HeadToHeadRepositoryImpl
 import com.pancake.footballfever.data.repository.LeaguesRepository
 import com.pancake.footballfever.data.repository.LeaguesRepositoryImpl
 import com.pancake.footballfever.data.repository.LeagueMatchesRepository
@@ -39,31 +41,37 @@ abstract class RepositoryModule {
 
     @Singleton
     @Binds
+    abstract fun bindsHeadTOHeadsRepository(
+        headToHeadRepository: HeadToHeadRepositoryImpl,
+    ): HeadToHeadRepository
+
+    @Singleton
+    @Binds
     abstract fun bindsStandingsRepository(
-        standingsRepositoryImp: StandingsRepositoryImp
+        standingsRepositoryImp: StandingsRepositoryImp,
     ): StandingsRepository
 
     @Singleton
     @Binds
     abstract fun bindsCountryRepository(
-        countryRepositoryImpl: CountryRepositoryImpl
+        countryRepositoryImpl: CountryRepositoryImpl,
     ): CountryRepository
 
     @Singleton
     @Binds
     abstract fun bindsTeamRepository(
-        teamRepositoryImpl: TeamRepositoryImpl
+        teamRepositoryImpl: TeamRepositoryImpl,
     ): TeamRepository
 
     @Singleton
     @Binds
     abstract fun bindsLeaguesRepository(
-        leaguesRepositoryImpl: LeaguesRepositoryImpl
+        leaguesRepositoryImpl: LeaguesRepositoryImpl,
     ): LeaguesRepository
 
     @Singleton
     @Binds
     abstract fun bindsFixtureRepository(
-        fixtureRepositoryImpl: FixtureRepositoryImpl
+        fixtureRepositoryImpl: FixtureRepositoryImpl,
     ): FixtureRepository
 }
