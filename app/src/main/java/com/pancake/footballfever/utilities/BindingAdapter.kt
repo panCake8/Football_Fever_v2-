@@ -9,15 +9,24 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.pancake.footballfever.R
+import com.pancake.footballfever.domain.models.LeagueMatchUiModel
 import com.pancake.footballfever.ui.base.BaseAdapter
+import com.pancake.footballfever.ui.base.BaseAdapterListener
 import com.pancake.footballfever.ui.home.HomeUiState
 import com.pancake.footballfever.ui.home.HomeViewModel
 import com.pancake.footballfever.ui.home.adapter.FixtureHomeListener
 import com.pancake.footballfever.ui.home.adapter.ParentHomeAdapter
+import com.pancake.footballfever.ui.league_state.match.adapter.LeagueMatchesListener
+import com.pancake.footballfever.ui.league_state.match.adapter.LeagueMatchesParentAdapter
 
 @BindingAdapter(value = ["app:setRecyclerItems"])
 fun <T> setRecyclerItems(recyclerView: RecyclerView, items: List<T?>?) {
     (recyclerView.adapter as BaseAdapter<T?>?)?.submitList(items)
+}
+
+@BindingAdapter(value = ["setLeagueChildAdapter"])
+fun setChildRecyclerAdapter(recyclerView: RecyclerView,items:LeagueMatchesListener) {
+    recyclerView.adapter = LeagueMatchesParentAdapter(items)
 }
 
 @BindingAdapter(value = ["app:setImageUrl"])
