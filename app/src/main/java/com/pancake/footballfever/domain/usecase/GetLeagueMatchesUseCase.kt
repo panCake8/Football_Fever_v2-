@@ -3,12 +3,10 @@ package com.pancake.footballfever.domain.usecase
 import com.example.footboolfever.data.remote.dto.FixturesDto
 import com.pancake.footballfever.data.local.database.entity.LeagueMatchEntity
 import com.pancake.footballfever.data.repository.LeagueMatchesRepository
-import com.pancake.footballfever.domain.mappers.LeagueMatchMapper
 import com.pancake.footballfever.domain.models.LeagueMatch
 import com.pancake.footballfever.domain.models.LeagueMatchUiModel
 import com.pancake.footballfever.domain.models.toLeagueMatchUi
 import com.pancake.footballfever.utilities.toDate
-import java.io.IOException
 import javax.inject.Inject
 
 class GetLeagueMatchesUseCase @Inject constructor(
