@@ -18,8 +18,13 @@ class ClubRepositoryImpl @Inject constructor(
         dao.insertTeam(clubData)
     }
 
+    override suspend fun deleteClubData() {
+        dao.deleteTeam()
+    }
+
     override suspend fun getLocalClubData(): ClubEntity {
         return dao.getTeam()
     }
+
 
 }

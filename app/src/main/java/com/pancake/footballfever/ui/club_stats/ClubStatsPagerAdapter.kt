@@ -1,4 +1,4 @@
-package com.pancake.footballfever.ui.Club_stats
+package com.pancake.footballfever.ui.club_stats
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter

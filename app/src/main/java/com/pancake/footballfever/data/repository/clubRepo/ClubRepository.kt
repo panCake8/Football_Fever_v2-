@@ -6,5 +6,8 @@ import com.pancake.footballfever.data.local.database.entity.ClubEntity
 interface ClubRepository {
     suspend fun getClubById(clubId: Int):TeamsDto
     suspend fun addClubData(clubData:ClubEntity)
+    suspend fun deleteClubData()
+
     suspend fun getLocalClubData():ClubEntity
+
 }
