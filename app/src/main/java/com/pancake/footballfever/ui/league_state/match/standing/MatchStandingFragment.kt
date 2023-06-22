@@ -1,26 +1,23 @@
 package com.pancake.footballfever.ui.league_state.match.standing
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.pancake.footballfever.R
+import com.pancake.footballfever.databinding.FragmentMatchStandingBinding
+import com.pancake.footballfever.ui.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
+class MatchStandingFragment : BaseFragment<FragmentMatchStandingBinding, MatchStandingViewModel>() {
+    override val layoutId = R.layout.fragment_match_standing
+    override val viewModel : MatchStandingViewModel by viewModels ()
 
-class MatchStandingFragment : Fragment() {
+    override fun setup() {
+        super.setup()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
+        val adapter = MatchStandingAdapter(viewModel)
+        binding.recyclerStandingLeague.adapter = adapter
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_match_standing, container, false)
-    }
 
 
 }
