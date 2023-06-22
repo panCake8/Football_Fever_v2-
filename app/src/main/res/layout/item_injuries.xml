@@ -30,12 +30,11 @@
                 android:layout_marginStart="@dimen/large_margin"
                 android:layout_marginTop="@dimen/large_margin"
                 android:scaleType="fitXY"
-                android:src="@drawable/flag_of_brazil"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:roundPercent="1"
                 app:setImageUrl="@{item.logoTeam.toString()}"
-                 />
+                tools:src="@drawable/flag_of_brazil" />
 
             <TextView
                 android:id="@+id/injuries_player_name"
@@ -75,12 +74,12 @@
                 android:layout_marginEnd="@dimen/large_margin"
                 android:background="@color/white"
                 android:scaleType="centerCrop"
-                android:src="@drawable/neymar_pic"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:roundPercent="1"
-                app:setImageUrl="@{item.photo.toString()}" />
+                app:setImageUrl="@{item.photo.toString()}"
+                tools:src="@drawable/neymar_pic" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
