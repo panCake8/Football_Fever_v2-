@@ -155,6 +155,12 @@ interface ApiService {
         @Query("season") season: Int,
     ): Response<BaseResponse<InjuriesDto>>
 
+    @GET("coachs")
+    suspend fun getCoaches(
+        @Query("id") id: Int? = null,
+        @Query("team") teamId: Int? = null,
+    ): Response<BaseResponse<CoachsDto>>
+
     // endregion
 
     // region transfers requests
