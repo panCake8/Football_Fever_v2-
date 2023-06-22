@@ -23,42 +23,13 @@ class LeagueMatchesFragment : BaseFragment<FragmentLeagueMatchBinding, LeagueMat
         super.onViewCreated(view, savedInstanceState)
 
 
-
-
-    }
-
-
-    private fun setDropDown(dropdown: AutoCompleteTextView) {
-
-
-        val items = listOf(
-            "$year-${month + 1}-$day",
-            "$year-${month + 1}-${day - 1}",
-            "$year-${month + 1}-${day - 2}",
-            "$year-${month + 1}-${day - 3}",
-            "$year-${month + 1}-${day - 4}",
-            "$year-${month + 1}-${day - 5}",
-            "$year-${month + 1}-${day - 6}",
-        )
-
-
-
+        setRecycler()
 
     }
 
-    private fun updateScreen(year: Int, league: Int, ) {
-        viewModel.getAllLeagueMatches(year - 1 , league)
-
-//        viewModel.updateDate(date)
-
+    private fun setRecycler() {
+        binding.viewModel = viewModel
     }
 
-    companion object {
-
-        val day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
-        val month = Calendar.getInstance().get(Calendar.MONTH)
-        val year = Calendar.getInstance().get(Calendar.YEAR)
-
-    }
 
 }

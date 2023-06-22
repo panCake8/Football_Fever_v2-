@@ -11,6 +11,7 @@ import com.pancake.footballfever.ui.league_state.match.adapter.LeagueMatchesList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -34,20 +35,22 @@ class LeagueMatchesViewModel @Inject constructor(private val leagueMatchesUseCas
     fun getAllLeagueMatches(season: Int, league: Int) {
 
         viewModelScope.launch {
-            leagueMatchesUseCase.getLeagueMatches(season, league).let {
+            leagueMatchesUseCase.getLeagueMatches(season, league).let { list ->
 
-//                _leagueMatches.postValue(it)
-                Log.i("TAG", "${it?.size}")
+                _leagueMatches.update {
+                    it.copy(
+                        isLoading = false,
+                        success = list
+                    )
+                }
+                Log.i("TAG", "${list?.size}")
 
             }
         }
 
     }
 
-    fun updateDate(date: String) {
-        _dayDate.postValue(date)
 
-    }
 
     override fun onItemClick(leagueMatch: LeagueMatch) {
 
