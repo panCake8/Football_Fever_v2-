@@ -10,6 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.pancake.footballfever.R
 import com.pancake.footballfever.ui.base.BaseAdapter
+import com.pancake.footballfever.ui.home.HomeUiState
+import com.pancake.footballfever.ui.home.HomeViewModel
+import com.pancake.footballfever.ui.home.adapter.FixtureHomeListener
+import com.pancake.footballfever.ui.home.adapter.ParentHomeAdapter
 
 @BindingAdapter(value = ["app:setRecyclerItems"])
 fun <T> setRecyclerItems(recyclerView: RecyclerView, items: List<T?>?) {
@@ -62,48 +66,7 @@ fun ImageView.bindFixtureEventImg(type: String) {
     )
 }
 
-@BindingAdapter("app:showWhenSearchLoading")
-fun <T> showWhenLoading(view: View,dataState: DataState<T>){
-
-    if(dataState is DataState.Loading){
-        view.visibility=View.VISIBLE
-    }
-    else
-        view.visibility=View.GONE
-
-}
-
-@BindingAdapter("app:showWhenSearchSuccess")
-fun <T> showWhenSuccess(view: View,dataState: DataState<T>){
-
-    if(dataState is DataState.Success){
-        view.visibility=View.VISIBLE
-    }
-    else
-        view.visibility=View.GONE
-
-}
-
-
-@BindingAdapter("app:showWhenSearchError")
-fun <T> showWhenError(view: View,dataState: DataState<T>){
-
-    if(dataState is DataState.Error){
-        view.visibility=View.VISIBLE
-    }
-    else
-        view.visibility=View.GONE
-
-}
-
-
-@BindingAdapter(value = ["app:showWhenSearchInSearchSuggests"])
-fun <T> showWhenSearchInSearchSuggests(view: View, dataState: DataState<T>) {
-
-    if(dataState is DataState.ShowKeywordSuggests){
-        view.visibility=View.VISIBLE
-    }
-    else
-        view.visibility=View.GONE
-
+@BindingAdapter(value = ["app:setHomeItem", "app:setHomeListener"], requireAll = true)
+fun RecyclerView.setHomeItem(item: HomeUiState, listener: FixtureHomeListener) {
+    adapter = ParentHomeAdapter(item, listener)
 }
