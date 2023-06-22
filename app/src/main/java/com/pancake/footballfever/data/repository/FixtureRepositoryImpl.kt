@@ -20,7 +20,7 @@ class FixtureRepositoryImpl @Inject constructor(
             .body()?.response!!
     }
 
-    override suspend fun getAllFixturesHomeLocal(): Flow<List<FixtureHomeEntity>> {
+    override suspend fun getAllFixturesHomeLocal(): List<FixtureHomeEntity> {
         return fixtureDao.getAllFixtureHome()
     }
 
