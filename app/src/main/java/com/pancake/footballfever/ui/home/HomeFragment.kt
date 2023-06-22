@@ -23,16 +23,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     private var seasonFormatter = 0
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        callFixtures()
         setUpCalender()
         onCalenderClick()
         observeEvents()
-    }
-
-    private fun callFixtures() {
-        clearCalender()
-        formatDate()
-        viewModel.refreshFixtures(dateFormatter, seasonFormatter)
     }
 
     private fun setUpCalender() {
