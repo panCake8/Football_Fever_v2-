@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class FavoriteTeam(
-    val id: Int,
-    val name: String,
-    val logo: String
+    val id: Int?,
+    val name: String?,
+    val logo: String?
 ) : Parcelable

@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class FavoriteTeamEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
-    val teamId: Int,
-    val name: String,
-    val logo: String
+    val teamId: Int?,
+    val name: String?,
+    val logo: String?
 )
