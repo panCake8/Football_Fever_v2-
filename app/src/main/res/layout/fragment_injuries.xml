@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="viewModel"
+            type="com.pancake.footballfever.ui.injuries.InjuriesViewModel" />
 
     </data>
 
@@ -38,8 +41,28 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/no_elevation"
             android:layout_marginTop="@dimen/medium_margin"
+            app:setRecyclerItems="@{viewModel.injury.success}"
             app:layout_constraintTop_toBottomOf="@+id/injuries_back_icon"
             tools:listitem="@layout/item_injuries" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:showIfLoading="@{viewModel.injury.loading}" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:showIfError="@{viewModel.injury.error}"
+            app:srcCompat="@drawable/baseline_error_48" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
