@@ -3,7 +3,7 @@ package com.pancake.footballfever.ui.Club_stats
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class ClubPagerAdapter(
+class ClubStatsPagerAdapter(
     fragment: Fragment
 ) : FragmentStateAdapter(fragment) {
     private val fragments = ArrayList<Fragment>()

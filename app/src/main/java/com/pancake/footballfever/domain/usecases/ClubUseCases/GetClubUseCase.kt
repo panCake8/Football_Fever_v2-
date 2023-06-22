@@ -8,13 +8,13 @@ import javax.inject.Inject
 class GetClubUseCase @Inject constructor(
     private val clubRepository: ClubRepository,
     private val cacheDataUseCase: CacheClubDataUseCase,
-
+    private val getCacheDataUseCase: GetCacheDataUseCase,
 
     ) {
 
     suspend fun getClubById(clubId: Int):ClubModel{
         val result = clubRepository.getClubById(clubId).toClubModel()
         cacheDataUseCase.addClubData(result)
-        return result
+        return getCacheDataUseCase.getCacheData()
     }
 }
