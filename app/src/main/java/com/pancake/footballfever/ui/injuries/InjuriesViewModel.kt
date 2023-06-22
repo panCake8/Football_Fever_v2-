@@ -52,11 +52,11 @@ class InjuriesViewModel @Inject constructor(
 
     private fun getInjuries(){
         viewModelScope.launch{
-            val coach = getInjuriesUseCase()
+            val injury = getInjuriesUseCase()
             _injury.update {
                 it.copy(
                     isLoading = false,
-                    success = coach
+                    success = injury
                 )
             }
         }

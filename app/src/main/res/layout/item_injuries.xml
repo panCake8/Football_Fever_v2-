@@ -35,7 +35,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:roundPercent="1"
                 app:setImageUrl="@{item.logoTeam.toString()}"
-                app:shapeAppearanceOverlay="Circular" />
+                 />
 
             <TextView
                 android:id="@+id/injuries_player_name"
