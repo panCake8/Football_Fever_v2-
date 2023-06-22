@@ -19,7 +19,7 @@ fun InjuriesEntity.toInjuriesModel(): Injuries{
     return Injuries(
         name = name,
         photo = photo,
-        date = date,
+        date = date?.take(10),
         reason = reason,
         logoTeam = logoTeam,
     )
