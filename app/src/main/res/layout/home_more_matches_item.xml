@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.pancake.footballfever.domain.models.FixtureHome" />
+
+        <variable
+            name="listener"
+            type="com.pancake.footballfever.ui.home.adapter.FixtureHomeListener" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/small_margin"
+        android:onClick="@{()->listener.onClickFixture(item)}"
+        app:cardCornerRadius="@dimen/radius_medium">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background_main_card"
+            android:orientation="horizontal"
+            android:paddingVertical="@dimen/medium_padding"
+            android:weightSum="5">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/home_name"
+                    style="@style/select_favorite_item_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/semi_large_margin"
+                    android:maxLines="2"
+                    android:maxWidth="@dimen/fixture_teams_width"
+                    android:ellipsize="end"
+                    android:text="@{item.homeTeamName}"
+                    android:textSize="@dimen/text_tiny"
+                    tools:text="real madrid" />
+
+                <androidx.constraintlayout.utils.widget.ImageFilterView
+                    android:id="@+id/home_team_logo"
+                    android:layout_width="@dimen/dimens_country_image"
+                    android:layout_height="@dimen/dimens_country_image"
+                    android:scaleType="fitXY"
+                    app:roundPercent="1"
+                    app:setImageUrl="@{item.homeTeamLogo}"
+                    tools:srcCompat="@drawable/arsenal_logo" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/date"
+                style="@style/select_favorite_item_text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:maxLines="2"
+                android:textSize="@dimen/text_tiny"
+                tools:text="27 Aug 2022" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <androidx.constraintlayout.utils.widget.ImageFilterView
+                    android:id="@+id/away_team_logo"
+                    android:layout_width="@dimen/dimens_country_image"
+                    android:layout_height="@dimen/dimens_country_image"
+                    android:scaleType="fitXY"
+                    app:roundPercent="1"
+                    app:setImageUrl="@{item.awayTeamLogo}"
+                    tools:srcCompat="@drawable/arsenal_logo" />
+
+                <TextView
+                    android:id="@+id/away_team_name"
+                    style="@style/select_favorite_item_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/semi_large_margin"
+                    android:maxLines="2"
+                    android:text="@{item.awayTeamName}"
+                    android:textSize="@dimen/text_tiny"
+                    tools:text="real madrid" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

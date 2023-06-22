@@ -7,5 +7,5 @@ class MyItemKeyProvider(private val adapter: SelectFavoriteTeamsAdapter) :
     ItemKeyProvider<FavoriteTeam>(SCOPE_CACHED) {
 
     override fun getKey(position: Int): FavoriteTeam = adapter.getCurrentItem(position)
-    override fun getPosition(key: FavoriteTeam): Int = adapter.getPosition(key.name)
+    override fun getPosition(key: FavoriteTeam): Int = adapter.getPosition(key.name!!)
 }
