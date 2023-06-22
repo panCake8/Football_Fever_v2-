@@ -30,6 +30,16 @@
         <item name="android:textColor">@color/white87</item>
         <item name="fontFamily">@font/poppins_semibold</item>
     </style>
+    <style name="club_name" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/text_large</item>
+        <item name="android:textColor">@color/white87</item>
+        <item name="fontFamily">@font/poppins_medium</item>
+    </style>
+    <style name="venue_name" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:textColor">@color/chip_text_color</item>
+        <item name="fontFamily">@font/poppins_medium</item>
+    </style>
 
     <!-- app bar-->
     <style name="AppBar">
