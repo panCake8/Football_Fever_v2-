@@ -47,9 +47,12 @@ interface FootballDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertStandings(standings: List<StandingsEntity>)
 
-    @Query("SELECT * FROM STANDINGS_TABLE WHERE leagueId =:leagueId AND season =:season")
+    @Query("SELECT * FROM STANDINGS_TABLE WHERE leagueId =:leagueId AND season =:season ORDER BY rank ")
     fun getAllStandings(leagueId:Int,season:Int): List<StandingsEntity>
 
+    @Query("delete from STANDINGS_TABLE ")
+    fun deleteStandings()
+    
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertSearchKeyword(keyword: SearchKeywordEntity)
 
