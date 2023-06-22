@@ -5,6 +5,8 @@ import com.pancake.footballfever.data.repository.CountryRepository
 import com.pancake.footballfever.data.repository.CountryRepositoryImpl
 import com.pancake.footballfever.data.repository.FixtureRepository
 import com.pancake.footballfever.data.repository.FixtureRepositoryImpl
+import com.pancake.footballfever.data.repository.InjuriesRepository
+import com.pancake.footballfever.data.repository.InjuriesRepositoryImpl
 import com.pancake.footballfever.data.repository.LeaguesRepository
 import com.pancake.footballfever.data.repository.LeaguesRepositoryImpl
 import com.pancake.footballfever.data.repository.PlayerRepository
@@ -58,4 +60,10 @@ abstract class RepositoryModule {
     abstract fun bindsFixtureRepository(
         fixtureRepositoryImpl: FixtureRepositoryImpl
     ): FixtureRepository
+
+    @Binds
+    @Singleton
+    abstract fun injuriesRepository(
+        injuriesRepository: InjuriesRepositoryImpl
+    ): InjuriesRepository
 }
