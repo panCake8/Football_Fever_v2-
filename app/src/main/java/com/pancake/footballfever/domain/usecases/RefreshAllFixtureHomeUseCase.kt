@@ -1,12 +1,10 @@
 package com.pancake.footballfever.domain.usecases
 
-import android.util.Log
 import com.example.footboolfever.data.remote.dto.FixturesDto
 import com.pancake.footballfever.data.local.database.entity.FavoriteTeamEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureHomeEntity
 import com.pancake.footballfever.data.repository.FixtureRepository
 import com.pancake.footballfever.data.repository.TeamRepository
-import java.util.function.LongFunction
 import javax.inject.Inject
 
 class RefreshAllFixtureHomeUseCase @Inject constructor(
