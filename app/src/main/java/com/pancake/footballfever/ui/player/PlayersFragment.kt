@@ -2,7 +2,6 @@ package com.pancake.footballfever.ui.player
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.navArgs
 import com.pancake.footballfever.R
 import com.pancake.footballfever.databinding.FragmentPlayersBinding
 import com.pancake.footballfever.ui.base.BaseFragment
