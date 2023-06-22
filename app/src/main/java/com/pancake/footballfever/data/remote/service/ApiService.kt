@@ -1,6 +1,7 @@
 package com.pancake.footballfever.data.remote.service
 
 import com.example.footboolfever.data.remote.dto.BaseResponse
+import com.example.footboolfever.data.remote.dto.CoachsDto
 import com.example.footboolfever.data.remote.dto.CountryDto
 import com.example.footboolfever.data.remote.dto.EventsDto
 import com.example.footboolfever.data.remote.dto.FixturesDto
@@ -195,6 +196,26 @@ interface ApiService {
         @Query("league") leagueId: Int,
         @Query("season") season: Int,
     ): Response<BaseResponse<TeamsDto>>
+
+    // endregion
+
+
+    // region search requests
+    @GET("leagues")
+    suspend fun getLeagueBySearch(
+        @Query("search") searchText:String
+    ):Response<BaseResponse<LeaguesDto>>
+
+
+    @GET("teams")
+    suspend fun getTeamBySearch(
+        @Query("search") searchText:String
+    ):Response<BaseResponse<TeamsDto>>
+
+    @GET("coachs")
+    suspend fun getCoachBySearch(
+        @Query("search") searchText:String
+    ):Response<BaseResponse<CoachsDto>>
 
     // endregion
 

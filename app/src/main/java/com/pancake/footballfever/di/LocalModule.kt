@@ -6,6 +6,7 @@ import com.pancake.footballfever.data.Constants
 import com.pancake.footballfever.data.local.database.FootballDatabase
 import com.pancake.footballfever.data.local.database.daos.FixtureDao
 import com.pancake.footballfever.data.local.database.daos.FootballDao
+import com.pancake.footballfever.data.local.database.daos.PlayerDao
 import com.pancake.footballfever.data.local.database.daos.LeagueDao
 import com.pancake.footballfever.data.local.database.daos.PlayerDao
 import com.pancake.footballfever.data.local.database.daos.TeamDao

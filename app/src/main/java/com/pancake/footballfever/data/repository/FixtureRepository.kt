@@ -9,7 +9,7 @@ interface FixtureRepository {
 
     suspend fun getAllFixturesHomeRemote(date: String, teamId: Int, season: Int): List<FixturesDto>
 
-    suspend fun getAllFixturesHomeLocal(): Flow<List<FixtureHomeEntity>>
+    suspend fun getAllFixturesHomeLocal(): List<FixtureHomeEntity>
 
     suspend fun addFixtureHome(teams:List<FixtureHomeEntity>)
 

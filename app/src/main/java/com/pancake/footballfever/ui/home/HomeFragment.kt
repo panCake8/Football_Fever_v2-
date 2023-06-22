@@ -6,7 +6,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.pancake.footballfever.R
 import com.pancake.footballfever.databinding.FragmentHomeBinding
-import com.pancake.footballfever.domain.models.FixtureHome
 import com.pancake.footballfever.ui.base.BaseFragment
 import com.pancake.footballfever.utilities.EventObserver
 import com.prolificinteractive.materialcalendarview.CalendarDay
@@ -20,19 +19,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     override val viewModel: HomeViewModel by viewModels()
 
     private val calender = Calendar.getInstance()
+    private var dateFormatter = ""
+    private var seasonFormatter = 0
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        callFixtures()
         setUpCalender()
         onCalenderClick()
         observeEvents()
-    }
-
-    private fun callFixtures() {
-        clearCalender()
-        val dateFormatter = SimpleDateFormat("YYYY-MM-dd").format(calender.time)
-        val seasonFormatter = SimpleDateFormat("YYYY").format(calender.time).toInt().minus(1)
-        viewModel.refreshFixtures(dateFormatter, seasonFormatter)
     }
 
     private fun setUpCalender() {
@@ -52,8 +45,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     private fun refreshData() {
         clearCalender()
-        val dateFormatter = SimpleDateFormat("YYYY-MM-dd").format(calender.time)
-        val seasonFormatter = SimpleDateFormat("YYYY").format(calender.time).toInt().minus(1)
+        formatDate()
         viewModel.deleteAllFixtures()
         viewModel.refreshFixtures(dateFormatter, seasonFormatter)
     }
@@ -65,13 +57,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         calender.set(Calendar.HOUR, 0)
     }
 
-    private fun observeEvents() {
-        viewModel.fixtureEvent.observe(viewLifecycleOwner, EventObserver<FixtureHome> {
-            val dateFormatter = SimpleDateFormat("YYYY-MM-dd").format(calender.time)
-            val seasonFormatter = SimpleDateFormat("YYYY").format(calender.time).toInt().minus(1)
+    private fun formatDate() {
+        dateFormatter = SimpleDateFormat("YYYY-MM-dd").format(calender.time)
+        seasonFormatter = SimpleDateFormat("YYYY").format(calender.time).toInt().minus(1)
+    }
 
+    private fun observeEvents() {
+        viewModel.fixtureEvent.observe(viewLifecycleOwner, EventObserver {
+            formatDate()
             val nav = HomeFragmentDirections.actionHomeFragmentToFixtureFragment(
-                1,
+                it.fixture!!,
                 seasonFormatter,
                 dateFormatter
             )
