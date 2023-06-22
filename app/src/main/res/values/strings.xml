@@ -36,12 +36,6 @@
     <string name="ok">ok</string>
     <string name="alert">Alert</string>
     <string name="alert_selection">you must select at least one favorite team</string>
-
-    <string name="pep_guardiola">pep guardiola</string>
-    <string name="barcelona">Barcelona</string>
-    <string name="coaches">Coaches</string>
-
-
     <string name="there_is_no_matches_in_this_date">there is no matches in this date</string>
 
 
@@ -54,7 +48,7 @@
     <string name="pts_value">31</string>
     <string name="win_value">10</string>
     <string name="played_value">12</string>
-  
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="there_is_no_more_matches_in_this_data">there is no more matches in this data</string>
 
