@@ -5,14 +5,18 @@
 
     <data>
 
+        <variable
+            name="item"
+            type="com.pancake.footballfever.domain.models.Injuries" />
+
     </data>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="170dp"
+        android:layout_marginHorizontal="@dimen/large_margin"
         android:layout_marginBottom="@dimen/medium_margin"
-        app:cardCornerRadius="@dimen/radius_semi_large"
-        android:layout_marginHorizontal="@dimen/large_margin">
+        app:cardCornerRadius="@dimen/radius_semi_large">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -30,6 +34,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:roundPercent="1"
+                app:setImageUrl="@{item.logoTeam.toString()}"
                 app:shapeAppearanceOverlay="Circular" />
 
             <TextView
@@ -37,6 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/large_margin"
+                android:text="@{item.name.toString()}"
                 android:textColor="@color/text_title"
                 app:layout_constraintStart_toStartOf="@+id/injuries_flag_image_view"
                 app:layout_constraintTop_toBottomOf="@id/injuries_flag_image_view"
@@ -47,6 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/medium_margin"
+                android:text="@{item.reason.toString()}"
                 android:textColor="@color/text_item_card"
                 app:layout_constraintStart_toStartOf="@+id/injuries_player_name"
                 app:layout_constraintTop_toBottomOf="@+id/injuries_player_name"
@@ -57,6 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/medium_margin"
+                android:text="@{item.date.toString()}"
                 app:layout_constraintStart_toStartOf="@+id/injuries_injury_type"
                 app:layout_constraintTop_toBottomOf="@id/injuries_injury_type"
                 tools:text="@string/injury_date" />
@@ -71,7 +79,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:roundPercent="1" />
+                app:roundPercent="1"
+                app:setImageUrl="@{item.photo.toString()}" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
