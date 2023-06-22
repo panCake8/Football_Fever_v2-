@@ -31,7 +31,7 @@ fun setImageUrl(image: ImageView, url: String?) {
 fun ProgressBar.showIfLoading(isLoading: Boolean) {
     visibility = when (isLoading) {
         true -> View.VISIBLE
-        false -> View.INVISIBLE
+        false -> View.GONE
     }
 }
 
