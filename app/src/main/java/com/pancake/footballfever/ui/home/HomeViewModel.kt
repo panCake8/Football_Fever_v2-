@@ -10,7 +10,6 @@ import com.pancake.footballfever.domain.usecases.RefreshAllFixtureHomeUseCase
 import com.pancake.footballfever.ui.home.adapter.FixtureHomeListener
 import com.pancake.footballfever.utilities.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
@@ -34,12 +33,11 @@ class HomeViewModel @Inject constructor(
         getFixtureLocal()
     }
 
-   private fun getFixtureLocal() {
+    private fun getFixtureLocal() {
         viewModelScope.launch {
-            getFixturesLocalUseCase.getAllFixtureHomeLocal().collect { fixtures ->
-                _fixtures.update {
-                    it.copy(isLoading = false, success = fixtures)
-                }
+            val fixtures = getFixturesLocalUseCase.getAllFixtureHomeLocal()
+            _fixtures.update {
+                it.copy(isLoading = false, success = fixtures)
             }
         }
     }
@@ -47,17 +45,12 @@ class HomeViewModel @Inject constructor(
     fun refreshFixtures(date: String, season: Int) {
         viewModelScope.launch {
             _fixtures.update { it.copy(isLoading = true) }
-            try {
-                val request = refreshFixtureUseCase.refreshAllFixtureHome(date, season)
-                if (request.isSuccess) {
-                   getFixtureLocal()
-                } else {
-                    _fixtures.update { it.copy(error = request.exceptionOrNull()?.message) }
-                }
-            } catch (e: Throwable) {
-                _fixtures.update { it.copy(error = e.message) }
+            val request = refreshFixtureUseCase.refreshAllFixtureHome(date, season)
+            if (request.isSuccess) {
+                getFixtureLocal()
+            } else {
+                _fixtures.update { it.copy(error = request.exceptionOrNull()?.message) }
             }
-
         }
     }
 

@@ -60,9 +60,9 @@ class ParentHomeAdapter(
 
     private fun bindHomeMoreMatches(holder: HomeMoreMatchesViewHolder) {
         holder.binding.apply {
+            childRecycler.adapter = HomeMoreMatchesAdapter(listener)
             if (homeItem.success.isNotEmpty()) {
                 item = homeItem
-                childRecycler.adapter = HomeMoreMatchesAdapter(listener)
             } else {
                 noMatchesMessage.isVisible = true
             }

@@ -15,7 +15,7 @@ interface FixtureDao {
     suspend fun addFixtureHome(teams: List<FixtureHomeEntity>)
 
     @Query("select * from FIXTURE_HOME_TABLE")
-    fun getAllFixtureHome(): Flow<List<FixtureHomeEntity>>
+   suspend fun getAllFixtureHome(): List<FixtureHomeEntity>
 
     @Query("delete from FIXTURE_HOME_TABLE ")
     suspend fun deleteAllFixtureHome()

@@ -204,4 +204,24 @@ interface ApiService {
     ): Response<BaseResponse<TeamsDto>>
 
     // endregion
+
+
+    // region search requests
+    @GET("leagues")
+    suspend fun getLeagueBySearch(
+        @Query("search") searchText:String
+    ):Response<BaseResponse<LeaguesDto>>
+
+
+    @GET("teams")
+    suspend fun getTeamBySearch(
+        @Query("search") searchText:String
+    ):Response<BaseResponse<TeamsDto>>
+
+    @GET("coachs")
+    suspend fun getCoachBySearch(
+        @Query("search") searchText:String
+    ):Response<BaseResponse<CoachsDto>>
+
+    // endregion
 }

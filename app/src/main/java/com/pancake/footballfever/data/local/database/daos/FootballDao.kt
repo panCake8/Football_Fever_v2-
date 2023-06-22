@@ -9,6 +9,7 @@ import com.pancake.footballfever.data.local.database.entity.CoachEntity
 import com.pancake.footballfever.data.local.database.entity.CountryEntity
 import com.pancake.footballfever.data.local.database.entity.FavoriteTeamEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureHomeEntity
+import com.pancake.footballfever.data.local.database.entity.SearchKeywordEntity
 import com.pancake.footballfever.data.local.database.entity.StandingsEntity
 import com.pancake.footballfever.data.local.database.entity.VenueEntity
 import kotlinx.coroutines.flow.Flow
@@ -54,6 +55,15 @@ interface FootballDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertStandings(standings: List<StandingsEntity>)
 
-    @Query("SELECT * FROM STANDINGS_TABLE WHERE leagueId =:leagueId AND season =:season")
+    @Query("SELECT * FROM STANDINGS_TABLE WHERE leagueId =:leagueId AND season =:season ORDER BY rank ")
     fun getAllStandings(leagueId:Int,season:Int): List<StandingsEntity>
+
+    @Query("delete from STANDINGS_TABLE ")
+    fun deleteStandings()
+    
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertSearchKeyword(keyword: SearchKeywordEntity)
+
+    @Query("SELECT * FROM KEYWORD_SEARCH_TABLE ORDER BY id DESC")
+    suspend fun getAllSearchKeywords(): List<SearchKeywordEntity>
 }
