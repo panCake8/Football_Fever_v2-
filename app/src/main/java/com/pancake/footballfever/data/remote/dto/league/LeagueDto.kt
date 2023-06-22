@@ -1,4 +1,4 @@
-package com.example.footboolfever.data.remote.dto.league
+package com.pancake.footballfever.data.remote.dto.league
 
 import com.google.gson.annotations.SerializedName
 
