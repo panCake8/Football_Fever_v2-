@@ -4,22 +4,16 @@ package com.pancake.footballfever.domain.usecases
 import com.pancake.footballfever.data.local.database.entity.FixtureHomeEntity
 import com.pancake.footballfever.data.repository.FixtureRepository
 import com.pancake.footballfever.domain.models.FixtureHome
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class GetAllFixtureHomeLocalUseCase @Inject constructor(
     private val fixtureRepository: FixtureRepository,
 ) {
 
-    suspend fun getAllFixtureHomeLocal(): Flow<List<FixtureHome>> {
-        return flow {
-            fixtureRepository.getAllFixturesHomeLocal().collect { fixtures ->
-                val localTeams = fixtures.map { it.toFixtureHome() }
-                    .sortedWith(compareBy { it.timestamp })
-                emit(localTeams)
-            }
-        }
+    suspend fun getAllFixtureHomeLocal(): List<FixtureHome> {
+        return fixtureRepository.getAllFixturesHomeLocal()
+            .sortedWith(compareBy { it.timestamp })
+            .map { it.toFixtureHome() }
 
     }
 }
@@ -30,7 +24,7 @@ private fun FixtureHomeEntity.toFixtureHome(): FixtureHome {
         round = this.round,
         elapsed = this.elapsed,
         fixture = this.fixture,
-        timestamp = this.timestamp,
+        status = this.status,
         homeTeamId = this.homeTeamId,
         homeTeamName = this.homeTeamName,
         homeTeamLogo = this.homeTeamLogo,

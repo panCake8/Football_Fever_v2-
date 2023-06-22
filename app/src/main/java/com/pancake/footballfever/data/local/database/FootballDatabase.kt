@@ -38,6 +38,6 @@ abstract class FootballDatabase : RoomDatabase() {
     abstract val footballDao: FootballDao
     abstract val playerDao: PlayerDao
     abstract val leagueDao: LeagueDao
-    abstract val teamDao :TeamDao
-    abstract val fixtureDao:FixtureDao
+    abstract val teamDao: TeamDao
+    abstract val fixtureDao: FixtureDao
 }
