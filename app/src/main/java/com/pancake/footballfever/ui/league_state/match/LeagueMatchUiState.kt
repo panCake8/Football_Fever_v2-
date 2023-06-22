@@ -5,5 +5,5 @@ import com.pancake.footballfever.domain.models.LeagueMatchUiModel
 data class LeagueMatchUiState(
     val isLoading: Boolean = false,
     val error: String? = null,
-    val success: List<LeagueMatchUiModel> = listOf(),
+    val success: List<LeagueMatchUiModel>? = listOf(),
 )
