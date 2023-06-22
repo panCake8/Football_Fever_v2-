@@ -70,3 +70,49 @@ fun ImageView.bindFixtureEventImg(type: String) {
 fun RecyclerView.setHomeItem(item: HomeUiState, listener: FixtureHomeListener) {
     adapter = ParentHomeAdapter(item, listener)
 }
+
+@BindingAdapter("app:showWhenSearchLoading")
+fun <T> showWhenLoading(view: View,dataState: DataState<T>){
+
+    if(dataState is DataState.Loading){
+        view.visibility=View.VISIBLE
+    }
+    else
+        view.visibility=View.GONE
+
+}
+
+@BindingAdapter("app:showWhenSearchSuccess")
+fun <T> showWhenSuccess(view: View,dataState: DataState<T>){
+
+    if(dataState is DataState.Success){
+        view.visibility=View.VISIBLE
+    }
+    else
+        view.visibility=View.GONE
+
+}
+
+
+@BindingAdapter("app:showWhenSearchError")
+fun <T> showWhenError(view: View,dataState: DataState<T>){
+
+    if(dataState is DataState.Error){
+        view.visibility=View.VISIBLE
+    }
+    else
+        view.visibility=View.GONE
+
+}
+
+
+@BindingAdapter(value = ["app:showWhenSearchInSearchSuggests"])
+fun <T> showWhenSearchInSearchSuggests(view: View, dataState: DataState<T>) {
+
+    if(dataState is DataState.ShowKeywordSuggests){
+        view.visibility=View.VISIBLE
+    }
+    else
+        view.visibility=View.GONE
+
+}
