@@ -40,10 +40,10 @@ interface FootballDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addFixtureHome(teams: List<FixtureHomeEntity>)
 
-    @Query("select * from FIXTURE_TEAM_TABLE")
+    @Query("select * from FIXTURE_HOME_TABLE")
     fun getAllFixtureHome(): Flow<List<FixtureHomeEntity>>
 
-    @Query("delete from FIXTURE_TEAM_TABLE ")
+    @Query("delete from FIXTURE_HOME_TABLE ")
     fun deleteAllFixtureHome()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
