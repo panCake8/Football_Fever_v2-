@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.pancake.footballfever.domain.models.FixtureHome" />
+
+        <variable
+            name="listener"
+            type="com.pancake.footballfever.ui.home.adapter.FixtureHomeListener" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/medium_margin"
+        android:onClick="@{()->listener.onClickFixture(item)}"
+        app:cardCornerRadius="@dimen/radius_large">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/home_first_card_shape">
+
+            <TextView
+                android:id="@+id/league_name"
+                style="@style/select_favorite_item_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/semi_large_margin"
+                android:text="@{item.leagueName}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="champion league" />
+
+            <TextView
+                android:id="@+id/round"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@{item.round}"
+                android:textColor="@color/white87"
+                android:textSize="@dimen/text_tiny"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/league_name"
+                tools:text="final" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/large_margin"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginBottom="@dimen/semi_large_margin"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/round">
+
+                <LinearLayout
+                    android:id="@+id/home_linear_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.utils.widget.ImageFilterView
+                        android:id="@+id/home_image"
+                        android:layout_width="@dimen/height_country_card"
+                        android:layout_height="@dimen/height_country_card"
+                        android:scaleType="fitXY"
+                        app:roundPercent="1"
+                        app:setImageUrl="@{item.homeTeamLogo}"
+                        tools:srcCompat="@drawable/arsenal_logo" />
+
+                    <TextView
+                        android:id="@+id/home_name"
+                        style="@style/select_favorite_item_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/medium_margin"
+                        android:text="@{item.homeTeamName}"
+                        tools:text="real madrid" />
+
+                    <TextView
+                        style="@style/select_favorite_item_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/home" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/home_goals"
+                            style="@style/teams_score"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{String.valueOf(item.homeTeamGoals)}"
+                            tools:text="1" />
+
+                        <TextView
+                            style="@style/teams_score"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/medium_margin"
+                            android:text="@string/column" />
+
+                        <TextView
+                            android:id="@+id/away_goals"
+                            style="@style/teams_score"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{String.valueOf(item.awayTeamGoals)}"
+                            tools:text="1" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/elipsed"
+                        style="@style/select_favorite_item_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{String.valueOf(item.elapsed)}"
+                        tools:text="90" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/away_linear_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.utils.widget.ImageFilterView
+                        android:id="@+id/away_image"
+                        android:layout_width="@dimen/height_country_card"
+                        android:layout_height="@dimen/height_country_card"
+                        android:scaleType="fitXY"
+                        app:roundPercent="1"
+                        app:setImageUrl="@{item.awayTeamLogo}"
+                        tools:srcCompat="@drawable/arsenal_logo" />
+
+                    <TextView
+                        android:id="@+id/away_name"
+                        style="@style/select_favorite_item_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/medium_margin"
+                        android:text="@{item.awayTeamName}"
+                        tools:text="real madrid" />
+
+                    <TextView
+                        style="@style/select_favorite_item_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/away" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

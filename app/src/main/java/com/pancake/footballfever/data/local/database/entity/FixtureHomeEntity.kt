@@ -3,9 +3,9 @@ package com.pancake.footballfever.data.local.database.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "FIXTURE_TEAM_TABLE")
+@Entity(tableName = "FIXTURE_HOME_TABLE")
 data class FixtureHomeEntity(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     val id: Int,
     val fixture: Int,
     val leagueName: String?,

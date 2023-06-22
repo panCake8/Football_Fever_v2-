@@ -5,7 +5,6 @@ import androidx.room.RoomDatabase
 import com.pancake.footballfever.data.local.database.daos.FixtureDao
 import com.pancake.footballfever.data.local.database.daos.FootballDao
 import com.pancake.footballfever.data.local.database.daos.LeagueDao
-import com.pancake.footballfever.data.local.database.daos.LeagueMatchesDao
 import com.pancake.footballfever.data.local.database.daos.PlayerDao
 import com.pancake.footballfever.data.local.database.daos.TeamDao
 import com.pancake.footballfever.data.local.database.entity.CountryEntity
@@ -14,7 +13,6 @@ import com.pancake.footballfever.data.local.database.entity.FixtureEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureEventsEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureHomeEntity
 import com.pancake.footballfever.data.local.database.entity.LeagueEntity
-import com.pancake.footballfever.data.local.database.entity.LeagueMatchEntity
 import com.pancake.footballfever.data.local.database.entity.StandingsEntity
 import com.pancake.footballfever.data.local.database.entity.TopAssistEntity
 import com.pancake.footballfever.data.local.database.entity.TopGoalsEntity
@@ -44,4 +42,5 @@ abstract class FootballDatabase : RoomDatabase() {
     abstract val teamDao: TeamDao
     abstract val fixtureDao: FixtureDao
     abstract val leagueMatches: LeagueMatchesDao
+
 }
