@@ -2,6 +2,7 @@ package com.pancake.footballfever.ui.team_fixture
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.pancake.footballfever.domain.models.Fixture
 import com.pancake.footballfever.domain.usecases.GetTeamFixturesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,7 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class TeamFixturesViewModel @Inject constructor(
     private val fixturesUseCase: GetTeamFixturesUseCase
-) : ViewModel() {
+) : ViewModel(), TeamFixtureAdapter.FixturesClickListener {
     private var _fixturesUiState = MutableStateFlow(TeamFixtureUiState())
     val fixturesUiState = _fixturesUiState.asStateFlow()
 
@@ -37,6 +38,10 @@ class TeamFixturesViewModel @Inject constructor(
                 }
             }
         }
+
+    }
+
+    override fun onClick(fixture: Fixture) {
 
     }
 }
