@@ -4,8 +4,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-
-import com.pancake.footballfever.data.local.database.entity.CoachEntity
 import com.pancake.footballfever.data.local.database.entity.CountryEntity
 import com.pancake.footballfever.data.local.database.entity.FavoriteTeamEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureHomeEntity
@@ -46,12 +44,6 @@ interface FootballDao {
 
     @Query("delete from FIXTURE_HOME_TABLE ")
     fun deleteAllFixtureHome()
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertCoaches(coaches: List<CoachEntity>)
-
-    @Query("SELECT * FROM COACHES_TABLE ORDER BY id DESC")
-    suspend fun getAllCoaches(): List<CoachEntity>
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertStandings(standings: List<StandingsEntity>)
 
