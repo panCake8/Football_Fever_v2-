@@ -8,9 +8,9 @@ import com.pancake.footballfever.R
 import com.pancake.footballfever.databinding.FragmentInjuriesBinding
 import com.pancake.footballfever.ui.base.BaseFragment
 import com.pancake.footballfever.ui.injuries.adapter.InjuriesAdapter
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
+
+
 class InjuriesFragment : BaseFragment<FragmentInjuriesBinding,InjuriesViewModel>() {
 
     override val layoutId: Int = R.layout.fragment_injuries
