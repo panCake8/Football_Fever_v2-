@@ -1,10 +1,12 @@
 package com.pancake.footballfever.domain.usecases
 
+import android.util.Log
 import com.example.footboolfever.data.remote.dto.FixturesDto
 import com.pancake.footballfever.data.local.database.entity.FavoriteTeamEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureHomeEntity
 import com.pancake.footballfever.data.repository.FixtureRepository
 import com.pancake.footballfever.data.repository.TeamRepository
+import java.util.function.LongFunction
 import javax.inject.Inject
 
 class RefreshAllFixtureHomeUseCase @Inject constructor(
@@ -20,7 +22,7 @@ class RefreshAllFixtureHomeUseCase @Inject constructor(
         return try {
             val teams = mutableListOf<FixtureHomeEntity>()
             getAllFavoriteTeams().forEach {
-                val team = fixtureRepository.getAllFixturesHomeRemote(date, it.teamId, season)
+                val team = fixtureRepository.getAllFixturesHomeRemote(date, it.teamId!!, season)
                     .map { it.toFixtureEntity() }
 
                 teams.addAll(team)
@@ -35,19 +37,20 @@ class RefreshAllFixtureHomeUseCase @Inject constructor(
     private fun FixturesDto.toFixtureEntity(): FixtureHomeEntity {
         return FixtureHomeEntity(
             id = 0,
-            fixture = this.fixture?.id!!,
+            fixture = this.fixture?.id,
             leagueName = this.league?.name,
             round = this.league?.round,
-            elapsed = this.fixture.status?.elapsed,
-            timestamp = this.fixture.timestamp?.toLong(),
-            homeTeamId = this.teams?.home?.id!!,
-            homeTeamName = this.teams.home.name!!,
-            homeTeamLogo = this.teams.home.logo!!,
-            homeTeamGoals = this.goals?.home!!,
-            awayTeamId = this.teams.away?.id!!,
-            awayTeamName = this.teams.away.name!!,
-            awayTeamLogo = this.teams.away.logo!!,
-            awayTeamGoals = this.goals.away!!
+            elapsed = this.fixture?.status?.elapsed,
+            status = this.fixture?.status?.jsonMemberLong,
+            timestamp = this.fixture?.timestamp?.toLong(),
+            homeTeamId = this.teams?.home?.id,
+            homeTeamName = this.teams?.home?.name,
+            homeTeamLogo = this.teams?.home?.logo,
+            homeTeamGoals = this.goals?.home,
+            awayTeamId = this.teams?.away?.id,
+            awayTeamName = this.teams?.away?.name,
+            awayTeamLogo = this.teams?.away?.logo,
+            awayTeamGoals = this.goals?.away
         )
     }
 }
