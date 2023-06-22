@@ -12,6 +12,7 @@ import javax.inject.Inject
 class GetLeagueMatchesUseCase @Inject constructor(
     private val repository: LeagueMatchesRepository,
     private val cacheLeagueMatchesUseCase: CacheLeagueMatchesUseCase,
+    private val getCachedLeagueMatchesUseCase: GetCachedLeagueMatchesUseCase,
 ) {
 
 
@@ -25,8 +26,10 @@ class GetLeagueMatchesUseCase @Inject constructor(
 
         } catch (e: Exception) {
 //            throw IOException("error while fetching league matches", e)
-            repository.getAllLocalLeagueMatches().map { it.toLeagueMatch() }.groupBy { it.date }
-                .toLeagueMatchUi()
+//            repository.getAllLocalLeagueMatches().map { it.toLeagueMatch() }.groupBy { it.date }
+//                .toLeagueMatchUi()
+            getCachedLeagueMatchesUseCase.getCachedLeagueMatches().map { it.toLeagueMatch() }
+                .groupBy { it.date }.toLeagueMatchUi()
         }
 
     }
