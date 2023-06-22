@@ -71,7 +71,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
                 setChipBackgroundColorResource(R.color.search_bar_background)
                 setOnClickListener{
                     binding.searchBar.setText(searchKeyword.keyword)
-                    makeSearch(searchKeyword.keyword!!)
                 }
             }
             binding.searchSuggest.addView(chip)

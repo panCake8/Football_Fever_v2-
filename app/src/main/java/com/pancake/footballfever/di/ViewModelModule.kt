@@ -1,9 +1,9 @@
 package com.pancake.footballfever.di
 
-import com.pancake.footballfever.domain.usecase.GetCoachSearchUseCase
-import com.pancake.footballfever.domain.usecase.GetLeagueSearchUseCase
-import com.pancake.footballfever.domain.usecase.GetSearchKeywordsUseCase
-import com.pancake.footballfever.domain.usecase.GetTeamSearchUseCase
+import com.pancake.footballfever.domain.usecases.GetCoachSearchUseCase
+import com.pancake.footballfever.domain.usecases.GetLeagueSearchUseCase
+import com.pancake.footballfever.domain.usecases.GetSearchKeywordsUseCase
+import com.pancake.footballfever.domain.usecases.GetTeamSearchUseCase
 import com.pancake.footballfever.ui.search.SearchViewModel
 import dagger.Module
 import dagger.Provides

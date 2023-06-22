@@ -1,17 +1,14 @@
 package com.pancake.footballfever.ui.search
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.pancake.footballfever.data.local.database.entity.SearchKeywordEntity
 import com.pancake.footballfever.domain.models.SearchItem
 import com.pancake.footballfever.domain.models.SearchKeyword
-import com.pancake.footballfever.domain.usecase.GetCoachSearchUseCase
-import com.pancake.footballfever.domain.usecase.GetLeagueSearchUseCase
-import com.pancake.footballfever.domain.usecase.GetSearchKeywordsUseCase
-import com.pancake.footballfever.domain.usecase.GetTeamSearchUseCase
+import com.pancake.footballfever.domain.usecases.GetCoachSearchUseCase
+import com.pancake.footballfever.domain.usecases.GetLeagueSearchUseCase
+import com.pancake.footballfever.domain.usecases.GetSearchKeywordsUseCase
+import com.pancake.footballfever.domain.usecases.GetTeamSearchUseCase
 import com.pancake.footballfever.utilities.DataState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -123,7 +120,9 @@ class SearchViewModel @Inject constructor(
 
      fun cacheKeyword(text: String){
          viewModelScope.launch {
-             getSearchKeywordsUseCase.insertSearchKeywords(SearchKeyword(text))
+             if(searchKeyword.value.none { it.keyword == text }){
+                 getSearchKeywordsUseCase.insertSearchKeywords(SearchKeyword(text))
+             }
          }
     }
 
