@@ -7,5 +7,5 @@ class FetchInjuriesUseCase @Inject constructor(
     private val injuriesRepository: InjuriesRepository
 ) {
 
-    suspend operator fun invoke() = injuriesRepository.fetchInjuriesAndCache()
+    suspend operator fun invoke() = injuriesRepository.fetchInjuriesAndCache(2,2022)
 }

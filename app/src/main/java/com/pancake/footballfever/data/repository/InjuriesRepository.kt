@@ -4,7 +4,7 @@ import com.pancake.footballfever.data.local.database.entity.InjuriesEntity
 
 interface InjuriesRepository {
 
-    suspend fun fetchInjuriesAndCache(): Result<List<InjuriesEntity>>
+    suspend fun fetchInjuriesAndCache(league: Int,season: Int): Result<List<InjuriesEntity>>
 
     suspend fun getCachedInjuries(): List<InjuriesEntity>
 }

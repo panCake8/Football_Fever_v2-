@@ -12,9 +12,12 @@ class InjuriesRepositoryImpl @Inject constructor(
     val apiService: ApiService,
 ): InjuriesRepository {
 
-    override suspend fun fetchInjuriesAndCache(): Result<List<InjuriesEntity>> {
+    override suspend fun fetchInjuriesAndCache(
+        league: Int,
+        season: Int,
+    ): Result<List<InjuriesEntity>> {
         return try {
-            val response = apiService.getInjuries()
+            val response = apiService.getInjuries(league,season)
             if (response.isSuccessful){
                 response.body()?.response?.let { footballDao.insertInjuries(it.map { it.toInjuriesEntity() }) }
                 Result.success(getCachedInjuries())

@@ -151,8 +151,8 @@ interface ApiService {
     // region injures requests
     @GET("injuries")
     suspend fun getInjuries(
-        @Query("league") league: Int? = null,
-        @Query("season") season: Int? = null,
+        @Query("league") league: Int?,
+        @Query("season") season: Int?,
     ): Response<BaseResponse<InjuriesDto>>
 
     // endregion
