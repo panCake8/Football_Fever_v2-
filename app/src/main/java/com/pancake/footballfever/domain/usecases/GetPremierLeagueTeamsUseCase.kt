@@ -24,9 +24,9 @@ class GetPremierLeagueTeamsUseCase @Inject constructor(
 
     private fun TeamsDto.toFavoriteTeam(): FavoriteTeam {
         return FavoriteTeam(
-            id = this.team?.id!!,
-            name = this.team.name!!,
-            logo = this.team.logo!!
+            id = this.team?.id,
+            name = this.team?.name,
+            logo = this.team?.logo
         )
     }
 
