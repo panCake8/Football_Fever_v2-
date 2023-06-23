@@ -53,6 +53,7 @@
                 tools:text="@string/club_text"
                 />
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/follow_button"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:background="@drawable/follow_button"
