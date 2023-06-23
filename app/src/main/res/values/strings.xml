@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FootBool Fever</string>
+    <string name="app_name">FootBall Fever</string>
     <string name="goal">Goal</string>
     <string name="assist">Assist</string>
     <string name="choose_your_favorite_leagues">Choose your favorite leagues</string>
@@ -28,8 +28,8 @@
     <string name="match_schedule">Match Schedule</string>
     <string name="notification">notification</string>
     <string name="search_text">Search</string>
-    <string name="player_text">Player</string>
-    <string name="club_text">Club</string>
+    <string name="league_text">League</string>
+    <string name="team_text">Team</string>
     <string name="coach_text">Coach</string>
     <string name="hint">Hint</string>
     <string name="hint_to_select_favorite_teams">you can choose with a long press to select teams</string>
@@ -52,6 +52,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="follow">follow</string>
     <string name="there_is_no_more_matches_in_this_data">there is no more matches in this data</string>
+    <string name="refresh_data">Refresh Data</string>
+
+    <string name="injuries">injuries</string>
+    <string name="injury_date">19/11/2022</string>
+    <string name="injury_player_name">Neymar</string>
+    <string name="injury">sprain in ankle</string>
 
 
 </resources>

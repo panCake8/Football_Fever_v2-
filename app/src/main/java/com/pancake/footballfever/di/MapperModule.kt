@@ -19,5 +19,6 @@ object MapperModule {
     fun provideStandingsMapper() = StandingsMapper()
 
 
+
 }
 

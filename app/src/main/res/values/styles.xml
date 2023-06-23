@@ -82,8 +82,8 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/chip_text_size</item>
-        <item name="chipStrokeColor">@color/chip_stroke</item>
-        <item name="android:textColor">@color/chip_text_color</item>
+        <item name="chipStrokeColor">@color/Primary_color</item>
+        <item name="android:textColor">@color/chip_text_search_color</item>
         <item name="chipIconVisible">false</item>
         <item name="closeIconVisible">false</item>
         <item name="android:height">@dimen/height_chip</item>

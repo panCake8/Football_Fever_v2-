@@ -12,6 +12,7 @@ import com.pancake.footballfever.utilities.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -29,26 +30,24 @@ class HomeViewModel @Inject constructor(
 
     val fixtureEvent = MutableLiveData<Event<FixtureHome>>()
 
-    init {
-        getFixtureLocal()
-    }
-
-    private fun getFixtureLocal() {
+     fun getFixtureLocal() {
         viewModelScope.launch {
-            val fixtures = getFixturesLocalUseCase.getAllFixtureHomeLocal()
-            _fixtures.update {
-                it.copy(isLoading = false, success = fixtures)
-            }
+            getFixturesLocalUseCase.getAllFixtureHomeLocal()
+                .stateIn(scope = viewModelScope)
+                .collect { fixtures ->
+                    _fixtures.update {
+                        it.copy(isLoading = false, success = fixtures , error = null)
+                    }
+                }
+
         }
     }
 
     fun refreshFixtures(date: String, season: Int) {
         viewModelScope.launch {
-            _fixtures.update { it.copy(isLoading = true) }
+            _fixtures.update { it.copy(isLoading = true, error = null) }
             val request = refreshFixtureUseCase.refreshAllFixtureHome(date, season)
-            if (request.isSuccess) {
-                getFixtureLocal()
-            } else {
+            if (request.isFailure) {
                 _fixtures.update { it.copy(error = request.exceptionOrNull()?.message) }
             }
         }

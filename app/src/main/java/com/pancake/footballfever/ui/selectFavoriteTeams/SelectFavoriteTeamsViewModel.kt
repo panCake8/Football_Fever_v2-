@@ -19,7 +19,7 @@ import javax.inject.Inject
 class SelectFavoriteTeamsViewModel @Inject constructor(
     private val getPremierLeagueTeamsUseCase: GetPremierLeagueTeamsUseCase,
     private val addSelectedFavoriteTeamsUseCase: AddSelectedFavoriteTeamsUseCase
-) : ViewModel(),BaseAdapterListener {
+) : ViewModel(), BaseAdapterListener {
 
     private val _teams = MutableStateFlow(SelectFavoriteTeamsUiState())
     val teams: StateFlow<SelectFavoriteTeamsUiState>
@@ -28,6 +28,7 @@ class SelectFavoriteTeamsViewModel @Inject constructor(
     val nextEvent = MutableLiveData<Event<Unit>>()
 
     fun getPremierLeagueTeams(countryName: String, season: Int) {
+        _teams.update { it.copy(isLoading = true, error = null) }
         viewModelScope.launch {
             try {
                 val teams = getPremierLeagueTeamsUseCase.getPremierLeagueTeams(countryName, season)
@@ -40,7 +41,7 @@ class SelectFavoriteTeamsViewModel @Inject constructor(
         }
     }
 
-    fun addFavoriteTeams(teams : List<FavoriteTeam>){
+    fun addFavoriteTeams(teams: List<FavoriteTeam>) {
         viewModelScope.launch {
             addSelectedFavoriteTeamsUseCase.addFavoriteTeams(teams)
         }

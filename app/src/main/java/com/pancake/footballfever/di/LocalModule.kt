@@ -7,8 +7,8 @@ import com.pancake.footballfever.data.local.database.FootballDatabase
 import com.pancake.footballfever.data.local.database.daos.ClubDao
 import com.pancake.footballfever.data.local.database.daos.FixtureDao
 import com.pancake.footballfever.data.local.database.daos.FootballDao
-import com.pancake.footballfever.data.local.database.daos.PlayerDao
 import com.pancake.footballfever.data.local.database.daos.LeagueDao
+import com.pancake.footballfever.data.local.database.daos.PlayerDao
 import com.pancake.footballfever.data.local.database.daos.TeamDao
 import dagger.Module
 import dagger.Provides
@@ -67,5 +67,19 @@ object LocalModule {
     fun provideClubDao(footballDataBase: FootballDatabase): ClubDao {
         return footballDataBase.clubDao
     }
+
+
+    @Singleton
+    @Provides
+    fun provideFixtureEventsDao(footballDataBase: FootballDatabase) = footballDataBase.fixtureEventsDao
+
+    @Singleton
+    @Provides
+    fun providePlayersDao(footballDataBase: FootballDatabase) = footballDataBase.playersDao
+
+    @Singleton
+    @Provides
+    fun provideTeamFixtureDao(footballDataBase: FootballDatabase) = footballDataBase.teamFixtureEventsDao
+
 
 }
