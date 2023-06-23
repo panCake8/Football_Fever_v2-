@@ -1,4 +1,4 @@
-package com.pancake.footballfever.ui.fixture_events
+package com.pancake.footballfever.ui.fixture.summary
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,7 +10,9 @@ import com.pancake.footballfever.databinding.ItemSummaryHomeBinding
 import com.pancake.footballfever.domain.models.FixtureEvents
 
 
-class FixtureEventsAdapter(private val homeId: Int) : ListAdapter<FixtureEvents, RecyclerView.ViewHolder>(COMPARATOR) {
+class FixtureSummaryAdapter(private val homeId: Int) : ListAdapter<FixtureEvents, RecyclerView.ViewHolder>(
+    COMPARATOR
+) {
     class HomeViewHolder(private val binding: ItemSummaryHomeBinding) : RecyclerView.ViewHolder(binding.root) {
         companion object {
             fun from(parent: ViewGroup): HomeViewHolder {
