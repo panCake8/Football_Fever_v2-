@@ -15,49 +15,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textView_rank"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
 
-            android:layout_marginStart="@dimen/large_margin"
-            android:textColor="@color/text_title"
-            android:textSize="@dimen/text_small"
-
-
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/shapeableImageView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="1" />
-
-        <com.google.android.material.imageview.ShapeableImageView
+        <androidx.constraintlayout.utils.widget.ImageFilterView
             android:id="@+id/shapeableImageView"
-            android:layout_width="wrap_content"
-
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:scaleType="fitXY"
             android:src="@drawable/football"
-            app:setImageUrl="@{item.playerImg}"
 
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView_rank"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@+id/textView_player_team"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView_player_name"
+            app:roundPercent="1"
+            app:setImageUrl="@{item.playerImg}" />
 
         <TextView
             android:id="@+id/textView_player_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:layout_marginStart="@dimen/medium_margin"
-            android:textSize="@dimen/text_small"
+            android:layout_marginStart="16dp"
             android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/text_title"
+            android:text="@{item.playerName}"
 
+            android:textColor="@color/text_title"
+            android:textSize="@dimen/text_small"
             app:layout_constraintStart_toEndOf="@+id/shapeableImageView"
-            app:layout_constraintTop_toTopOf="@+id/shapeableImageView"
-            tools:text="name"
-            android:text="@{item.playerName}"/>
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="name" />
 
         <TextView
             android:id="@+id/textView_player_team"
@@ -65,13 +51,13 @@
             android:layout_height="wrap_content"
 
             android:fontFamily="@font/poppins"
+            android:text="@{item.teamName}"
+
             android:textColor="@color/chip_text_color"
             android:textSize="@dimen/text_tiny"
-
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textView_player_name"
             app:layout_constraintTop_toBottomOf="@+id/textView_player_name"
-            android:text="@{item.teamName}"
             tools:text="team name" />
 
         <TextView
