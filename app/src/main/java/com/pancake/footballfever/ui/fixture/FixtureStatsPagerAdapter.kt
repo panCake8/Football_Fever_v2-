@@ -1,4 +1,4 @@
-package com.pancake.footballfever.ui.fixture.adapter
+package com.pancake.footballfever.ui.fixture
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter

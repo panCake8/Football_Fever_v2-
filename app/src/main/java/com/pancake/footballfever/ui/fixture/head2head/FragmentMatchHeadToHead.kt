@@ -8,6 +8,7 @@ import com.pancake.footballfever.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val HOME_ID_ARG = "home_id_arg"
+private const val FIXTURE_ID_ARG = "fixture_id_arg"
 
 @AndroidEntryPoint
 class FragmentMatchHeadToHead :
@@ -19,9 +20,10 @@ class FragmentMatchHeadToHead :
 
     companion object {
         @JvmStatic
-        fun newInstance(teamIds: String?) =
+        fun newInstance(fixtureId: Int?, teamIds: String?) =
             FragmentMatchHeadToHead().apply {
                 arguments = Bundle().apply {
+                    fixtureId?.let { putInt(FIXTURE_ID_ARG, it) }
                     putString(HOME_ID_ARG, teamIds)
                 }
             }

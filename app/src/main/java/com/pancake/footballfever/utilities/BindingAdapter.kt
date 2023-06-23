@@ -19,8 +19,6 @@ import com.pancake.footballfever.ui.home.adapter.FixtureHomeListener
 import com.pancake.footballfever.ui.home.adapter.ParentHomeAdapter
 import com.pancake.footballfever.ui.league_state.match.adapter.LeagueMatchesListener
 import com.pancake.footballfever.ui.league_state.match.adapter.LeagueMatchesParentAdapter
-import java.text.SimpleDateFormat
-import java.util.Locale
 
 @BindingAdapter(value = ["app:setRecyclerItems"])
 fun <T> setRecyclerItems(recyclerView: RecyclerView, items: List<T?>?) {
@@ -28,12 +26,12 @@ fun <T> setRecyclerItems(recyclerView: RecyclerView, items: List<T?>?) {
 }
 
 @BindingAdapter(value = ["setLeagueChildAdapter"])
-fun setChildRecyclerAdapter(recyclerView: RecyclerView, items: LeagueMatchesListener) {
+fun setChildRecyclerAdapter(recyclerView: RecyclerView,items:LeagueMatchesListener) {
     recyclerView.adapter = LeagueMatchesParentAdapter(items)
 }
 
 @BindingAdapter(value = ["setHeadToHeadRecyclerAdapter"])
-fun setChildRecyclerAdapter(recyclerView: RecyclerView, items: HeadToHeadListener) {
+fun setChildRecyclerAdapter(recyclerView: RecyclerView,items: HeadToHeadListener){
     recyclerView.adapter = HeadToHeadParentAdapter(items)
 }
 
@@ -139,12 +137,4 @@ fun RecyclerView.bindSummaryAdapterItems(summaryItems: List<FixtureSummary>?, ho
         }
 
     }
-}
-
-@BindingAdapter(value = ["app:time"])
-fun setTime(textView: TextView, time: Int?) {
-    val simpleDateFormat = SimpleDateFormat("dd MMMM yyyy, HH:mm:ss", Locale.ENGLISH)
-    if (time != null)
-        textView.text = simpleDateFormat.format(time * 1000L)
-
 }

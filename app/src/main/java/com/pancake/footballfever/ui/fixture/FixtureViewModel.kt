@@ -1,5 +1,6 @@
 package com.pancake.footballfever.ui.fixture
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pancake.footballfever.data.local.database.entity.toFixtureModel
@@ -31,6 +32,7 @@ class FixtureViewModel @Inject constructor(
                         error = fixture.exceptionOrNull()?.message.toString()
                     )
                 }
+                Log.e("KAMEL", fixtureUiState.value.error.toString())
                 return@launch
             }
             _fixtureUiState.update {
