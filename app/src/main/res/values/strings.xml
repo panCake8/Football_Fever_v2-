@@ -51,6 +51,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="there_is_no_more_matches_in_this_data">there is no more matches in this data</string>
+    <string name="refresh_data">Refresh Data</string>
 
 
 </resources>

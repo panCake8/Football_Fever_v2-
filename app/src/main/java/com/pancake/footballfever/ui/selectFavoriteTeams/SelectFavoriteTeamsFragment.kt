@@ -31,10 +31,13 @@ class SelectFavoriteTeamsFragment :
     private var tracker: SelectionTracker<FavoriteTeam>? = null
     private var selectedTeams = mutableListOf<FavoriteTeam>()
     private val args: SelectFavoriteTeamsFragmentArgs by navArgs()
+    private val calendar = Calendar.getInstance()
+    private var season = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         showInitialDialog()
+        initOnClickListener()
         getPremierLeagueTeams()
         initRecyclerAdapter()
         observeEvents()
@@ -48,10 +51,16 @@ class SelectFavoriteTeamsFragment :
             }.create().show()
     }
 
+    private fun initOnClickListener() {
+        binding.refreshButton.setOnClickListener {
+            formatDate()
+            viewModel.getPremierLeagueTeams(args.countryName, season)
+        }
+    }
+
     private fun getPremierLeagueTeams() {
-        val calendar = Calendar.getInstance()
-        val date = SimpleDateFormat("YYYY").format(calendar.time).toInt().minus(1)
-        viewModel.getPremierLeagueTeams(args.countryName, date)
+        formatDate()
+        viewModel.getPremierLeagueTeams(args.countryName, season)
     }
 
     private fun initRecyclerAdapter() {
@@ -75,7 +84,7 @@ class SelectFavoriteTeamsFragment :
                 override fun onSelectionChanged() {
                     super.onSelectionChanged()
                     tracker?.let {
-                        selectedTeams = it.selection.toMutableList()
+                        selectedTeams.addAll(it.selection.toMutableList())
                     }
                 }
             })
@@ -101,5 +110,9 @@ class SelectFavoriteTeamsFragment :
             .setPositiveButton(getString(R.string.ok)) { dialogInterface, which ->
                 dialogInterface.cancel()
             }.create().show()
+    }
+
+    private fun formatDate() {
+        season = SimpleDateFormat("YYYY").format(calendar.time).toInt().minus(1)
     }
 }
