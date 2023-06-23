@@ -16,7 +16,7 @@
         android:background="@color/background_color">
 
         <TextView
-            android:id="@+id/text_time"
+            android:id="@+id/text_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium_margin"
@@ -24,12 +24,26 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:time="@{viewModel.fixtureUiState.fixture.timeStamp}"
             tools:text="FullTime" />
+
+        <TextView
+            android:id="@+id/text_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:text="@{viewModel.fixtureUiState.fixture.time.toString()}"
+            android:textColor="@color/light_green"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_dash"
+            tools:text="45" />
 
         <ImageView
             android:id="@+id/image_team_away"
             android:layout_width="@dimen/team_logo_width"
             android:layout_height="@dimen/team_logo_height"
+            android:layout_marginBottom="@dimen/medium_margin"
             android:contentDescription="@string/logo"
             app:layout_constraintBottom_toBottomOf="@+id/text_team_away_score"
             app:layout_constraintEnd_toEndOf="parent"
@@ -54,6 +68,21 @@
             tools:text="2" />
 
         <TextView
+            android:id="@+id/text_team_away_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large_margin"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@{viewModel.fixtureUiState.fixture.teamAwayName.toString()}"
+            android:textColor="@color/white60"
+            android:textSize="@dimen/text_small"
+            app:layout_constraintEnd_toEndOf="@id/image_team_away"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/image_team_away"
+            app:layout_constraintTop_toBottomOf="@id/text_team_home_score"
+            tools:text="real" />
+
+        <TextView
             android:id="@+id/text_dash"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,7 +94,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toEndOf="@+id/text_team_home_score"
-            app:layout_constraintTop_toBottomOf="@id/text_time" />
+            app:layout_constraintTop_toBottomOf="@id/text_date" />
 
         <TextView
             android:id="@+id/text_team_home_score"
@@ -81,10 +110,27 @@
             app:layout_constraintTop_toTopOf="@+id/text_dash"
             tools:text="2" />
 
+        <TextView
+            android:id="@+id/text_team_home_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large_margin"
+            android:ellipsize="end"
+            android:fontFamily="@font/poppins_medium"
+            android:maxLines="1"
+            android:text="@{viewModel.fixtureUiState.fixture.teamHomeName.toString()}"
+            android:textColor="@color/white60"
+            android:textSize="@dimen/text_small"
+            app:layout_constraintEnd_toEndOf="@id/image_team_home"
+            app:layout_constraintStart_toStartOf="@id/image_team_home"
+            app:layout_constraintTop_toBottomOf="@id/text_team_home_score"
+            tools:text="real" />
+
         <ImageView
             android:id="@+id/image_team_home"
             android:layout_width="@dimen/team_logo_height"
             android:layout_height="@dimen/team_logo_width"
+            android:layout_marginBottom="@dimen/medium_margin"
             android:contentDescription="@string/logo"
             app:layout_constraintBottom_toBottomOf="@+id/text_team_home_score"
             app:layout_constraintEnd_toStartOf="@+id/text_team_home_score"
@@ -103,7 +149,7 @@
             android:background="@android:color/transparent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image_team_away"
+            app:layout_constraintTop_toBottomOf="@id/text_team_home_name"
             app:tabBackground="@drawable/tab_background_unselected"
             app:tabIndicator="@drawable/tab_background_selected"
             app:tabIndicatorAnimationMode="linear"
@@ -112,7 +158,6 @@
             app:tabIndicatorGravity="stretch"
             app:tabMode="scrollable"
             app:tabPaddingEnd="@dimen/large_padding"
-            app:tabPaddingStart="@dimen/large_padding"
             app:tabSelectedTextColor="@color/white" />
 
         <androidx.viewpager2.widget.ViewPager2

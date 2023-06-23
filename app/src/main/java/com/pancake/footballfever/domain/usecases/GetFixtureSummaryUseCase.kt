@@ -8,7 +8,7 @@ import javax.inject.Inject
 class GetFixtureSummaryUseCase @Inject constructor(
     private val repository: FixtureSummaryRepository,
 ) {
-    suspend operator fun invoke(fixtureId: String): List<FixtureSummary> {
+    suspend operator fun invoke(fixtureId: Int): List<FixtureSummary> {
         return repository.getSummaryFixtures(fixtureId).fold(
             onSuccess = { it.map { it.toDomain() } },
             onFailure = { throw it }
