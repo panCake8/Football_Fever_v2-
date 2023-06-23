@@ -1,8 +1,8 @@
-package com.pancake.footballfever.ui.fixture_events
+package com.pancake.footballfever.ui.fixture.summary
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.pancake.footballfever.domain.usecases.GetFixtureEventsUseCase
+import com.pancake.footballfever.domain.usecases.GetFixtureSummaryUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -11,26 +11,26 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class FixtureEventsViewModel @Inject constructor(
-    private val fixtureEventsUseCase: GetFixtureEventsUseCase
+class FixtureSummaryViewModel @Inject constructor(
+    private val fixtureEventsUseCase: GetFixtureSummaryUseCase
 ) : ViewModel() {
 
-    private var _fixtureEventsUiState = MutableStateFlow(FixtureEventsUiState())
-    val fixtureEventsUiState = _fixtureEventsUiState.asStateFlow()
+    private var _fixtureSummaryUiState = MutableStateFlow(FixtureSummaryUiState())
+    val fixtureEventsUiState = _fixtureSummaryUiState.asStateFlow()
 
 
     fun getFixtureEvents(fixtureId: String) {
-        _fixtureEventsUiState.update { it.copy(isLoading = true) }
+        _fixtureSummaryUiState.update { it.copy(isLoading = true) }
         viewModelScope.launch {
             try {
-                _fixtureEventsUiState.update {
+                _fixtureSummaryUiState.update {
                     it.copy(
                         isLoading = false,
                         items = fixtureEventsUseCase(fixtureId)
                     )
                 }
             } catch (e: Exception) {
-                _fixtureEventsUiState.update {
+                _fixtureSummaryUiState.update {
                     it.copy(
                         isLoading = false,
                         errorMsg = e.message

@@ -9,11 +9,11 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.pancake.footballfever.R
-import com.pancake.footballfever.domain.models.FixtureEvents
+import com.pancake.footballfever.domain.models.FixtureSummary
 import com.pancake.footballfever.ui.base.BaseAdapter
 import com.pancake.footballfever.ui.fixture.head2head.adapter.HeadToHeadListener
 import com.pancake.footballfever.ui.fixture.head2head.adapter.HeadToHeadParentAdapter
-import com.pancake.footballfever.ui.fixture_events.FixtureEventsAdapter
+import com.pancake.footballfever.ui.fixture.summary.FixtureSummaryAdapter
 import com.pancake.footballfever.ui.home.HomeUiState
 import com.pancake.footballfever.ui.home.adapter.FixtureHomeListener
 import com.pancake.footballfever.ui.home.adapter.ParentHomeAdapter
@@ -130,9 +130,9 @@ fun <T> showWhenSearchInSearchSuggests(view: View, dataState: DataState<T>) {
 
 
 @BindingAdapter(value = ["summaryItems", "homeId"], requireAll = true)
-fun RecyclerView.bindSummaryAdapterItems(summaryItems: List<FixtureEvents>?, homeId: Int) {
+fun RecyclerView.bindSummaryAdapterItems(summaryItems: List<FixtureSummary>?, homeId: Int) {
     summaryItems?.let {
-        adapter = FixtureEventsAdapter(homeId).also {
+        adapter = FixtureSummaryAdapter(homeId).also {
             it.submitList(summaryItems)
         }
 

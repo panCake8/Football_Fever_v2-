@@ -65,7 +65,7 @@ object LocalModule {
 
     @Singleton
     @Provides
-    fun provideFixtureEventsDao(footballDataBase: FootballDatabase) = footballDataBase.fixtureEventsDao
+    fun provideFixtureEventsDao(footballDataBase: FootballDatabase) = footballDataBase.fixtureSummaryDao
 
     @Singleton
     @Provides

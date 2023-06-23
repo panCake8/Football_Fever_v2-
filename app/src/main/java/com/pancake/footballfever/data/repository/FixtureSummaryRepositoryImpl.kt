@@ -2,22 +2,22 @@ package com.pancake.footballfever.data.repository
 
 import android.util.Log
 import com.example.footboolfever.data.remote.dto.EventsDto
-import com.pancake.footballfever.data.local.database.daos.FixtureEventsDao
-import com.pancake.footballfever.data.local.database.entity.FixtureEventsEntity
+import com.pancake.footballfever.data.local.database.daos.FixtureSummaryDao
+import com.pancake.footballfever.data.local.database.entity.FixtureSummaryEntity
 import com.pancake.footballfever.data.remote.service.ApiService
 import java.io.IOException
 import javax.inject.Inject
 
-class FixtureEventsRepositoryImpl @Inject constructor(
+class FixtureSummaryRepositoryImpl @Inject constructor(
     private val apiService: ApiService,
-    private val dao: FixtureEventsDao
-) : FixtureEventsRepository {
-    override suspend fun getEventsFixtures(fixtureId: String): Result<List<FixtureEventsEntity>> {
+    private val dao: FixtureSummaryDao
+) : FixtureSummaryRepository {
+    override suspend fun getSummaryFixtures(fixtureId: String): Result<List<FixtureSummaryEntity>> {
         return try {
-            dao.insertFixtureEvents(apiService.getEventsFixtures(fixtureId).body()?.response?.map { it.toEntity(fixtureId) }!!)
-            Result.success(dao.getFixtureEvents(fixtureId))
+            dao.insertFixtureSummary(apiService.getEventsFixtures(fixtureId).body()?.response?.map { it.toEntity(fixtureId) }!!)
+            Result.success(dao.getFixtureSummary(fixtureId))
         } catch (e: IOException) {
-            with(dao.getFixtureEvents(fixtureId)) {
+            with(dao.getFixtureSummary(fixtureId)) {
                 if (isNotEmpty()) Result.success(this) else Result.failure(Exception("Please check your internet connection"))
             }
         } catch (e: Exception) {
@@ -27,7 +27,7 @@ class FixtureEventsRepositoryImpl @Inject constructor(
     }
 
     private fun EventsDto.toEntity(fixtureId: String) =
-        FixtureEventsEntity(
+        FixtureSummaryEntity(
             fixtureId = fixtureId,
             time = time?.elapsed!!,
             teamId = team?.id!!,
