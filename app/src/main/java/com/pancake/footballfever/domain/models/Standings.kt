@@ -4,6 +4,7 @@ package com.pancake.footballfever.domain.models
 
 data class Standings(
     val rank:Int? =null,
+    val season:Int? =null,
     val teamName: String? = null,
     val teamLogoUrl: String? = null,
     val teamId: Int? = null,
