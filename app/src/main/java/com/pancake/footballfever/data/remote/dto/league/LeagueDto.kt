@@ -1,6 +1,7 @@
 package com.pancake.footballfever.data.remote.dto.league
 
 import com.google.gson.annotations.SerializedName
+import com.pancake.footballfever.data.local.database.entity.LeagueEntity
 
 data class LeaguesDto(
 
@@ -103,3 +104,15 @@ data class Country(
 	@field:SerializedName("name")
 	val name: String? = null
 )
+
+
+fun LeaguesDto.toLeagueEntity(): LeagueEntity {
+	return LeagueEntity(
+		id = league?.id,
+		name = league?.name,
+		logo = league?.logo,
+		country = country?.name,
+		year = seasons?.get(0)?.year,
+		type = league?.type,
+	)
+}
