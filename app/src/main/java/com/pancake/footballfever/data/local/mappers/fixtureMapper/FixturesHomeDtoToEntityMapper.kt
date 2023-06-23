@@ -3,10 +3,8 @@ package com.pancake.footballfever.data.local.mappers.fixtureMapper
 import com.pancake.footballfever.data.local.database.entity.FixtureHomeEntity
 import com.example.footboolfever.data.remote.dto.FixturesDto
 import com.pancake.footballfever.data.local.mappers.Mapper
-import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
-@ViewModelScoped
 class FixturesHomeDtoToEntityMapper @Inject constructor() : Mapper<FixturesDto, FixtureHomeEntity> {
     override fun map(input: FixturesDto): FixtureHomeEntity {
         return FixtureHomeEntity(

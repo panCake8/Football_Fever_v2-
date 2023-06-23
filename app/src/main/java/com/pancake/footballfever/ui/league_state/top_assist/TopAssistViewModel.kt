@@ -39,8 +39,6 @@ class TopAssistViewModel @Inject constructor(
                     _uiState.update { it.copy(error = true) }
                 }
             }
-
         }
     }
-
 }
