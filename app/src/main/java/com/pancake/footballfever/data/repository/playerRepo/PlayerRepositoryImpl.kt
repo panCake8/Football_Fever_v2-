@@ -23,6 +23,7 @@ class PlayerRepositoryImpl @Inject constructor(
             if (response.isSuccessful) {
                 val data = response.body()?.response
                 data?.let {
+                    playerDao.deleteAllTopGoals()
                     playerDao.insertTopScorer(it.map(topScorerMapper::map))
                     return Result.success(it.map(topScorerMapper::map))
                 }
@@ -48,6 +49,7 @@ class PlayerRepositoryImpl @Inject constructor(
             if (response.isSuccessful) {
                 val data = response.body()?.response
                 data?.let {
+                    playerDao.deleteAllTopAssist()
                     playerDao.insertTopAssists(it.map(topAssistsMapper::map))
                     return Result.success(it.map(topAssistsMapper::map))
                 }
