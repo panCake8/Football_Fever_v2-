@@ -45,7 +45,7 @@ import com.pancake.footballfever.data.local.database.entity.VenueEntity
         FixtureEntity::class,
         SearchKeywordEntity::class,
         TeamFixtureEntity::class,
-        PlayerEntity::class
+        PlayerEntity::class,
         LeagueMatchEntity::class,
         HeadToHeadEntity::class,
     ],
@@ -59,9 +59,6 @@ abstract class FootballDatabase : RoomDatabase() {
     abstract val fixtureDao: FixtureDao
     abstract val leagueMatches: LeagueMatchesDao
     abstract val headToHead: HeadToHeadDao
-
-    abstract val teamDao :TeamDao
-    abstract val fixtureDao:FixtureDao
     abstract val fixtureEventsDao: FixtureEventsDao
     abstract val playersDao: PlayersDao
     abstract val teamFixtureEventsDao: TeamFixtureDao

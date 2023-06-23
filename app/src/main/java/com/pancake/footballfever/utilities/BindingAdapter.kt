@@ -11,6 +11,8 @@ import com.bumptech.glide.Glide
 import com.pancake.footballfever.R
 import com.pancake.footballfever.domain.models.FixtureEvents
 import com.pancake.footballfever.ui.base.BaseAdapter
+import com.pancake.footballfever.ui.fixture.head2head.adapter.HeadToHeadListener
+import com.pancake.footballfever.ui.fixture.head2head.adapter.HeadToHeadParentAdapter
 import com.pancake.footballfever.ui.fixture_events.FixtureEventsAdapter
 import com.pancake.footballfever.ui.home.HomeUiState
 import com.pancake.footballfever.ui.home.adapter.FixtureHomeListener
@@ -29,7 +31,7 @@ fun setChildRecyclerAdapter(recyclerView: RecyclerView,items:LeagueMatchesListen
 }
 
 @BindingAdapter(value = ["setHeadToHeadRecyclerAdapter"])
-fun setChildRecyclerAdapter(recyclerView: RecyclerView,items:HeadToHeadListener){
+fun setChildRecyclerAdapter(recyclerView: RecyclerView,items: HeadToHeadListener){
     recyclerView.adapter = HeadToHeadParentAdapter(items)
 }
 
