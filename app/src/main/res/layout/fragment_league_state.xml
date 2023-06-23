@@ -4,7 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.pancake.footballfever.ui.league_state.LeagueStateViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,6 +22,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:src="@drawable/football"
+            app:setImageUrl="@{viewModel.uiState.success.logo}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:contentDescription="@string/logo" />
@@ -40,6 +43,7 @@
                 android:textColor="@color/text_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@{viewModel.uiState.success.name}"
                 tools:text="premier league" />
 
             <TextView
@@ -49,6 +53,7 @@
                 android:textColor="@color/chip_text_color"
                 android:textSize="@dimen/text_small"
                 android:layout_height="wrap_content"
+                android:text="@{viewModel.uiState.success.country}"
                 tools:text="England" />
         </LinearLayout>
 
