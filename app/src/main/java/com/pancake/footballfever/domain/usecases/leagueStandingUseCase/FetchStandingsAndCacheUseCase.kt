@@ -1,6 +1,6 @@
-package com.pancake.footballfever.domain.usecases
+package com.pancake.footballfever.domain.usecases.leagueStandingUseCase
 
-import com.pancake.footballfever.data.repository.StandingsRepository
+import com.pancake.footballfever.data.repository.standingsRepo.StandingsRepository
 import javax.inject.Inject
 
 class FetchStandingsAndCacheUseCase @Inject constructor(

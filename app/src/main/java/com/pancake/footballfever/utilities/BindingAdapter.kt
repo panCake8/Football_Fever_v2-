@@ -38,7 +38,7 @@ fun ProgressBar.showIfLoading(isLoading: Boolean) {
 }
 
 @BindingAdapter("app:showIfError")
-fun ImageView.showIfError(errorMsg: String?) {
+fun View.showIfError(errorMsg: String?) {
     visibility = when (errorMsg) {
         null -> View.INVISIBLE
         else -> View.VISIBLE

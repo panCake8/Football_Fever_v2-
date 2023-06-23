@@ -16,6 +16,7 @@ import com.pancake.footballfever.data.local.database.entity.TeamFixtureEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureEventsEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureHomeEntity
+import com.pancake.footballfever.data.local.database.entity.InjuriesEntity
 import com.pancake.footballfever.data.local.database.entity.LeagueEntity
 import com.pancake.footballfever.data.local.database.entity.PlayerEntity
 import com.pancake.footballfever.data.local.database.entity.SearchKeywordEntity
@@ -27,6 +28,7 @@ import com.pancake.footballfever.data.local.database.entity.VenueEntity
 
 @Database(
     entities = [
+        InjuriesEntity::class,
         CountryEntity::class,
         FavoriteTeamEntity::class,
         FixtureEventsEntity::class,

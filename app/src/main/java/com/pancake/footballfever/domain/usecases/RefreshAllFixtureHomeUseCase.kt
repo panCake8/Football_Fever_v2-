@@ -25,6 +25,7 @@ class RefreshAllFixtureHomeUseCase @Inject constructor(
 
                 teams.addAll(team)
             }
+            fixtureRepository.deleteAllHomeFixtures()
             fixtureRepository.addFixtureHome(teams.distinctBy { it.fixture })
             Result.success(teams)
         } catch (e: Throwable) {

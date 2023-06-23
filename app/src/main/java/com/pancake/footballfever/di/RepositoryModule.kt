@@ -7,6 +7,8 @@ import com.pancake.footballfever.data.repository.FixtureEventsRepository
 import com.pancake.footballfever.data.repository.FixtureEventsRepositoryImpl
 import com.pancake.footballfever.data.repository.FixtureRepository
 import com.pancake.footballfever.data.repository.FixtureRepositoryImpl
+import com.pancake.footballfever.data.repository.InjuriesRepository
+import com.pancake.footballfever.data.repository.InjuriesRepositoryImpl
 import com.pancake.footballfever.data.repository.LeaguesRepository
 import com.pancake.footballfever.data.repository.LeaguesRepositoryImpl
 import com.pancake.footballfever.data.repository.PlayerRepository
@@ -17,6 +19,8 @@ import com.pancake.footballfever.data.repository.StandingsRepository
 import com.pancake.footballfever.data.repository.StandingsRepositoryImp
 import com.pancake.footballfever.data.repository.TeamFixturesRepository
 import com.pancake.footballfever.data.repository.TeamFixturesRepositoryImpl
+import com.pancake.footballfever.data.repository.standingsRepo.StandingsRepository
+import com.pancake.footballfever.data.repository.standingsRepo.StandingsRepositoryImp
 import com.pancake.footballfever.data.repository.TeamRepository
 import com.pancake.footballfever.data.repository.TeamRepositoryImpl
 import com.pancake.footballfever.data.repository.search.CoachSearchRepository
@@ -72,6 +76,12 @@ abstract class RepositoryModule {
     abstract fun bindsFixtureRepository(
         fixtureRepositoryImpl: FixtureRepositoryImpl
     ): FixtureRepository
+
+    @Binds
+    @Singleton
+    abstract fun injuriesRepository(
+        injuriesRepository: InjuriesRepositoryImpl
+    ): InjuriesRepository
 
     @Singleton
     @Binds
