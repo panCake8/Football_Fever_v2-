@@ -3,6 +3,8 @@ package com.pancake.footballfever.di
 
 import com.pancake.footballfever.data.repository.CountryRepository
 import com.pancake.footballfever.data.repository.CountryRepositoryImpl
+import com.pancake.footballfever.data.repository.FixtureEventsRepository
+import com.pancake.footballfever.data.repository.FixtureEventsRepositoryImpl
 import com.pancake.footballfever.data.repository.FixtureRepository
 import com.pancake.footballfever.data.repository.FixtureRepositoryImpl
 import com.pancake.footballfever.data.repository.InjuriesRepository
@@ -11,6 +13,12 @@ import com.pancake.footballfever.data.repository.LeaguesRepository
 import com.pancake.footballfever.data.repository.LeaguesRepositoryImpl
 import com.pancake.footballfever.data.repository.PlayerRepository
 import com.pancake.footballfever.data.repository.PlayerRepositoryImpl
+import com.pancake.footballfever.data.repository.PlayersRepository
+import com.pancake.footballfever.data.repository.PlayersRepositoryImpl
+import com.pancake.footballfever.data.repository.StandingsRepository
+import com.pancake.footballfever.data.repository.StandingsRepositoryImp
+import com.pancake.footballfever.data.repository.TeamFixturesRepository
+import com.pancake.footballfever.data.repository.TeamFixturesRepositoryImpl
 import com.pancake.footballfever.data.repository.standingsRepo.StandingsRepository
 import com.pancake.footballfever.data.repository.standingsRepo.StandingsRepositoryImp
 import com.pancake.footballfever.data.repository.TeamRepository
@@ -74,6 +82,25 @@ abstract class RepositoryModule {
     abstract fun injuriesRepository(
         injuriesRepository: InjuriesRepositoryImpl
     ): InjuriesRepository
+
+    @Singleton
+    @Binds
+    abstract fun bindFixtureEventsRepository(
+        repository: FixtureEventsRepositoryImpl
+    ): FixtureEventsRepository
+
+    @Singleton
+    @Binds
+    abstract fun bindsTeamFixtureRepository(
+        fixtureRepositoryImpl: TeamFixturesRepositoryImpl
+    ): TeamFixturesRepository
+
+    @Singleton
+    @Binds
+    abstract fun bindsPlayersRepository(
+        playersRepositoryImpl: PlayersRepositoryImpl
+    ): PlayersRepository
+
 
     @Singleton
     @Binds

@@ -9,7 +9,9 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.pancake.footballfever.R
+import com.pancake.footballfever.domain.models.FixtureEvents
 import com.pancake.footballfever.ui.base.BaseAdapter
+import com.pancake.footballfever.ui.fixture_events.FixtureEventsAdapter
 import com.pancake.footballfever.ui.home.HomeUiState
 import com.pancake.footballfever.ui.home.HomeViewModel
 import com.pancake.footballfever.ui.home.adapter.FixtureHomeListener
@@ -115,4 +117,15 @@ fun <T> showWhenSearchInSearchSuggests(view: View, dataState: DataState<T>) {
     else
         view.visibility=View.GONE
 
+}
+
+
+@BindingAdapter(value = ["summaryItems", "homeId"], requireAll = true)
+fun RecyclerView.bindSummaryAdapterItems(summaryItems: List<FixtureEvents>?, homeId: Int) {
+    summaryItems?.let {
+        adapter = FixtureEventsAdapter(homeId).also {
+            it.submitList(summaryItems)
+        }
+
+    }
 }
