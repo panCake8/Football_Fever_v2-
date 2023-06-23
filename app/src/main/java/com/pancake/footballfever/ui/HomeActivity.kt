@@ -22,9 +22,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         SharedPrefManager.getInit(applicationContext)
-        navController()
-
-
+//        navController()
     }
 
     private fun navController(){
