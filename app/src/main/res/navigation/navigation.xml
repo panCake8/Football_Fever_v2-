@@ -4,18 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
 
-    app:startDestination="@id/splashFragment">
+    app:startDestination="">
 
     <fragment
         android:id="@+id/clubFragment"
-        android:name="com.pancake.footballfever.ui.clubStats.ClubStandingFragment"
+        android:name="com.pancake.footballfever.ui.club_stats.ClubStatsFragment"
         android:label="fragment_club"
-        tools:layout="@layout/fragment_club_standing">
+        tools:layout="@layout/fragment_club">
         <argument
             android:name="teamId"
             app:argType="integer" />
         <argument
-            android:name="seasonId"
+            android:name="season"
+            app:argType="integer" />
+        <argument
+            android:name="leagueId"
             app:argType="integer" />
     </fragment>
 
