@@ -54,4 +54,8 @@ class FixtureViewModel @Inject constructor(
             }
         }
     }
+
+    fun refreshData(fixtureId: Int) {
+        fetchFixture(fixtureId)
+    }
 }

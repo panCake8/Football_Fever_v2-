@@ -34,13 +34,19 @@ class FixtureFragment : BaseFragment<FragmentFixtureBinding, FixtureViewModel>()
         fixtureId?.let {
             viewModel.fetchFixture(it)
         }
-
+        binding.refreshButton.setOnClickListener {
+            fixtureId?.let {
+                viewModel.refreshData(it)
+            }
+        }
     }
 
     private fun initViewPager() {
         fixtureStatsPagerAdapter = FixtureStatsPagerAdapter(this)
         addFragmentsToViewPager()
         binding.pager.adapter = fixtureStatsPagerAdapter
+
+
     }
 
     private fun addFragmentsToViewPager() {

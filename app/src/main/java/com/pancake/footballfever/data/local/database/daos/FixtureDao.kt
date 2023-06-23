@@ -26,4 +26,7 @@ interface FixtureDao {
 
     @Query("SELECT * FROM FIXTURE_TABLE ORDER BY id DESC")
     suspend fun getFixtures(): List<FixtureEntity>
+
+    @Query("delete from FIXTURE_TABLE ")
+    suspend fun deleteAllFixtures()
 }

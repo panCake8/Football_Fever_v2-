@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.pancake.footballfever.R
 import com.pancake.footballfever.domain.models.FixtureSummary
 import com.pancake.footballfever.ui.base.BaseAdapter
+import com.pancake.footballfever.ui.fixture.FixtureUiState
 import com.pancake.footballfever.ui.fixture.head2head.adapter.HeadToHeadListener
 import com.pancake.footballfever.ui.fixture.head2head.adapter.HeadToHeadParentAdapter
 import com.pancake.footballfever.ui.fixture.summary.FixtureSummaryAdapter
@@ -147,4 +148,13 @@ fun setTime(textView: TextView, time: Int?) {
     if (time != null)
         textView.text = simpleDateFormat.format(time * 1000L)
 
+}
+
+
+@BindingAdapter(value = ["showIfSuccess"])
+fun showIfSuccess(view: View, fixtureUiState: FixtureUiState) {
+    if (fixtureUiState.fixture != null)
+        view.visibility = View.VISIBLE
+    else
+        view.visibility = View.GONE
 }
