@@ -102,6 +102,9 @@ class SelectFavoriteTeamsFragment :
                 showAlertDialog()
             }
         })
+        viewModel.backEvent.observe(viewLifecycleOwner, EventObserver {
+            findNavController().popBackStack()
+        })
     }
 
     private fun showAlertDialog() {

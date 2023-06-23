@@ -27,6 +27,8 @@ class SelectFavoriteTeamsViewModel @Inject constructor(
 
     val nextEvent = MutableLiveData<Event<Unit>>()
 
+    val backEvent = MutableLiveData<Event<Unit>>()
+
     fun getPremierLeagueTeams(countryName: String, season: Int) {
         _teams.update { it.copy(isLoading = true, error = null) }
         viewModelScope.launch {
@@ -49,5 +51,9 @@ class SelectFavoriteTeamsViewModel @Inject constructor(
 
     fun onNextClick() {
         nextEvent.postValue(Event(Unit))
+    }
+
+    fun onBackClick() {
+        backEvent.postValue(Event(Unit))
     }
 }

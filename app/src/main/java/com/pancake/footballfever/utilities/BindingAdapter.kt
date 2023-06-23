@@ -13,7 +13,6 @@ import com.pancake.footballfever.domain.models.FixtureEvents
 import com.pancake.footballfever.ui.base.BaseAdapter
 import com.pancake.footballfever.ui.fixture_events.FixtureEventsAdapter
 import com.pancake.footballfever.ui.home.HomeUiState
-import com.pancake.footballfever.ui.home.HomeViewModel
 import com.pancake.footballfever.ui.home.adapter.FixtureHomeListener
 import com.pancake.footballfever.ui.home.adapter.ParentHomeAdapter
 
@@ -74,36 +73,33 @@ fun RecyclerView.setHomeItem(item: HomeUiState, listener: FixtureHomeListener) {
 }
 
 @BindingAdapter("app:showWhenSearchLoading")
-fun <T> showWhenLoading(view: View,dataState: DataState<T>){
+fun <T> showWhenLoading(view: View, dataState: DataState<T>) {
 
-    if(dataState is DataState.Loading){
-        view.visibility=View.VISIBLE
-    }
-    else
-        view.visibility=View.GONE
+    if (dataState is DataState.Loading) {
+        view.visibility = View.VISIBLE
+    } else
+        view.visibility = View.GONE
 
 }
 
 @BindingAdapter("app:showWhenSearchSuccess")
-fun <T> showWhenSuccess(view: View,dataState: DataState<T>){
+fun <T> showWhenSuccess(view: View, dataState: DataState<T>) {
 
-    if(dataState is DataState.Success){
-        view.visibility=View.VISIBLE
-    }
-    else
-        view.visibility=View.GONE
+    if (dataState is DataState.Success) {
+        view.visibility = View.VISIBLE
+    } else
+        view.visibility = View.GONE
 
 }
 
 
 @BindingAdapter("app:showWhenSearchError")
-fun <T> showWhenError(view: View,dataState: DataState<T>){
+fun <T> showWhenError(view: View, dataState: DataState<T>) {
 
-    if(dataState is DataState.Error){
-        view.visibility=View.VISIBLE
-    }
-    else
-        view.visibility=View.GONE
+    if (dataState is DataState.Error) {
+        view.visibility = View.VISIBLE
+    } else
+        view.visibility = View.GONE
 
 }
 
@@ -111,11 +107,10 @@ fun <T> showWhenError(view: View,dataState: DataState<T>){
 @BindingAdapter(value = ["app:showWhenSearchInSearchSuggests"])
 fun <T> showWhenSearchInSearchSuggests(view: View, dataState: DataState<T>) {
 
-    if(dataState is DataState.ShowKeywordSuggests){
-        view.visibility=View.VISIBLE
-    }
-    else
-        view.visibility=View.GONE
+    if (dataState is DataState.ShowKeywordSuggests) {
+        view.visibility = View.VISIBLE
+    } else
+        view.visibility = View.GONE
 
 }
 

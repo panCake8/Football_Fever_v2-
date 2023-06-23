@@ -41,6 +41,7 @@ class SelectCountryViewModel @Inject constructor(
                 _countries.update { it.copy(error = e.message) }
             }
         }
+
     }
 
     override fun onClickCountry(country: SelectCountry) {
