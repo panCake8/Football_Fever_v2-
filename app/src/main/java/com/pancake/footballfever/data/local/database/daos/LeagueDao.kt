@@ -7,12 +7,19 @@ import androidx.room.Query
 import com.pancake.footballfever.data.local.database.entity.LeagueEntity
 @Dao
 interface LeagueDao {
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertLeagues(leagues: List<LeagueEntity>)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertALeagues(leagues: LeagueEntity)
-
-    @Query("SELECT * FROM LEAGUE_TABLE ORDER BY id DESC")
+    @Query("SELECT * FROM LEAGUE_TABLE")
     fun getAllLeagues(): List<LeagueEntity>
+
+    @Query("delete from LEAGUE_TABLE ")
+    suspend fun deleteAllLeagues()
+
+
+    @Query("SELECT * FROM LEAGUE_TABLE WHERE id = :id")
+    fun getLeagueById(id: Int): LeagueEntity?
+
+
 }
