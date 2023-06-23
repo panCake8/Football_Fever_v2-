@@ -1,6 +1,5 @@
 package com.pancake.footballfever.ui.leagues
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pancake.footballfever.domain.models.League
@@ -8,6 +7,7 @@ import com.pancake.footballfever.domain.usecases.leaguesUsecase.FetchCurrentLeag
 import com.pancake.footballfever.domain.usecases.leaguesUsecase.GetCurrentLeagueCachedDataUseCase
 import com.pancake.footballfever.ui.leagues.adapter.LeaguesListener
 import com.pancake.footballfever.ui.leagues.uiState.CurrentLeagueUiState
+import com.pancake.footballfever.ui.leagues.uiState.LeagueUiEvent
 import com.pancake.footballfever.utilities.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -27,8 +27,8 @@ class LeaguesViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(CurrentLeagueUiState())
     val uiState = _uiState.asStateFlow()
 
-    val leagueEvent = MutableLiveData<Event<League>>()
-
+    private val _leagueEvent: MutableStateFlow<Event<LeagueUiEvent>?> = MutableStateFlow(null)
+    val leagueEvent = _leagueEvent.asStateFlow()
     init {
         fetchData()
     }
@@ -49,7 +49,7 @@ class LeaguesViewModel @Inject constructor(
     }
 
     override fun onClickLeague(league: League) {
-        leagueEvent.postValue(Event(league))
+        _leagueEvent.update { Event(LeagueUiEvent.ClickLeagueEvent(league)) }
     }
 
 }

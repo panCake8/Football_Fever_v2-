@@ -8,8 +8,10 @@ import com.pancake.footballfever.R
 import com.pancake.footballfever.databinding.FragmentLeagueBinding
 import com.pancake.footballfever.ui.base.BaseFragment
 import com.pancake.footballfever.ui.leagues.adapter.LeaguesAdapter
+import com.pancake.footballfever.ui.leagues.uiState.LeagueUiEvent
 
 import com.pancake.footballfever.utilities.EventObserver
+import com.pancake.footballfever.utilities.collectLast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,19 +23,26 @@ class LeagueFragment : BaseFragment<FragmentLeagueBinding, LeaguesViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerAdapter()
-        observeEvent()
+        collectEvent()
     }
 
     private fun setRecyclerAdapter() {
         binding.recyclerLeague.adapter = LeaguesAdapter(viewModel)
     }
+    private fun collectEvent() {
+        collectLast(viewModel.leagueEvent) {
+            it?.getContentIfNotHandled()?.let { onEvent(it) }
+        }
+    }
+    private fun onEvent(event: LeagueUiEvent) {
+        when (event) {
+            is LeagueUiEvent.ClickLeagueEvent -> {
+                val nav =
+                    LeagueFragmentDirections.actionLeagueFragmentToLeagueStateFragment(event.league.id!!, event.league.season!!)
+                findNavController().navigate(nav)
+            }
+        }
 
-    private fun observeEvent() {
-        viewModel.leagueEvent.observe(viewLifecycleOwner, EventObserver {
-            val nav =
-                LeagueFragmentDirections.actionLeagueFragmentToLeagueStateFragment(it.id!!, it.season!!)
-            findNavController().navigate(nav)
-        })
     }
 
     override fun showBottomNavBar(show: Boolean) {
