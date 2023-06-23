@@ -24,12 +24,7 @@ class TopScorerViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(TopScorerUiState())
     val uiState: StateFlow<TopScorerUiState> = _uiState
 
-    init {
-        fetchData(39, 2022)
-    }
-
-
-    private fun fetchData(leagues: Int, seasons: Int) {
+    fun fetchData(leagues: Int, seasons: Int) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 val result = fetchTopGoalsUseCase(leagues, seasons)

@@ -1,5 +1,7 @@
 package com.pancake.footballfever.ui.league_state
 
+import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
@@ -41,16 +43,24 @@ class LeagueStateFragment : BaseFragment<FragmentLeagueStateBinding, LeagueState
 
     private fun addFragmentToViewPager() {
 
-        leagueStatePagerAdapter.addFragment(LeagueMatchesFragment())
-        leagueStatePagerAdapter.addFragment(StandingFragment())
-        leagueStatePagerAdapter.addFragment(TopScoreFragment())
-        leagueStatePagerAdapter.addFragment(TopAssistFragment())
+        leagueStatePagerAdapter.addFragment(LeagueMatchesFragment.newInstance(args.id, args.season))
+        leagueStatePagerAdapter.addFragment(StandingFragment.newInstance(args.id, args.season))
+        leagueStatePagerAdapter.addFragment(TopScoreFragment.newInstance(args.id, args.season))
+        leagueStatePagerAdapter.addFragment(TopAssistFragment.newInstance(args.id, args.season))
 
     }
 
     private fun initTabLayout() {
         TabLayoutMediator(binding.tabLayout, binding.pager) { tab, position ->
             tab.text = tabItems[position]
+            val tabs = binding.tabLayout.getChildAt(0) as ViewGroup
+            for (i in 0 until tabs.childCount) {
+                val tab = tabs.getChildAt(i)
+                val layoutParams = tab.layoutParams as LinearLayout.LayoutParams
+                layoutParams.marginEnd = 30
+                tab.layoutParams = layoutParams
+                binding.tabLayout.requestLayout()
+            }
         }.attach()
     }
 

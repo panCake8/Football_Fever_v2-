@@ -26,15 +26,15 @@ class StandingsViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(StandingsUIState())
     val uiState: StateFlow<StandingsUIState> = _uiState
     val standingEvent = MutableLiveData<Event<Standings>>()
-    init {
 
+    fun fetchData(leagueId: Int, season: Int) {
         viewModelScope.launch(Dispatchers.IO) {
 
-            fetchStandingsAndCacheUseCase.invoke(39, 2019)
+            fetchStandingsAndCacheUseCase.invoke(leagueId, season)
 
             _uiState.update {
                 it.copy(
-                    response = getCachedStandingsUseCase.invoke(39, 2019),
+                    response = getCachedStandingsUseCase.invoke(leagueId, season),
                     isLoading = false
                 )
             }
