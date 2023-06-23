@@ -1,11 +1,11 @@
 package com.pancake.footballfever.ui.more
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.pancake.footballfever.R
 
 class MoreFragment : Fragment() {
@@ -23,9 +23,9 @@ class MoreFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_more, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MoreViewModel::class.java)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this)[MoreViewModel::class.java]
         // TODO: Use the ViewModel
     }
 
