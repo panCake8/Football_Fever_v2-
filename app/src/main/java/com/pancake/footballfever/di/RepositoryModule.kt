@@ -7,10 +7,14 @@ import com.pancake.footballfever.data.repository.FixtureEventsRepository
 import com.pancake.footballfever.data.repository.FixtureEventsRepositoryImpl
 import com.pancake.footballfever.data.repository.FixtureRepository
 import com.pancake.footballfever.data.repository.FixtureRepositoryImpl
+import com.pancake.footballfever.data.repository.HeadToHeadRepository
+import com.pancake.footballfever.data.repository.HeadToHeadRepositoryImpl
 import com.pancake.footballfever.data.repository.InjuriesRepository
 import com.pancake.footballfever.data.repository.InjuriesRepositoryImpl
 import com.pancake.footballfever.data.repository.LeaguesRepository
 import com.pancake.footballfever.data.repository.LeaguesRepositoryImpl
+import com.pancake.footballfever.data.repository.LeagueMatchesRepository
+import com.pancake.footballfever.data.repository.LeagueMatchesRepositoryImpl
 import com.pancake.footballfever.data.repository.PlayerRepository
 import com.pancake.footballfever.data.repository.PlayerRepositoryImpl
 import com.pancake.footballfever.data.repository.PlayersRepository
@@ -44,6 +48,18 @@ abstract class RepositoryModule {
     abstract fun bindsPlayerRepository(
         playerRepositoryImpl: PlayerRepositoryImpl
     ): PlayerRepository
+
+    @Singleton
+    @Binds
+    abstract fun bindsLeagueMatchesRepository(
+        leagueMatchesRepositoryImpl: LeagueMatchesRepositoryImpl,
+    ): LeagueMatchesRepository
+
+    @Singleton
+    @Binds
+    abstract fun bindsHeadTOHeadsRepository(
+        headToHeadRepository: HeadToHeadRepositoryImpl,
+    ): HeadToHeadRepository
 
     @Singleton
     @Binds

@@ -3,6 +3,9 @@ package com.pancake.footballfever.utilities
 import com.example.footboolfever.data.remote.dto.standings.StandingsDto
 import com.pancake.footballfever.data.local.database.entity.StandingsEntity
 import com.pancake.footballfever.domain.models.Standings
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 fun StandingsDto.toStandingsEntity() :List<StandingsEntity>? {
 
@@ -33,4 +36,14 @@ fun StandingsEntity.toStandings(): Standings {
         win = win,
         played = played
     )
+}
+
+
+fun Int.toDate(): String {
+    val calender = Calendar.getInstance()
+    calender.timeInMillis = this.toLong()
+    val format = SimpleDateFormat("HH:mm", Locale.getDefault())
+    return format.format(calender.time)
+
+
 }

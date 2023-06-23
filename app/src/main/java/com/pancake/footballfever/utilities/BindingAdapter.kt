@@ -11,14 +11,28 @@ import com.bumptech.glide.Glide
 import com.pancake.footballfever.R
 import com.pancake.footballfever.domain.models.FixtureEvents
 import com.pancake.footballfever.ui.base.BaseAdapter
+import com.pancake.footballfever.ui.fixture.head2head.adapter.HeadToHeadListener
+import com.pancake.footballfever.ui.fixture.head2head.adapter.HeadToHeadParentAdapter
 import com.pancake.footballfever.ui.fixture_events.FixtureEventsAdapter
 import com.pancake.footballfever.ui.home.HomeUiState
 import com.pancake.footballfever.ui.home.adapter.FixtureHomeListener
 import com.pancake.footballfever.ui.home.adapter.ParentHomeAdapter
+import com.pancake.footballfever.ui.league_state.match.adapter.LeagueMatchesListener
+import com.pancake.footballfever.ui.league_state.match.adapter.LeagueMatchesParentAdapter
 
 @BindingAdapter(value = ["app:setRecyclerItems"])
 fun <T> setRecyclerItems(recyclerView: RecyclerView, items: List<T?>?) {
     (recyclerView.adapter as BaseAdapter<T?>?)?.submitList(items)
+}
+
+@BindingAdapter(value = ["setLeagueChildAdapter"])
+fun setChildRecyclerAdapter(recyclerView: RecyclerView,items:LeagueMatchesListener) {
+    recyclerView.adapter = LeagueMatchesParentAdapter(items)
+}
+
+@BindingAdapter(value = ["setHeadToHeadRecyclerAdapter"])
+fun setChildRecyclerAdapter(recyclerView: RecyclerView,items: HeadToHeadListener){
+    recyclerView.adapter = HeadToHeadParentAdapter(items)
 }
 
 @BindingAdapter(value = ["app:setImageUrl"])
