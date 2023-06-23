@@ -12,9 +12,15 @@ class FixtureSummaryRepositoryImpl @Inject constructor(
     private val apiService: ApiService,
     private val dao: FixtureSummaryDao
 ) : FixtureSummaryRepository {
-    override suspend fun getSummaryFixtures(fixtureId: String): Result<List<FixtureSummaryEntity>> {
+    override suspend fun getSummaryFixtures(fixtureId: Int): Result<List<FixtureSummaryEntity>> {
         return try {
-            dao.insertFixtureSummary(apiService.getEventsFixtures(fixtureId).body()?.response?.map { it.toEntity(fixtureId) }!!)
+            dao.insertFixtureSummary(
+                apiService.getEventsFixtures(fixtureId).body()?.response?.map {
+                    it.toEntity(
+                        fixtureId
+                    )
+                }!!
+            )
             Result.success(dao.getFixtureSummary(fixtureId))
         } catch (e: IOException) {
             with(dao.getFixtureSummary(fixtureId)) {
@@ -26,7 +32,7 @@ class FixtureSummaryRepositoryImpl @Inject constructor(
         }
     }
 
-    private fun EventsDto.toEntity(fixtureId: String) =
+    private fun EventsDto.toEntity(fixtureId: Int) =
         FixtureSummaryEntity(
             fixtureId = fixtureId,
             time = time?.elapsed!!,

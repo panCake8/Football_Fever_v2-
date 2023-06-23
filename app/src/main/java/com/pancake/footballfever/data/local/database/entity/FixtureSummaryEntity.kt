@@ -4,7 +4,7 @@ import androidx.room.Entity
 
 @Entity("FIXTURE_SUMMARY_TABLE", primaryKeys = ["fixtureId", "time", "teamId", "playerName"])
 data class FixtureSummaryEntity(
-    val fixtureId: String,
+    val fixtureId: Int,
     val time: Int,
     val teamId: Int,
     val playerName: String,

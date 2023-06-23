@@ -30,6 +30,8 @@ data class FixtureEntity(
 
 fun FixtureEntity.toFixtureModel(): FixtureModel {
     return FixtureModel(
+        teamHomeId = teamHomeId,
+        teamAwayId = teamAwayId,
         teamAwayGoals = teamAwayGoals,
         teamHomeGoals = teamHomeGoals,
         teamAwayLogo = teamAwayLogo,

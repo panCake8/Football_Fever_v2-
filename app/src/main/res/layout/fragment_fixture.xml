@@ -111,7 +111,6 @@
             app:tabIndicatorFullWidth="true"
             app:tabIndicatorGravity="stretch"
             app:tabMode="scrollable"
-            app:tabPaddingEnd="@dimen/large_padding"
             app:tabPaddingStart="@dimen/large_padding"
             app:tabSelectedTextColor="@color/white" />
 

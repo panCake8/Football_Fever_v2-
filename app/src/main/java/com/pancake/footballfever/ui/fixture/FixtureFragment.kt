@@ -13,8 +13,9 @@ import com.pancake.footballfever.databinding.FragmentFixtureBinding
 import com.pancake.footballfever.domain.Constants
 import com.pancake.footballfever.domain.workManager.FetchFixtureWorker
 import com.pancake.footballfever.ui.base.BaseFragment
-import com.pancake.footballfever.ui.fixture.lineup.FragmentFixtureLineup
+import com.pancake.footballfever.ui.fixture.head2head.FragmentMatchHeadToHead
 import com.pancake.footballfever.ui.fixture.stats.FragmentFixtureStats
+import com.pancake.footballfever.ui.fixture.summary.FixtureSummaryFragment
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.concurrent.TimeUnit
 
@@ -27,7 +28,7 @@ class FixtureFragment : BaseFragment<FragmentFixtureBinding, FixtureViewModel>()
 
     override val viewModel by viewModels<FixtureViewModel>()
 
-    private val tabItems = listOf(STATS, LINEUP)
+    private val tabItems = listOf(STATS, SUMMARY, H2H)
 
     private lateinit var fixtureStatsPagerAdapter: FixtureStatsPagerAdapter
 
@@ -48,9 +49,19 @@ class FixtureFragment : BaseFragment<FragmentFixtureBinding, FixtureViewModel>()
     }
 
     private fun addFragmentsToViewPager() {
-        fixtureStatsPagerAdapter.addFragment(FragmentFixtureLineup.newInstance(fixtureId))
-        fixtureStatsPagerAdapter.addFragment(FragmentFixtureStats.newInstance(fixtureId))
-//        fixtureStatsPagerAdapter.addFragment(FragmentFixtureLineup.newInstance(fixtureId))
+        fixtureStatsPagerAdapter.addFragment(FragmentFixtureStats.newInstance(239625))
+        fixtureStatsPagerAdapter.addFragment(
+            FixtureSummaryFragment.newInstance(
+                239625,
+                viewModel.fixtureUiState.value.fixture?.teamHomeId
+            )
+        )
+        fixtureStatsPagerAdapter.addFragment(
+            FragmentMatchHeadToHead.newInstance(
+                239625,
+                "${463}-${442}"
+            )
+        )
 //        fixtureStatsPagerAdapter.addFragment(FragmentFixtureLineup.newInstance(fixtureId))
 //        fixtureStatsPagerAdapter.addFragment(FragmentFixtureLineup.newInstance(fixtureId))
     }
