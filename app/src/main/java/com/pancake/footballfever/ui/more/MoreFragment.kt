@@ -1,32 +1,14 @@
 package com.pancake.footballfever.ui.more
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.pancake.footballfever.R
+import com.pancake.footballfever.databinding.FragmentMoreBinding
+import com.pancake.footballfever.ui.base.BaseFragment
 
-class MoreFragment : Fragment() {
+class MoreFragment : BaseFragment<FragmentMoreBinding, MoreViewModel>() {
+    override val layoutId: Int
+        get() = R.layout.fragment_more
 
-    companion object {
-        fun newInstance() = MoreFragment()
-    }
-
-    private lateinit var viewModel: MoreViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        return inflater.inflate(R.layout.fragment_more, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[MoreViewModel::class.java]
-        // TODO: Use the ViewModel
-    }
+    override val viewModel by viewModels<MoreViewModel>()
 
 }
