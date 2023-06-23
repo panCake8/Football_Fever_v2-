@@ -10,9 +10,9 @@ import com.pancake.footballfever.domain.usecases.RefreshAllFixtureHomeUseCase
 import com.pancake.footballfever.ui.home.adapter.FixtureHomeListener
 import com.pancake.footballfever.utilities.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -30,34 +30,26 @@ class HomeViewModel @Inject constructor(
 
     val fixtureEvent = MutableLiveData<Event<FixtureHome>>()
 
-    init {
-        getFixtureLocal()
-    }
-
-   private fun getFixtureLocal() {
+     fun getFixtureLocal() {
         viewModelScope.launch {
-            getFixturesLocalUseCase.getAllFixtureHomeLocal().collect { fixtures ->
-                _fixtures.update {
-                    it.copy(isLoading = false, success = fixtures)
+            getFixturesLocalUseCase.getAllFixtureHomeLocal()
+                .stateIn(scope = viewModelScope)
+                .collect { fixtures ->
+                    _fixtures.update {
+                        it.copy(isLoading = false, success = fixtures , error = null)
+                    }
                 }
-            }
+
         }
     }
 
     fun refreshFixtures(date: String, season: Int) {
         viewModelScope.launch {
-            _fixtures.update { it.copy(isLoading = true) }
-            try {
-                val request = refreshFixtureUseCase.refreshAllFixtureHome(date, season)
-                if (request.isSuccess) {
-                   getFixtureLocal()
-                } else {
-                    _fixtures.update { it.copy(error = request.exceptionOrNull()?.message) }
-                }
-            } catch (e: Throwable) {
-                _fixtures.update { it.copy(error = e.message) }
+            _fixtures.update { it.copy(isLoading = true, error = null) }
+            val request = refreshFixtureUseCase.refreshAllFixtureHome(date, season)
+            if (request.isFailure) {
+                _fixtures.update { it.copy(error = request.exceptionOrNull()?.message) }
             }
-
         }
     }
 

@@ -29,7 +29,6 @@
 
             <androidx.constraintlayout.utils.widget.ImageFilterView
                 android:id="@+id/country_image"
-                tools:srcCompat="@drawable/arsenal_logo"
                 android:layout_width="@dimen/dimens_country_image"
                 android:layout_height="@dimen/dimens_country_image"
                 android:layout_marginVertical="@dimen/semi_large_margin"
@@ -39,19 +38,20 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:roundPercent="1"
-                app:setImageUrl="@{item.flag}" />
+                app:setImageUrl="@{item.flag}"
+                tools:srcCompat="@drawable/arsenal_logo" />
 
             <TextView
                 android:id="@+id/country_name"
                 style="@style/select_favorite_item_text"
-                tools:text="Egypt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/medium_margin"
                 android:text="@{item.name}"
                 app:layout_constraintBottom_toBottomOf="@id/country_image"
                 app:layout_constraintStart_toEndOf="@id/country_image"
-                app:layout_constraintTop_toTopOf="@id/country_image" />
+                app:layout_constraintTop_toTopOf="@id/country_image"
+                tools:text="Egypt" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"

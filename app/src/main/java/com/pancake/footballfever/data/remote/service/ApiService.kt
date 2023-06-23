@@ -1,6 +1,7 @@
 package com.pancake.footballfever.data.remote.service
 
 import com.example.footboolfever.data.remote.dto.BaseResponse
+import com.example.footboolfever.data.remote.dto.CoachsDto
 import com.example.footboolfever.data.remote.dto.CountryDto
 import com.example.footboolfever.data.remote.dto.EventsDto
 import com.example.footboolfever.data.remote.dto.FixturesDto
@@ -157,8 +158,8 @@ interface ApiService {
     // region injures requests
     @GET("injuries")
     suspend fun getInjuries(
-        @Query("league") league: Int,
-        @Query("season") season: Int,
+        @Query("league") league: Int?,
+        @Query("season") season: Int?,
     ): Response<BaseResponse<InjuriesDto>>
 
     // endregion
@@ -204,4 +205,35 @@ interface ApiService {
     ) : Response<BaseResponse<TeamsDto>>
 
     // endregion
+
+
+    // region search requests
+    @GET("leagues")
+    suspend fun getLeagueBySearch(
+        @Query("search") searchText:String
+    ):Response<BaseResponse<LeaguesDto>>
+
+
+    @GET("teams")
+    suspend fun getTeamBySearch(
+        @Query("search") searchText:String
+    ):Response<BaseResponse<TeamsDto>>
+
+    @GET("coachs")
+    suspend fun getCoachBySearch(
+        @Query("search") searchText:String
+    ):Response<BaseResponse<CoachsDto>>
+
+    // endregion
+
+    @GET("fixtures")
+    suspend fun getTeamFixtures(
+        @Query("season") season: String? = null,
+        @Query("team") team: String? = null,
+    ): Response<BaseResponse<FixturesDto>>
+
+    @GET("fixtures/players")
+    suspend fun getTeamPlayerStatisticsFixtures(@Query("fixture") fixture: String,
+                                                @Query("team") team: String): Response<BaseResponse<PlayerStatisticsDto>>
+
 }

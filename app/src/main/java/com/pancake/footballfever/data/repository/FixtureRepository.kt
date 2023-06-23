@@ -4,6 +4,7 @@ import com.example.footboolfever.data.remote.dto.FixturesDto
 import com.pancake.footballfever.data.local.database.entity.FixtureEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureHomeEntity
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.SharedFlow
 
 interface FixtureRepository {
 

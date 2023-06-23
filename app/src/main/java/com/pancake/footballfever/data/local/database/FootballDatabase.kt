@@ -2,20 +2,27 @@ package com.pancake.footballfever.data.local.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.pancake.footballfever.data.local.database.daos.FixtureEventsDao
 import com.pancake.footballfever.data.local.database.daos.FixtureDao
 import com.pancake.footballfever.data.local.database.daos.FootballDao
 import com.pancake.footballfever.data.local.database.daos.HeadToHeadDao
 import com.pancake.footballfever.data.local.database.daos.LeagueDao
 import com.pancake.footballfever.data.local.database.daos.LeagueMatchesDao
 import com.pancake.footballfever.data.local.database.daos.PlayerDao
+import com.pancake.footballfever.data.local.database.daos.PlayersDao
+import com.pancake.footballfever.data.local.database.daos.TeamFixtureDao
 import com.pancake.footballfever.data.local.database.daos.TeamDao
 import com.pancake.footballfever.data.local.database.entity.CountryEntity
 import com.pancake.footballfever.data.local.database.entity.FavoriteTeamEntity
+import com.pancake.footballfever.data.local.database.entity.TeamFixtureEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureEventsEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureHomeEntity
+import com.pancake.footballfever.data.local.database.entity.InjuriesEntity
 import com.pancake.footballfever.data.local.database.entity.HeadToHeadEntity
 import com.pancake.footballfever.data.local.database.entity.LeagueEntity
+import com.pancake.footballfever.data.local.database.entity.PlayerEntity
+import com.pancake.footballfever.data.local.database.entity.SearchKeywordEntity
 import com.pancake.footballfever.data.local.database.entity.LeagueMatchEntity
 import com.pancake.footballfever.data.local.database.entity.StandingsEntity
 import com.pancake.footballfever.data.local.database.entity.TopAssistEntity
@@ -25,6 +32,7 @@ import com.pancake.footballfever.data.local.database.entity.VenueEntity
 
 @Database(
     entities = [
+        InjuriesEntity::class,
         CountryEntity::class,
         FavoriteTeamEntity::class,
         FixtureEventsEntity::class,
@@ -35,6 +43,9 @@ import com.pancake.footballfever.data.local.database.entity.VenueEntity
         VenueEntity::class,
         StandingsEntity::class,
         FixtureEntity::class,
+        SearchKeywordEntity::class,
+        TeamFixtureEntity::class,
+        PlayerEntity::class
         LeagueMatchEntity::class,
         HeadToHeadEntity::class,
     ],
@@ -49,4 +60,9 @@ abstract class FootballDatabase : RoomDatabase() {
     abstract val leagueMatches: LeagueMatchesDao
     abstract val headToHead: HeadToHeadDao
 
+    abstract val teamDao :TeamDao
+    abstract val fixtureDao:FixtureDao
+    abstract val fixtureEventsDao: FixtureEventsDao
+    abstract val playersDao: PlayersDao
+    abstract val teamFixtureEventsDao: TeamFixtureDao
 }

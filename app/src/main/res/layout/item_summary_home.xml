@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.pancake.footballfever.domain.models.FixtureEvents" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp">
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.55" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/eventTypeCardView"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            app:cardBackgroundColor="#222232"
+            app:cardCornerRadius="100dp"
+            app:cardElevation="@dimen/no_elevation"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp">
+
+            <ImageView
+                bindFixtureEventImg="@{item.type}"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                tools:src="@drawable/goal" />
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@{@string/summary_time(item.time)}"
+            android:textColor="@color/text_green"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@id/playerNameTv"
+            app:layout_constraintEnd_toEndOf="@id/playerNameTv"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="64" />
+
+        <TextView
+            android:id="@+id/playerNameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@{item.playerName}"
+            android:textColor="@color/text_title"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/eventTypeCardView"
+            app:layout_constraintEnd_toStartOf="@id/eventTypeCardView"
+            app:layout_constraintTop_toTopOf="@id/eventTypeCardView"
+            tools:text="Somebody" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@{item.typeDetail}"
+            android:textColor="@color/text_body"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/playerNameTv"
+            app:layout_constraintTop_toBottomOf="@id/playerNameTv"
+            tools:text="Yellow Card" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
