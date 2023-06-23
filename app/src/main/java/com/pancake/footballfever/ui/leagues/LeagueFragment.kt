@@ -36,4 +36,8 @@ class LeagueFragment : BaseFragment<FragmentLeagueBinding, LeaguesViewModel>() {
         })
     }
 
+    override fun showBottomNavBar(show: Boolean) {
+        super.showBottomNavBar(true)
+    }
+
 }

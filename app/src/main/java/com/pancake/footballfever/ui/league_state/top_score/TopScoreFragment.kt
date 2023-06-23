@@ -20,4 +20,5 @@ class TopScoreFragment : BaseFragment<FragmentTopScoreBinding, TopScorerViewMode
         binding.recyclerViewScorers.adapter = adapter
     }
 
+
 }

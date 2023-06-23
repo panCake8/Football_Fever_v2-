@@ -20,5 +20,7 @@ class TopAssistFragment : BaseFragment<FragmentTopAssistBinding, TopAssistViewMo
         val adapter = TopAssistAdapter(viewModel)
         binding.recyclerViewAssist.adapter = adapter
     }
-
+    override fun showBottomNavBar(show: Boolean) {
+        super.showBottomNavBar(show)
+    }
 }

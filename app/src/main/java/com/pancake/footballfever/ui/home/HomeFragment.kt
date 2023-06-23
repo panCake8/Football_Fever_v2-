@@ -89,4 +89,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             findNavController().navigate(nav)
         })
     }
+
+    override fun showBottomNavBar(show: Boolean) {
+        super.showBottomNavBar(true)
+    }
 }
