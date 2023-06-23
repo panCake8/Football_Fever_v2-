@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
 
-    app:startDestination="@id/leagueMatch">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/clubFragment"
