@@ -3,6 +3,7 @@ package com.example.footboolfever.data.remote.dto
 import com.example.footboolfever.data.remote.dto.utils.League
 import com.example.footboolfever.data.remote.dto.utils.Team
 import com.google.gson.annotations.SerializedName
+import com.pancake.footballfever.data.local.database.entity.InjuriesEntity
 
 data class InjuriesDto(
 
@@ -51,4 +52,15 @@ data class InjuriesPlayer(
 	@field:SerializedName("type")
 	val type: String? = null
 )
+
+fun InjuriesDto.toInjuriesEntity(): InjuriesEntity{
+	return InjuriesEntity(
+		id = player?.id,
+		name = player?.name,
+		photo = player?.photo,
+		date = fixture?.date,
+		reason = player?.reason,
+		logoTeam = team?.logo,
+	)
+}
 

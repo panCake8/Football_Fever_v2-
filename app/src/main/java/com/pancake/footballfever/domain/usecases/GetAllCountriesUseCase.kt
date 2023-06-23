@@ -9,7 +9,8 @@ class GetAllCountriesUseCase @Inject constructor(
     private val countryRepository: CountryRepository,
 ) {
     suspend fun getAllCountries(): List<SelectCountry> {
-        return countryRepository.getAllCountriesRemote().map { it.toSelectCountry() }
+        return countryRepository.getAllCountriesRemote().filter { it.name != NOTHING }
+            .map { it.toSelectCountry() }
     }
 
     private fun CountryDto.toSelectCountry(): SelectCountry {
@@ -17,5 +18,9 @@ class GetAllCountriesUseCase @Inject constructor(
             flag = this.flag,
             name = this.name
         )
+    }
+
+    companion object {
+        private const val NOTHING = "Israel"
     }
 }

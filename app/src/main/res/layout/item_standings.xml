@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="listener"
+            type="com.pancake.footballfever.ui.league_state.standing.StandingsListener" />
+
+        <variable
             name="item"
             type="com.pancake.footballfever.domain.models.Standings" />
 
@@ -13,9 +17,11 @@
 
 
     <TableRow
+        android:id="@+id/club_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/Primary_color"
+        android:onClick="@{()->listener.onClickClub(item)}"
         android:padding="@dimen/semi_large_padding">
 
         <TextView
@@ -66,7 +72,6 @@
             android:text="@{String.valueOf(item.points)}"
             android:textColor="@color/white87"
             tools:text="@string/pts_value" />
-
 
 
     </TableRow>

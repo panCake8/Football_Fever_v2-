@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
 
-    app:startDestination="@id/selectCountryFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/clubFragment"
@@ -95,13 +95,16 @@
         android:id="@+id/splashFragment"
         android:name="com.pancake.footballfever.ui.splash.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
+        tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_selectCountryFragment"
-            app:destination="@id/selectCountryFragment" />
+            app:destination="@id/selectCountryFragment"
+            app:popUpTo="@+id/navigation"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_splashFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@+id/navigation"
+            app:popUpToInclusive="true" />
     </fragment>
-
 </navigation>

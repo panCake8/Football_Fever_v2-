@@ -9,9 +9,10 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.pancake.footballfever.R
+import com.pancake.footballfever.domain.models.FixtureEvents
 import com.pancake.footballfever.ui.base.BaseAdapter
+import com.pancake.footballfever.ui.fixture_events.FixtureEventsAdapter
 import com.pancake.footballfever.ui.home.HomeUiState
-import com.pancake.footballfever.ui.home.HomeViewModel
 import com.pancake.footballfever.ui.home.adapter.FixtureHomeListener
 import com.pancake.footballfever.ui.home.adapter.ParentHomeAdapter
 
@@ -36,7 +37,7 @@ fun ProgressBar.showIfLoading(isLoading: Boolean) {
 }
 
 @BindingAdapter("app:showIfError")
-fun ImageView.showIfError(errorMsg: String?) {
+fun View.showIfError(errorMsg: String?) {
     visibility = when (errorMsg) {
         null -> View.INVISIBLE
         else -> View.VISIBLE
@@ -69,4 +70,57 @@ fun ImageView.bindFixtureEventImg(type: String) {
 @BindingAdapter(value = ["app:setHomeItem", "app:setHomeListener"], requireAll = true)
 fun RecyclerView.setHomeItem(item: HomeUiState, listener: FixtureHomeListener) {
     adapter = ParentHomeAdapter(item, listener)
+}
+
+@BindingAdapter("app:showWhenSearchLoading")
+fun <T> showWhenLoading(view: View, dataState: DataState<T>) {
+
+    if (dataState is DataState.Loading) {
+        view.visibility = View.VISIBLE
+    } else
+        view.visibility = View.GONE
+
+}
+
+@BindingAdapter("app:showWhenSearchSuccess")
+fun <T> showWhenSuccess(view: View, dataState: DataState<T>) {
+
+    if (dataState is DataState.Success) {
+        view.visibility = View.VISIBLE
+    } else
+        view.visibility = View.GONE
+
+}
+
+
+@BindingAdapter("app:showWhenSearchError")
+fun <T> showWhenError(view: View, dataState: DataState<T>) {
+
+    if (dataState is DataState.Error) {
+        view.visibility = View.VISIBLE
+    } else
+        view.visibility = View.GONE
+
+}
+
+
+@BindingAdapter(value = ["app:showWhenSearchInSearchSuggests"])
+fun <T> showWhenSearchInSearchSuggests(view: View, dataState: DataState<T>) {
+
+    if (dataState is DataState.ShowKeywordSuggests) {
+        view.visibility = View.VISIBLE
+    } else
+        view.visibility = View.GONE
+
+}
+
+
+@BindingAdapter(value = ["summaryItems", "homeId"], requireAll = true)
+fun RecyclerView.bindSummaryAdapterItems(summaryItems: List<FixtureEvents>?, homeId: Int) {
+    summaryItems?.let {
+        adapter = FixtureEventsAdapter(homeId).also {
+            it.submitList(summaryItems)
+        }
+
+    }
 }

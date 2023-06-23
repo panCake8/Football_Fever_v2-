@@ -7,6 +7,8 @@ import androidx.room.Query
 import com.pancake.footballfever.data.local.database.entity.CountryEntity
 import com.pancake.footballfever.data.local.database.entity.FavoriteTeamEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureHomeEntity
+import com.pancake.footballfever.data.local.database.entity.InjuriesEntity
+import com.pancake.footballfever.data.local.database.entity.SearchKeywordEntity
 import com.pancake.footballfever.data.local.database.entity.StandingsEntity
 import com.pancake.footballfever.data.local.database.entity.VenueEntity
 import kotlinx.coroutines.flow.Flow
@@ -48,4 +50,16 @@ interface FootballDao {
 
     @Query("SELECT * FROM STANDINGS_TABLE WHERE leagueId =:leagueId AND season =:season")
     fun getAllStandings(leagueId:Int,season:Int): List<StandingsEntity>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertInjuries(injuries: List<InjuriesEntity>)
+
+    @Query("SELECT * FROM INJURIES_TABLE")
+    suspend fun getAllInjuries(): List<InjuriesEntity>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertSearchKeyword(keyword: SearchKeywordEntity)
+
+    @Query("SELECT * FROM KEYWORD_SEARCH_TABLE ORDER BY id DESC")
+    suspend fun getAllSearchKeywords(): List<SearchKeywordEntity>
 }

@@ -20,11 +20,12 @@ class RefreshAllFixtureHomeUseCase @Inject constructor(
         return try {
             val teams = mutableListOf<FixtureHomeEntity>()
             getAllFavoriteTeams().forEach {
-                val team = fixtureRepository.getAllFixturesHomeRemote(date, it.teamId, season)
+                val team = fixtureRepository.getAllFixturesHomeRemote(date, it.teamId!!, season)
                     .map { it.toFixtureEntity() }
 
                 teams.addAll(team)
             }
+            fixtureRepository.deleteAllHomeFixtures()
             fixtureRepository.addFixtureHome(teams.distinctBy { it.fixture })
             Result.success(teams)
         } catch (e: Throwable) {
@@ -35,19 +36,20 @@ class RefreshAllFixtureHomeUseCase @Inject constructor(
     private fun FixturesDto.toFixtureEntity(): FixtureHomeEntity {
         return FixtureHomeEntity(
             id = 0,
-            fixture = this.fixture?.id!!,
+            fixture = this.fixture?.id,
             leagueName = this.league?.name,
             round = this.league?.round,
-            elapsed = this.fixture.status?.elapsed,
-            timestamp = this.fixture.timestamp?.toLong(),
-            homeTeamId = this.teams?.home?.id!!,
-            homeTeamName = this.teams.home.name!!,
-            homeTeamLogo = this.teams.home.logo!!,
-            homeTeamGoals = this.goals?.home!!,
-            awayTeamId = this.teams.away?.id!!,
-            awayTeamName = this.teams.away.name!!,
-            awayTeamLogo = this.teams.away.logo!!,
-            awayTeamGoals = this.goals.away!!
+            elapsed = this.fixture?.status?.elapsed,
+            status = this.fixture?.status?.jsonMemberLong,
+            timestamp = this.fixture?.timestamp?.toLong(),
+            homeTeamId = this.teams?.home?.id,
+            homeTeamName = this.teams?.home?.name,
+            homeTeamLogo = this.teams?.home?.logo,
+            homeTeamGoals = this.goals?.home,
+            awayTeamId = this.teams?.away?.id,
+            awayTeamName = this.teams?.away?.name,
+            awayTeamLogo = this.teams?.away?.logo,
+            awayTeamGoals = this.goals?.away
         )
     }
 }

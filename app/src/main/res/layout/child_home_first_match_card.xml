@@ -86,6 +86,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/medium_margin"
+                        android:ellipsize="end"
+                        android:maxWidth="@dimen/fixture_teams_width"
+                        android:maxLines="1"
                         android:text="@{item.homeTeamName}"
                         tools:text="real madrid" />
 
@@ -141,6 +144,15 @@
                         android:layout_height="wrap_content"
                         android:text="@{String.valueOf(item.elapsed)}"
                         tools:text="90" />
+
+                    <TextView
+                        android:id="@+id/status"
+                        style="@style/select_favorite_item_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{item.status}"
+                        android:textSize="@dimen/text_tiny"
+                        tools:text="90" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -166,6 +178,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/medium_margin"
+                        android:ellipsize="end"
+                        android:maxWidth="@dimen/fixture_teams_width"
+                        android:maxLines="1"
                         android:text="@{item.awayTeamName}"
                         tools:text="real madrid" />
 
