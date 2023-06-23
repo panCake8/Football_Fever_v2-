@@ -10,6 +10,7 @@ import com.pancake.footballfever.ui.fixture.adapter.FixtureStatsPagerAdapter
 import com.pancake.footballfever.ui.fixture.head2head.FragmentMatchHeadToHead
 import com.pancake.footballfever.ui.fixture.stats.FragmentFixtureStats
 import com.pancake.footballfever.ui.fixture.summary.FixtureSummaryFragment
+import com.pancake.footballfever.ui.league_state.standing.StandingFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,7 +22,7 @@ class FixtureFragment : BaseFragment<FragmentFixtureBinding, FixtureViewModel>()
 
     override val viewModel by viewModels<FixtureViewModel>()
 
-    private val tabItems = listOf(STATS, SUMMARY, H2H)
+    private val tabItems = listOf(LINEUP, SUMMARY, H2H)
 
     private lateinit var fixtureStatsPagerAdapter: FixtureStatsPagerAdapter
 
@@ -34,17 +35,23 @@ class FixtureFragment : BaseFragment<FragmentFixtureBinding, FixtureViewModel>()
         fixtureId?.let {
             viewModel.fetchFixture(it)
         }
-
+        binding.refreshButton.setOnClickListener {
+            fixtureId?.let {
+                viewModel.refreshData(it)
+            }
+        }
     }
 
     private fun initViewPager() {
         fixtureStatsPagerAdapter = FixtureStatsPagerAdapter(this)
         addFragmentsToViewPager()
         binding.pager.adapter = fixtureStatsPagerAdapter
+
+
     }
 
     private fun addFragmentsToViewPager() {
-        fixtureStatsPagerAdapter.addFragment(FragmentFixtureStats.newInstance(239625))
+        fixtureStatsPagerAdapter.addFragment(StandingFragment.newInstance(viewModel.fixtureUiState.value.fixture?.leagueId,viewModel.fixtureUiState.value.fixture?.season))
         fixtureStatsPagerAdapter.addFragment(
             FixtureSummaryFragment.newInstance(
                 fixtureId,

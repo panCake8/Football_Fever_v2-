@@ -1,6 +1,6 @@
 package com.pancake.footballfever.data.repository.search
 
-import com.example.footboolfever.data.remote.dto.league.LeaguesDto
+import com.pancake.footballfever.data.remote.dto.league.LeaguesDto
 import com.pancake.footballfever.data.remote.service.ApiService
 import javax.inject.Inject
 

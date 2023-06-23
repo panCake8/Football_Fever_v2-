@@ -77,4 +77,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
         }
     }
 
+
+    override fun showBottomNavBar(show: Boolean) {
+        super.showBottomNavBar(true)
+    }
 }

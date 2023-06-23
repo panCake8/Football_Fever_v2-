@@ -10,5 +10,6 @@ data class TopAssistEntity(
     val id: Int? = 0,
     val playerName: String? = "",
     val teamName: String? = "",
-    val totalAssists: Int? = 0
+    val totalAssists: Int? = 0,
+    val playerImg: String? = ""
 )

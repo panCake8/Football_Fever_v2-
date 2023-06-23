@@ -88,6 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/large_margin"
             android:text="@string/dash"
+            showIfSuccess="@{viewModel.fixtureUiState}"
             android:textColor="@color/light_white"
             android:textSize="@dimen/text_xxlarge"
             app:layout_constraintEnd_toStartOf="@+id/text_team_away_score"
@@ -146,6 +147,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/medium_margin"
             android:layout_marginTop="@dimen/large_margin"
+            showIfSuccess="@{viewModel.fixtureUiState}"
             android:background="@android:color/transparent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -160,12 +162,49 @@
             app:tabPaddingEnd="@dimen/large_padding"
             app:tabSelectedTextColor="@color/white" />
 
+        <ProgressBar
+            android:id="@+id/progress_f"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:showIfLoading="@{viewModel.fixtureUiState.loading}" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/error_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:showIfError="@{viewModel.fixtureUiState.error}"
+            app:srcCompat="@drawable/baseline_error_48" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/refresh_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large_margin"
+            android:background="@drawable/refresh_button_shape"
+            android:paddingHorizontal="@dimen/large_padding"
+            android:text="@string/refresh_data"
+            android:textAllCaps="false"
+            android:textColor="@color/white87"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/error_icon"
+            app:showIfError="@{viewModel.fixtureUiState.error}" />
+
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/pager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginHorizontal="@dimen/medium_margin"
             android:layout_marginTop="@dimen/large_margin"
+            showIfSuccess="@{viewModel.fixtureUiState}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

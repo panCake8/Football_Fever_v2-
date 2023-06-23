@@ -39,6 +39,8 @@ fun FixtureEntity.toFixtureModel(): FixtureModel {
         teamHomeGoals = teamHomeGoals,
         teamAwayLogo = teamAwayLogo,
         teamHomeLogo = teamHomeLogo,
+        leagueId = leagueId,
+        season = season,
         timeStamp = timeStamp,
         time =time,
     )
