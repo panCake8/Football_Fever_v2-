@@ -40,7 +40,7 @@
                 style="@style/club_name"
                 android:layout_marginStart="@dimen/large_margin"
                 android:text="@{viewModel.clubUiState.success.teamName}"
-                tools:text="@string/club_text"
+                tools:text="kareem"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -50,7 +50,7 @@
                 style="@style/venue_name"
                 android:layout_marginStart="@dimen/large_margin"
                 android:text="@{viewModel.clubUiState.success.teamVenueName}"
-                tools:text="@string/club_text"
+                tools:text="kareem"
                 />
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/follow_button"
@@ -85,7 +85,8 @@
             app:tabMode="scrollable"
             app:tabPaddingEnd="@dimen/large_padding"
             app:tabPaddingStart="@dimen/large_padding"
-            app:tabSelectedTextColor="@color/white" />
+            app:tabSelectedTextColor="@color/white"
+            />
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/pager"
             android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package com.pancake.footballfever.ui.team_fixture
+package com.pancake.footballfever.ui.club_stats.team_fixture
 
 import com.pancake.footballfever.domain.models.Fixture
 

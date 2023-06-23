@@ -20,14 +20,14 @@ class PlayersViewModel @Inject constructor(
     val playersUiState = _playersUiState.asStateFlow()
 
 
-    fun getPlayers(fixture: String, team: String) {
+    fun getPlayers(season: Int, team: Int) {
         _playersUiState.update { it.copy(isLoading = true) }
         viewModelScope.launch {
             try {
                 _playersUiState.update {
                     it.copy(
                         isLoading = false,
-                        items = playersUseCase(fixture, team)
+                        items = playersUseCase(season, team)
                     )
                 }
             } catch (e: Exception) {

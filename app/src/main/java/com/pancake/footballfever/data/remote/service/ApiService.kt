@@ -9,6 +9,7 @@ import com.example.footboolfever.data.remote.dto.HeadToHeadDto
 import com.example.footboolfever.data.remote.dto.InjuriesDto
 import com.example.footboolfever.data.remote.dto.LineUpsDto
 import com.example.footboolfever.data.remote.dto.PlayerStatisticsDto
+import com.example.footboolfever.data.remote.dto.PlayersDto
 import com.example.footboolfever.data.remote.dto.RoundsDto
 import com.example.footboolfever.data.remote.dto.StatisticsDto
 import com.example.footboolfever.data.remote.dto.TopAssistsDto
@@ -229,8 +230,10 @@ interface ApiService {
         @Query("team") team: String? = null,
     ): Response<BaseResponse<FixturesDto>>
 
-    @GET("fixtures/players")
-    suspend fun getTeamPlayerStatisticsFixtures(@Query("fixture") fixture: String,
-                                                @Query("team") team: String): Response<BaseResponse<PlayerStatisticsDto>>
+    @GET("players")
+    suspend fun getTeamPlayerStatisticsFixtures(@Query("season") fixture: Int,
+                                                @Query("team") team: Int): Response<BaseResponse<PlayersDto>>
+
+
 
 }

@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.pancake.footballfever.ui.team_fixture.TeamFixturesViewModel" />
+            type="com.pancake.footballfever.ui.club_stats.team_fixture.TeamFixturesViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

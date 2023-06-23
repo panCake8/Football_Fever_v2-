@@ -12,7 +12,7 @@
 
         <variable
             name="listener"
-            type="com.pancake.footballfever.ui.team_fixture.TeamFixtureAdapter.FixturesClickListener" />
+            type="com.pancake.footballfever.ui.club_stats.team_fixture.TeamFixtureAdapter.FixturesClickListener" />
 
     </data>
 

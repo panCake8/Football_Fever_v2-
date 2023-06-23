@@ -26,10 +26,8 @@ class ClubViewModel @Inject constructor(
     private val _clubUiState = MutableStateFlow(ClubUiState())
     val clubUiState = _clubUiState.asStateFlow()
 
-    init {
-        getClub(33)
-    }
-    private fun getClub(clubId: Int) {
+
+     fun getClub(clubId: Int) {
         viewModelScope.launch(IO) {
             val club = getClubUseCase.getClubById(clubId)
             _clubUiState.update {

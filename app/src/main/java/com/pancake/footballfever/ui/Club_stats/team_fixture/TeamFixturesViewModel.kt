@@ -1,4 +1,4 @@
-package com.pancake.footballfever.ui.team_fixture
+package com.pancake.footballfever.ui.club_stats.team_fixture
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
