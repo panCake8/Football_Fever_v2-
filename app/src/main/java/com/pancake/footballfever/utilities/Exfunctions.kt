@@ -7,6 +7,9 @@ import com.pancake.footballfever.data.local.database.entity.TopAssistEntity
 import com.pancake.footballfever.data.local.database.entity.TopGoalsEntity
 import com.pancake.footballfever.domain.models.TopAssists
 import com.pancake.footballfever.domain.models.TopGoals
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 fun StandingsDto.toStandingsEntity() :List<StandingsEntity>? {
 
@@ -39,6 +42,15 @@ fun StandingsEntity.toStandings(): Standings {
     )
 }
 
+
+fun Int.toDate(): String {
+    val calender = Calendar.getInstance()
+    calender.timeInMillis = this.toLong()
+    val format = SimpleDateFormat("HH:mm", Locale.getDefault())
+    return format.format(calender.time)
+
+
+}
 fun TopGoalsEntity.toTopGoals(): TopGoals {
     return TopGoals(
         id = this.id,

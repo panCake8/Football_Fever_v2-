@@ -31,6 +31,8 @@
     <string name="league_text">League</string>
     <string name="team_text">Team</string>
     <string name="coach_text">Coach</string>
+    <string name="chelsea">chelsea</string>
+    <string name="_06_30">06:30</string>
     <string name="hint">Hint</string>
     <string name="hint_to_select_favorite_teams">you can choose with a long press to select teams</string>
     <string name="ok">ok</string>
@@ -59,5 +61,7 @@
     <string name="injury">sprain in ankle</string>
     <string name="favorite">Favorite</string>
 
+    <string name="man_utd">man_utd</string>
+    <string name="_1_1">1-1</string>
 
 </resources>

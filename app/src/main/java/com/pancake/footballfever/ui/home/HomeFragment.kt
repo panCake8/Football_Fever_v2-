@@ -88,6 +88,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             )
             findNavController().navigate(nav)
         })
+
+        viewModel.moreEvent.observe(viewLifecycleOwner, EventObserver {
+            val nav = HomeFragmentDirections.actionHomeFragmentToMoreFragment()
+            findNavController().navigate(nav)
+        })
     }
 
     override fun showBottomNavBar(show: Boolean) {

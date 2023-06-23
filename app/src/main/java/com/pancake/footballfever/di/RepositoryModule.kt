@@ -3,14 +3,20 @@ package com.pancake.footballfever.di
 
 import com.pancake.footballfever.data.repository.CountryRepository
 import com.pancake.footballfever.data.repository.CountryRepositoryImpl
-import com.pancake.footballfever.data.repository.FixtureEventsRepository
-import com.pancake.footballfever.data.repository.FixtureEventsRepositoryImpl
+import com.pancake.footballfever.data.repository.FixtureSummaryRepository
+import com.pancake.footballfever.data.repository.FixtureSummaryRepositoryImpl
 import com.pancake.footballfever.data.repository.FixtureRepository
 import com.pancake.footballfever.data.repository.FixtureRepositoryImpl
+import com.pancake.footballfever.data.repository.HeadToHeadRepository
+import com.pancake.footballfever.data.repository.HeadToHeadRepositoryImpl
 import com.pancake.footballfever.data.repository.InjuriesRepository
 import com.pancake.footballfever.data.repository.InjuriesRepositoryImpl
 import com.pancake.footballfever.data.repository.LeaguesRepository
 import com.pancake.footballfever.data.repository.LeaguesRepositoryImpl
+import com.pancake.footballfever.data.repository.LeagueMatchesRepository
+import com.pancake.footballfever.data.repository.LeagueMatchesRepositoryImpl
+import com.pancake.footballfever.data.repository.PlayerRepository
+import com.pancake.footballfever.data.repository.PlayerRepositoryImpl
 import com.pancake.footballfever.data.repository.PlayersRepository
 import com.pancake.footballfever.data.repository.PlayersRepositoryImpl
 import com.pancake.footballfever.data.repository.TeamFixturesRepository
@@ -28,7 +34,6 @@ import com.pancake.footballfever.data.repository.search.SearchKeywordsRepository
 import com.pancake.footballfever.data.repository.search.SearchKeywordsRepositoryImpl
 import com.pancake.footballfever.data.repository.search.TeamSearchRepository
 import com.pancake.footballfever.data.repository.search.TeamSearchRepositoryImpl
-import com.pancake.footballfever.data.repository.standingsRepo.StandingsRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -44,6 +49,18 @@ abstract class RepositoryModule {
     abstract fun bindsPlayerRepository(
         playerRepositoryImpl: PlayerRepositoryImpl
     ): PlayerRepository
+
+    @Singleton
+    @Binds
+    abstract fun bindsLeagueMatchesRepository(
+        leagueMatchesRepositoryImpl: LeagueMatchesRepositoryImpl,
+    ): LeagueMatchesRepository
+
+    @Singleton
+    @Binds
+    abstract fun bindsHeadTOHeadsRepository(
+        headToHeadRepository: HeadToHeadRepositoryImpl,
+    ): HeadToHeadRepository
 
     @Singleton
     @Binds
@@ -84,8 +101,8 @@ abstract class RepositoryModule {
     @Singleton
     @Binds
     abstract fun bindFixtureEventsRepository(
-        repository: FixtureEventsRepositoryImpl
-    ): FixtureEventsRepository
+        repository: FixtureSummaryRepositoryImpl
+    ): FixtureSummaryRepository
 
     @Singleton
     @Binds

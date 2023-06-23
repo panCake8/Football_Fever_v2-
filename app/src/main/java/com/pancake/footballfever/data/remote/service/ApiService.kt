@@ -127,6 +127,13 @@ interface ApiService {
         @Query("season") season: Int
     ): Response<BaseResponse<FixturesDto>>
 
+    @GET("fixtures")
+    suspend fun getFixturesByLeague(
+        @Query("league") league: Int,
+        @Query("season") season: Int,
+
+        ): Response<BaseResponse<FixturesDto>>
+
     @GET("fixtures/rounds")
     suspend fun getRoundsFixture(
         @Query("league") league: Int,
@@ -195,9 +202,9 @@ interface ApiService {
     // region teams requests
     @GET("teams")
     suspend fun getPremierLeagueTeams(
-        @Query("league") leagueId: Int,
-        @Query("season") season: Int,
-    ): Response<BaseResponse<TeamsDto>>
+        @Query("league") leagueId :Int,
+        @Query("season") season :Int,
+    ) : Response<BaseResponse<TeamsDto>>
 
     // endregion
 
