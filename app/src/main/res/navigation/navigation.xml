@@ -103,5 +103,10 @@
             android:id="@+id/action_splashFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/matchStandingFragment"
+        android:name="com.pancake.footballfever.ui.league_state.match.matchStanding.MatchStandingFragment"
+        android:label="fragment_match_standing"
+        tools:layout="@layout/fragment_match_standing" />
 
 </navigation>
