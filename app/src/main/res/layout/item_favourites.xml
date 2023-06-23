@@ -8,6 +8,10 @@
         <variable
             name="item"
             type="com.pancake.footballfever.domain.models.FavoriteTeam" />
+
+        <variable
+            name="viewModel"
+            type="com.pancake.footballfever.ui.favourites.FavouritesViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -36,6 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:text="@{item.name}"
                 android:fontFamily="@font/poppins_semibold"
                 android:textColor="@color/white"
                 android:textSize="16sp"
@@ -50,6 +55,7 @@
                 android:background="@drawable/unfollow_button"
                 android:text="@string/unfollow"
                 android:textAllCaps="false"
+                android:onClick="@{() -> viewModel.onClickUnfollow(item.id)}"
                 android:textColor="@color/chip_stroke"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"

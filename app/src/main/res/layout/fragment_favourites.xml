@@ -39,8 +39,9 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/favourites_recycler_view"
             android:layout_width="match_parent"
+            app:setRecyclerItems="@{viewModel.favouriteTeams}"
             android:layout_height="0dp"
-            android:layout_margin="@dimen/medium_margin"
+            android:layout_marginHorizontal="@dimen/medium_margin"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
