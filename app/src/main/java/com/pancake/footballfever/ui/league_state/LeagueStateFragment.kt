@@ -6,7 +6,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.pancake.footballfever.R
 import com.pancake.footballfever.databinding.FragmentLeagueStateBinding
 import com.pancake.footballfever.ui.base.BaseFragment
-import com.pancake.footballfever.ui.league_state.match.MatchFragment
+import com.pancake.footballfever.ui.league_state.match.LeagueMatchesFragment
 import com.pancake.footballfever.ui.league_state.standing.StandingFragment
 import com.pancake.footballfever.ui.league_state.top_assist.TopAssistFragment
 import com.pancake.footballfever.ui.league_state.top_score.TopScoreFragment
@@ -41,7 +41,7 @@ class LeagueStateFragment : BaseFragment<FragmentLeagueStateBinding, LeagueState
 
     private fun addFragmentToViewPager() {
 
-        leagueStatePagerAdapter.addFragment(MatchFragment())
+        leagueStatePagerAdapter.addFragment(LeagueMatchesFragment())
         leagueStatePagerAdapter.addFragment(StandingFragment())
         leagueStatePagerAdapter.addFragment(TopScoreFragment())
         leagueStatePagerAdapter.addFragment(TopAssistFragment())

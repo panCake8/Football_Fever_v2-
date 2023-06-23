@@ -15,8 +15,6 @@ import com.pancake.footballfever.data.repository.LeaguesRepository
 import com.pancake.footballfever.data.repository.LeaguesRepositoryImpl
 import com.pancake.footballfever.data.repository.LeagueMatchesRepository
 import com.pancake.footballfever.data.repository.LeagueMatchesRepositoryImpl
-import com.pancake.footballfever.data.repository.PlayerRepository
-import com.pancake.footballfever.data.repository.PlayerRepositoryImpl
 import com.pancake.footballfever.data.repository.PlayersRepository
 import com.pancake.footballfever.data.repository.PlayersRepositoryImpl
 import com.pancake.footballfever.data.repository.TeamFixturesRepository
@@ -34,6 +32,7 @@ import com.pancake.footballfever.data.repository.search.SearchKeywordsRepository
 import com.pancake.footballfever.data.repository.search.SearchKeywordsRepositoryImpl
 import com.pancake.footballfever.data.repository.search.TeamSearchRepository
 import com.pancake.footballfever.data.repository.search.TeamSearchRepositoryImpl
+import com.pancake.footballfever.data.repository.standingsRepo.StandingsRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

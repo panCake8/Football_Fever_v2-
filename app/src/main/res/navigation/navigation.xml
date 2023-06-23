@@ -122,11 +122,7 @@
             app:argType="integer"
             android:defaultValue="39" />
     </fragment>
-    <fragment
-        android:id="@+id/headToHEad"
-        android:name="com.pancake.footballfever.ui.fixture.head2head.FragmentMatchHeadToHead"
-        android:label="fragment_match_stats_head_to_head"
-        tools:layout="@layout/fragment_match_stats_head_to_head" />
+
     <fragment
         android:id="@+id/moreFragment"
         android:name="com.pancake.footballfever.ui.more.MoreFragment"

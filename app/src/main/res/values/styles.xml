@@ -104,7 +104,7 @@
     <!-- nav bottom style-->
     <style name="Widget.Material3.BottomNavigationView.ActiveIndicator" parent="">
         <item name="android:width" tools:ignore="PrivateResource">
-            56dp
+            64dp
         </item>
         <item name="android:height" tools:ignore="PrivateResource">
             32dp
