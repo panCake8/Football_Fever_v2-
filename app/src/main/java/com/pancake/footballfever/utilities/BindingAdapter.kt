@@ -11,7 +11,6 @@ import com.bumptech.glide.Glide
 import com.pancake.footballfever.R
 import com.pancake.footballfever.ui.base.BaseAdapter
 import com.pancake.footballfever.ui.home.HomeUiState
-import com.pancake.footballfever.ui.home.HomeViewModel
 import com.pancake.footballfever.ui.home.adapter.FixtureHomeListener
 import com.pancake.footballfever.ui.home.adapter.ParentHomeAdapter
 
@@ -31,7 +30,7 @@ fun setImageUrl(image: ImageView, url: String?) {
 fun ProgressBar.showIfLoading(isLoading: Boolean) {
     visibility = when (isLoading) {
         true -> View.VISIBLE
-        false -> View.INVISIBLE
+        false -> View.GONE
     }
 }
 
