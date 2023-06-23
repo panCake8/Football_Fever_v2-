@@ -6,6 +6,8 @@ import com.pancake.footballfever.data.local.database.daos.FixtureDao
 import com.pancake.footballfever.data.local.database.entity.FixtureEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureHomeEntity
 import com.pancake.footballfever.data.remote.service.ApiService
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.SharedFlow
 import javax.inject.Inject
 
 class FixtureRepositoryImpl @Inject constructor(
@@ -19,7 +21,7 @@ class FixtureRepositoryImpl @Inject constructor(
             .body()?.response!!
     }
 
-    override suspend fun getAllFixturesHomeLocal(): List<FixtureHomeEntity> {
+    override suspend fun getAllFixturesHomeLocal(): Flow<List<FixtureHomeEntity>> {
         return fixtureDao.getAllFixtureHome()
     }
 
