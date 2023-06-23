@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.pancake.footballfever.databinding.ItemSummaryAwayBinding
 import com.pancake.footballfever.databinding.ItemSummaryHomeBinding
-import com.pancake.footballfever.domain.models.FixtureEvents
+import com.pancake.footballfever.domain.models.FixtureSummary
 
 
-class FixtureSummaryAdapter(private val homeId: Int) : ListAdapter<FixtureEvents, RecyclerView.ViewHolder>(
+class FixtureSummaryAdapter(private val homeId: Int) : ListAdapter<FixtureSummary, RecyclerView.ViewHolder>(
     COMPARATOR
 ) {
     class HomeViewHolder(private val binding: ItemSummaryHomeBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -20,7 +20,7 @@ class FixtureSummaryAdapter(private val homeId: Int) : ListAdapter<FixtureEvents
             }
         }
 
-        fun bind(item: FixtureEvents) {
+        fun bind(item: FixtureSummary) {
             binding.item = item
             binding.executePendingBindings()
         }
@@ -33,7 +33,7 @@ class FixtureSummaryAdapter(private val homeId: Int) : ListAdapter<FixtureEvents
             }
         }
 
-        fun bind(item: FixtureEvents) {
+        fun bind(item: FixtureSummary) {
             binding.item = item
             binding.executePendingBindings()
         }
@@ -78,12 +78,12 @@ class FixtureSummaryAdapter(private val homeId: Int) : ListAdapter<FixtureEvents
     companion object {
         private const val VIEW_TYPE_HOME = 0
         private const val VIEW_TYPE_AWAY = 1
-        private val COMPARATOR = object : DiffUtil.ItemCallback<FixtureEvents>() {
-            override fun areItemsTheSame(oldItem: FixtureEvents, newItem: FixtureEvents): Boolean {
+        private val COMPARATOR = object : DiffUtil.ItemCallback<FixtureSummary>() {
+            override fun areItemsTheSame(oldItem: FixtureSummary, newItem: FixtureSummary): Boolean {
                 return oldItem.teamId == newItem.teamId
             }
 
-            override fun areContentsTheSame(oldItem: FixtureEvents, newItem: FixtureEvents): Boolean {
+            override fun areContentsTheSame(oldItem: FixtureSummary, newItem: FixtureSummary): Boolean {
                 return oldItem == newItem
             }
         }

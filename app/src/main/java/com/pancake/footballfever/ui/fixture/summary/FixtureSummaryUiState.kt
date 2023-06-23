@@ -1,9 +1,9 @@
 package com.pancake.footballfever.ui.fixture.summary
 
-import com.pancake.footballfever.domain.models.FixtureEvents
+import com.pancake.footballfever.domain.models.FixtureSummary
 
 data class FixtureSummaryUiState(
     val isLoading: Boolean = false,
-    val items: List<FixtureEvents> = emptyList(),
+    val items: List<FixtureSummary> = emptyList(),
     val errorMsg: String? = null
 )

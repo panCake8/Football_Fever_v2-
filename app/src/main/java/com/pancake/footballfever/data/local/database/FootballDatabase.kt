@@ -2,7 +2,7 @@ package com.pancake.footballfever.data.local.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.pancake.footballfever.data.local.database.daos.FixtureEventsDao
+import com.pancake.footballfever.data.local.database.daos.FixtureSummaryDao
 import com.pancake.footballfever.data.local.database.daos.FixtureDao
 import com.pancake.footballfever.data.local.database.daos.FootballDao
 import com.pancake.footballfever.data.local.database.daos.HeadToHeadDao
@@ -16,7 +16,7 @@ import com.pancake.footballfever.data.local.database.entity.CountryEntity
 import com.pancake.footballfever.data.local.database.entity.FavoriteTeamEntity
 import com.pancake.footballfever.data.local.database.entity.TeamFixtureEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureEntity
-import com.pancake.footballfever.data.local.database.entity.FixtureEventsEntity
+import com.pancake.footballfever.data.local.database.entity.FixtureSummaryEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureHomeEntity
 import com.pancake.footballfever.data.local.database.entity.InjuriesEntity
 import com.pancake.footballfever.data.local.database.entity.HeadToHeadEntity
@@ -35,7 +35,7 @@ import com.pancake.footballfever.data.local.database.entity.VenueEntity
         InjuriesEntity::class,
         CountryEntity::class,
         FavoriteTeamEntity::class,
-        FixtureEventsEntity::class,
+        FixtureSummaryEntity::class,
         FixtureHomeEntity::class,
         LeagueEntity::class,
         TopGoalsEntity::class,
@@ -59,7 +59,7 @@ abstract class FootballDatabase : RoomDatabase() {
     abstract val fixtureDao: FixtureDao
     abstract val leagueMatches: LeagueMatchesDao
     abstract val headToHead: HeadToHeadDao
-    abstract val fixtureEventsDao: FixtureEventsDao
+    abstract val fixtureSummaryDao: FixtureSummaryDao
     abstract val playersDao: PlayersDao
     abstract val teamFixtureEventsDao: TeamFixtureDao
 }

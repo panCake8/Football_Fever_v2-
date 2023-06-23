@@ -3,8 +3,8 @@ package com.pancake.footballfever.di
 
 import com.pancake.footballfever.data.repository.CountryRepository
 import com.pancake.footballfever.data.repository.CountryRepositoryImpl
-import com.pancake.footballfever.data.repository.FixtureEventsRepository
-import com.pancake.footballfever.data.repository.FixtureEventsRepositoryImpl
+import com.pancake.footballfever.data.repository.FixtureSummaryRepository
+import com.pancake.footballfever.data.repository.FixtureSummaryRepositoryImpl
 import com.pancake.footballfever.data.repository.FixtureRepository
 import com.pancake.footballfever.data.repository.FixtureRepositoryImpl
 import com.pancake.footballfever.data.repository.HeadToHeadRepository
@@ -100,8 +100,8 @@ abstract class RepositoryModule {
     @Singleton
     @Binds
     abstract fun bindFixtureEventsRepository(
-        repository: FixtureEventsRepositoryImpl
-    ): FixtureEventsRepository
+        repository: FixtureSummaryRepositoryImpl
+    ): FixtureSummaryRepository
 
     @Singleton
     @Binds
