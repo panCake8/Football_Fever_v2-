@@ -19,7 +19,7 @@ class FixtureSummaryViewModel @Inject constructor(
     val fixtureEventsUiState = _fixtureSummaryUiState.asStateFlow()
 
 
-    fun getFixtureEvents(fixtureId: String) {
+    fun getFixtureEvents(fixtureId: Int) {
         _fixtureSummaryUiState.update { it.copy(isLoading = true) }
         viewModelScope.launch {
             try {

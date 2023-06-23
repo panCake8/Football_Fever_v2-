@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.pancake.footballfever.R
 import com.pancake.footballfever.domain.models.FixtureSummary
 import com.pancake.footballfever.ui.base.BaseAdapter
+import com.pancake.footballfever.ui.fixture.FixtureUiState
 import com.pancake.footballfever.ui.fixture.head2head.adapter.HeadToHeadListener
 import com.pancake.footballfever.ui.fixture.head2head.adapter.HeadToHeadParentAdapter
 import com.pancake.footballfever.ui.fixture.summary.FixtureSummaryAdapter
@@ -19,6 +20,8 @@ import com.pancake.footballfever.ui.home.adapter.FixtureHomeListener
 import com.pancake.footballfever.ui.home.adapter.ParentHomeAdapter
 import com.pancake.footballfever.ui.league_state.match.adapter.LeagueMatchesListener
 import com.pancake.footballfever.ui.league_state.match.adapter.LeagueMatchesParentAdapter
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 @BindingAdapter(value = ["app:setRecyclerItems"])
 fun <T> setRecyclerItems(recyclerView: RecyclerView, items: List<T?>?) {
@@ -26,12 +29,12 @@ fun <T> setRecyclerItems(recyclerView: RecyclerView, items: List<T?>?) {
 }
 
 @BindingAdapter(value = ["setLeagueChildAdapter"])
-fun setChildRecyclerAdapter(recyclerView: RecyclerView,items:LeagueMatchesListener) {
+fun setChildRecyclerAdapter(recyclerView: RecyclerView, items: LeagueMatchesListener) {
     recyclerView.adapter = LeagueMatchesParentAdapter(items)
 }
 
 @BindingAdapter(value = ["setHeadToHeadRecyclerAdapter"])
-fun setChildRecyclerAdapter(recyclerView: RecyclerView,items: HeadToHeadListener){
+fun setChildRecyclerAdapter(recyclerView: RecyclerView, items: HeadToHeadListener) {
     recyclerView.adapter = HeadToHeadParentAdapter(items)
 }
 
@@ -137,4 +140,21 @@ fun RecyclerView.bindSummaryAdapterItems(summaryItems: List<FixtureSummary>?, ho
         }
 
     }
+}
+
+@BindingAdapter(value = ["app:time"])
+fun setTime(textView: TextView, time: Int?) {
+    val simpleDateFormat = SimpleDateFormat("dd MMMM yyyy, HH:mm:ss", Locale.ENGLISH)
+    if (time != null)
+        textView.text = simpleDateFormat.format(time * 1000L)
+
+}
+
+
+@BindingAdapter(value = ["showIfSuccess"])
+fun showIfSuccess(view: View, fixtureUiState: FixtureUiState) {
+    if (fixtureUiState.fixture != null)
+        view.visibility = View.VISIBLE
+    else
+        view.visibility = View.GONE
 }

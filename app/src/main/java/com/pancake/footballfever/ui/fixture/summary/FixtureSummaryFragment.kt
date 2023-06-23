@@ -18,19 +18,19 @@ class FixtureSummaryFragment private constructor() :
 
     override fun setup() {
         super.setup()
-        val homeId = requireArguments().getString(HOME_ID_ARG)?.toInt()!!
-        val fixtureId = requireArguments().getString(FIXTURE_ID_ARG)!!
+        val homeId = requireArguments().getInt(HOME_ID_ARG)
+        val fixtureId = requireArguments().getInt(FIXTURE_ID_ARG)
         viewModel.getFixtureEvents(fixtureId)
         binding.homeId = homeId
     }
 
     companion object {
         @JvmStatic
-        fun newInstance(fixtureId: String, homeId: String) =
+        fun newInstance(fixtureId: Int?, homeId: Int?) =
             FixtureSummaryFragment().apply {
                 arguments = Bundle().apply {
-                    putString(FIXTURE_ID_ARG, fixtureId)
-                    putString(HOME_ID_ARG, homeId)
+                    fixtureId?.let { putInt(FIXTURE_ID_ARG, it) }
+                    homeId?.let { putInt(HOME_ID_ARG, it) }
                 }
             }
     }

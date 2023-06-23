@@ -12,6 +12,6 @@ interface FixtureSummaryDao {
     suspend fun insertFixtureSummary(fixtureSummaries: List<FixtureSummaryEntity>)
 
     @Query("SELECT * FROM FIXTURE_SUMMARY_TABLE WHERE fixtureId = :fixtureId ORDER BY time ASC")
-    suspend fun getFixtureSummary(fixtureId: String) : List<FixtureSummaryEntity>
+    suspend fun getFixtureSummary(fixtureId: Int) : List<FixtureSummaryEntity>
 
 }
