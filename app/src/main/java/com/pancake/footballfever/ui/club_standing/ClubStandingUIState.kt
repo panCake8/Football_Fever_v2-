@@ -1,4 +1,4 @@
-package com.pancake.footballfever.ui.clupStanding
+package com.pancake.footballfever.ui.club_standing
 
 import com.pancake.footballfever.domain.models.Standings
 

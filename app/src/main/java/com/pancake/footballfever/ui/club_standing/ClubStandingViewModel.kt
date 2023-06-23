@@ -1,4 +1,4 @@
-package com.pancake.footballfever.ui.clupStanding
+package com.pancake.footballfever.ui.club_standing
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

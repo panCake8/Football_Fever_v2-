@@ -1,4 +1,4 @@
-package com.pancake.footballfever.ui.clupStanding
+package com.pancake.footballfever.ui.club_standing
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels

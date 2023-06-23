@@ -105,7 +105,7 @@
     </fragment>
     <fragment
         android:id="@+id/clubStandingFragment"
-        android:name="com.pancake.footballfever.ui.clupStanding.ClubStandingFragment"
+        android:name="com.pancake.footballfever.ui.club_standing.ClubStandingFragment"
         android:label="ClubStandingFragment" />
 
 </navigation>
