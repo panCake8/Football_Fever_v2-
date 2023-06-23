@@ -9,8 +9,8 @@ import com.pancake.footballfever.data.repository.LeaguesRepository
 import com.pancake.footballfever.data.repository.LeaguesRepositoryImpl
 import com.pancake.footballfever.data.repository.PlayerRepository
 import com.pancake.footballfever.data.repository.PlayerRepositoryImpl
-import com.pancake.footballfever.data.repository.StandingsRepository
-import com.pancake.footballfever.data.repository.StandingsRepositoryImp
+import com.pancake.footballfever.data.repository.standingsRepo.StandingsRepository
+import com.pancake.footballfever.data.repository.standingsRepo.StandingsRepositoryImp
 import com.pancake.footballfever.data.repository.TeamRepository
 import com.pancake.footballfever.data.repository.TeamRepositoryImpl
 import com.pancake.footballfever.data.repository.search.CoachSearchRepository
