@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.pancake.footballfever.ui.player.PlayersViewModel" />
+            type="com.pancake.footballfever.ui.club_stats.player.PlayersViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

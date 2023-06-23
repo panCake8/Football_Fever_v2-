@@ -43,7 +43,7 @@ import com.pancake.footballfever.data.local.database.entity.VenueEntity
         FixtureEntity::class,
         SearchKeywordEntity::class,
         TeamFixtureEntity::class,
-        PlayerEntity::class
+        PlayerEntity::class,
     ],
     version = 1,
 )

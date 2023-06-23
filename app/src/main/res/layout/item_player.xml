@@ -9,7 +9,7 @@
 
         <variable
             name="listener"
-            type="com.pancake.footballfever.ui.player.PlayersAdapter.PlayerClickListener" />
+            type="com.pancake.footballfever.ui.club_stats.player.PlayersAdapter" />
 
     </data>
 
@@ -21,7 +21,7 @@
         android:clickable="true"
         android:focusable="true"
         android:backgroundTint="#222232"
-        android:onClick="@{() -> listener.onClick(item)}"
+
         tools:background="@color/black">
 
         <androidx.constraintlayout.utils.widget.ImageFilterView

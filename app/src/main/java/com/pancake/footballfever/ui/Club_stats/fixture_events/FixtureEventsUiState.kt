@@ -1,4 +1,4 @@
-package com.pancake.footballfever.ui.fixture_events
+package com.pancake.footballfever.ui.club_stats.fixture_events
 
 import com.pancake.footballfever.domain.models.FixtureEvents
 

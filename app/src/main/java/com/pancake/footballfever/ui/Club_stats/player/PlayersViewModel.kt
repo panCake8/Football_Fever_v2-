@@ -1,4 +1,4 @@
-package com.pancake.footballfever.ui.player
+package com.pancake.footballfever.ui.club_stats.player
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

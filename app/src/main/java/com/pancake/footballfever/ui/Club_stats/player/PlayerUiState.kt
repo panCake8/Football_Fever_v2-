@@ -1,4 +1,4 @@
-package com.pancake.footballfever.ui.player
+package com.pancake.footballfever.ui.club_stats.player
 
 import com.pancake.footballfever.domain.models.Player
 

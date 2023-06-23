@@ -1,4 +1,4 @@
-package com.pancake.footballfever.ui.fixture_events
+package com.pancake.footballfever.ui.club_stats.fixture_events
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

@@ -1,4 +1,4 @@
-package com.pancake.footballfever.ui.player
+package com.pancake.footballfever.ui.club_stats.player
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
