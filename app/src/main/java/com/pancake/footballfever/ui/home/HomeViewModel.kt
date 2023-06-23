@@ -22,21 +22,22 @@ class HomeViewModel @Inject constructor(
     private val getFixturesLocalUseCase: GetAllFixtureHomeLocalUseCase,
     private val refreshFixtureUseCase: RefreshAllFixtureHomeUseCase,
     private val deleteAllFixturesUseCase: DeleteAllFixturesHomeUseCase
-) : ViewModel(), FixtureHomeListener {
+) : ViewModel(), FixtureHomeListener, MoreListener {
 
     private val _fixtures = MutableStateFlow(HomeUiState())
     val fixtures: StateFlow<HomeUiState>
         get() = _fixtures
 
     val fixtureEvent = MutableLiveData<Event<FixtureHome>>()
+    val moreEvent = MutableLiveData<Event<Unit>>()
 
-     fun getFixtureLocal() {
+    fun getFixtureLocal() {
         viewModelScope.launch {
             getFixturesLocalUseCase.getAllFixtureHomeLocal()
                 .stateIn(scope = viewModelScope)
                 .collect { fixtures ->
                     _fixtures.update {
-                        it.copy(isLoading = false, success = fixtures , error = null)
+                        it.copy(isLoading = false, success = fixtures, error = null)
                     }
                 }
 
@@ -61,5 +62,9 @@ class HomeViewModel @Inject constructor(
 
     override fun onClickFixture(fixture: FixtureHome) {
         fixtureEvent.postValue(Event(fixture))
+    }
+
+    override fun onMoreClick() {
+        moreEvent.postValue(Event(Unit))
     }
 }
