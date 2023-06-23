@@ -1,6 +1,5 @@
 package com.pancake.footballfever.domain.usecases
 
-import com.pancake.footballfever.data.repository.InjuriesRepository
 import javax.inject.Inject
 
 class FetchInjuriesUseCase @Inject constructor(

@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
 
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@layout/fragment_club">
 
     <fragment
         android:id="@+id/clubFragment"
-        android:name="com.pancake.footballfever.ui.clubStats.ClubStandingFragment"
+        android:name="com.pancake.footballfever.ui.club_stats.ClubStatsFragment"
         android:label="fragment_club"
-        tools:layout="@layout/fragment_club_standing">
+        tools:layout="@layout/fragment_club">
         <argument
             android:name="teamId"
             app:argType="integer" />

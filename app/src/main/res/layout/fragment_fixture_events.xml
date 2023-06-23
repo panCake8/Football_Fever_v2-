@@ -11,7 +11,7 @@
 
         <variable
             name="viewModel"
-            type="com.pancake.footballfever.ui.fixture_events.FixtureEventsViewModel" />
+            type="com.pancake.footballfever.ui.club_stats.fixture_events.FixtureEventsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

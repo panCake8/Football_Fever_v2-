@@ -51,7 +51,12 @@ class ClubStatsFragment :BaseFragment<FragmentClubBinding, ClubViewModel>() {
                     viewModel.deleteFavoriteOneTeam(argument.teamId)
                     binding.followButton.text = "follow"}
                 }
-            }}
+            }
+
+                else -> {
+                    TODO()
+                }
+            }
         }.flowWithLifecycle(lifecycle).launchIn(viewLifecycleOwner.lifecycleScope)
         initViewPager()
         initTabLayout()
