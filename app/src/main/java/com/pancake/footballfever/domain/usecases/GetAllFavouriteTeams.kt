@@ -15,7 +15,7 @@ class GetAllFavouriteTeams @Inject constructor(
 
     private fun FavoriteTeamEntity.toFavouriteTeam(): FavoriteTeam {
         return FavoriteTeam(
-            id = this.id,
+            id = this.teamId,
             name = this.name,
             logo = this.logo
         )

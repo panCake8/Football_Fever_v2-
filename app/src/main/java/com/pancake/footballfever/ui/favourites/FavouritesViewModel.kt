@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pancake.footballfever.domain.models.FavoriteTeam
 import com.pancake.footballfever.domain.usecases.DeleteFromFavouriteTeamsUseCase
-import com.pancake.footballfever.domain.usecases.GetAllCountriesUseCase
 import com.pancake.footballfever.domain.usecases.GetAllFavouriteTeams
 import com.pancake.footballfever.ui.favourites.adapter.FavouriteTeamListener
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -32,6 +31,7 @@ class FavouritesViewModel @Inject constructor(
     fun onClickUnfollow(id: Int) {
         viewModelScope.launch {
             deleteFavouriteTeamUseCase.deleteFavouriteTeam(id)
+           _favouriteTeams.value = getAllFavouriteTeamsUseCase.getAllTeams()
         }
     }
 

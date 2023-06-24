@@ -1,12 +1,50 @@
 package com.pancake.footballfever.ui.favourites.adapter
 
 
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import com.pancake.footballfever.BR
 import com.pancake.footballfever.R
+import com.pancake.footballfever.databinding.ItemFavouritesBinding
 import com.pancake.footballfever.domain.models.FavoriteTeam
 import com.pancake.footballfever.ui.base.BaseAdapter
+import com.pancake.footballfever.ui.favourites.FavouritesViewModel
 
 class FavouriteTeamsAdapter(
-    listener: FavouriteTeamListener
-) : BaseAdapter<FavoriteTeam>(listener) {
+    val viewModel: FavouritesViewModel,
+    private val onItemClick: (Int) -> Unit
+) : BaseAdapter<FavoriteTeam>(viewModel) {
     override val getLayoutId = R.layout.item_favourites
+
+    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
+        super.onBindViewHolder(holder, position)
+        when(holder){
+            is FavouriteViewHolder->bindFavorite(holder,position)
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
+        return FavouriteViewHolder(DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context),
+            getLayoutId,
+            parent,
+            false
+        ))
+    }
+
+    private fun bindFavorite(holder: FavouriteViewHolder, position: Int) {
+        val currentItem =  getItem(position)
+        holder.binding.apply {
+            this.btn.setOnClickListener {
+                   onItemClick(currentItem.id!!)
+            }
+            setVariable(BR.item, currentItem)
+        }
+
+    }
+
+
+    inner class FavouriteViewHolder(val binding: ItemFavouritesBinding):BaseViewHolder(binding)
+
 }
