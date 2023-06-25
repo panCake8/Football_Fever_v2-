@@ -1,7 +1,7 @@
 package com.pancake.footballfever.domain.usecases.leaguesUsecase
 
 import com.pancake.footballfever.data.local.database.entity.LeagueEntity
-import com.pancake.footballfever.data.repository.LeaguesRepository
+import com.pancake.footballfever.data.repository.leagus.LeaguesRepository
 import com.pancake.footballfever.domain.models.League
 import javax.inject.Inject
 

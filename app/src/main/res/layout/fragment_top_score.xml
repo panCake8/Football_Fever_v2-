@@ -18,6 +18,7 @@
             android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -50,6 +51,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:showIfLoading="@{viewModel.uiState.loading}" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_scorers"
             android:layout_width="0dp"
@@ -57,12 +59,12 @@
 
             android:layout_marginTop="@dimen/medium_margin"
             android:layout_marginEnd="@dimen/large_margin"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:setRecyclerItems="@{viewModel.uiState.topGoalsList}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/linearLayout"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            app:setRecyclerItems="@{viewModel.uiState.topGoalsList}"
             tools:listitem="@layout/item_goal_scorer" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,6 +1,6 @@
 package com.pancake.footballfever.domain.usecases.leaguesUsecase
 
-import com.pancake.footballfever.data.repository.LeaguesRepository
+import com.pancake.footballfever.data.repository.leagus.LeaguesRepository
 import javax.inject.Inject
 
 class FetchCurrentLeagueUseCase @Inject constructor(

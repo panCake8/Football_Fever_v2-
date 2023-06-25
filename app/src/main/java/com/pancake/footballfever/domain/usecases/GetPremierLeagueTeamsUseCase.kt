@@ -1,7 +1,7 @@
 package com.pancake.footballfever.domain.usecases
 
 import com.example.footboolfever.data.remote.dto.teams.TeamsDto
-import com.pancake.footballfever.data.repository.LeaguesRepository
+import com.pancake.footballfever.data.repository.leagus.LeaguesRepository
 import com.pancake.footballfever.data.repository.TeamRepository
 import com.pancake.footballfever.domain.models.FavoriteTeam
 import javax.inject.Inject

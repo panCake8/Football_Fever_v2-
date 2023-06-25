@@ -5,6 +5,7 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -157,4 +158,19 @@ fun showIfSuccess(view: View, fixtureUiState: FixtureUiState) {
         view.visibility = View.VISIBLE
     else
         view.visibility = View.GONE
+}
+
+
+@BindingAdapter(value = ["app:hideWhenSearch"])
+fun hideWhenSearch(view: View, text: String) {
+    view.isVisible = text.isBlank()
+}
+
+@BindingAdapter(value = ["app:searchInput", "app:errorSearch", "app:loadingSearch"])
+fun <T> hideWhenSuccessSearch(view: View, text: String, error: List<T>?, loading: Boolean) {
+    view.visibility = if (text.isNotBlank() && error.isNullOrEmpty() && !loading) {
+        View.VISIBLE
+    } else {
+        View.INVISIBLE
+    }
 }

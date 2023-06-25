@@ -4,7 +4,10 @@ import com.pancake.footballfever.domain.models.League
 
 
 data class CurrentLeagueUiState(
-    val leagueList: List<League>? = null,
-    val loading: Boolean = true,
-    val error: Boolean = false,
+    val searchInput: String = "",
+    val leagueList: List<League>? = emptyList(),
+    val searchLeagues : List<League>? = emptyList(),
+    val loading: Boolean = false,
+    val isEmpty: Boolean = false,
+    val error : List<Error> = emptyList(),
 )

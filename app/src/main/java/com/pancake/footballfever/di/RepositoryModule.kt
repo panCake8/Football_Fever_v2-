@@ -11,8 +11,8 @@ import com.pancake.footballfever.data.repository.HeadToHeadRepository
 import com.pancake.footballfever.data.repository.HeadToHeadRepositoryImpl
 import com.pancake.footballfever.data.repository.InjuriesRepository
 import com.pancake.footballfever.data.repository.InjuriesRepositoryImpl
-import com.pancake.footballfever.data.repository.LeaguesRepository
-import com.pancake.footballfever.data.repository.LeaguesRepositoryImpl
+import com.pancake.footballfever.data.repository.leagus.LeaguesRepository
+import com.pancake.footballfever.data.repository.leagus.LeaguesRepositoryImpl
 import com.pancake.footballfever.data.repository.LeagueMatchesRepository
 import com.pancake.footballfever.data.repository.LeagueMatchesRepositoryImpl
 import com.pancake.footballfever.data.repository.PlayersRepository
