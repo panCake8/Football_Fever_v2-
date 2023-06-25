@@ -10,12 +10,10 @@ import com.pancake.footballfever.R
 import com.pancake.footballfever.databinding.FragmentLeagueBinding
 import com.pancake.footballfever.ui.base.BaseFragment
 import com.pancake.footballfever.ui.leagues.adapter.LeaguesAdapter
-import com.pancake.footballfever.ui.leagues.uiState.CurrentLeagueUiState
 import com.pancake.footballfever.ui.leagues.uiState.LeagueUiEvent
 import com.pancake.footballfever.utilities.collectLast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.launch
@@ -41,6 +39,7 @@ class LeagueFragment : BaseFragment<FragmentLeagueBinding, LeaguesViewModel>() {
             it?.getContentIfNotHandled()?.let { onEvent(it) }
         }
     }
+
     private fun onEvent(event: LeagueUiEvent) {
         when (event) {
             is LeagueUiEvent.ClickLeagueEvent -> {
