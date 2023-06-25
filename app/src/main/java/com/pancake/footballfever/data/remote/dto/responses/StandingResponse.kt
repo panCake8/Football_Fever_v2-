@@ -1,4 +1,4 @@
-package com.example.footboolfever.data.remote.dto.responses
+package com.pancake.footballfever.data.remote.dto.responses
 
 import com.example.footboolfever.data.remote.dto.standings.StandingsDto
 import com.example.footboolfever.data.remote.dto.standings.StandingsParameters

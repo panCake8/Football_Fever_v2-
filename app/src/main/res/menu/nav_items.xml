@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/icon_home"
+        android:title="@string/home"
+        />
+    <item
+        android:title="@string/search_text"
+        android:id="@+id/hilt_SearchFragment"
+        android:icon="@drawable/icon_search"/>
+    <item
+        android:title="@string/league_text"
+        android:id="@+id/leagueFragment"
+        android:icon="@drawable/icon_league"/>
+    <item
+        android:title="@string/favorite"
+        android:id="@+id/favo"
+        android:icon="@drawable/icon_favorite"/>
 </menu>

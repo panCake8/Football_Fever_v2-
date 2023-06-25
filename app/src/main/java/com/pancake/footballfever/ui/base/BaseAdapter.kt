@@ -44,6 +44,6 @@ abstract class BaseAdapter<T>(
     }
 
     abstract class BaseViewHolder(binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root)
-    class ItemViewHolder(val binding: ViewDataBinding) : BaseViewHolder(binding)
+  open  class ItemViewHolder(open val binding: ViewDataBinding) : BaseViewHolder(binding)
 
 }

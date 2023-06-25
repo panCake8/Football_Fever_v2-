@@ -7,6 +7,7 @@ import androidx.room.Query
 import com.pancake.footballfever.data.local.database.entity.FixtureEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureHomeEntity
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.SharedFlow
 
 @Dao
 interface FixtureDao {
@@ -15,7 +16,7 @@ interface FixtureDao {
     suspend fun addFixtureHome(teams: List<FixtureHomeEntity>)
 
     @Query("select * from FIXTURE_HOME_TABLE")
-   suspend fun getAllFixtureHome(): List<FixtureHomeEntity>
+    fun getAllFixtureHome(): Flow<List<FixtureHomeEntity>>
 
     @Query("delete from FIXTURE_HOME_TABLE ")
     suspend fun deleteAllFixtureHome()
@@ -25,4 +26,7 @@ interface FixtureDao {
 
     @Query("SELECT * FROM FIXTURE_TABLE ORDER BY id DESC")
     suspend fun getFixtures(): List<FixtureEntity>
+
+    @Query("delete from FIXTURE_TABLE ")
+    suspend fun deleteAllFixtures()
 }

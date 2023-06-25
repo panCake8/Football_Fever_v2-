@@ -23,9 +23,26 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     private var seasonFormatter = 0
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        callFixtures()
+        initOnClickListener()
         setUpCalender()
         onCalenderClick()
         observeEvents()
+    }
+
+    private fun callFixtures() {
+        clearCalender()
+        formatDate()
+        viewModel.refreshFixtures(dateFormatter, seasonFormatter)
+        viewModel.getFixtureLocal()
+    }
+
+    private fun initOnClickListener() {
+        binding.refreshButton.setOnClickListener {
+            clearCalender()
+            formatDate()
+            viewModel.refreshFixtures(dateFormatter, seasonFormatter)
+        }
     }
 
     private fun setUpCalender() {
@@ -46,7 +63,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     private fun refreshData() {
         clearCalender()
         formatDate()
-        viewModel.deleteAllFixtures()
         viewModel.refreshFixtures(dateFormatter, seasonFormatter)
     }
 
@@ -72,5 +88,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             )
             findNavController().navigate(nav)
         })
+
+        viewModel.moreEvent.observe(viewLifecycleOwner, EventObserver {
+            val nav = HomeFragmentDirections.actionHomeFragmentToMoreFragment()
+            findNavController().navigate(nav)
+        })
+    }
+
+    override fun showBottomNavBar(show: Boolean) {
+        super.showBottomNavBar(true)
     }
 }

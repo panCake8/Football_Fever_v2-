@@ -26,14 +26,22 @@ data class FixtureEntity(
     val teamAwayLogo: String? = null,
     val teamHomeGoals: Int? = null,
     val teamAwayGoals: Int? = null,
+    val time: Int? = null,
 )
 
 fun FixtureEntity.toFixtureModel(): FixtureModel {
     return FixtureModel(
+        teamHomeId = teamHomeId,
+        teamAwayId = teamAwayId,
+        teamHomeName = teamHomeName,
+        teamAwayName = teamAwayName,
         teamAwayGoals = teamAwayGoals,
         teamHomeGoals = teamHomeGoals,
         teamAwayLogo = teamAwayLogo,
         teamHomeLogo = teamHomeLogo,
+        leagueId = leagueId,
+        season = season,
         timeStamp = timeStamp,
+        time =time,
     )
 }

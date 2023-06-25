@@ -29,7 +29,8 @@ class SelectCountryViewModel @Inject constructor(
         getAllCountries()
     }
 
-    private fun getAllCountries() {
+    fun getAllCountries() {
+        _countries.update { it.copy(isLoading = true, error = null) }
         viewModelScope.launch {
             try {
                 val countries = getAllCountriesUseCase.getAllCountries()
@@ -40,6 +41,7 @@ class SelectCountryViewModel @Inject constructor(
                 _countries.update { it.copy(error = e.message) }
             }
         }
+
     }
 
     override fun onClickCountry(country: SelectCountry) {

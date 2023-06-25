@@ -9,6 +9,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import com.pancake.footballfever.BR
+import com.pancake.footballfever.ui.HomeActivity
 
 abstract class BaseFragment<DB : ViewDataBinding, VM : ViewModel> : Fragment() {
     private var _binding: DB? = null
@@ -39,7 +40,12 @@ abstract class BaseFragment<DB : ViewDataBinding, VM : ViewModel> : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setup()
+        showBottomNavBar(false)
     }
 
     open fun setup() {}
+
+    open fun showBottomNavBar(show: Boolean) {
+        (activity as HomeActivity).showBottomNavBar(show)
+    }
 }

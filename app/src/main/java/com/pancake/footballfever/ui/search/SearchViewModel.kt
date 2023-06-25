@@ -22,7 +22,7 @@ class SearchViewModel @Inject constructor(
     private val getCoachSearchUseCase: GetCoachSearchUseCase,
     private val getLeagueSearchUseCase: GetLeagueSearchUseCase,
     private val getSearchKeywordsUseCase: GetSearchKeywordsUseCase
-):ViewModel(),SearchListener {
+) : ViewModel(), SearchListener {
 
     private val _searchResult =
         MutableStateFlow<DataState<Any>>(DataState.Loading)
@@ -30,20 +30,20 @@ class SearchViewModel @Inject constructor(
 
     val searchText = MutableStateFlow("")
 
-     private val _searchStatus =
+    private val _searchStatus =
         MutableStateFlow(SearchStatus.LEAGUE)
-    private val searchStatus: StateFlow<SearchStatus>  = _searchStatus
+    private val searchStatus: StateFlow<SearchStatus> = _searchStatus
 
     private val _searchKeyword =
         MutableStateFlow<List<SearchKeyword>>(emptyList())
-    val searchKeyword : StateFlow<List<SearchKeyword>> = _searchKeyword
+    val searchKeyword: StateFlow<List<SearchKeyword>> = _searchKeyword
 
     init {
 
-        _searchResult.value=DataState.ShowKeywordSuggests
+        _searchResult.value = DataState.ShowKeywordSuggests
         viewModelScope.launch {
-            _searchKeyword.value=  getSearchKeywordsUseCase.getSearchKeywords()
-             Log.i("aboood",_searchKeyword.value.toString())
+            _searchKeyword.value = getSearchKeywordsUseCase.getSearchKeywords()
+            Log.i("aboood", _searchKeyword.value.toString())
         }
 
     }
@@ -53,9 +53,11 @@ class SearchViewModel @Inject constructor(
             SearchStatus.TEAM -> {
                 getTeamsData()
             }
+
             SearchStatus.LEAGUE -> {
                 getLeaguesData()
             }
+
             SearchStatus.COACH -> {
                 getCoachsData()
             }
@@ -80,50 +82,50 @@ class SearchViewModel @Inject constructor(
         }
     }
 
-    private fun executeSearch(list:List<SearchItem>){
-        try{
-            _searchResult.value=DataState.Loading
-            Log.i("x3x",list.toString())
-            if(searchText.value.isNotEmpty()) {
-                _searchResult.value=DataState.Success(list)
-            }else{
-                _searchResult.value=DataState.ShowKeywordSuggests
+    private fun executeSearch(list: List<SearchItem>) {
+        try {
+            _searchResult.value = DataState.Loading
+            Log.i("x3x", list.toString())
+            if (searchText.value.isNotEmpty()) {
+                _searchResult.value = DataState.Success(list)
+            } else {
+                _searchResult.value = DataState.ShowKeywordSuggests
             }
-        }catch (e:Exception){
+        } catch (e: Exception) {
             Log.e("x3x", "Error occurred: ${e.message}")
-            _searchResult.value=DataState.Error("Error")
+            _searchResult.value = DataState.Error("Error")
         }
     }
 
     fun onClickLeagueChip() {
-        _searchStatus.value=SearchStatus.LEAGUE
+        _searchStatus.value = SearchStatus.LEAGUE
         getDataBySearchText()
     }
 
     fun onClickTeamChip() {
-        _searchStatus.value=SearchStatus.TEAM
+        _searchStatus.value = SearchStatus.TEAM
         getDataBySearchText()
     }
 
     fun onClickCoachChip() {
-        _searchStatus.value=SearchStatus.COACH
+        _searchStatus.value = SearchStatus.COACH
         getDataBySearchText()
     }
 
-     fun showKeywordSuggests() {
-         viewModelScope.launch {
-             _searchResult.value=DataState.ShowKeywordSuggests
-             _searchKeyword.value=  getSearchKeywordsUseCase.getSearchKeywords()
-             Log.i("xx3xx",_searchKeyword.value.toString())
-         }
-     }
+    fun showKeywordSuggests() {
+        viewModelScope.launch {
+            _searchResult.value = DataState.ShowKeywordSuggests
+            _searchKeyword.value = getSearchKeywordsUseCase.getSearchKeywords()
+            Log.i("xx3xx", _searchKeyword.value.toString())
+        }
+    }
 
-     fun cacheKeyword(text: String){
-         viewModelScope.launch {
-             if(searchKeyword.value.none { it.keyword == text }){
-                 getSearchKeywordsUseCase.insertSearchKeywords(SearchKeyword(text))
-             }
-         }
+    fun cacheKeyword(text: String) {
+        viewModelScope.launch {
+            if (searchKeyword.value.none { it.keyword == text }) {
+                getSearchKeywordsUseCase.insertSearchKeywords(SearchKeyword(text))
+            }
+        }
     }
 
     override fun onClickTeam(team: SearchItem) {

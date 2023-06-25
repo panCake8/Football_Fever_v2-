@@ -11,6 +11,7 @@ import com.pancake.footballfever.databinding.FragmentSearchBinding
 import com.pancake.footballfever.domain.models.SearchKeyword
 import com.pancake.footballfever.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.debounce
@@ -19,22 +20,23 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
 
-    override val layoutId: Int= R.layout.fragment_search
+    override val layoutId: Int = R.layout.fragment_search
     override val viewModel: SearchViewModel by viewModels()
 
     override fun setup() {
-        binding.searchRecycler.adapter=SearchAdapter(viewModel)
+        binding.searchRecycler.adapter = SearchAdapter(viewModel)
 
-           lifecycleScope.launch {
-               viewModel.searchKeyword.collect { searchKeywords ->
-                   Log.i("Abdallahx3x", searchKeywords.toString())
-                   makeSuggestKeywordToChips(searchKeywords)
-               }
-           }
+        lifecycleScope.launch {
+            viewModel.searchKeyword.collect { searchKeywords ->
+                Log.i("Abdallahx3x", searchKeywords.toString())
+                makeSuggestKeywordToChips(searchKeywords)
+            }
+        }
 
         searchViewListener()
     }
 
+    @OptIn(FlowPreview::class)
     private fun searchViewListener() {
         lifecycleScope.launch {
             callbackFlow {
@@ -42,19 +44,19 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
                     text?.let { channel.trySend(it.toString()).isSuccess }
                     if (text.isNullOrEmpty()) {
                         viewModel.showKeywordSuggests()
-                        Log.i("x3x",viewModel.searchKeyword.value.toString())
+                        Log.i("x3x", viewModel.searchKeyword.value.toString())
                     }
                 }
                 awaitClose()
             }
                 .debounce(1_000)
-                .collect {text->
-                       makeSearch(text)
+                .collect { text ->
+                    makeSearch(text)
                 }
         }
     }
 
-    private  fun  makeSearch(text:String){
+    private fun makeSearch(text: String) {
         if (text.isNotBlank()) {
             viewModel.cacheKeyword(text)
             viewModel.getDataBySearchText()
@@ -63,13 +65,13 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
 
     private fun makeSuggestKeywordToChips(items: List<SearchKeyword>?) {
         binding.searchSuggest.removeAllViews()
-        items?.take(8)?.forEach {searchKeyword->
+        items?.take(8)?.forEach { searchKeyword ->
             val chip = Chip(context).apply {
                 text = searchKeyword.keyword
                 isCloseIconVisible = false
                 setTextColor(ContextCompat.getColor(context, R.color.white87))
                 setChipBackgroundColorResource(R.color.search_bar_background)
-                setOnClickListener{
+                setOnClickListener {
                     binding.searchBar.setText(searchKeyword.keyword)
                 }
             }
@@ -77,4 +79,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
         }
     }
 
+
+    override fun showBottomNavBar(show: Boolean) {
+        super.showBottomNavBar(true)
+    }
 }

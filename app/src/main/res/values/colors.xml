@@ -38,5 +38,6 @@
     <color name="light_white">#F9F9F9</color>
     <color name="light_grey">#4A4444</color>
     <color name="elapsed_color">#00C566</color>
+    <color name="light_green_time">#1434C759</color>
 
 </resources>

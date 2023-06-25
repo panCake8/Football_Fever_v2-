@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.pancake.footballfever.ui.injuries.InjuriesViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/Primary_color">
+
+        <ImageView
+            android:id="@+id/injuries_back_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:src="@drawable/back_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/injuries_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:text="@string/injuries"
+            android:textColor="@color/text_title"
+            app:layout_constraintBottom_toBottomOf="@+id/injuries_back_icon"
+            app:layout_constraintStart_toEndOf="@+id/injuries_back_icon"
+            app:layout_constraintTop_toTopOf="@+id/injuries_back_icon" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/injuries_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/no_elevation"
+            android:layout_marginTop="@dimen/medium_margin"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:setRecyclerItems="@{viewModel.injury.success}"
+            app:layout_constraintTop_toBottomOf="@+id/injuries_back_icon"
+            tools:listitem="@layout/item_injuries" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:showIfLoading="@{viewModel.injury.loading}" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:showIfError="@{viewModel.injury.error}"
+            app:srcCompat="@drawable/baseline_error_48" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
