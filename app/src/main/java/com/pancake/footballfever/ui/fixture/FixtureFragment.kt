@@ -1,6 +1,8 @@
 package com.pancake.footballfever.ui.fixture
 
+import android.util.Log
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
 import com.pancake.footballfever.R
@@ -12,6 +14,7 @@ import com.pancake.footballfever.ui.fixture.stats.FragmentFixtureStats
 import com.pancake.footballfever.ui.fixture.summary.FixtureSummaryFragment
 import com.pancake.footballfever.ui.league_state.standing.StandingFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class FixtureFragment : BaseFragment<FragmentFixtureBinding, FixtureViewModel>() {
@@ -30,11 +33,23 @@ class FixtureFragment : BaseFragment<FragmentFixtureBinding, FixtureViewModel>()
 
     override fun setup() {
         fixtureId = arguments.fixtureId
-        initViewPager()
-        initTabLayout()
+
         fixtureId?.let {
             viewModel.fetchFixture(it)
         }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.fixtureUiState.collect { fixtureUiState ->
+                val fixture = fixtureUiState.fixture
+                if (fixture != null) {
+                    Log.i("DEBUG", fixture.toString())
+                    initViewPager()
+                    initTabLayout()
+                }
+            }
+        }
+
+
         binding.refreshButton.setOnClickListener {
             fixtureId?.let {
                 viewModel.refreshData(it)
@@ -51,7 +66,12 @@ class FixtureFragment : BaseFragment<FragmentFixtureBinding, FixtureViewModel>()
     }
 
     private fun addFragmentsToViewPager() {
-        fixtureStatsPagerAdapter.addFragment(StandingFragment.newInstance(viewModel.fixtureUiState.value.fixture?.leagueId,viewModel.fixtureUiState.value.fixture?.season))
+        fixtureStatsPagerAdapter.addFragment(
+            StandingFragment.newInstance(
+                viewModel.fixtureUiState.value.fixture?.leagueId,
+                viewModel.fixtureUiState.value.fixture?.season
+            )
+        )
         fixtureStatsPagerAdapter.addFragment(
             FixtureSummaryFragment.newInstance(
                 fixtureId,
