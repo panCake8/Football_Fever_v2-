@@ -25,4 +25,8 @@ class FavouritesFragment : BaseFragment<FragmentFavouritesBinding, FavouritesVie
         }
     }
 
+    override fun showBottomNavBar(show: Boolean) {
+        super.showBottomNavBar(true)
+    }
+
 }

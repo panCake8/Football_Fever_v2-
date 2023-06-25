@@ -1,11 +1,13 @@
 package com.pancake.footballfever.ui.favourites
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pancake.footballfever.domain.models.FavoriteTeam
 import com.pancake.footballfever.domain.usecases.DeleteFromFavouriteTeamsUseCase
 import com.pancake.footballfever.domain.usecases.GetAllFavouriteTeams
 import com.pancake.footballfever.ui.favourites.adapter.FavouriteTeamListener
+import com.pancake.footballfever.utilities.DataState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -18,20 +20,30 @@ class FavouritesViewModel @Inject constructor(
     private val deleteFavouriteTeamUseCase: DeleteFromFavouriteTeamsUseCase,
 ) : ViewModel(), FavouriteTeamListener {
 
-    private var _favouriteTeams: MutableStateFlow<List<FavoriteTeam>> =
-        MutableStateFlow(emptyList())
+    private var _favouriteTeams: MutableStateFlow<DataState<Any>> =
+        MutableStateFlow(DataState.Error("error"))
 
-    val favouriteTeams: StateFlow<List<FavoriteTeam>> = _favouriteTeams
+    val favouriteTeams: StateFlow<DataState<Any>> = _favouriteTeams
     init {
         viewModelScope.launch {
-            _favouriteTeams.value = getAllFavouriteTeamsUseCase.getAllTeams()
+                _favouriteTeams.value =
+                    if(getAllFavouriteTeamsUseCase.getAllTeams().isNotEmpty())
+                    DataState.Success(getAllFavouriteTeamsUseCase.getAllTeams())
+                    else DataState.Error("error")
+
+
+
+
         }
     }
 
     fun onClickUnfollow(id: Int) {
         viewModelScope.launch {
             deleteFavouriteTeamUseCase.deleteFavouriteTeam(id)
-           _favouriteTeams.value = getAllFavouriteTeamsUseCase.getAllTeams()
+            _favouriteTeams.value =
+                if(getAllFavouriteTeamsUseCase.getAllTeams().isNotEmpty())
+                    DataState.Success(getAllFavouriteTeamsUseCase.getAllTeams())
+                else DataState.Error("error")
         }
     }
 
