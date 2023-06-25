@@ -38,8 +38,9 @@ class GetHeadToHeadsUseCase @Inject constructor(
             awayTeamLogo = awayTeamLogo,
             season = season,
             leagueLogo = leagueLogo,
-
-            )
+            id = id,
+            date = date,
+        )
     }
 
     private fun HeadToHeadDto.toHeadToHead(): HeadToHead {
@@ -52,6 +53,8 @@ class GetHeadToHeadsUseCase @Inject constructor(
             awayTeamLogo = teams?.away?.logo,
             season = league?.season,
             leagueLogo = league?.logo,
+            id = fixture?.id,
+            date = fixture?.date?.take(10),
         )
     }
 
