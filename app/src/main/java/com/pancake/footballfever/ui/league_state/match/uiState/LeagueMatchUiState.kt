@@ -1,4 +1,4 @@
-package com.pancake.footballfever.ui.league_state.match
+package com.pancake.footballfever.ui.league_state.match.uiState
 
 import com.pancake.footballfever.domain.models.LeagueMatchUiModel
 

@@ -43,8 +43,8 @@ class GetLeagueMatchesUseCase @Inject constructor(
             awayTeamLogo = awayTeamLogo,
             matchTime = matchTime,
             id = id,
-
-            )
+            season = season,
+        )
 
     }
 
@@ -56,7 +56,8 @@ class GetLeagueMatchesUseCase @Inject constructor(
             awayTeamName = teams?.away?.name,
             awayTeamLogo = teams?.away?.logo,
             date = fixture?.date?.take(10),
-            id = fixture?.id
+            id = fixture?.id,
+            season = league?.season,
         )
     }
 
