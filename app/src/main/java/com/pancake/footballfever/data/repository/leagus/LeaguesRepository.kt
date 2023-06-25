@@ -1,4 +1,4 @@
-package com.pancake.footballfever.data.repository
+package com.pancake.footballfever.data.repository.leagus
 
 import com.pancake.footballfever.data.local.database.entity.LeagueEntity
 import com.pancake.footballfever.data.remote.dto.league.LeaguesDto
@@ -19,6 +19,8 @@ interface LeaguesRepository {
     suspend fun fetchCurrentLeaguesDataAndCache(current: Boolean): Result<List<LeagueEntity>>
 
     suspend fun getCurrentCachedData(): List<LeagueEntity>
+
+    suspend fun searchLeaguesByName(name: String): List<LeagueEntity>
 
     // endregion
 

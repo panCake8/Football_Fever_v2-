@@ -21,5 +21,7 @@ interface LeagueDao {
     @Query("SELECT * FROM LEAGUE_TABLE WHERE id = :id")
     fun getLeagueById(id: Int): LeagueEntity?
 
+    @Query("SELECT * FROM LEAGUE_TABLE WHERE name LIKE '%' || :name || '%'")
+    fun searchLeaguesByName(name: String): List<LeagueEntity>?
 
 }

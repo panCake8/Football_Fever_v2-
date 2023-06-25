@@ -1,4 +1,4 @@
-package com.pancake.footballfever.data.repository
+package com.pancake.footballfever.data.repository.leagus
 
 
 
@@ -51,6 +51,10 @@ class LeaguesRepositoryImpl @Inject constructor(
     override suspend fun getCurrentCachedData(): List<LeagueEntity> {
         return leagueDao.getAllLeagues()
     }
+
+    override suspend fun searchLeaguesByName(name: String): List<LeagueEntity> =
+        leagueDao.searchLeaguesByName(name)!!
+
 
     // region league state screen
     override suspend fun getLeaguesByIdLocally(leagueId: Int): LeagueEntity = leagueDao.getLeagueById(leagueId)!!
