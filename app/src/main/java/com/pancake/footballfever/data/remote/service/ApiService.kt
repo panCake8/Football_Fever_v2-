@@ -15,9 +15,9 @@ import com.example.footboolfever.data.remote.dto.TopAssistsDto
 import com.example.footboolfever.data.remote.dto.TopScoresDto
 import com.example.footboolfever.data.remote.dto.TransfersDto
 import com.example.footboolfever.data.remote.dto.VenueDto
-import com.example.footboolfever.data.remote.dto.league.LeaguesDto
 import com.example.footboolfever.data.remote.dto.standings.StandingsDto
 import com.example.footboolfever.data.remote.dto.teams.TeamsDto
+import com.pancake.footballfever.data.remote.dto.league.LeaguesDto
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -76,7 +76,7 @@ interface ApiService {
 
     @GET("leagues")
     suspend fun getCurrentLeague(
-        @Query("current") current: String
+        @Query("current") current: Boolean
     ): Response<BaseResponse<LeaguesDto>>        // return a list of active seasons
 
     @GET("leagues")
@@ -88,6 +88,8 @@ interface ApiService {
     suspend fun getLastLeague(
         @Query("last") last: Int
     ): Response<LeaguesDto>
+    @GET("leagues")
+    suspend fun getLeagues(@Query("current") current: Boolean): Response<LeaguesDto>
 
     // endregion
 

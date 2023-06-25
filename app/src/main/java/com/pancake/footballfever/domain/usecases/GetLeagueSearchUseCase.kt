@@ -1,6 +1,6 @@
 package com.pancake.footballfever.domain.usecases
 
-import com.example.footboolfever.data.remote.dto.league.LeaguesDto
+import com.pancake.footballfever.data.remote.dto.league.LeaguesDto
 import com.pancake.footballfever.data.repository.search.LeagueSearchRepository
 import com.pancake.footballfever.domain.models.SearchItem
 import javax.inject.Inject

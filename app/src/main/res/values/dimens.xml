@@ -73,5 +73,5 @@
     <dimen name="standings_team_logo_height">20dp</dimen>
     <dimen name="width_text_header_standings_table">32dp</dimen>
 
-
+    <dimen name="nav_bottom_height">80dp</dimen>
 </resources>

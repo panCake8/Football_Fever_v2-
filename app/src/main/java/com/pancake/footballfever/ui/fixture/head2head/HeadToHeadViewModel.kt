@@ -24,12 +24,9 @@ constructor(
     val headToHead: StateFlow<HeadToHeadUiState>
         get() = _HeadToHeads
 
-    init {
-        getHeadToHeads("33-34")
-    }
 
 
-    private fun getHeadToHeads(h2h: String) {
+     fun getHeadToHeads(h2h: String) {
         viewModelScope.launch {
             getHeadToHeadsUseCase.getHeadToHeads(h2h).let { list ->
                 _HeadToHeads.update {

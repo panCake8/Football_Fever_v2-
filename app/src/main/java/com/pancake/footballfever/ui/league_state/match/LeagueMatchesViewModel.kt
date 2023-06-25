@@ -24,10 +24,6 @@ class LeagueMatchesViewModel @Inject constructor(private val leagueMatchesUseCas
     val leagueMatches: StateFlow<LeagueMatchUiState>
         get() = _leagueMatches
 
-    init {
-        getAllLeagueMatches(2022, 39)
-    }
-
     private val _dayDate = MutableLiveData<String>()
     val dayDate: LiveData<String>
         get() = _dayDate

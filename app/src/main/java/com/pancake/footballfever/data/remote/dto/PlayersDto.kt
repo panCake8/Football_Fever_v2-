@@ -1,4 +1,4 @@
-package com.example.footboolfever.data.remote.dto
+package com.pancake.footballfever.data.remote.dto
 
 import com.example.footboolfever.data.remote.dto.utils.Player
 import com.example.footboolfever.data.remote.dto.utils.StatisticsItem

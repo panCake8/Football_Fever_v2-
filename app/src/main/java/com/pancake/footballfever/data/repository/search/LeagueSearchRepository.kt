@@ -1,7 +1,6 @@
 package com.pancake.footballfever.data.repository.search
 
-import com.example.footboolfever.data.remote.dto.league.LeaguesDto
-import com.example.footboolfever.data.remote.dto.teams.TeamsDto
+import com.pancake.footballfever.data.remote.dto.league.LeaguesDto
 
 interface LeagueSearchRepository {
 

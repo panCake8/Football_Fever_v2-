@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.pancake.footballfever.R
+import com.pancake.footballfever.ui.HomeActivity
 import com.pancake.footballfever.utilities.SharedPrefManager
 
 
@@ -25,6 +26,11 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpNavigation()
+        showBottomNav()
+    }
+
+    private fun showBottomNav(show: Boolean = false) {
+        (activity as HomeActivity).showBottomNavBar(show)
     }
 
     private fun setUpNavigation() {

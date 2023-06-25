@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="com.pancake.footballfever.domain.models.TopGoals" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/background_color"
+        android:layout_marginVertical="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/shapeableImageView"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/football"
+
+            app:layout_constraintBottom_toBottomOf="@+id/textView_player_team"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView_player_name"
+            app:roundPercent="1"
+            app:setImageUrl="@{item.playerImg}" />
+
+        <TextView
+            android:id="@+id/textView_player_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@{item.playerName}"
+
+            android:textColor="@color/text_title"
+            android:textSize="@dimen/text_small"
+            app:layout_constraintStart_toEndOf="@+id/shapeableImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="name" />
+
+        <TextView
+            android:id="@+id/textView_player_team"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:fontFamily="@font/poppins"
+            android:text="@{item.teamName}"
+
+            android:textColor="@color/chip_text_color"
+            android:textSize="@dimen/text_tiny"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView_player_name"
+            app:layout_constraintTop_toBottomOf="@+id/textView_player_name"
+            tools:text="team name" />
+
+        <TextView
+            android:id="@+id/textView_player_goals_assists"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textColor="@color/text_title"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="@dimen/text_small"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{String.valueOf(item.totalGoals)}"
+            tools:text="20" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
