@@ -8,12 +8,17 @@
         <variable
             name="item"
             type="com.pancake.footballfever.domain.models.HeadToHead" />
+
+        <variable
+            name="listener"
+            type="com.pancake.footballfever.ui.fixture.head2head.adapter.HeadToHeadListener" />
     </data>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/medium_margin"
+        android:onClick="@{() -> listener.onClick(item)}"
         app:cardCornerRadius="@dimen/semi_large_margin"
         app:cardElevation="@dimen/small_margin"
         app:layout_constraintEnd_toEndOf="parent"

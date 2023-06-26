@@ -14,6 +14,7 @@ data class LeagueMatchEntity(
     val awayTeamLogo: String?,
     val date: String?,
     val matchTime: String?,
+    val season: Int?,
 )
 
 

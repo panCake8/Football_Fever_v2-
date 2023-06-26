@@ -23,8 +23,8 @@ private fun HeadToHeadDto.toHeadToHeadEntity(): HeadToHeadEntity {
         awayTeamGoals = goals?.away.toString(),
         homeTeamGoals = goals?.home.toString(),
         season = league?.season,
+        date = fixture?.date?.take(10),
 
-
-        )
+    )
 
 }
