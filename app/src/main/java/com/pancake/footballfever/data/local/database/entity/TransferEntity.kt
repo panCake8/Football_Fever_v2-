@@ -2,6 +2,7 @@ package com.pancake.footballfever.data.local.database.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.pancake.footballfever.domain.models.Transfers
 
 @Entity(tableName = "TRANSFER_TABLE")
 data class TransferEntity(
@@ -16,3 +17,14 @@ data class TransferEntity(
     val clubLogoOut: String? = null,
 )
 
+fun TransferEntity.toTransferModel(): Transfers{
+    return Transfers(
+        playerName = playerName,
+        date = date,
+        transferType = transferType,
+        clubNameIN = clubNameIN,
+        clubLogoIN = clubLogoIN,
+        clubNameOut = clubNameOut,
+        clubLogoOut = clubLogoOut,
+    )
+}
