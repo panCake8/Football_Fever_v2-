@@ -8,6 +8,7 @@ import com.pancake.footballfever.R
 import com.pancake.footballfever.databinding.FragmentLeagueMatchBinding
 import com.pancake.footballfever.domain.Constants
 import com.pancake.footballfever.ui.base.BaseFragment
+import com.pancake.footballfever.ui.league_state.match.adapter.LeagueMatchesParentAdapter
 import com.pancake.footballfever.ui.league_state.match.uiState.LeagueMatchUiEvent
 import com.pancake.footballfever.utilities.collectLast
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,7 +32,7 @@ class LeagueMatchesFragment : BaseFragment<FragmentLeagueMatchBinding, LeagueMat
 
         viewModel.getAllLeagueMatches(season, leagueId)
 
-
+        setRecycler()
         handleEvent()
     }
 
@@ -65,7 +66,9 @@ class LeagueMatchesFragment : BaseFragment<FragmentLeagueMatchBinding, LeagueMat
 
 
     private fun setRecycler() {
-        binding.viewModel = viewModel
+
+        binding.parentLeagueMatchRecycler.adapter = LeagueMatchesParentAdapter(viewModel)
+
     }
 
     companion object {
