@@ -16,6 +16,6 @@
         android:icon="@drawable/icon_league"/>
     <item
         android:title="@string/favorite"
-        android:id="@+id/favo"
+        android:id="@+id/favouritesFragment"
         android:icon="@drawable/icon_favorite"/>
 </menu>

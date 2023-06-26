@@ -22,6 +22,7 @@ class TeamRepositoryImpl @Inject constructor(
     override suspend fun getAllFavoriteTeamsLocal(): List<FavoriteTeamEntity> {
         return dao.getAllFavoriteTeams()
     }
+
     override suspend fun deleteFavoriteTeam(teamId: Int) {
         dao.deleteFavoriteTeam(teamId)
     }

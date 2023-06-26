@@ -1,9 +1,12 @@
 package com.pancake.footballfever.di
 
+import com.pancake.footballfever.domain.usecases.DeleteFromFavouriteTeamsUseCase
+import com.pancake.footballfever.domain.usecases.GetAllFavouriteTeams
 import com.pancake.footballfever.domain.usecases.GetCoachSearchUseCase
 import com.pancake.footballfever.domain.usecases.GetLeagueSearchUseCase
 import com.pancake.footballfever.domain.usecases.GetSearchKeywordsUseCase
 import com.pancake.footballfever.domain.usecases.GetTeamSearchUseCase
+import com.pancake.footballfever.ui.favourites.FavouritesViewModel
 import com.pancake.footballfever.ui.search.SearchViewModel
 import dagger.Module
 import dagger.Provides
@@ -21,9 +24,21 @@ object ViewModelModule {
         getCoachSearchUseCase: GetCoachSearchUseCase,
         getLeagueSearchUseCase: GetLeagueSearchUseCase,
         getSearchKeywordsUseCase: GetSearchKeywordsUseCase
-    ) = SearchViewModel(getTeamSearchUseCase,
+    ) = SearchViewModel(
+        getTeamSearchUseCase,
         getCoachSearchUseCase,
         getLeagueSearchUseCase,
-        getSearchKeywordsUseCase)
+        getSearchKeywordsUseCase
+    )
+
+    @ViewModelScoped
+    @Provides
+    fun provideFavouritesViewModel(
+        getAllFavouriteTeamsUseCase: GetAllFavouriteTeams,
+        deleteFavouriteTeamUseCase: DeleteFromFavouriteTeamsUseCase,
+    ) = FavouritesViewModel(
+        getAllFavouriteTeamsUseCase,
+        deleteFavouriteTeamUseCase
+    )
 
 }
