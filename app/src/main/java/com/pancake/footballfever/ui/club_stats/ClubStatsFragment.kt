@@ -57,8 +57,8 @@ class ClubStatsFragment :BaseFragment<FragmentClubBinding, ClubViewModel>() {
         binding.pager.adapter = clubStatsPagerAdapter
     }
     private fun addFragmentsToViewPager() {
-        clubStatsPagerAdapter.addFragment(PlayersFragment.newInstance(argument.seasonId,argument.teamId))
-        clubStatsPagerAdapter.addFragment(TeamFixtureFragment.newInstance(argument.seasonId.toString(),argument.teamId.toString()))
+        clubStatsPagerAdapter.addFragment(PlayersFragment.newInstance(argument.season,argument.teamId))
+        clubStatsPagerAdapter.addFragment(TeamFixtureFragment.newInstance(argument.season.toString(),argument.teamId.toString()))
 //        clubStatsPagerAdapter.addFragment()
     }
 

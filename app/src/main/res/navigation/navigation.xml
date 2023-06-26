@@ -15,7 +15,7 @@
             android:name="teamId"
             app:argType="integer" />
         <argument
-            android:name="seasonId"
+            android:name="leagueId"
             app:argType="integer" />
         <argument
             android:name="season"

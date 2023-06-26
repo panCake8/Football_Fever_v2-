@@ -25,6 +25,7 @@ class FavouritesViewModel @Inject constructor(
 
     val favouriteTeams: StateFlow<DataState<Any>> = _favouriteTeams
     init {
+
         getAllFavouriteLocal()
         viewModelScope.launch {
                 _favouriteTeams.value =
@@ -33,11 +34,7 @@ class FavouritesViewModel @Inject constructor(
                     else DataState.Error("error")
         }
     }
-    private fun getAllFavouriteLocal(){
-        viewModelScope.launch {
-            getAllFavouriteTeamsUseCase.getAllTeams()
-        }
-    }
+
 
     fun onClickUnfollow(id: Int) {
         viewModelScope.launch {
