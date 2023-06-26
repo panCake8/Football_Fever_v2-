@@ -49,11 +49,12 @@ class LeagueMatchesFragment : BaseFragment<FragmentLeagueMatchBinding, LeagueMat
         when (event) {
             is LeagueMatchUiEvent.LeagueMatchClickEvent -> {
                 event.match.let {
-                    val nav = LeagueStateFragmentDirections.actionLeagueStateFragmentToFixtureFragment(
-                        fixtureId = it.id!!,
-                        season = it.season!!,
-                        date = it.date!!,
-                    )
+                    val nav =
+                        LeagueStateFragmentDirections.actionLeagueStateFragmentToFixtureFragment(
+                            fixtureId = it.id!!,
+                            season = it.season!!,
+                            date = it.date!!,
+                        )
                     findNavController().navigate(nav)
                 }
 
