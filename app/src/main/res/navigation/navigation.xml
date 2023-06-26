@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/clubFragment"
-        android:name="com.pancake.footballfever.ui.Club_stats.ClubFragment"
+        android:name="com.pancake.footballfever.ui.club_stats.ClubStatsFragment"
         android:label="fragment_club"
         tools:layout="@layout/fragment_club">
         <argument
@@ -16,6 +16,9 @@
             app:argType="integer" />
         <argument
             android:name="seasonId"
+            app:argType="integer" />
+        <argument
+            android:name="season"
             app:argType="integer" />
     </fragment>
 
@@ -60,6 +63,10 @@
             android:id="@+id/action_searchFragment_to_clubTablesFragment"
             app:destination="@id/clubFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/favouritesFragment"
+        android:name="com.pancake.footballfever.ui.favourites.FavouritesFragment"
+        android:label="FavouritesFragment" />
 
     <fragment
         android:id="@+id/leagueStateFragment"
