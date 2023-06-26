@@ -37,6 +37,7 @@ class FixtureFragment : BaseFragment<FragmentFixtureBinding, FixtureViewModel>()
         fixtureId?.let {
             viewModel.fetchFixture(it)
         }
+        Log.i("FIKRY", fixtureId.toString())
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.fixtureUiState.collect { fixtureUiState ->

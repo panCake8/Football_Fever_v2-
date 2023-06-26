@@ -39,6 +39,7 @@ class FixtureRepositoryImpl @Inject constructor(
             if (response.isSuccessful) {
                 val data = response.body()?.response?.map { it.toFixtureEntity() }
                 data?.let {
+                    fixtureDao.deleteAllFixtures()
                     fixtureDao.insertFixture(it)
                     return Result.success(it)
                 }
