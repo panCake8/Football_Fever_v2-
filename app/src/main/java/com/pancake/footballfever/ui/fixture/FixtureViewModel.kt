@@ -39,18 +39,22 @@ class FixtureViewModel @Inject constructor(
                     fixture = fixture.getOrNull()?.map { it.toFixtureModel() }?.get(0)
                 )
             }
-            getFixture()
+            getFixture(fixtureId)
         }
     }
 
-    private fun getFixture() {
+    private fun getFixture(fixtureId: Int) {
+
         viewModelScope.launch(Dispatchers.IO) {
             val fixture = getCachedFixtureUseCase()
-            _fixtureUiState.update {
-                it.copy(
-                    isLoading = false,
-                    fixture = fixture[0]
-                )
+            if (fixture[0].id == fixtureId) {
+                _fixtureUiState.update {
+                    it.copy(
+                        isLoading = false,
+                        fixture = fixture[0]
+                    )
+                }
+
             }
         }
     }

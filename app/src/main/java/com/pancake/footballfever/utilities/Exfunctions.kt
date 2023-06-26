@@ -17,20 +17,21 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+import java.util.TimeZone
 
-fun StandingsDto.toStandingsEntity() :List<StandingsEntity>? {
+fun StandingsDto.toStandingsEntity(): List<StandingsEntity>? {
 
-    val standingsItemItem =league?.standings?.first()
-    return standingsItemItem?.map  {
+    val standingsItemItem = league?.standings?.first()
+    return standingsItemItem?.map {
         StandingsEntity(
             teamId = it?.team?.id!!,
             leagueId = league?.id!!,
-            season =league.season!!,
-            rank =it.rank!!,
-            teamName =it.team.name!!,
-            teamLogoUrl =it.team.logo!!,
-            points =it.points!!,
-            win =it.all?.win!!,
+            season = league.season!!,
+            rank = it.rank!!,
+            teamName = it.team.name!!,
+            teamLogoUrl = it.team.logo!!,
+            points = it.points!!,
+            win = it.all?.win!!,
             played = it.all.played!!,
         )
     }
@@ -39,7 +40,7 @@ fun StandingsDto.toStandingsEntity() :List<StandingsEntity>? {
 fun StandingsEntity.toStandings(): Standings {
     return Standings(
         rank = rank,
-        season= season,
+        season = season,
         teamName = teamName,
         teamLogoUrl = teamLogoUrl,
         teamId = teamId,
@@ -54,6 +55,7 @@ fun Int.toDate(): String {
     val calender = Calendar.getInstance()
     calender.timeInMillis = this.toLong()
     val format = SimpleDateFormat("HH:mm", Locale.getDefault())
+    format.timeZone = TimeZone.getDefault()
     return format.format(calender.time)
 
 

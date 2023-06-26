@@ -13,7 +13,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/parent_league_match_recycler"
         app:setRecyclerItems="@{viewModel.leagueMatches.success}"
-        setLeagueChildAdapter="@{viewModel}"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background_color"

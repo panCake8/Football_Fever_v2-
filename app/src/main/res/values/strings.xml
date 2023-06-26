@@ -62,9 +62,12 @@
     <string name="injury_player_name">Neymar</string>
     <string name="injury">sprain in ankle</string>
     <string name="favorite">Favorite</string>
-
     <string name="man_utd">man_utd</string>
     <string name="_1_1">1-1</string>
     <string name="follow">follow</string>
+    <string name="more">More</string>
+    <string name="coach">coach</string>
+    <string name="transfers">transfers</string>
+
 
 </resources>

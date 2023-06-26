@@ -29,15 +29,8 @@ fun <T> setRecyclerItems(recyclerView: RecyclerView, items: List<T?>?) {
     (recyclerView.adapter as BaseAdapter<T?>?)?.submitList(items)
 }
 
-@BindingAdapter(value = ["setLeagueChildAdapter"])
-fun setChildRecyclerAdapter(recyclerView: RecyclerView, items: LeagueMatchesListener) {
-    recyclerView.adapter = LeagueMatchesParentAdapter(items)
-}
 
-@BindingAdapter(value = ["setHeadToHeadRecyclerAdapter"])
-fun setChildRecyclerAdapter(recyclerView: RecyclerView, items: HeadToHeadListener) {
-    recyclerView.adapter = HeadToHeadParentAdapter(items)
-}
+
 
 @BindingAdapter(value = ["app:setImageUrl"])
 fun setImageUrl(image: ImageView, url: String?) {

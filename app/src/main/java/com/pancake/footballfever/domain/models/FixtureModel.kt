@@ -13,4 +13,5 @@ data class FixtureModel(
     val teamAwayGoals: Int? = null,
     val timeStamp: Int? = null,
     val time: Int? = null,
+    val id: Int? = null,
 )

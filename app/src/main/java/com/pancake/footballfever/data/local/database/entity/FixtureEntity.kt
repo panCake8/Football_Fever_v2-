@@ -42,6 +42,7 @@ fun FixtureEntity.toFixtureModel(): FixtureModel {
         leagueId = leagueId,
         season = season,
         timeStamp = timeStamp,
-        time =time,
+        time = time,
+        id = id,
     )
 }
