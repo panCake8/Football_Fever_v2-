@@ -10,9 +10,9 @@ import com.pancake.footballfever.R
 import com.pancake.footballfever.databinding.FragmentMatchStatsHeadToHeadBinding
 import com.pancake.footballfever.ui.base.BaseFragment
 import com.pancake.footballfever.ui.fixture.FixtureFragmentArgs
+import com.pancake.footballfever.ui.fixture.FixtureFragmentDirections
 import com.pancake.footballfever.ui.fixture.head2head.adapter.HeadToHeadParentAdapter
 import com.pancake.footballfever.ui.fixture.head2head.uiState.HeadToHeadUiEvent
-import com.pancake.footballfever.ui.league_state.LeagueStateFragmentDirections
 import com.pancake.footballfever.utilities.collectLast
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -33,10 +33,10 @@ class FragmentMatchHeadToHead :
             viewModel.getHeadToHeads(it)
         }
 
-        setRecycler()
-        handleEvent()
-    }
 
+        handleEvent()
+        setRecycler()
+    }
     private fun setRecycler() {
         binding.parentRecycler.adapter = HeadToHeadParentAdapter(viewModel)
     }
@@ -53,13 +53,14 @@ class FragmentMatchHeadToHead :
             is HeadToHeadUiEvent.ClickHeadToHeadEvent -> {
                 event.headToHead.let {
                     val nav =
-                        LeagueStateFragmentDirections.actionLeagueStateFragmentToFixtureFragment(
+                        FixtureFragmentDirections.actionFixtureFragmentSelf(
                             date = it.date!!,
                             fixtureId = it.id!!,
                             season = it.season!!
                         )
                     findNavController().navigate(nav)
                 }
+
             }
 
             else -> {}

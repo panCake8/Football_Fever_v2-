@@ -39,6 +39,9 @@
         <argument
             android:name="date"
             app:argType="string" />
+        <action
+            android:id="@+id/action_fixtureFragment_self"
+            app:destination="@id/fixtureFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
