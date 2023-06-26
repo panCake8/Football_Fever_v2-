@@ -103,5 +103,6 @@ fun FixturesDto.toFixtureEntity(): FixtureEntity {
         teamAwayLogo = teams?.away?.logo,
         teamHomeGoals = goals?.home,
         teamAwayGoals = goals?.away,
+        time = fixture?.status?.elapsed,
     )
 }

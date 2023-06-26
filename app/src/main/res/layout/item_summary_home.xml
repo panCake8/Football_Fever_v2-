@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.pancake.footballfever.domain.models.FixtureEvents" />
+            type="com.pancake.footballfever.domain.models.FixtureSummary" />
 
     </data>
 

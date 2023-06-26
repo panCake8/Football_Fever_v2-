@@ -8,20 +8,25 @@
         <variable
             name="item"
             type="com.pancake.footballfever.domain.models.LeagueMatch" />
+
+        <variable
+            name="listener"
+            type="com.pancake.footballfever.ui.league_state.match.adapter.LeagueMatchesListener" />
     </data>
 
 
-        <androidx.cardview.widget.CardView
-            android:layout_marginTop="@dimen/medium_margin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/large_margin"
-            android:layout_marginEnd="@dimen/large_margin"
-            app:cardCornerRadius="@dimen/semi_large_margin"
-            app:cardElevation="@dimen/small_margin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/large_margin"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_marginEnd="@dimen/large_margin"
+        android:onClick="@{()-> listener.onItemClick(item)}"
+        app:cardCornerRadius="@dimen/semi_large_margin"
+        app:cardElevation="@dimen/small_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

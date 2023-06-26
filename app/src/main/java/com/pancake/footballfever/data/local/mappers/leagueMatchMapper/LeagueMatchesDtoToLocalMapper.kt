@@ -15,6 +15,7 @@ class LeagueMatchesDtoToLocalMapper : Mapper<FixturesDto, LeagueMatchEntity> {
             id = input.fixture?.id,
             date = input.fixture?.date?.take(10),
             matchTime = input.fixture?.timestamp?.toDate(),
+            season = input.league?.season,
         )
     }
 

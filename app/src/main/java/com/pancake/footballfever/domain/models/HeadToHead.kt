@@ -9,4 +9,6 @@ data class HeadToHead(
     val awayTeamLogo: String?,
     val season: Int?,
     val leagueLogo: String?,
+    val id: Int?,
+    val date: String?,
 )

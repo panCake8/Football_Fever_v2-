@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
 
-    app:startDestination="@id/leagueMatch">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/clubFragment"
@@ -46,9 +46,6 @@
             android:id="@+id/action_homeFragment_to_fixtureFragment"
             app:destination="@id/fixtureFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_clubTablesFragment"
-            app:destination="@id/clubFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_moreFragment"
             app:destination="@id/moreFragment" />
     </fragment>
@@ -69,9 +66,16 @@
         android:name="com.pancake.footballfever.ui.league_state.LeagueStateFragment"
         android:label="LeagueStateFragment"
         tools:layout="@layout/fragment_league_state">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="season"
+            app:argType="integer" />
         <action
-            android:id="@+id/action_leagueStateFragment_to_clubTablesFragment"
-            app:destination="@id/clubFragment" />
+            android:id="@+id/action_leagueStateFragment_to_fixtureFragment"
+            app:destination="@id/fixtureFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/selectCountryFragment"
@@ -94,7 +98,7 @@
             android:id="@+id/action_selectFavoriteTeamsFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@+id/navigation"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
@@ -117,21 +121,52 @@
         android:id="@+id/leagueMatch"
         android:name="com.pancake.footballfever.ui.league_state.match.LeagueMatchesFragment"
         android:label="fragment_league_match"
-        tools:layout="@layout/fragment_league_match" >
+        tools:layout="@layout/fragment_league_match">
         <argument
             android:name="LeagueID"
-            app:argType="integer"
-            android:defaultValue="39" />
+            android:defaultValue="39"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_leagueMatch_to_fixtureFragment"
+            app:destination="@id/fixtureFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/headToHEad"
-        android:name="com.pancake.footballfever.ui.fixture.head2head.FragmentMatchHeadToHead"
-        android:label="fragment_match_stats_head_to_head"
-        tools:layout="@layout/fragment_match_stats_head_to_head" />
+
     <fragment
         android:id="@+id/moreFragment"
         android:name="com.pancake.footballfever.ui.more.MoreFragment"
         android:label="fragment_more"
         tools:layout="@layout/fragment_more" />
+
+    <fragment
+        android:id="@+id/leagueFragment"
+        android:name="com.pancake.footballfever.ui.leagues.LeagueFragment"
+        android:label="LeagueFragment"
+        tools:layout="@layout/fragment_league">
+        <action
+            android:id="@+id/action_leagueFragment_to_leagueStateFragment"
+            app:destination="@id/leagueStateFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/hilt_SearchFragment"
+        android:name="com.pancake.footballfever.ui.search.SearchFragment"
+        android:label="Hilt_SearchFragment"
+        tools:layout="@layout/fragment_search" />
+
+    <fragment
+        android:id="@+id/headToHeadFragment"
+        android:name="com.pancake.footballfever.ui.fixture.head2head.FragmentMatchHeadToHead"
+        android:label="HeadToHeadFragment"
+        tools:layout="@layout/fragment_match_stats_head_to_head">
+        <action
+            android:id="@+id/action_headToHeadFragment_to_fixtureFragment"
+            app:destination="@id/fixtureFragment" />
+        <argument
+            android:name="matchIDs"
+            app:argType="string" />
+
+
+    </fragment>
+
 
 </navigation>

@@ -16,4 +16,5 @@ data class HeadToHeadEntity(
     val awayTeamName: String?,
     val awayTeamLogo: String?,
     val awayTeamGoals: String?,
-    )
+    val date: String?,
+)

@@ -1,6 +1,5 @@
 package com.pancake.footballfever.ui.fixture
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pancake.footballfever.data.local.database.entity.toFixtureModel
@@ -32,7 +31,6 @@ class FixtureViewModel @Inject constructor(
                         error = fixture.exceptionOrNull()?.message.toString()
                     )
                 }
-                Log.e("KAMEL", fixtureUiState.value.error.toString())
                 return@launch
             }
             _fixtureUiState.update {
@@ -41,19 +39,27 @@ class FixtureViewModel @Inject constructor(
                     fixture = fixture.getOrNull()?.map { it.toFixtureModel() }?.get(0)
                 )
             }
-            getFixture()
+            getFixture(fixtureId)
         }
     }
 
-    private fun getFixture() {
+    private fun getFixture(fixtureId: Int) {
+
         viewModelScope.launch(Dispatchers.IO) {
             val fixture = getCachedFixtureUseCase()
-            _fixtureUiState.update {
-                it.copy(
-                    isLoading = false,
-                    fixture = fixture[0]
-                )
+            if (fixture[0].id == fixtureId) {
+                _fixtureUiState.update {
+                    it.copy(
+                        isLoading = false,
+                        fixture = fixture[0]
+                    )
+                }
+
             }
         }
+    }
+
+    fun refreshData(fixtureId: Int) {
+        fetchFixture(fixtureId)
     }
 }

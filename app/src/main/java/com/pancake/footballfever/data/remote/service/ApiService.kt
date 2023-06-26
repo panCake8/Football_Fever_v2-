@@ -15,9 +15,9 @@ import com.example.footboolfever.data.remote.dto.TopAssistsDto
 import com.example.footboolfever.data.remote.dto.TopScoresDto
 import com.example.footboolfever.data.remote.dto.TransfersDto
 import com.example.footboolfever.data.remote.dto.VenueDto
-import com.example.footboolfever.data.remote.dto.league.LeaguesDto
 import com.example.footboolfever.data.remote.dto.standings.StandingsDto
 import com.example.footboolfever.data.remote.dto.teams.TeamsDto
+import com.pancake.footballfever.data.remote.dto.league.LeaguesDto
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -76,7 +76,7 @@ interface ApiService {
 
     @GET("leagues")
     suspend fun getCurrentLeague(
-        @Query("current") current: String
+        @Query("current") current: Boolean
     ): Response<BaseResponse<LeaguesDto>>        // return a list of active seasons
 
     @GET("leagues")
@@ -88,6 +88,8 @@ interface ApiService {
     suspend fun getLastLeague(
         @Query("last") last: Int
     ): Response<LeaguesDto>
+    @GET("leagues")
+    suspend fun getLeagues(@Query("current") current: Boolean): Response<LeaguesDto>
 
     // endregion
 
@@ -145,7 +147,7 @@ interface ApiService {
     suspend fun getStatisticsFixtures(@Query("fixture") fixture: String): Response<BaseResponse<StatisticsDto>>
 
     @GET("fixtures/events")
-    suspend fun getEventsFixtures(@Query("fixture") fixture: String): Response<BaseResponse<EventsDto>>
+    suspend fun getEventsFixtures(@Query("fixture") fixture: Int): Response<BaseResponse<EventsDto>>
 
     @GET("fixtures/lineups")
     suspend fun getLineUpsFixtures(@Query("fixture") fixture: String): Response<BaseResponse<LineUpsDto>>
@@ -200,9 +202,9 @@ interface ApiService {
     // region teams requests
     @GET("teams")
     suspend fun getPremierLeagueTeams(
-        @Query("league") leagueId :Int,
-        @Query("season") season :Int,
-    ) : Response<BaseResponse<TeamsDto>>
+        @Query("league") leagueId: Int,
+        @Query("season") season: Int,
+    ): Response<BaseResponse<TeamsDto>>
 
     // endregion
 
@@ -210,19 +212,19 @@ interface ApiService {
     // region search requests
     @GET("leagues")
     suspend fun getLeagueBySearch(
-        @Query("search") searchText:String
-    ):Response<BaseResponse<LeaguesDto>>
+        @Query("search") searchText: String
+    ): Response<BaseResponse<LeaguesDto>>
 
 
     @GET("teams")
     suspend fun getTeamBySearch(
-        @Query("search") searchText:String
-    ):Response<BaseResponse<TeamsDto>>
+        @Query("search") searchText: String
+    ): Response<BaseResponse<TeamsDto>>
 
     @GET("coachs")
     suspend fun getCoachBySearch(
-        @Query("search") searchText:String
-    ):Response<BaseResponse<CoachsDto>>
+        @Query("search") searchText: String
+    ): Response<BaseResponse<CoachsDto>>
 
     // endregion
 
@@ -233,7 +235,9 @@ interface ApiService {
     ): Response<BaseResponse<FixturesDto>>
 
     @GET("fixtures/players")
-    suspend fun getTeamPlayerStatisticsFixtures(@Query("fixture") fixture: String,
-                                                @Query("team") team: String): Response<BaseResponse<PlayerStatisticsDto>>
+    suspend fun getTeamPlayerStatisticsFixtures(
+        @Query("fixture") fixture: String,
+        @Query("team") team: String
+    ): Response<BaseResponse<PlayerStatisticsDto>>
 
 }

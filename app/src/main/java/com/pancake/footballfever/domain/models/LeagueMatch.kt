@@ -8,5 +8,6 @@ data class LeagueMatch(
     val awayTeamLogo: String?,
     val matchTime: String?,
     val id: Int?,
+    val season: Int?,
 
     )

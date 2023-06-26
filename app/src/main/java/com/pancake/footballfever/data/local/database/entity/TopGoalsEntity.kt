@@ -9,5 +9,6 @@ data class TopGoalsEntity(
     val id: Int? = 0,
     val playerName: String? = "",
     val teamName: String? = "",
-    val totalGoals: Int? = 0
+    val totalGoals: Int? = 0,
+    val playerImg: String? = ""
 )
