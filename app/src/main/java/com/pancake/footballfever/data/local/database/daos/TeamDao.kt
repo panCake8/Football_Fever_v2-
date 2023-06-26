@@ -16,8 +16,7 @@ interface TeamDao {
     @Query("select * from FAVORITE_TEAM_TABLE")
     suspend fun getAllFavoriteTeams(): List<FavoriteTeamEntity>
 
-    @Query("delete from FAVORITE_TEAM_TABLE where teamId = :teamId")
-    suspend fun deleteFavoriteTeam(teamId: Int)
+
 
     @Query("delete from FAVORITE_TEAM_TABLE where id = :teamId")
     suspend fun deleteFavoriteTeam(teamId:Int)
