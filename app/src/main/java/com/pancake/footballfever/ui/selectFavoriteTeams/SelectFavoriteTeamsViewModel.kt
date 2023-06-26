@@ -43,9 +43,9 @@ class SelectFavoriteTeamsViewModel @Inject constructor(
         }
     }
 
-    fun addFavoriteTeams(teams: List<FavoriteTeam>) {
+    fun addFavoriteTeams(teams: MutableSet<FavoriteTeam>) {
         viewModelScope.launch {
-            addSelectedFavoriteTeamsUseCase.addFavoriteTeams(teams)
+            addSelectedFavoriteTeamsUseCase.addFavoriteTeams(teams.toMutableList())
         }
     }
 
