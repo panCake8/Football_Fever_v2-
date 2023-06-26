@@ -12,4 +12,6 @@ interface TeamRepository {
     suspend fun getAllFavoriteTeamsLocal() : List<FavoriteTeamEntity>
 
     suspend fun deleteFavoriteTeam(teamId: Int)
+    suspend fun addFavoriteOneTeam(team: FavoriteTeamEntity)
+
 }

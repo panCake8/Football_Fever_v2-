@@ -18,4 +18,9 @@ interface TeamDao {
 
     @Query("delete from FAVORITE_TEAM_TABLE where teamId = :teamId")
     suspend fun deleteFavoriteTeam(teamId: Int)
+
+    @Query("delete from FAVORITE_TEAM_TABLE where id = :teamId")
+    suspend fun deleteFavoriteTeam(teamId:Int)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun addFavoriteOneTeam(team: FavoriteTeamEntity)
 }

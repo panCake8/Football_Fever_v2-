@@ -25,6 +25,7 @@ class CacheLeagueMatchesUseCase @Inject constructor(
             id = fixture?.id,
             date = fixture?.date?.take(10),
             matchTime = fixture?.timestamp?.toDate(),
+            season = league?.season,
         )
     }
 }

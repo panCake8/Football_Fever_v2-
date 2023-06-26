@@ -8,11 +8,17 @@ import androidx.lifecycle.viewModelScope
 import com.pancake.footballfever.domain.models.LeagueMatch
 import com.pancake.footballfever.domain.usecase.GetLeagueMatchesUseCase
 import com.pancake.footballfever.ui.league_state.match.adapter.LeagueMatchesListener
+import com.pancake.footballfever.ui.league_state.match.uiState.LeagueMatchUiEvent
+import com.pancake.footballfever.ui.league_state.match.uiState.LeagueMatchUiState
+import com.pancake.footballfever.utilities.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,32 +30,46 @@ class LeagueMatchesViewModel @Inject constructor(private val leagueMatchesUseCas
     val leagueMatches: StateFlow<LeagueMatchUiState>
         get() = _leagueMatches
 
-    private val _dayDate = MutableLiveData<String>()
-    val dayDate: LiveData<String>
-        get() = _dayDate
+    private val _LeagueMatchEvent: MutableStateFlow<Event<LeagueMatchUiEvent>?> =
+        MutableStateFlow(null)
+
+    val leagueMatchUiEvent = _LeagueMatchEvent.asStateFlow()
 
     fun getAllLeagueMatches(season: Int, league: Int) {
 
         viewModelScope.launch {
-            leagueMatchesUseCase.getLeagueMatches(season, league).let { list ->
+            try {
+                withContext(IO) {
 
+                    leagueMatchesUseCase.getLeagueMatches(season, league).let { list ->
+
+                        _leagueMatches.update {
+                            it.copy(
+                                isLoading = false,
+                                success = list
+                            )
+                        }
+                        Log.i("TAG", "${list?.size}")
+
+                    }
+                }
+            } catch (e: Exception) {
+                Log.i("ERROR", e.message.toString())
                 _leagueMatches.update {
                     it.copy(
                         isLoading = false,
-                        success = list
+                        error = e.message,
                     )
                 }
-                Log.i("TAG", "${list?.size}")
-
             }
+
         }
 
     }
 
 
-
     override fun onItemClick(leagueMatch: LeagueMatch) {
-
+        _LeagueMatchEvent.update { Event(LeagueMatchUiEvent.LeagueMatchClickEvent(leagueMatch)) }
     }
 
 }
