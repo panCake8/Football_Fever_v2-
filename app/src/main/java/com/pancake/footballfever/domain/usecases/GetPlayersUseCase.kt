@@ -8,10 +8,10 @@ import javax.inject.Inject
 class GetPlayersUseCase @Inject constructor(private val repository: PlayersRepository) {
 
     suspend operator fun invoke(
-        fixture: String,
-        team: String
+        season: Int,
+        team: Int
     ): List<Player> {
-        return repository.getPlayers(fixture, team).fold(
+        return repository.getPlayers(season, team).fold(
             onSuccess = { it.map { it.toDomain() } },
             onFailure = { throw it })
     }

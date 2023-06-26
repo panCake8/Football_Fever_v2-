@@ -17,6 +17,7 @@ import com.example.footboolfever.data.remote.dto.TransfersDto
 import com.example.footboolfever.data.remote.dto.VenueDto
 import com.example.footboolfever.data.remote.dto.standings.StandingsDto
 import com.example.footboolfever.data.remote.dto.teams.TeamsDto
+import com.pancake.footballfever.data.remote.dto.PlayersDto
 import com.pancake.footballfever.data.remote.dto.league.LeaguesDto
 import retrofit2.Response
 import retrofit2.http.GET
@@ -186,6 +187,11 @@ interface ApiService {
 
 
     // region Player
+    @GET("players")
+    suspend fun getTeamPlayerStatisticsFixtures(
+        @Query("season") fixture: Int,
+        @Query("team") team: Int
+    ): Response<BaseResponse<PlayersDto>>
     @GET("players/topscorers")
     suspend fun getTopScorerPlayers(
         @Query("league") league: Int,
@@ -205,6 +211,10 @@ interface ApiService {
         @Query("league") leagueId: Int,
         @Query("season") season: Int,
     ): Response<BaseResponse<TeamsDto>>
+    @GET("teams")
+    suspend fun  getTeamById(
+        @Query("id") TeamId: Int,
+    ):Response<BaseResponse<TeamsDto>>
 
     // endregion
 
@@ -239,5 +249,6 @@ interface ApiService {
         @Query("fixture") fixture: String,
         @Query("team") team: String
     ): Response<BaseResponse<PlayerStatisticsDto>>
+
 
 }

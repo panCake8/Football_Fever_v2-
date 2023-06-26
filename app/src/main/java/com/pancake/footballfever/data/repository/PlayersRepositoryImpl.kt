@@ -5,6 +5,7 @@ import android.util.Log
 import com.example.footboolfever.data.remote.dto.StatisticPlayersItem
 import com.pancake.footballfever.data.local.database.daos.PlayersDao
 import com.pancake.footballfever.data.local.database.entity.PlayerEntity
+import com.pancake.footballfever.data.remote.dto.PlayersDto
 import com.pancake.footballfever.data.remote.service.ApiService
 import java.io.IOException
 import javax.inject.Inject
@@ -15,14 +16,14 @@ class PlayersRepositoryImpl @Inject constructor(
 ) : PlayersRepository {
 
 
-    override suspend fun getPlayers(fixture: String, team: String): Result<List<PlayerEntity>> {
+    override suspend fun getPlayers(season: Int, team: Int): Result<List<PlayerEntity>> {
         return try {
             dao.insertPlayers(
-                apiService.getTeamPlayerStatisticsFixtures(fixture, team).body()?.response?.get(0)?.players?.map { it?.toEntity(fixture, team)!! }!!
+                apiService.getTeamPlayerStatisticsFixtures(season, team).body()?.response?.map { it.toEntity(season, team)!! }!!
             )
-            Result.success(dao.getPlayers(fixture, team))
+            Result.success(dao.getPlayers(season, team))
         } catch (e: IOException) {
-            with(dao.getPlayers(fixture, team)) {
+            with(dao.getPlayers(season, team)) {
                 if (isNotEmpty()) Result.success(this) else Result.failure(Exception("Please check your internet connection"))
             }
         } catch (e: Exception) {
@@ -31,9 +32,9 @@ class PlayersRepositoryImpl @Inject constructor(
         }
     }
 
-    private fun StatisticPlayersItem.toEntity(fixtureId: String, teamId: String) =
+    private fun PlayersDto.toEntity(season: Int, teamId: Int) =
         PlayerEntity(
-            fixtureId = fixtureId,
+            season  = season,
             teamId = teamId,
             playerId = player?.id!!,
             name = player.name,
