@@ -1,13 +1,15 @@
 package com.pancake.footballfever.data.repository
 
+import android.util.Log
 import com.example.footboolfever.data.remote.dto.FixturesDto
 import com.example.footboolfever.data.remote.dto.toFixtureEntity
 import com.pancake.footballfever.data.local.database.daos.FixtureDao
 import com.pancake.footballfever.data.local.database.entity.FixtureEntity
 import com.pancake.footballfever.data.local.database.entity.FixtureHomeEntity
 import com.pancake.footballfever.data.remote.service.ApiService
+import com.pancake.footballfever.domain.models.FixtureStatistics
+import com.pancake.footballfever.domain.models.toFixtureStatistics
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.SharedFlow
 import javax.inject.Inject
 
 class FixtureRepositoryImpl @Inject constructor(
@@ -15,7 +17,7 @@ class FixtureRepositoryImpl @Inject constructor(
     private val fixtureDao: FixtureDao,
 ) : FixtureRepository {
     override suspend fun getAllFixturesHomeRemote(
-        date: String, teamId: Int, season: Int
+        date: String, teamId: Int, season: Int,
     ): List<FixturesDto> {
         return apiService.getFixtureByDateAndTeamIdAndSeason(date, teamId, season)
             .body()?.response!!
@@ -51,5 +53,18 @@ class FixtureRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getFixtureCachedData() = fixtureDao.getFixtures()
+    override suspend fun getFixtureStatistics(fixtureId: Int): Result<FixtureStatistics?> {
+        return try {
+            val response = apiService.getStatisticsFixtures(fixtureId)
+            if (response.isSuccessful) {
+                Log.i("REPO", "${response.body()?.response?.toFixtureStatistics()}")
+                return Result.success(response.body()?.response?.toFixtureStatistics())
+            }
+            Result.failure(Exception(response.message().toString()))
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+
+    }
 
 }
