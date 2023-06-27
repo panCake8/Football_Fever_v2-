@@ -1,4 +1,4 @@
-package com.pancake.footballfever.domain.usecases
+package com.pancake.footballfever.domain.usecases.injuriesUseCase
 
 import com.pancake.footballfever.data.repository.InjuriesRepository
 import javax.inject.Inject
