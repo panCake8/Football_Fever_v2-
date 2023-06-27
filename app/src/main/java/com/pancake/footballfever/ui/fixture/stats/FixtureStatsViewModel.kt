@@ -1,5 +1,6 @@
 package com.pancake.footballfever.ui.fixture.stats
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pancake.footballfever.domain.usecases.FixtureStasticsUseCases.FetchFixtureStatisticsUseCase

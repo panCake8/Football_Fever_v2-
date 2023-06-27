@@ -11,6 +11,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
+private const val FIXTUREID = "fixtureId"
+
 @AndroidEntryPoint
 class FragmentFixtureStats : BaseFragment<FragmentStaticisFixtureBinding, FixtureStatsViewModel>() {
     override val layoutId: Int
@@ -19,25 +21,31 @@ class FragmentFixtureStats : BaseFragment<FragmentStaticisFixtureBinding, Fixtur
 
     override fun setup() {
         super.setup()
-        val fixtureId = arguments?.getInt(Constants.FIXTURE_ID)
-        fixtureId?.let {
+        val fixtureId = requireArguments().getInt(FIXTUREID)
+        fixtureId.let {
             viewModel.fetchFixtureStats(it)
         }
+
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.fixtureStats.collect {
-                binding.item = it.success
+            viewModel.fixtureStats.collect { fixtureStats ->
+                val fixture = fixtureStats.success
+                if (fixture != null) {
+                    binding.item = fixture
+                }
             }
         }
 
     }
+
 
     companion object {
         @JvmStatic
         fun newInstance(fixtureId: Int?) =
             FragmentFixtureStats().apply {
                 arguments = Bundle().apply {
-                    fixtureId?.let { putInt(Constants.FIXTURE_ID, it) }
+                    fixtureId?.let { putInt(FIXTUREID, it) }
                 }
             }
     }
+
 }

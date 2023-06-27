@@ -45,7 +45,6 @@ constructor(
                                 success = list
                             )
                         }
-                        Log.i("TAG", "${list?.size}")
                     }
                 }
 
