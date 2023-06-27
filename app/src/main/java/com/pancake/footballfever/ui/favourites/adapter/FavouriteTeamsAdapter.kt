@@ -13,8 +13,7 @@ import com.pancake.footballfever.ui.favourites.FavouritesViewModel
 
 class FavouriteTeamsAdapter(
     val viewModel: FavouritesViewModel,
-    private val onClickUnFollow: (Int) -> Unit,
-    private val onCardClick: (FavoriteTeam) -> Unit
+    private val onItemClick: (Int) -> Unit
 ) : BaseAdapter<FavoriteTeam>(viewModel) {
     override val getLayoutId = R.layout.item_favourites
 
@@ -37,11 +36,8 @@ class FavouriteTeamsAdapter(
     private fun bindFavorite(holder: FavouriteViewHolder, position: Int) {
         val currentItem =  getItem(position)
         holder.binding.apply {
-            this.root.setOnClickListener {
-                onCardClick(FavoriteTeam(currentItem.id,currentItem.name,currentItem.logo))
-            }
             this.btn.setOnClickListener {
-                   onClickUnFollow(currentItem.id!!)
+                   onItemClick(currentItem.id!!)
             }
             setVariable(BR.item, currentItem)
         }
