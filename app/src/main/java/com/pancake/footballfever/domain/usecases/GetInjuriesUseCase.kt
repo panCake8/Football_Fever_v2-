@@ -1,4 +1,4 @@
-package com.pancake.footballfever.domain.usecases.injuriesUseCase
+package com.pancake.footballfever.domain.usecases
 
 import com.pancake.footballfever.data.local.database.entity.toInjuriesModel
 import com.pancake.footballfever.data.repository.InjuriesRepository
