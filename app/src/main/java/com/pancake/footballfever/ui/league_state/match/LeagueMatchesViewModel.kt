@@ -1,10 +1,12 @@
 package com.pancake.footballfever.ui.league_state.match
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pancake.footballfever.domain.models.LeagueMatch
-import com.pancake.footballfever.domain.usecases.LeagueMatchesUseCases.GetLeagueMatchesUseCase
+import com.pancake.footballfever.domain.usecase.GetLeagueMatchesUseCase
 import com.pancake.footballfever.ui.league_state.match.adapter.LeagueMatchesListener
 import com.pancake.footballfever.ui.league_state.match.uiState.LeagueMatchUiEvent
 import com.pancake.footballfever.ui.league_state.match.uiState.LeagueMatchUiState
