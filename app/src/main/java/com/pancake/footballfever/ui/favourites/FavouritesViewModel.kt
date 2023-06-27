@@ -8,9 +8,12 @@ import com.pancake.footballfever.domain.usecases.DeleteFromFavouriteTeamsUseCase
 import com.pancake.footballfever.domain.usecases.GetAllFavouriteTeams
 import com.pancake.footballfever.ui.favourites.adapter.FavouriteTeamListener
 import com.pancake.footballfever.utilities.DataState
+import com.pancake.footballfever.utilities.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,6 +27,10 @@ class FavouritesViewModel @Inject constructor(
         MutableStateFlow(DataState.Error("error"))
 
     val favouriteTeams: StateFlow<DataState<Any>> = _favouriteTeams
+
+    private val _teamEvent: MutableStateFlow<Event<FavouriteUiEvent>?> = MutableStateFlow(null)
+    val teamEvent = _teamEvent.asStateFlow()
+
     init {
         viewModelScope.launch {
                 _favouriteTeams.value =
@@ -46,6 +53,6 @@ class FavouritesViewModel @Inject constructor(
     }
 
     override fun onClickTeam(team: FavoriteTeam) {
-        TODO("Not yet implemented")
+        _teamEvent.update { Event(FavouriteUiEvent.ClickTeamEvent(team)) }
     }
 }
