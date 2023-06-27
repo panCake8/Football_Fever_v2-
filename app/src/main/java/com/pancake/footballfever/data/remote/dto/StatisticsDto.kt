@@ -9,6 +9,9 @@ data class StatisticsDto(
     @field:SerializedName("team")
     val team: Team? = null,
 
+    @SerializedName("goals")
+    val goals: Goals? = null,
+
     @field:SerializedName("statistics")
     val statistics: List<StatisticsItem?>? = null
 )
@@ -19,7 +22,7 @@ data class StatisticsItem(
     val type: String? = null,
 
     @field:SerializedName("value")
-    val value: String? = null
+    val value: Int? = null
 )
 
 
