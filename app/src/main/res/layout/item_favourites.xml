@@ -10,18 +10,15 @@
             type="com.pancake.footballfever.domain.models.FavoriteTeam" />
 
         <variable
-            name="listener"
-            type="com.pancake.footballfever.ui.favourites.adapter.FavouriteTeamListener" />
+            name="viewModel"
+            type="com.pancake.footballfever.ui.favourites.FavouritesViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/large_margin"
-        android:backgroundTint="@color/background_main_card"
-        android:layout_marginBottom="@dimen/medium_margin"
-        app:cardCornerRadius="12dp"
-       >
+        android:backgroundTint="@color/background_color"
+        app:cardCornerRadius="12dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -65,6 +62,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </layout>

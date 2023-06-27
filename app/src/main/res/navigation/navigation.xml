@@ -58,13 +58,18 @@
 
 
     <fragment
-        android:id="@+id/favouritesFragment"
-        android:name="com.pancake.footballfever.ui.favourites.FavouritesFragment"
-        android:label="FavouritesFragment" >
+        android:id="@+id/searchFragment"
+        android:name="com.pancake.footballfever.ui.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search">
         <action
-            android:id="@+id/action_favouritesFragment_to_clubFragment"
+            android:id="@+id/action_searchFragment_to_clubTablesFragment"
             app:destination="@id/clubFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/favouritesFragment"
+        android:name="com.pancake.footballfever.ui.favourites.FavouritesFragment"
+        android:label="FavouritesFragment" />
 
     <fragment
         android:id="@+id/leagueStateFragment"
@@ -153,17 +158,10 @@
     </fragment>
 
     <fragment
-        android:id="@+id/SearchFragment"
+        android:id="@+id/hilt_SearchFragment"
         android:name="com.pancake.footballfever.ui.search.SearchFragment"
         android:label="Hilt_SearchFragment"
-        tools:layout="@layout/fragment_search" >
-        <action
-            android:id="@+id/action_hilt_SearchFragment_to_clubFragment"
-            app:destination="@id/clubFragment" />
-        <action
-            android:id="@+id/action_hilt_SearchFragment_to_leagueStateFragment"
-            app:destination="@id/leagueStateFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_search" />
 
     <fragment
         android:id="@+id/headToHeadFragment"
