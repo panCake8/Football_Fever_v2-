@@ -60,7 +60,11 @@
     <fragment
         android:id="@+id/favouritesFragment"
         android:name="com.pancake.footballfever.ui.favourites.FavouritesFragment"
-        android:label="FavouritesFragment" />
+        android:label="FavouritesFragment" >
+        <action
+            android:id="@+id/action_favouritesFragment_to_clubFragment"
+            app:destination="@id/clubFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/leagueStateFragment"
