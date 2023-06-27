@@ -7,6 +7,7 @@ data class ClubModel(
     val teamName: String?,
     val teamLogo: String?,
     val teamVenueName: String?,
+    val countryName :String?,
 )
 fun TeamsDto.toClubModel(): ClubModel {
     return ClubModel(
@@ -14,5 +15,6 @@ fun TeamsDto.toClubModel(): ClubModel {
         teamName=team?.name,
         teamLogo=team?.logo,
         teamVenueName=venue?.name,
+        countryName = team?.country
     )
 }

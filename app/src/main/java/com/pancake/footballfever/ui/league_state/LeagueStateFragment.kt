@@ -44,7 +44,7 @@ class LeagueStateFragment : BaseFragment<FragmentLeagueStateBinding, LeagueState
     private fun addFragmentToViewPager() {
 
         leagueStatePagerAdapter.addFragment(LeagueMatchesFragment.newInstance(args.id, args.season))
-        leagueStatePagerAdapter.addFragment(StandingFragment.newInstance(args.id, args.season))
+        leagueStatePagerAdapter.addFragment(StandingFragment.newInstance(args.id, args.season,2))
         leagueStatePagerAdapter.addFragment(TopScoreFragment.newInstance(args.id, args.season))
         leagueStatePagerAdapter.addFragment(TopAssistFragment.newInstance(args.id, args.season))
 
