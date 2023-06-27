@@ -13,6 +13,7 @@ import com.pancake.footballfever.data.local.database.daos.PlayerDao
 import com.pancake.footballfever.data.local.database.daos.PlayersDao
 import com.pancake.footballfever.data.local.database.daos.TeamFixtureDao
 import com.pancake.footballfever.data.local.database.daos.TeamDao
+import com.pancake.footballfever.data.local.database.daos.TransferDao
 import com.pancake.footballfever.data.local.database.entity.ClubEntity
 import com.pancake.footballfever.data.local.database.entity.CountryEntity
 import com.pancake.footballfever.data.local.database.entity.FavoriteTeamEntity
@@ -29,11 +30,13 @@ import com.pancake.footballfever.data.local.database.entity.LeagueMatchEntity
 import com.pancake.footballfever.data.local.database.entity.StandingsEntity
 import com.pancake.footballfever.data.local.database.entity.TopAssistEntity
 import com.pancake.footballfever.data.local.database.entity.TopGoalsEntity
+import com.pancake.footballfever.data.local.database.entity.TransferEntity
 import com.pancake.footballfever.data.local.database.entity.VenueEntity
 
 
 @Database(
     entities = [
+        TransferEntity::class,
         InjuriesEntity::class,
         CountryEntity::class,
         FavoriteTeamEntity::class,
@@ -66,5 +69,6 @@ abstract class FootballDatabase : RoomDatabase() {
     abstract val playersDao: PlayersDao
     abstract val teamFixtureEventsDao: TeamFixtureDao
     abstract val clubDao: ClubDao
+    abstract val transferDao : TransferDao
 
 }
