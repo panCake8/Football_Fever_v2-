@@ -3,8 +3,12 @@ package com.pancake.footballfever.ui.fixture
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pancake.footballfever.data.local.database.entity.toFixtureModel
+import com.pancake.footballfever.domain.models.FixtureModel
+import com.pancake.footballfever.domain.models.HeadToHead
 import com.pancake.footballfever.domain.usecases.fixutreUseCases.FetchAndCacheFixtureUseCase
 import com.pancake.footballfever.domain.usecases.fixutreUseCases.GetCachedFixtureUseCase
+import com.pancake.footballfever.ui.fixture.head2head.uiState.HeadToHeadUiEvent
+import com.pancake.footballfever.utilities.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,6 +24,9 @@ class FixtureViewModel @Inject constructor(
 ) : ViewModel() {
     private val _fixtureUiState = MutableStateFlow(FixtureUiState())
     val fixtureUiState = _fixtureUiState.asStateFlow()
+    private val _fixtureEvent: MutableStateFlow<Event<FixtureUiEvent>?> =
+        MutableStateFlow(null)
+     val fixtureEvent = _fixtureEvent.asStateFlow()
 
     fun fetchFixture(fixtureId: Int) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -61,5 +68,11 @@ class FixtureViewModel @Inject constructor(
 
     fun refreshData(fixtureId: Int) {
         fetchFixture(fixtureId)
+    }
+     fun onClickTeamHomeLogo(fixtureModel: FixtureModel) {
+        _fixtureEvent.update { Event(FixtureUiEvent.ClickTeamHomeLogoEvent(fixtureModel)) }
+            }
+     fun onClickTeamAwayLogo(fixtureModel: FixtureModel) {
+        _fixtureEvent.update { Event(FixtureUiEvent.ClickTeamAwayLogoEvent(fixtureModel)) }
     }
 }

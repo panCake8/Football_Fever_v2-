@@ -1,8 +1,11 @@
 package com.pancake.footballfever.ui.fixture
 
 import android.util.Log
+import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
 import com.pancake.footballfever.R
@@ -10,9 +13,11 @@ import com.pancake.footballfever.databinding.FragmentFixtureBinding
 import com.pancake.footballfever.ui.base.BaseFragment
 import com.pancake.footballfever.ui.fixture.adapter.FixtureStatsPagerAdapter
 import com.pancake.footballfever.ui.fixture.head2head.FragmentMatchHeadToHead
+import com.pancake.footballfever.ui.fixture.head2head.uiState.HeadToHeadUiEvent
 import com.pancake.footballfever.ui.fixture.stats.FragmentFixtureStats
 import com.pancake.footballfever.ui.fixture.summary.FixtureSummaryFragment
 import com.pancake.footballfever.ui.league_state.standing.StandingFragment
+import com.pancake.footballfever.utilities.collectLast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -46,6 +51,8 @@ class FixtureFragment : BaseFragment<FragmentFixtureBinding, FixtureViewModel>()
                     Log.i("DEBUG", fixture.toString())
                     initViewPager()
                     initTabLayout()
+                    handleEvent()
+
                 }
             }
         }
@@ -93,7 +100,54 @@ class FixtureFragment : BaseFragment<FragmentFixtureBinding, FixtureViewModel>()
     private fun initTabLayout() {
         TabLayoutMediator(binding.tabLayout, binding.pager) { tab, position ->
             tab.text = tabItems[position]
+            val tabs = binding.tabLayout.getChildAt(0) as ViewGroup
+            for (i in 0 until tabs.childCount) {
+                val tab = tabs.getChildAt(i)
+                val layoutParams = tab.layoutParams as LinearLayout.LayoutParams
+                layoutParams.marginEnd = 30
+                tab.layoutParams = layoutParams
+                binding.tabLayout.requestLayout()
+            }
         }.attach()
+    }
+    private fun handleEvent() {
+        collectLast(viewModel.fixtureEvent) {
+            it?.getContentIfNotHandled().let { onClick(it) }
+
+        }
+    }
+    private fun onClick(event: FixtureUiEvent?) {
+        when (event) {
+            is FixtureUiEvent.ClickTeamHomeLogoEvent -> {
+                event.fixtureModel.let {
+                    val nav =
+                        FixtureFragmentDirections.actionFixtureFragmentToClubTablesFragment(
+                            teamId = it.teamHomeId!!,
+                            leagueId = it.leagueId!!,
+                            season = it.season!!
+                        )
+
+                    findNavController().navigate(nav)
+                }
+
+            }
+            is FixtureUiEvent.ClickTeamAwayLogoEvent -> {
+                event.fixtureModel.let {
+                    val nav =
+                        FixtureFragmentDirections.actionFixtureFragmentToClubTablesFragment(
+                            teamId = it.teamAwayId!!,
+                            leagueId  = it.leagueId!!,
+                            season = it.season!!
+                        )
+
+                    findNavController().navigate(nav)
+                }
+
+            }
+
+            else -> {}
+        }
+
     }
 
     companion object {

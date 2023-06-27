@@ -8,6 +8,7 @@ import com.pancake.footballfever.R
 import com.pancake.footballfever.databinding.FragmentLeagueMatchBinding
 import com.pancake.footballfever.domain.Constants
 import com.pancake.footballfever.ui.base.BaseFragment
+import com.pancake.footballfever.ui.league_state.LeagueStateFragmentDirections
 import com.pancake.footballfever.ui.league_state.match.adapter.LeagueMatchesParentAdapter
 import com.pancake.footballfever.ui.league_state.match.uiState.LeagueMatchUiEvent
 import com.pancake.footballfever.utilities.collectLast
@@ -48,7 +49,7 @@ class LeagueMatchesFragment : BaseFragment<FragmentLeagueMatchBinding, LeagueMat
         when (event) {
             is LeagueMatchUiEvent.LeagueMatchClickEvent -> {
                 event.match.let {
-                    val nav = LeagueMatchesFragmentDirections.actionLeagueMatchToFixtureFragment(
+                    val nav = LeagueStateFragmentDirections.actionLeagueStateFragmentToFixtureFragment(
                         fixtureId = it.id!!,
                         season = it.season!!,
                         date = it.date!!,

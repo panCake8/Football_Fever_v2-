@@ -10,6 +10,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.pancake.footballfever.R
 import com.pancake.footballfever.databinding.FragmentClubBinding
 import com.pancake.footballfever.ui.base.BaseFragment
+import com.pancake.footballfever.ui.league_state.standing.StandingFragment
 import com.pancake.footballfever.ui.player.PlayersFragment
 import com.pancake.footballfever.ui.team_fixture.TeamFixtureFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -57,9 +58,9 @@ class ClubStatsFragment :BaseFragment<FragmentClubBinding, ClubViewModel>() {
         binding.pager.adapter = clubStatsPagerAdapter
     }
     private fun addFragmentsToViewPager() {
-        clubStatsPagerAdapter.addFragment(PlayersFragment.newInstance(argument.seasonId,argument.teamId))
-        clubStatsPagerAdapter.addFragment(TeamFixtureFragment.newInstance(argument.seasonId.toString(),argument.teamId.toString()))
-//        clubStatsPagerAdapter.addFragment()
+        clubStatsPagerAdapter.addFragment(PlayersFragment.newInstance(argument.season,argument.teamId))
+        clubStatsPagerAdapter.addFragment(TeamFixtureFragment.newInstance(argument.season.toString(),argument.teamId.toString()))
+        clubStatsPagerAdapter.addFragment(StandingFragment.newInstance(argument.leagueId,argument.season))
     }
 
 
