@@ -7,9 +7,6 @@
         <variable
             name="item"
             type="com.pancake.footballfever.domain.models.SearchItem" />
-        <variable
-            name="listener"
-            type="com.pancake.footballfever.ui.search.SearchListener" />
 
     </data>
 
@@ -18,8 +15,7 @@
         android:layout_height="@dimen/height_search_card"
         android:backgroundTint="@color/background_main_card"
         android:layout_margin="@dimen/large_margin"
-        app:cardCornerRadius="@dimen/radius_semi_large"
-        android:onClick="@{()->listener.onClick(item)}">
+        app:cardCornerRadius="@dimen/radius_semi_large">
 
         <LinearLayout
             android:layout_width="match_parent"
