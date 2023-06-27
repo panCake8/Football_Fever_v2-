@@ -73,38 +73,46 @@ class SearchViewModel @Inject constructor(
         }
     }
 
+
     private fun getLeaguesData() {
         viewModelScope.launch {
-            executeSearch(getLeagueSearchUseCase.invoke(searchText.value))
+            try{
+                val list=getLeagueSearchUseCase.invoke(searchText.value)
+                Log.i("x3x",list.toString())
+                _searchResult.value=DataState.Success(list)
+            }catch (e:Exception){
+                Log.e("x3x", "Error occurred: ${e.message}")
+                _searchResult.value=DataState.Error("Error")
+            }
+        }
+    }
+    private fun getTeamsData() {
+        viewModelScope.launch {
+            try{
+                val list=getTeamSearchUseCase.invoke(searchText.value)
+                Log.i("x3x",list.toString())
+                _searchResult.value=DataState.Success(list)
+            }catch (e:Exception){
+                Log.e("x3x", "Error occurred: ${e.message}")
+                _searchResult.value=DataState.Error("Error")
+            }
         }
     }
 
-    private fun getTeamsData() {
-        viewModelScope.launch {
-            executeSearch(getTeamSearchUseCase.invoke(searchText.value))
-        }
-    }
 
     private fun getCoachsData() {
         viewModelScope.launch {
-            executeSearch(getCoachSearchUseCase.invoke(searchText.value))
+            try{
+                val list=getCoachSearchUseCase.invoke(searchText.value)
+                Log.i("x3x",list.toString())
+                _searchResult.value=DataState.Success(list)
+            }catch (e:Exception){
+                Log.e("x3x", "Error occurred: ${e.message}")
+                _searchResult.value=DataState.Error("Error")
+            }
         }
     }
 
-    private fun executeSearch(list: List<SearchItem>) {
-        try {
-            _searchResult.value = DataState.Loading
-            Log.i("x3x", list.toString())
-            if (searchText.value.isNotEmpty()) {
-                _searchResult.value = DataState.Success(list)
-            } else {
-                _searchResult.value = DataState.ShowKeywordSuggests
-            }
-        } catch (e: Exception) {
-            Log.e("x3x", "Error occurred: ${e.message}")
-            _searchResult.value = DataState.Error("Error")
-        }
-    }
 
     fun onClickLeagueChip() {
         _searchStatus.value = SearchStatus.LEAGUE
