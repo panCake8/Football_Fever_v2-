@@ -30,7 +30,7 @@ class FixtureFragment : BaseFragment<FragmentFixtureBinding, FixtureViewModel>()
 
     override val viewModel by viewModels<FixtureViewModel>()
 
-    private val tabItems = listOf(LINEUP, SUMMARY, H2H)
+    private val tabItems = listOf(STANDING, SUMMARY, H2H)
 
     private lateinit var fixtureStatsPagerAdapter: FixtureStatsPagerAdapter
 
@@ -77,7 +77,7 @@ class FixtureFragment : BaseFragment<FragmentFixtureBinding, FixtureViewModel>()
         fixtureStatsPagerAdapter.addFragment(
             StandingFragment.newInstance(
                 viewModel.fixtureUiState.value.fixture?.leagueId,
-                viewModel.fixtureUiState.value.fixture?.season
+                viewModel.fixtureUiState.value.fixture?.season,1
             )
         )
         fixtureStatsPagerAdapter.addFragment(
@@ -153,7 +153,7 @@ class FixtureFragment : BaseFragment<FragmentFixtureBinding, FixtureViewModel>()
     companion object {
         private const val STATS = "Stats"
         private const val SUMMARY = "Summary"
-        private const val LINEUP = "Lineup"
+        private const val STANDING = "standing"
         private const val TABLE = "Table"
         private const val H2H = "H2H"
     }
