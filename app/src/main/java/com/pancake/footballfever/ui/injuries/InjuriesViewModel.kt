@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pancake.footballfever.data.local.database.entity.toInjuriesModel
 import com.pancake.footballfever.domain.models.Injuries
-import com.pancake.footballfever.domain.usecases.injuriesUseCase.FetchInjuriesUseCase
-import com.pancake.footballfever.domain.usecases.injuriesUseCase.GetInjuriesUseCase
+import com.pancake.footballfever.domain.usecases.FetchInjuriesUseCase
+import com.pancake.footballfever.domain.usecases.GetInjuriesUseCase
 import com.pancake.footballfever.ui.injuries.adapter.InjuriesListener
 import com.pancake.footballfever.utilities.Event
 import dagger.hilt.android.lifecycle.HiltViewModel

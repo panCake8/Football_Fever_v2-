@@ -10,7 +10,6 @@ import com.pancake.footballfever.data.local.database.daos.FootballDao
 import com.pancake.footballfever.data.local.database.daos.LeagueDao
 import com.pancake.footballfever.data.local.database.daos.PlayerDao
 import com.pancake.footballfever.data.local.database.daos.TeamDao
-import com.pancake.footballfever.data.local.database.daos.TransferDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -89,12 +88,6 @@ object LocalModule {
     @Provides
     fun provideClubDao(footballDataBase: FootballDatabase): ClubDao {
         return footballDataBase.clubDao
-    }
-
-    @Singleton
-    @Provides
-    fun provideTransferDao(footballDataBase: FootballDatabase): TransferDao {
-        return footballDataBase.transferDao
     }
 
 }
