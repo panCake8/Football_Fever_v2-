@@ -1,6 +1,5 @@
 package com.pancake.footballfever.ui.favourites
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pancake.footballfever.domain.models.FavoriteTeam
@@ -25,7 +24,6 @@ class FavouritesViewModel @Inject constructor(
 
     val favouriteTeams: StateFlow<DataState<Any>> = _favouriteTeams
     init {
-
         getAllFavouriteLocal()
         viewModelScope.launch {
                 _favouriteTeams.value =
@@ -35,7 +33,11 @@ class FavouritesViewModel @Inject constructor(
         }
     }
 
-
+    private fun getAllFavouriteLocal(){
+        viewModelScope.launch {
+            getAllFavouriteTeamsUseCase.getAllTeams()
+        }
+    }
     fun onClickUnfollow(id: Int) {
         viewModelScope.launch {
             deleteFavouriteTeamUseCase.deleteFavouriteTeam(id)
