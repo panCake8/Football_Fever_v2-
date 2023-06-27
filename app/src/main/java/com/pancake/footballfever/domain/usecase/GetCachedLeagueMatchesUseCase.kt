@@ -1,4 +1,4 @@
-package com.pancake.footballfever.domain.usecases.LeagueMatchesUseCases
+package com.pancake.footballfever.domain.usecase
 
 import com.pancake.footballfever.data.local.database.daos.LeagueMatchesDao
 import com.pancake.footballfever.data.local.database.entity.LeagueMatchEntity
