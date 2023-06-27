@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pancake.footballfever.domain.models.HeadToHead
-import com.pancake.footballfever.domain.usecase.GetHeadToHeadsUseCase
+import com.pancake.footballfever.domain.usecases.MatchHeadToHeadsUseCases.GetHeadToHeadsUseCase
 import com.pancake.footballfever.ui.fixture.head2head.adapter.HeadToHeadListener
 import com.pancake.footballfever.ui.fixture.head2head.uiState.HeadToHeadUiEvent
 import com.pancake.footballfever.ui.fixture.head2head.uiState.HeadToHeadUiState
