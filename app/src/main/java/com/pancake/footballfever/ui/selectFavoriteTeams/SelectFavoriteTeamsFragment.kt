@@ -29,7 +29,7 @@ class SelectFavoriteTeamsFragment :
     override val viewModel: SelectFavoriteTeamsViewModel by viewModels()
 
     private var tracker: SelectionTracker<FavoriteTeam>? = null
-    private var selectedTeams = mutableListOf<FavoriteTeam>()
+    private var selectedTeams = mutableSetOf<FavoriteTeam>()
     private val args: SelectFavoriteTeamsFragmentArgs by navArgs()
     private val calendar = Calendar.getInstance()
     private var season = 0

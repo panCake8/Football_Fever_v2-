@@ -25,15 +25,16 @@ class FavouritesViewModel @Inject constructor(
 
     val favouriteTeams: StateFlow<DataState<Any>> = _favouriteTeams
     init {
+
+        getAllFavouriteLocal()
         viewModelScope.launch {
                 _favouriteTeams.value =
                     if(getAllFavouriteTeamsUseCase.getAllTeams().isNotEmpty())
                     DataState.Success(getAllFavouriteTeamsUseCase.getAllTeams())
                     else DataState.Error("error")
-
-
         }
     }
+
 
     fun onClickUnfollow(id: Int) {
         viewModelScope.launch {
