@@ -40,6 +40,7 @@
             tools:text="45" />
 
         <ImageView
+            android:onClick="@{()->viewModel.onClickTeamAwayLogo(viewModel.fixtureUiState.fixture)}"
             android:id="@+id/image_team_away"
             android:layout_width="@dimen/team_logo_width"
             android:layout_height="@dimen/team_logo_height"
@@ -128,6 +129,7 @@
             tools:text="real" />
 
         <ImageView
+            android:onClick="@{()->viewModel.onClickTeamHomeLogo(viewModel.fixtureUiState.fixture)}"
             android:id="@+id/image_team_home"
             android:layout_width="@dimen/team_logo_height"
             android:layout_height="@dimen/team_logo_width"
