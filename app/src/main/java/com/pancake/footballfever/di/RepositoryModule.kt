@@ -26,6 +26,8 @@ import com.pancake.footballfever.data.repository.TeamRepository
 import com.pancake.footballfever.data.repository.TeamRepositoryImpl
 import com.pancake.footballfever.data.repository.clubRepo.ClubRepository
 import com.pancake.footballfever.data.repository.clubRepo.ClubRepositoryImpl
+import com.pancake.footballfever.data.repository.game.GameRepository
+import com.pancake.footballfever.data.repository.game.GameRepositoryImpl
 import com.pancake.footballfever.data.repository.search.CoachSearchRepository
 import com.pancake.footballfever.data.repository.search.CoachSearchRepositoryImpl
 import com.pancake.footballfever.data.repository.search.LeagueSearchRepository
@@ -146,5 +148,12 @@ abstract class RepositoryModule {
     abstract fun bindsClubRepository(
         clubRepositoryImpl: ClubRepositoryImpl
     ): ClubRepository
+
+    @Singleton
+    @Binds
+    abstract fun bindsGameRepository(
+        gameRepositoryImpl: GameRepositoryImpl
+    ): GameRepository
+
 
 }
