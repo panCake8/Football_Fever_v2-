@@ -8,7 +8,6 @@
             name="viewModel"
             type="com.pancake.footballfever.ui.search.SearchViewModel" />
 
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginHorizontal="@dimen/large_margin"
-            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/large_margin"
             android:autofillHints="creditCardExpirationDate"
             android:background="@drawable/search_bar"
             android:drawableRight="@drawable/search_icon"
