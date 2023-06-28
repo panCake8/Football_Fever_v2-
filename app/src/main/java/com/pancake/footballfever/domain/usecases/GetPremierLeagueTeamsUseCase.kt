@@ -20,7 +20,9 @@ class GetPremierLeagueTeamsUseCase @Inject constructor(
         return teamRepository.getPremierLeagueTeams(premierLeagueId, season)
             .map { it.toFavoriteTeam() }
     }
-
+    suspend fun getLeagueIdByCountryName(countryName: String):Int{
+        return leaguesRepository.getPremierLeagues(countryName)[0].league?.id!!
+    }
 
     private fun TeamsDto.toFavoriteTeam(): FavoriteTeam {
         return FavoriteTeam(

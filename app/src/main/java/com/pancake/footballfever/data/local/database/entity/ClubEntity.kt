@@ -13,6 +13,7 @@ data class ClubEntity(
     val teamName: String?,
     val teamLogo: String?,
     val teamVenueName: String?,
+    val countryName: String?,
 )
 
 fun ClubModel.toClubEntity(): ClubEntity {
@@ -21,6 +22,7 @@ fun ClubModel.toClubEntity(): ClubEntity {
         teamName = teamName,
         teamLogo = teamLogo,
         teamVenueName = teamVenueName,
+        countryName = countryName
     )
 }
 fun ClubEntity.toClubModel():ClubModel{
@@ -29,6 +31,7 @@ fun ClubEntity.toClubModel():ClubModel{
         teamName = teamName,
         teamLogo = teamLogo,
         teamVenueName = teamVenueName,
+        countryName = countryName
     )
 }
 
