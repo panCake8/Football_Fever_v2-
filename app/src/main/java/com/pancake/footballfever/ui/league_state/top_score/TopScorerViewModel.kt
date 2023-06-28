@@ -19,7 +19,7 @@ import javax.inject.Inject
 class TopScorerViewModel @Inject constructor(
     private val getTopGoalsCachedDataUseCase: GetTopGoalsCachedDataUseCase,
     private val fetchTopGoalsUseCase: FetchTopGoalsUseCase
-): ViewModel(), TopScorerListener {
+) : ViewModel(), TopScorerListener {
 
     private val _uiState = MutableStateFlow(TopScorerUiState())
     val uiState: StateFlow<TopScorerUiState> = _uiState
@@ -27,13 +27,18 @@ class TopScorerViewModel @Inject constructor(
     fun fetchData(leagues: Int, seasons: Int) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                val result = fetchTopGoalsUseCase(leagues, seasons)
-                if (result.isSuccess) {
-                    _uiState.update { it.copy(isLoading = true) }
-                    _uiState.update { it.copy(topGoalsList = getTopGoalsCachedDataUseCase(), isLoading = false) }
-                } else if (result.isFailure) {
-                    _uiState.update { it.copy(error = true) }
+                fetchTopGoalsUseCase(leagues, seasons)
+
+                _uiState.update { it.copy(isLoading = true) }
+                _uiState.update {
+                    it.copy(
+                        topGoalsList = getTopGoalsCachedDataUseCase(leagues, seasons),
+                        isLoading = false
+                    )
                 }
+
+                _uiState.update { it.copy(error = "") }
+
             }
 
         }

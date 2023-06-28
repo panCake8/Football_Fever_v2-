@@ -19,23 +19,28 @@ import javax.inject.Inject
 class TopAssistViewModel @Inject constructor(
     private val getTopAssistsCachedDataUseCase: GetTopAssistsCachedDataUseCase,
     private val fetchTopAssistsUseCase: FetchTopAssistsUseCase,
-): ViewModel(), TopAssistListener{
+) : ViewModel(), TopAssistListener {
 
     private val _uiState = MutableStateFlow(TopAssistUiState())
     val uiState: StateFlow<TopAssistUiState> = _uiState
 
 
-
     fun fetchData(leagues: Int, seasons: Int) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                val result = fetchTopAssistsUseCase(leagues, seasons)
-                if (result.isSuccess) {
-                    _uiState.update { it.copy(isLoading = true) }
-                    _uiState.update { it.copy(topAssistsList = getTopAssistsCachedDataUseCase(), isLoading = false) }
-                } else if (result.isFailure) {
-                    _uiState.update { it.copy(error = true) }
+                fetchTopAssistsUseCase(leagues, seasons)
+
+                _uiState.update { it.copy(isLoading = true) }
+                _uiState.update {
+                    it.copy(
+                        topAssistsList = getTopAssistsCachedDataUseCase(leagues, seasons),
+                        isLoading = false
+                    )
                 }
+
+                _uiState.update { it.copy(error = "THERE IS NOTHING TO SHOW GO AWAY :P") }
+
+
             }
         }
     }

@@ -5,5 +5,5 @@ import com.pancake.footballfever.domain.models.TopAssists
 data class TopAssistUiState (
     val topAssistsList: List<TopAssists>? = null,
     val isLoading: Boolean = false,
-    val error: Boolean = false,
+    val error: String = "",
 )

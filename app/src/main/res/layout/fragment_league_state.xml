@@ -49,11 +49,13 @@
             <TextView
                 android:id="@+id/textview_league_country"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
                 android:fontFamily="@font/poppins"
+                android:maxLines="1"
+                android:text="@{viewModel.uiState.success.country}"
                 android:textColor="@color/chip_text_color"
                 android:textSize="@dimen/text_small"
-                android:layout_height="wrap_content"
-                android:text="@{viewModel.uiState.success.country}"
                 tools:text="England" />
         </LinearLayout>
 

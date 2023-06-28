@@ -5,5 +5,5 @@ import com.pancake.footballfever.domain.models.TopGoals
 data class TopScorerUiState(
     val topGoalsList: List<TopGoals>? = null,
     val isLoading: Boolean = false,
-    val error: Boolean = false,
+    val error: String = "",
 )

@@ -13,6 +13,7 @@ import com.pancake.footballfever.ui.leagues.adapter.LeaguesAdapter
 import com.pancake.footballfever.ui.leagues.uiState.LeagueUiEvent
 import com.pancake.footballfever.utilities.collectLast
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.debounce
@@ -52,6 +53,7 @@ class LeagueFragment : BaseFragment<FragmentLeagueBinding, LeaguesViewModel>() {
         }
     }
 
+    @OptIn(FlowPreview::class)
     private fun getSearchResultsBySearchTerm() {
         lifecycleScope.launch {
             callbackFlow {
