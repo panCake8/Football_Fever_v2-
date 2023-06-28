@@ -8,7 +8,9 @@
             name="viewModel"
             type="com.pancake.footballfever.ui.search.SearchViewModel" />
 
-
+        <variable
+            name="listener"
+            type="com.pancake.footballfever.ui.search.SearchListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginHorizontal="@dimen/large_margin"
-            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/large_margin"
             android:autofillHints="creditCardExpirationDate"
             android:background="@drawable/search_bar"
             android:drawableRight="@drawable/search_icon"
@@ -150,6 +152,20 @@
 
         </com.google.android.material.chip.ChipGroup>
 
+        <TextView
+            android:id="@+id/clear_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/clear_all"
+            android:textColor="@color/white60"
+            android:textSize="@dimen/text_small"
+            android:layout_marginHorizontal="@dimen/semi_huge"
+            android:layout_marginTop="@dimen/medium_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_suggest"
+            app:showWhenSearchInSearchSuggests="@{viewModel.searchResult}"
+            />
+
         <ImageView
             android:id="@+id/image_view_loading"
             android:layout_width="300dp"
@@ -160,6 +176,37 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/search_suggest"
             app:showWhenSearchInSearchSuggests="@{viewModel.searchResult}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:showWhenEmptySearch="@{viewModel.searchResult}">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animationView"
+                android:layout_width="360dp"
+                android:layout_height="180dp"
+                android:layout_marginBottom="@dimen/semi_huge"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/search_empty" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No Results Found"
+                android:textColor="@color/white87"
+                android:textSize="@dimen/text_medium"
+                android:visibility="visible" />
+        </LinearLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
