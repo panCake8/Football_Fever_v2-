@@ -114,6 +114,16 @@ fun <T> showWhenError(view: View, dataState: DataState<T>) {
 
 }
 
+@BindingAdapter("app:showWhenEmptySearch")
+fun <T> showWhenEmptySearch(view: View, dataState: DataState<T>) {
+
+    if (dataState is DataState.Empty) {
+        view.visibility = View.VISIBLE
+    } else
+        view.visibility = View.GONE
+
+}
+
 
 @BindingAdapter(value = ["app:showWhenSearchInSearchSuggests"])
 fun <T> showWhenSearchInSearchSuggests(view: View, dataState: DataState<T>) {
