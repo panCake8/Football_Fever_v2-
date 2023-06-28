@@ -183,17 +183,8 @@
             android:name="matchIDs"
             app:argType="string" />
 
+    </fragment>
 
-    </fragment>
-    <fragment
-        android:id="@+id/hilt_FavouritesFragment"
-        android:name="com.pancake.footballfever.ui.favourites.FavouritesFragment"
-        android:label="Hilt_FavouritesFragment"
-        tools:layout="@layout/fragment_favourites">
-        <action
-            android:id="@+id/action_hilt_FavouritesFragment_to_clubFragment4"
-            app:destination="@id/clubFragment" />
-    </fragment>
 
 
 </navigation>
