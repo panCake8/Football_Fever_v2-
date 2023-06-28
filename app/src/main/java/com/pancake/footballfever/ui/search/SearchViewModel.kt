@@ -10,9 +10,12 @@ import com.pancake.footballfever.domain.usecases.GetLeagueSearchUseCase
 import com.pancake.footballfever.domain.usecases.GetSearchKeywordsUseCase
 import com.pancake.footballfever.domain.usecases.GetTeamSearchUseCase
 import com.pancake.footballfever.utilities.DataState
+import com.pancake.footballfever.utilities.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -27,6 +30,11 @@ class SearchViewModel @Inject constructor(
     private val _searchResult =
         MutableStateFlow<DataState<Any>>(DataState.Loading)
     val searchResult: StateFlow<DataState<Any>> = _searchResult
+
+    private val _searchEvent: MutableStateFlow<Event<SearchUiEvent>?> = MutableStateFlow(null)
+    val searchEvent = _searchEvent.asStateFlow()
+
+
 
     val searchText = MutableStateFlow("")
 
@@ -136,13 +144,14 @@ class SearchViewModel @Inject constructor(
         }
     }
 
-    override fun onClickTeam(team: SearchItem) {
-    }
 
-    override fun onClickLeague(player: SearchItem) {
-    }
+    override fun onClick(league: SearchItem) {
+        when(searchStatus.value){
+            SearchStatus.LEAGUE ->_searchEvent.update { Event(SearchUiEvent.ClickLeagueEvent(league)) }
+            SearchStatus.TEAM ->   _searchEvent.update { Event(SearchUiEvent.ClickTeamEvent(league)) }
+            SearchStatus.COACH -> TODO()
+        }
 
-    override fun onClickCoach(player: SearchItem) {
     }
 
 }

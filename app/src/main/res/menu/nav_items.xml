@@ -8,7 +8,7 @@
         />
     <item
         android:title="@string/search_text"
-        android:id="@+id/hilt_SearchFragment"
+        android:id="@+id/SearchFragment"
         android:icon="@drawable/icon_search"/>
     <item
         android:title="@string/league_text"
