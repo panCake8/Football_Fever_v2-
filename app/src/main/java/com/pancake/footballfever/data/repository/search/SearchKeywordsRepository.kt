@@ -8,4 +8,6 @@ interface SearchKeywordsRepository {
 
     suspend fun getSearchKeywords(): List<SearchKeywordEntity>
 
+    suspend fun deleteAllKeyword()
+
 }
