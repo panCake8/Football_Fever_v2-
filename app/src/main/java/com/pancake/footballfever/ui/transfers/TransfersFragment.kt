@@ -7,8 +7,10 @@ import com.pancake.footballfever.R
 import com.pancake.footballfever.databinding.FragmentTransfersBinding
 import com.pancake.footballfever.ui.base.BaseFragment
 import com.pancake.footballfever.ui.transfers.adapter.TransfersAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class TransfersFragment : BaseFragment<FragmentTransfersBinding,TransfersViewModel>() {
 
     override val layoutId: Int = R.layout.fragment_transfers
