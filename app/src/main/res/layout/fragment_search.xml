@@ -203,8 +203,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="No Results Found"
-                android:textColor="@color/white87"
+                android:text="@string/no_results_found"
+                android:textColor="@color/white60"
                 android:textSize="@dimen/text_medium"
                 android:visibility="visible" />
         </LinearLayout>
