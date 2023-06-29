@@ -1,9 +1,11 @@
 package com.pancake.footballfever.utilities
 
+import android.app.ActionBar.LayoutParams
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
@@ -192,5 +194,15 @@ fun <T> hideWhenSuccessSearch(view: View, text: String, error: List<T>?, loading
         View.VISIBLE
     } else {
         View.INVISIBLE
+    }
+
+}
+@BindingAdapter(value = ["hideWhenNull"])
+fun hideWhenNull(view: CardView,text: String){
+    if (text == "null"){
+        view.layoutParams.let {
+            it.height = 0
+            it.width = 0
+        }
     }
 }
