@@ -10,9 +10,12 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.pancake.footballfever.R
+import com.pancake.footballfever.domain.models.FixtureHome
 import com.pancake.footballfever.domain.models.FixtureSummary
 import com.pancake.footballfever.ui.base.BaseAdapter
 import com.pancake.footballfever.ui.fixture.FixtureUiState
+import com.pancake.footballfever.ui.fixture.head2head.adapter.HeadToHeadListener
+import com.pancake.footballfever.ui.fixture.head2head.adapter.HeadToHeadParentAdapter
 import com.pancake.footballfever.ui.fixture.summary.FixtureSummaryAdapter
 import com.pancake.footballfever.ui.home.HomeUiState
 import com.pancake.footballfever.ui.home.adapter.FixtureHomeListener
@@ -192,5 +195,12 @@ fun <T> hideWhenSuccessSearch(view: View, text: String, error: List<T>?, loading
         View.VISIBLE
     } else {
         View.INVISIBLE
+    }
+}
+
+@BindingAdapter(value = ["showFixtureHomeMassage" ,"validateLoadingStatus"])
+fun TextView.showFixtureHomeMassage(items: List<FixtureHome>?, isLoading: Boolean) {
+    if (items.isNullOrEmpty() && !isLoading) {
+        this.isVisible = true
     }
 }

@@ -32,7 +32,7 @@ interface ApiService {
     @GET("countries")
     suspend fun getCountryByName(
         @Query("search") name: String
-    ): Response<CountryDto>
+    ): Response<BaseResponse<CountryDto>>
 
     @GET("countries")
     suspend fun getCountryByCode(
@@ -89,6 +89,7 @@ interface ApiService {
     suspend fun getLastLeague(
         @Query("last") last: Int
     ): Response<LeaguesDto>
+
     @GET("leagues")
     suspend fun getLeagues(@Query("current") current: Boolean): Response<LeaguesDto>
 
@@ -191,6 +192,7 @@ interface ApiService {
         @Query("season") fixture: Int,
         @Query("team") team: Int
     ): Response<BaseResponse<PlayersDto>>
+
     @GET("players/topscorers")
     suspend fun getTopScorerPlayers(
         @Query("league") league: Int,
@@ -210,10 +212,11 @@ interface ApiService {
         @Query("league") leagueId: Int,
         @Query("season") season: Int,
     ): Response<BaseResponse<TeamsDto>>
+
     @GET("teams")
-    suspend fun  getTeamById(
+    suspend fun getTeamById(
         @Query("id") TeamId: Int,
-    ):Response<BaseResponse<TeamsDto>>
+    ): Response<BaseResponse<TeamsDto>>
 
     // endregion
 

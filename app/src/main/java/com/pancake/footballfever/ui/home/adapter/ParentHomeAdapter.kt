@@ -2,7 +2,6 @@ package com.pancake.footballfever.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView.Adapter
@@ -13,8 +12,7 @@ import com.pancake.footballfever.databinding.ChildHomeMoreMatchesBinding
 import com.pancake.footballfever.ui.home.HomeUiState
 
 class ParentHomeAdapter(
-    private val homeItem: HomeUiState,
-    private val listener: FixtureHomeListener
+    private val homeItem: HomeUiState, private val listener: FixtureHomeListener
 ) : Adapter<ParentHomeAdapter.BaseParentHomeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseParentHomeViewHolder {
@@ -22,14 +20,18 @@ class ParentHomeAdapter(
             FIRST_ITEM -> HomeFirstMatchViewHolder(
                 DataBindingUtil.inflate(
                     LayoutInflater.from(parent.context),
-                    R.layout.child_home_first_match_card, parent, false
+                    R.layout.child_home_first_match_card,
+                    parent,
+                    false
                 )
             )
 
             else -> HomeMoreMatchesViewHolder(
                 DataBindingUtil.inflate(
                     LayoutInflater.from(parent.context),
-                    R.layout.child_home_more_matches, parent, false
+                    R.layout.child_home_more_matches,
+                    parent,
+                    false
                 )
             )
         }
@@ -63,8 +65,6 @@ class ParentHomeAdapter(
             childRecycler.adapter = HomeMoreMatchesAdapter(listener)
             if (homeItem.success.isNotEmpty()) {
                 item = homeItem
-            } else {
-                noMatchesMessage.isVisible = true
             }
         }
     }
