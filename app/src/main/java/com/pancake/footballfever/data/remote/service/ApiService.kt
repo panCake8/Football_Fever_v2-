@@ -170,7 +170,6 @@ interface ApiService {
     // region transfers requests
     @GET("transfers")
     suspend fun getTransfers(
-        @Query("player") player: Int?,
         @Query("team") team: Int?,
     ): Response<BaseResponse<TransfersDto>>
 
