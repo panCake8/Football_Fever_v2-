@@ -41,6 +41,8 @@
         <TextView
             android:id="@+id/no_matches_message"
             style="@style/select_favorite_item_text"
+            showFixtureHomeMassage="@{item.success}"
+            validateLoadingStatus="@{item.loading}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/huge_margin"

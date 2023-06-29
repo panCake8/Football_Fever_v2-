@@ -57,9 +57,11 @@
             android:layout_marginHorizontal="@dimen/large_margin"
             app:layout_constraintTop_toBottomOf="@id/app_bar_layout"
             app:mcv_calendarMode="week"
+            app:mcv_leftArrowMask="@drawable/ic_back_ios_16_white"
+            app:mcv_rightArrowMask="@drawable/ic_forward_ios_16_white"
             app:mcv_selectionColor="@color/color_primary"
             app:mcv_selectionMode="single"
-            app:mcv_showOtherDates="defaults" />
+            app:mcv_showOtherDates="all" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/main_recycler"
