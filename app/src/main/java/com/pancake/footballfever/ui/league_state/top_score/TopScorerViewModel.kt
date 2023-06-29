@@ -19,7 +19,7 @@ import javax.inject.Inject
 class TopScorerViewModel @Inject constructor(
     private val getTopGoalsCachedDataUseCase: GetTopGoalsCachedDataUseCase,
     private val fetchTopGoalsUseCase: FetchTopGoalsUseCase
-): ViewModel(), TopScorerListener {
+) : ViewModel(), TopScorerListener {
 
     private val _uiState = MutableStateFlow(TopScorerUiState())
     val uiState: StateFlow<TopScorerUiState> = _uiState
@@ -27,16 +27,31 @@ class TopScorerViewModel @Inject constructor(
     fun fetchData(leagues: Int, seasons: Int) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                val result = fetchTopGoalsUseCase(leagues, seasons)
-                if (result.isSuccess) {
-                    _uiState.update { it.copy(isLoading = true) }
-                    _uiState.update { it.copy(topGoalsList = getTopGoalsCachedDataUseCase(), isLoading = false) }
-                } else if (result.isFailure) {
-                    _uiState.update { it.copy(error = true) }
+                _uiState.update { it.copy(isLoading = true) }
+                val topScore = fetchTopGoalsUseCase(leagues, seasons)
+                if (topScore.isFailure) {
+                    _uiState.update { it.copy(error = "") }
+
+                    _uiState.update { it.copy(isLoading = false, errorMessage = null, error = "THERE IS NOTHING TO SEE GO AWAY :P") }
                 }
+                if (getTopGoalsCachedDataUseCase(leagues, seasons).isEmpty()) {
+                    _uiState.update { it.copy(isLoading = false, error = null, errorMessage = "THERE IS NOTHING TO SEE GO AWAY :P") }
+
+                }
+                _uiState.update {
+                    it.copy(
+                        success = getTopGoalsCachedDataUseCase(leagues, seasons),
+                        isLoading = false
+                    )
+                }
+
+
             }
 
         }
     }
 
+    fun refreshData(leagues: Int, seasons: Int) {
+        fetchData(leagues, seasons)
+    }
 }

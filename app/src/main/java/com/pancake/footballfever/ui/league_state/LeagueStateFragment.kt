@@ -29,6 +29,8 @@ class LeagueStateFragment : BaseFragment<FragmentLeagueStateBinding, LeagueState
         initViewPager()
         initTabLayout()
         initData()
+
+
     }
 
     private fun initData() {
@@ -68,7 +70,7 @@ class LeagueStateFragment : BaseFragment<FragmentLeagueStateBinding, LeagueState
         private const val MATCH = "Match"
         private const val TOP_SCORE = "Top Score"
         private const val STANDING = "Standing"
-        private const val TOP_ASSIST = "Top Assist"
+        private const val TOP_ASSIST = "Top Passes"
     }
 
 

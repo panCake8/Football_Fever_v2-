@@ -1,13 +1,13 @@
 package com.pancake.footballfever.data.local.database.entity
 
 import androidx.room.Entity
-import androidx.room.PrimaryKey
 
-@Entity(tableName = "TOP_PLAYERS_ASSIST_TABLE")
+@Entity(tableName = "TOP_PLAYERS_ASSIST_TABLE", primaryKeys = ["season","teamId", "LeagueId"])
 
 data class TopAssistEntity(
-    @PrimaryKey
-    val id: Int? = 0,
+    val teamId: Int,
+    val season: Int,
+    val LeagueId: Int,
     val playerName: String? = "",
     val teamName: String? = "",
     val totalAssists: Int? = 0,

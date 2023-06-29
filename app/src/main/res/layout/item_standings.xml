@@ -26,6 +26,7 @@
 
         <TextView
             style="@style/table_column"
+            android:layout_height="wrap_content"
             android:text="@{String.valueOf(item.rank)}"
             tools:text="@string/rank_value" />
 

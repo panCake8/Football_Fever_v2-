@@ -33,6 +33,10 @@ class LeagueMatchesFragment : BaseFragment<FragmentLeagueMatchBinding, LeagueMat
 
         viewModel.getAllLeagueMatches(season, leagueId)
 
+        binding.refreshButton.setOnClickListener {
+            viewModel.refreshData(season, leagueId)
+        }
+
         setRecycler()
         handleEvent()
     }

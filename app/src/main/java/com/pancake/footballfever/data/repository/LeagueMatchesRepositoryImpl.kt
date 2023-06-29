@@ -23,8 +23,8 @@ class LeagueMatchesRepositoryImpl @Inject constructor(
         return dao.addLeagueMatch(leagueMatches)
     }
 
-    override suspend fun getAllLocalLeagueMatches(): List<LeagueMatchEntity> {
-        return dao.getAllLeagueMatches()
+    override suspend fun getAllLocalLeagueMatches(seasonId: Int, leagueId: Int): List<LeagueMatchEntity> {
+        return dao.getAllLeagueMatches(seasonId, leagueId)
     }
 
     override suspend fun deleteAllLeagueMatches() {

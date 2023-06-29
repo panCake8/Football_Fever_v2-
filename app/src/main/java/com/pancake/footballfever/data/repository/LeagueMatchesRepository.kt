@@ -7,7 +7,7 @@ interface LeagueMatchesRepository {
 
     suspend fun getAllLeagueMatches(season: Int, league: Int) : List<FixturesDto>?
     suspend fun cacheAllLeagueMatches(leagueMatches:List<LeagueMatchEntity>)
-    suspend fun getAllLocalLeagueMatches():List<LeagueMatchEntity>
+    suspend fun getAllLocalLeagueMatches(seasonId: Int, leagueId: Int):List<LeagueMatchEntity>
     suspend fun deleteAllLeagueMatches()
 
 }

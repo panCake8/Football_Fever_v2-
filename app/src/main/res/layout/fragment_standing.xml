@@ -11,64 +11,87 @@
 
     </data>
 
-
-    <TableLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/Primary_color">
+        android:layout_height="match_parent">
 
-        <TableRow
-            android:background="@drawable/table_header_background"
-            android:padding="@dimen/semi_large_padding">
 
-            <TextView
-                style="@style/table_column"
-                android:text="@string/pos" />
 
-            <TextView
-                android:layout_width="@dimen/no_width"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/semi_large_margin"
-                android:layout_weight="1"
-                android:text="@string/team"
-                android:textColor="@color/white87" />
-
-            <TextView
-                style="@style/table_column"
-                android:layout_marginStart="@dimen/semi_large_margin"
-                android:text="@string/p" />
-
-            <TextView
-                style="@style/table_column"
-                android:layout_marginStart="@dimen/semi_large_margin"
-                android:text="@string/w" />
-
-            <TextView
-                style="@style/table_column"
-                android:layout_marginStart="@dimen/semi_large_margin"
-                android:text="@string/pts" />
-
-        </TableRow>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_standing_league"
+        <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:setRecyclerItems="@{viewModel.uiState.response}"
-            tools:listitem="@layout/item_standings" />
+            android:background="@color/Primary_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <ProgressBar
-            android:id="@+id/progress_bar_loading"
+            <TableRow
+                android:background="@drawable/table_header_background"
+                android:padding="@dimen/semi_large_padding">
+
+                <TextView
+                    style="@style/table_column"
+                    android:text="@string/pos" />
+
+                <TextView
+                    android:layout_width="@dimen/no_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/semi_large_margin"
+                    android:layout_weight="1"
+                    android:text="@string/team"
+                    android:textColor="@color/white87" />
+
+                <TextView
+                    style="@style/table_column"
+                    android:layout_marginStart="@dimen/semi_large_margin"
+                    android:text="@string/p" />
+
+                <TextView
+                    style="@style/table_column"
+                    android:layout_marginStart="@dimen/semi_large_margin"
+                    android:text="@string/w" />
+
+                <TextView
+                    style="@style/table_column"
+                    android:layout_marginStart="@dimen/semi_large_margin"
+                    android:text="@string/pts" />
+
+            </TableRow>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_standing_league"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:setRecyclerItems="@{viewModel.uiState.response}"
+                tools:listitem="@layout/item_standings" />
+
+            <ProgressBar
+                android:id="@+id/progress_bar_loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:showIfLoading="@{viewModel.uiState.loading}" />
+
+
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/errorr_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:errorMessage="@{viewModel.uiState.errorMessage}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:showIfLoading="@{viewModel.uiState.loading}" />
-
-    </TableLayout>
+            tools:text="sometext"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
