@@ -1,4 +1,4 @@
-package com.pancake.footballfever.domain.usecase
+package com.pancake.footballfever.domain.usecases.MatchHeadToHeadUseCases
 
 import com.pancake.footballfever.data.local.database.daos.HeadToHeadDao
 import javax.inject.Inject

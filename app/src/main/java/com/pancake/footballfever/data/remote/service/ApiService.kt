@@ -145,7 +145,7 @@ interface ApiService {
     suspend fun getHeadToHeadFixtures(@Query("h2h") h2h: String): Response<BaseResponse<HeadToHeadDto>>
 
     @GET("fixtures/statistics")
-    suspend fun getStatisticsFixtures(@Query("fixture") fixture: String): Response<BaseResponse<StatisticsDto>>
+    suspend fun getStatisticsFixtures(@Query("fixture") fixture: Int): Response<BaseResponse<StatisticsDto>>
 
     @GET("fixtures/events")
     suspend fun getEventsFixtures(@Query("fixture") fixture: Int): Response<BaseResponse<EventsDto>>
@@ -170,7 +170,6 @@ interface ApiService {
     // region transfers requests
     @GET("transfers")
     suspend fun getTransfers(
-        @Query("player") player: Int?,
         @Query("team") team: Int?,
     ): Response<BaseResponse<TransfersDto>>
 

@@ -26,7 +26,7 @@ data class StatisticsItem(
     val type: String? = null,
 
     @field:SerializedName("value")
-    val value: Int? = null
+    val value: String? = null
 )
 
 

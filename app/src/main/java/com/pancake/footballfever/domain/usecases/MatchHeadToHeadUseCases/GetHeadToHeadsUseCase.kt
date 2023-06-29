@@ -1,4 +1,4 @@
-package com.pancake.footballfever.domain.usecase
+package com.pancake.footballfever.domain.usecases.MatchHeadToHeadUseCases
 
 import com.example.footboolfever.data.remote.dto.HeadToHeadDto
 import com.pancake.footballfever.data.local.database.entity.HeadToHeadEntity

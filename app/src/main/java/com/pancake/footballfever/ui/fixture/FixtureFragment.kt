@@ -30,7 +30,7 @@ class FixtureFragment : BaseFragment<FragmentFixtureBinding, FixtureViewModel>()
 
     override val viewModel by viewModels<FixtureViewModel>()
 
-    private val tabItems = listOf(STANDING, SUMMARY, H2H)
+    private val tabItems = listOf(STATS,STANDING, SUMMARY, H2H)
 
     private lateinit var fixtureStatsPagerAdapter: FixtureStatsPagerAdapter
 
@@ -74,6 +74,7 @@ class FixtureFragment : BaseFragment<FragmentFixtureBinding, FixtureViewModel>()
     }
 
     private fun addFragmentsToViewPager() {
+        fixtureStatsPagerAdapter.addFragment(FragmentFixtureStats.newInstance(fixtureId))
         fixtureStatsPagerAdapter.addFragment(
             StandingFragment.newInstance(
                 viewModel.fixtureUiState.value.fixture?.leagueId,
@@ -93,7 +94,6 @@ class FixtureFragment : BaseFragment<FragmentFixtureBinding, FixtureViewModel>()
                         "${viewModel.fixtureUiState.value.fixture?.teamAwayId}"
             )
         )
-//        fixtureStatsPagerAdapter.addFragment(FragmentFixtureLineup.newInstance(fixtureId))
 //        fixtureStatsPagerAdapter.addFragment(FragmentFixtureLineup.newInstance(fixtureId))
     }
 
