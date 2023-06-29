@@ -1,4 +1,4 @@
-package com.pancake.footballfever.domain.usecase
+package com.pancake.footballfever.domain.usecases.LeagueMatchesUseCases
 
 import com.example.footboolfever.data.remote.dto.FixturesDto
 import com.pancake.footballfever.data.local.database.entity.LeagueMatchEntity
