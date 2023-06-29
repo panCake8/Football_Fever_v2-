@@ -146,7 +146,14 @@
         android:id="@+id/moreFragment"
         android:name="com.pancake.footballfever.ui.more.MoreFragment"
         android:label="fragment_more"
-        tools:layout="@layout/fragment_more" />
+        tools:layout="@layout/fragment_more" >
+        <action
+            android:id="@+id/action_moreFragment_to_injuriesFragment"
+            app:destination="@id/injuriesFragment" />
+        <action
+            android:id="@+id/action_moreFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/leagueFragment"
@@ -184,7 +191,16 @@
             app:argType="string" />
 
     </fragment>
-
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.pancake.footballfever.ui.about.AboutFragment"
+        android:label="AboutFragment"
+        tools:layout="@layout/fragment_about"/>
+    <fragment
+        android:id="@+id/injuriesFragment"
+        android:name="com.pancake.footballfever.ui.injuries.InjuriesFragment"
+        android:label="InjuriesFragment"
+        tools:layout="@layout/fragment_injuries"/>
 
 
 </navigation>
