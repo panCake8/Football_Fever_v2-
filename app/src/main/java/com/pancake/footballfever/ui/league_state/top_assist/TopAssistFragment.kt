@@ -26,6 +26,7 @@ class TopAssistFragment : BaseFragment<FragmentTopAssistBinding, TopAssistViewMo
         val season = requireArguments().getInt(Constants.SEASON)
 
         viewModel.fetchData(leagueId, season)
+
     }
 
     companion object {

@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <variable
+            name="viewModel"
+            type="com.pancake.footballfever.ui.more.MoreViewModel" />
 
     </data>
 
@@ -14,12 +18,12 @@
         tools:context=".ui.more.MoreFragment">
 
 
-
         <ImageView
             android:id="@+id/more_back_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/small_margin"
+            android:onClick="@{()->viewModel.onBackClick()}"
             android:layout_marginTop="@dimen/medium_margin"
             android:src="@drawable/back_icon"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,6 +50,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
+                android:onClick="@{()-> viewModel.onAboutClick()}"
                 android:layout_height="match_parent">
 
                 <ImageView
@@ -62,7 +67,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/semi_huge"
-                    android:text="@string/coach"
+                    android:text="About"
                     android:textColor="@color/text_title"
                     app:layout_constraintBottom_toBottomOf="@id/coach_icon"
                     app:layout_constraintStart_toEndOf="@+id/coach_icon"
@@ -95,6 +100,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
+                android:onClick="@{()-> viewModel.onInjuriesClick()}"
                 android:layout_height="match_parent">
 
                 <ImageView
@@ -133,12 +139,12 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/transfer_card"
-
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimens_team_image"
             android:layout_marginHorizontal="@dimen/large_margin"
             android:layout_marginTop="@dimen/medium_margin"
             android:backgroundTint="@color/background_main_card"
+            android:visibility="gone"
             app:cardCornerRadius="@dimen/radius_medium"
             app:layout_constraintTop_toBottomOf="@id/injury_card">
 

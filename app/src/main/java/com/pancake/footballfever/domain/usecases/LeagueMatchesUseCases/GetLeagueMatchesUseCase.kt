@@ -1,4 +1,4 @@
-package com.pancake.footballfever.domain.usecase
+package com.pancake.footballfever.domain.usecases.LeagueMatchesUseCases
 
 import com.example.footboolfever.data.remote.dto.FixturesDto
 import com.pancake.footballfever.data.local.database.entity.LeagueMatchEntity
@@ -20,7 +20,7 @@ class GetLeagueMatchesUseCase @Inject constructor(
         return try {
 
             val leagueMatches = repository.getAllLeagueMatches(season, league)
-            cacheLeagueMatchesUseCase.cacheLeagueMatches(leagueMatches)
+            cacheLeagueMatchesUseCase.cacheLeagueMatches(leagueMatches, season, league)
             leagueMatches?.map { it.toLeagueMatch() }?.groupBy { it.date }?.toLeagueMatchUi()
 
 
@@ -28,7 +28,7 @@ class GetLeagueMatchesUseCase @Inject constructor(
 //            throw IOException("error while fetching league matches", e)
 //            repository.getAllLocalLeagueMatches().map { it.toLeagueMatch() }.groupBy { it.date }
 //                .toLeagueMatchUi()
-            getCachedLeagueMatchesUseCase.getCachedLeagueMatches().map { it.toLeagueMatch() }
+            getCachedLeagueMatchesUseCase.getCachedLeagueMatches(season, league).map { it.toLeagueMatch() }
                 .groupBy { it.date }.toLeagueMatchUi()
         }
 

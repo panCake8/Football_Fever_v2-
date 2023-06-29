@@ -101,9 +101,11 @@
                 android:layout_height="0dp"
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="@dimen/large_margin"
+                android:layout_marginBottom="@dimen/large_margin"
                 android:clipToPadding="false"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/chip_component"
                 app:setRecyclerItems="@{viewModel.searchResult.toDate()}"
@@ -201,8 +203,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="No Results Found"
-                android:textColor="@color/white87"
+                android:text="@string/no_results_found"
+                android:textColor="@color/white60"
                 android:textSize="@dimen/text_medium"
                 android:visibility="visible" />
         </LinearLayout>

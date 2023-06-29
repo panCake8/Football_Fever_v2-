@@ -9,5 +9,5 @@ data class CurrentLeagueUiState(
     val searchLeagues : List<League>? = emptyList(),
     val loading: Boolean = false,
     val isEmpty: Boolean = false,
-    val error : List<Error> = emptyList(),
+    val error : String? = null,
 )

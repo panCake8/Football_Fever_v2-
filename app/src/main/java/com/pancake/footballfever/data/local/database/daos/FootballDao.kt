@@ -48,7 +48,9 @@ interface FootballDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertStandings(standings: List<StandingsEntity>)
 
-    @Query("SELECT * FROM STANDINGS_TABLE WHERE leagueId =:leagueId AND season =:season")
+
+    @Query("SELECT * FROM STANDINGS_TABLE WHERE leagueId =:leagueId AND season =:season order by rank  ")
+
     fun getAllStandings(leagueId:Int,season:Int): List<StandingsEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

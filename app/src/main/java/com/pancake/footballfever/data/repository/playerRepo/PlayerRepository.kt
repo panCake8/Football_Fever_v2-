@@ -7,11 +7,11 @@ interface PlayerRepository {
 
     // get all scorer data.
     suspend fun fetchTopGoalsDataAndCache(league: Int, season: Int): Result<List<TopGoalsEntity>>
-    suspend fun getTopGoalsCachedData(): List<TopGoalsEntity>
+    suspend fun getTopGoalsCachedData(leagueId: Int, seasonId: Int): List<TopGoalsEntity>
 
 
     // get all scorer data.
     suspend fun fetchTopAssistsDataAndCache(league: Int, season: Int): Result<List<TopAssistEntity>>
-    suspend fun getTopAssistsCachedData(): List<TopAssistEntity>
+    suspend fun getTopAssistsCachedData(leagueId: Int, seasonId: Int): List<TopAssistEntity>
 
 }

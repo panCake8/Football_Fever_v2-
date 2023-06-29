@@ -4,7 +4,11 @@ import android.annotation.SuppressLint
 import android.opengl.Visibility
 import android.os.Build
 import android.util.Log
+
+import androidx.activity.addCallback
+
 import android.view.View
+
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.green
@@ -34,7 +38,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
     override val viewModel: SearchViewModel by viewModels()
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private val season=Year.now().value
+    private val season=Year.now().value-1
 
     @SuppressLint("ResourceAsColor")
     @RequiresApi(Build.VERSION_CODES.O)
@@ -54,7 +58,18 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
 
         doEvent()
         searchViewListener()
+
+        handleOnBackPressed()
+    }
+
+
+    private fun handleOnBackPressed() {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            findNavController().navigate(R.id.homeFragment)
+        }
+
         clear()
+
     }
 
     @OptIn(FlowPreview::class)
@@ -123,7 +138,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
             }
             is SearchUiEvent.ClickTeamEvent -> {
                 val nav =
-                    SearchFragmentDirections.actionHiltSearchFragmentToClubFragment(event.item.id!!,event.item.id!!,season)
+                    SearchFragmentDirections.actionHiltSearchFragmentToClubFragment(event.item.id!!,0,season)
                 findNavController().navigate(nav)
             }
             is SearchUiEvent.ClickClearAllEvent->{

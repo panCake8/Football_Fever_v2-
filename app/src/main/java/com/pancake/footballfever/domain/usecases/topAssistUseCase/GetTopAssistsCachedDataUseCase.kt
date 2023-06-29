@@ -7,6 +7,6 @@ import javax.inject.Inject
 class GetTopAssistsCachedDataUseCase  @Inject constructor(
     private val playerRepository: PlayerRepository,
 ) {
-    suspend operator fun invoke() = playerRepository.getTopAssistsCachedData().map { it.toTopAssist() }
+    suspend operator fun invoke(leagueId: Int, seasonId: Int) = playerRepository.getTopAssistsCachedData(leagueId, seasonId).map { it.toTopAssist() }
 
 }

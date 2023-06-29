@@ -35,6 +35,8 @@ import com.pancake.footballfever.data.repository.search.SearchKeywordsRepository
 import com.pancake.footballfever.data.repository.search.TeamSearchRepository
 import com.pancake.footballfever.data.repository.search.TeamSearchRepositoryImpl
 import com.pancake.footballfever.data.repository.standingsRepo.StandingsRepository
+import com.pancake.footballfever.data.repository.transfersRepo.TransfersRepository
+import com.pancake.footballfever.data.repository.transfersRepo.TransfersRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -146,5 +148,10 @@ abstract class RepositoryModule {
     abstract fun bindsClubRepository(
         clubRepositoryImpl: ClubRepositoryImpl
     ): ClubRepository
+    @Singleton
+    @Binds
+    abstract fun bindTransferRepository(
+        transfersRepositoryImpl: TransfersRepositoryImpl
+    ): TransfersRepository
 
 }

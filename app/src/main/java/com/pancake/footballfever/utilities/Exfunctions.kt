@@ -62,7 +62,7 @@ fun Int.toDate(): String {
 }
 fun TopGoalsEntity.toTopGoals(): TopGoals {
     return TopGoals(
-        id = this.id,
+        id = this.teamId,
         playerName = this.playerName,
         teamName = this.teamName,
         totalGoals = this.totalGoals,
@@ -72,7 +72,7 @@ fun TopGoalsEntity.toTopGoals(): TopGoals {
 
 fun TopAssistEntity.toTopAssist(): TopAssists {
     return TopAssists(
-        id = this.id,
+        id = this.teamId,
         playerName = this.playerName,
         teamName = this.teamName,
         totalAssists = this.totalAssists,

@@ -1,4 +1,4 @@
-package com.pancake.footballfever.domain.usecase
+package com.pancake.footballfever.domain.usecases.LeagueMatchesUseCases
 
 import com.example.footboolfever.data.remote.dto.FixturesDto
 import com.pancake.footballfever.data.local.database.entity.LeagueMatchEntity
@@ -10,22 +10,23 @@ class CacheLeagueMatchesUseCase @Inject constructor(
     private val leagueMatchesRepositoryImpl: LeagueMatchesRepositoryImpl,
 ) {
 
-    suspend fun cacheLeagueMatches(leagueMatches: List<FixturesDto>?) {
+    suspend fun cacheLeagueMatches(leagueMatches: List<FixturesDto>?, season: Int, league: Int) {
         return leagueMatchesRepositoryImpl.cacheAllLeagueMatches(leagueMatches!!.map {
-            it.toLeagueMatchEntity()
+            it.toLeagueMatchEntity(season, league)
         })
     }
 
-    private fun FixturesDto.toLeagueMatchEntity(): LeagueMatchEntity {
+    private fun FixturesDto.toLeagueMatchEntity(season: Int, league: Int): LeagueMatchEntity {
         return LeagueMatchEntity(
+            id = fixture?.id!!,
+            season = season,
+            teamId = league,
             homeTeamLogo = teams?.home?.logo,
             awayTeamLogo = teams?.away?.logo,
             awayTeamName = teams?.away?.name,
             homeTeamName = teams?.home?.name,
-            id = fixture?.id,
             date = fixture?.date?.take(10),
             matchTime = fixture?.timestamp?.toDate(),
-            season = league?.season,
         )
     }
 }

@@ -39,7 +39,7 @@ class LeaguesRepositoryImpl @Inject constructor(
                 data?.let {
                     leagueDao.deleteAllLeagues()
                     leagueDao.insertLeagues(it)
-                    return Result.success(it)
+                    Result.success(it)
                 }
             }
             Result.failure(Exception(response.message().toString()))

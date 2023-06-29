@@ -26,6 +26,7 @@ class TopScoreFragment : BaseFragment<FragmentTopScoreBinding, TopScorerViewMode
         val season = requireArguments().getInt(Constants.SEASON)
 
         viewModel.fetchData(leagueId, season)
+
     }
 
     companion object {

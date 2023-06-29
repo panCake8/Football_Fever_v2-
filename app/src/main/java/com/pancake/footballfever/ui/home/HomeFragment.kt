@@ -2,6 +2,7 @@ package com.pancake.footballfever.ui.home
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.pancake.footballfever.R
@@ -12,6 +13,10 @@ import com.prolificinteractive.materialcalendarview.CalendarDay
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import androidx.activity.OnBackPressedCallback
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
@@ -21,6 +26,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     private val calender = Calendar.getInstance()
     private var dateFormatter = ""
     private var seasonFormatter = 0
+    private var doubleBackToExitPressedOnce = false
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         callFixtures()
@@ -28,6 +35,29 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         setUpCalender()
         onCalenderClick()
         observeEvents()
+        handleOnBackPressed()
+    }
+
+
+    private fun handleOnBackPressed() {
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    if (doubleBackToExitPressedOnce) {
+                        requireActivity().finish()
+                    } else {
+                        doubleBackToExitPressedOnce = true
+                        Toast.makeText(requireContext(), "Press back again to exit", Toast.LENGTH_SHORT).show()
+
+                        lifecycleScope.launch {
+                            delay(2000)
+                            doubleBackToExitPressedOnce = false
+                        }
+                    }
+                }
+            }
+        )
     }
 
     private fun callFixtures() {

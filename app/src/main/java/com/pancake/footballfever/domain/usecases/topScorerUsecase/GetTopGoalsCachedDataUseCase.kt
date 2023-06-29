@@ -7,6 +7,6 @@ import javax.inject.Inject
 class GetTopGoalsCachedDataUseCase @Inject constructor(
     private val playerRepository: PlayerRepository,
 ) {
-    suspend operator fun invoke() = playerRepository.getTopGoalsCachedData().map { it.toTopGoals() }
+    suspend operator fun invoke(leagueId: Int, seasonId: Int) = playerRepository.getTopGoalsCachedData(leagueId, seasonId).map { it.toTopGoals() }
 
 }

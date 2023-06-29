@@ -1,6 +1,6 @@
 package com.pancake.footballfever.ui.club_stats
 
-import android.util.Log
+
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.fragment.app.viewModels
@@ -15,10 +15,8 @@ import com.pancake.footballfever.ui.league_state.standing.StandingFragment
 import com.pancake.footballfever.ui.player.PlayersFragment
 import com.pancake.footballfever.ui.team_fixture.TeamFixtureFragment
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ClubStatsFragment :BaseFragment<FragmentClubBinding, ClubViewModel>() {
@@ -36,16 +34,16 @@ class ClubStatsFragment :BaseFragment<FragmentClubBinding, ClubViewModel>() {
             when (it){
                 is ClubUiEvent.OnClickFollow -> {
                     binding.followButton.setOnClickListener {
-                    if (binding.followButton.text =="follow") {
+                    if (binding.followButton.text == FOLLOW) {
                         viewModel.addFavoriteOneTeam()
-                        binding.followButton.text = "unfollow"
+                        binding.followButton.text = UN_FOLLOW
                     }}
                 }
                 is ClubUiEvent.OnClickUnFollow ->{
                     binding.followButton.setOnClickListener{
-                if (binding.followButton.text =="unfollow") {
+                if (binding.followButton.text == UN_FOLLOW) {
                     viewModel.deleteFavoriteOneTeam(argument.teamId)
-                    binding.followButton.text = "follow"}
+                    binding.followButton.text = FOLLOW}
                 }
             }
 
@@ -63,18 +61,9 @@ class ClubStatsFragment :BaseFragment<FragmentClubBinding, ClubViewModel>() {
     private fun addFragmentsToViewPager() {
         clubStatsPagerAdapter.addFragment(PlayersFragment.newInstance(argument.season,argument.teamId))
         clubStatsPagerAdapter.addFragment(TeamFixtureFragment.newInstance(argument.season.toString(),argument.teamId.toString()))
-        if (argument.leagueId==0){
-            viewModel.getLeagueIdByCountryName()
-            viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.leagueId
-                .collect{
-                    clubStatsPagerAdapter
-                    .addFragment(StandingFragment.newInstance(it,argument.season,3))}}
-
-    }
-        else
-            clubStatsPagerAdapter.addFragment(StandingFragment.newInstance(argument.leagueId,argument.season,3))
-    }
+        if(argument.leagueId!=0){
+        clubStatsPagerAdapter.addFragment(StandingFragment.newInstance(argument.leagueId,argument.season,3))
+    }}
 
 
     private fun initTabLayout() {
@@ -90,14 +79,14 @@ class ClubStatsFragment :BaseFragment<FragmentClubBinding, ClubViewModel>() {
             }
             }.attach()
     }
-    private fun getLeagueId(){
 
-    }
     companion object {
-        private const val LEAGUE_ID = "leagueId"
         private const val PLAYERS = "players"
         private const val MATCHES = "matches"
         private const val TABLE = "Table"
+        private const val FOLLOW = "follow"
+        private const val UN_FOLLOW = "un follow"
+
     }
 
 }

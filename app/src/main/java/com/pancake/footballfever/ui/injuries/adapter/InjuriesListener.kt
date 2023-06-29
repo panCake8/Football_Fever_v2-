@@ -5,5 +5,5 @@ import com.pancake.footballfever.ui.base.BaseAdapterListener
 
 interface InjuriesListener:BaseAdapterListener {
 
-    fun onClickInjury(injuries: Injuries)
+    fun onClickInjury()
 }

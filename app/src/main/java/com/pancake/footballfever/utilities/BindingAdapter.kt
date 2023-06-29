@@ -1,6 +1,5 @@
 package com.pancake.footballfever.utilities
 
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
@@ -11,14 +10,17 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.pancake.footballfever.R
-import com.pancake.footballfever.domain.models.FixtureHome
 import com.pancake.footballfever.domain.models.FixtureSummary
 import com.pancake.footballfever.ui.base.BaseAdapter
 import com.pancake.footballfever.ui.fixture.FixtureUiState
+import com.pancake.footballfever.ui.fixture.head2head.adapter.HeadToHeadListener
+import com.pancake.footballfever.ui.fixture.head2head.adapter.HeadToHeadParentAdapter
 import com.pancake.footballfever.ui.fixture.summary.FixtureSummaryAdapter
 import com.pancake.footballfever.ui.home.HomeUiState
 import com.pancake.footballfever.ui.home.adapter.FixtureHomeListener
 import com.pancake.footballfever.ui.home.adapter.ParentHomeAdapter
+import com.pancake.footballfever.ui.league_state.LeagueUiState
+import com.pancake.footballfever.ui.league_state.top_score.ui_state.TopScorerUiState
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -26,6 +28,9 @@ import java.util.Locale
 fun <T> setRecyclerItems(recyclerView: RecyclerView, items: List<T?>?) {
     (recyclerView.adapter as BaseAdapter<T?>?)?.submitList(items)
 }
+
+
+
 
 @BindingAdapter(value = ["app:setImageUrl"])
 fun setImageUrl(image: ImageView, url: String?) {
@@ -157,8 +162,27 @@ fun showIfSuccess(view: View, fixtureUiState: FixtureUiState) {
     else
         view.visibility = View.GONE
 }
-
-
+@BindingAdapter(value = ["showIfSuccess"])
+fun showIfSuccess(view: View, leagueUiState: LeagueUiState) {
+    if (leagueUiState.success != null)
+        view.visibility = View.VISIBLE
+    else
+        view.visibility = View.GONE
+}
+@BindingAdapter(value = ["showIfSuccess"])
+fun showIfSuccess(view: View, list: List<Any>) {
+    if (list != null)
+        view.visibility = View.VISIBLE
+    else
+        view.visibility = View.GONE
+}
+@BindingAdapter(value = ["showIfSuccess"])
+fun showIfSuccess(view: View, value: Any) {
+    if (value != null)
+        view.visibility = View.VISIBLE
+    else
+        view.visibility = View.GONE
+}
 @BindingAdapter(value = ["app:hideWhenSearch"])
 fun hideWhenSearch(view: View, text: String) {
     view.isVisible = text.isBlank()
