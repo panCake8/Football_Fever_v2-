@@ -76,6 +76,7 @@
     <string name="description_of_app">Football applications have revolutionized the way we engage with the beautiful game, bringing convenience, interactivity, and a wealth of information to the fingertips of fans worldwide. These applications, often available on smartphones or other devices, have become an essential part of a football enthusiast\'s digital toolkit.</string>
     <string name="about">About</string>
     <string name="no_results_found">No Results Found</string>
+    <string name="app_widget_description">app widget description</string>
 
 
 </resources>
