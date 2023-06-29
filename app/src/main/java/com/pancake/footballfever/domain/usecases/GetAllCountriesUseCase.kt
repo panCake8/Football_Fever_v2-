@@ -8,7 +8,7 @@ import javax.inject.Inject
 class GetAllCountriesUseCase @Inject constructor(
     private val countryRepository: CountryRepository,
 ) {
-    suspend fun getAllCountries(): List<SelectCountry> {
+    suspend operator fun invoke(): List<SelectCountry> {
         return countryRepository.getAllCountriesRemote().filter { it.name != NOTHING }
             .map { it.toSelectCountry() }
     }

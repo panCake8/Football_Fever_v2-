@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SelectCountryViewModel @Inject constructor(
-    private val getAllCountriesUseCase: GetAllCountriesUseCase
+    private val getAllCountriesUseCase: GetAllCountriesUseCase,
 ) : ViewModel(), SelectCountryListener {
 
     private val _countries = MutableStateFlow(SelectCountryUiState())
@@ -33,7 +33,7 @@ class SelectCountryViewModel @Inject constructor(
         _countries.update { it.copy(isLoading = true, error = null) }
         viewModelScope.launch {
             try {
-                val countries = getAllCountriesUseCase.getAllCountries()
+                val countries = getAllCountriesUseCase()
                 _countries.update {
                     it.copy(isLoading = false, success = countries)
                 }
