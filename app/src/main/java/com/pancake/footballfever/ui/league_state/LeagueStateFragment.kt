@@ -29,6 +29,8 @@ class LeagueStateFragment : BaseFragment<FragmentLeagueStateBinding, LeagueState
         initViewPager()
         initTabLayout()
         initData()
+
+
     }
 
     private fun initData() {

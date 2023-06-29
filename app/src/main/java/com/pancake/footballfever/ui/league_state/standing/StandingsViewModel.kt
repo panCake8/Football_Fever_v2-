@@ -30,13 +30,29 @@ class StandingsViewModel @Inject constructor(
     fun fetchData(leagueId: Int, season: Int) {
         viewModelScope.launch(Dispatchers.IO) {
 
-            fetchStandingsAndCacheUseCase.invoke(leagueId, season)
-
-            _uiState.update {
-                it.copy(
-                    response = getCachedStandingsUseCase.invoke(leagueId, season),
-                    isLoading = false
-                )
+            val value = fetchStandingsAndCacheUseCase.invoke(leagueId, season)
+            if (value.isFailure) {
+                _uiState.update {
+                    it.copy(
+                        errors = "something bad",
+                        isLoading = false
+                    )
+                }
+            }
+            if (getCachedStandingsUseCase(leagueId, season).isEmpty()) {
+                _uiState.update {
+                    it.copy(
+                        errorMessage = "THERE IS NOTHING TO SHOW GO AWAY :P",
+                        isLoading = false,
+                    )
+                }
+            } else {
+                _uiState.update {
+                    it.copy(
+                        response = getCachedStandingsUseCase.invoke(leagueId, season),
+                        isLoading = false
+                    )
+                }
             }
 
         }
@@ -46,5 +62,8 @@ class StandingsViewModel @Inject constructor(
         standingEvent.postValue(Event(standing))
     }
 
+    fun refreshData(leagueId: Int, season: Int) {
+        fetchData(leagueId, season)
+    }
 
 }

@@ -5,5 +5,6 @@ import com.pancake.footballfever.domain.models.Standings
 data class StandingsUIState(
     val response: List<Standings>? = null,
     val isLoading: Boolean = true,
-    val errors: String? = ""
+    val errors: String? = null,
+    val errorMessage: String? = null,
 )

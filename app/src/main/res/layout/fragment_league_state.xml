@@ -76,6 +76,7 @@
             app:tabIndicatorColor="@color/green"
             app:tabIndicatorFullWidth="true"
             app:tabIndicatorGravity="stretch"
+            showIfSuccess="@{viewModel.uiState}"
             app:tabMode="scrollable"
             app:tabPaddingEnd="@dimen/large_padding"
             app:tabPaddingStart="@dimen/large_padding"
@@ -88,9 +89,38 @@
             android:layout_marginHorizontal="@dimen/medium_margin"
             android:layout_marginTop="@dimen/large_margin"
             app:layout_constraintBottom_toBottomOf="parent"
+            showIfSuccess="@{viewModel.uiState}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tab_layout" />
+
+<!--        <androidx.appcompat.widget.AppCompatImageView-->
+<!--            android:id="@+id/error_icon"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:showIfError="@{viewModel.uiState.errorMessage}"-->
+<!--            app:srcCompat="@drawable/baseline_error_48" />-->
+
+<!--        <androidx.appcompat.widget.AppCompatButton-->
+<!--            android:id="@+id/refresh_button"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="@dimen/large_margin"-->
+<!--            android:background="@drawable/refresh_button_shape"-->
+<!--            android:paddingHorizontal="@dimen/large_padding"-->
+<!--            android:text="@string/refresh_data"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:textColor="@color/white87"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/error_icon"-->
+<!--            app:showIfError="@{viewModel.uiState.errorMessage}" />-->
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

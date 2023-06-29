@@ -14,9 +14,12 @@ import com.pancake.footballfever.ui.leagues.uiState.LeagueUiEvent
 import com.pancake.footballfever.utilities.collectLast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -24,12 +27,16 @@ class LeagueFragment : BaseFragment<FragmentLeagueBinding, LeaguesViewModel>() {
 
     override val layoutId: Int = R.layout.fragment_league
     override val viewModel: LeaguesViewModel by viewModels()
+    private val searchQueryFlow = MutableStateFlow("")
+    private var searchJob: Job? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerAdapter()
         collectEvent()
         getSearchResultsBySearchTerm()
+
+
     }
 
     private fun setRecyclerAdapter() {
@@ -55,16 +62,18 @@ class LeagueFragment : BaseFragment<FragmentLeagueBinding, LeaguesViewModel>() {
 
     @OptIn(FlowPreview::class)
     private fun getSearchResultsBySearchTerm() {
+
+        binding.searchBar.doOnTextChanged { text, _, _, _ ->
+            searchQueryFlow.value = text.toString()
+        }
         lifecycleScope.launch {
-            callbackFlow {
-                binding.searchBar.doOnTextChanged { text, _, _, _ ->
-                    text?.let { channel.trySend(it.toString()).isSuccess }
-                }
-                awaitClose()
-            }
-                .debounce(500)
-                .collect { text ->
-                    makeSearch(text)
+            searchQueryFlow
+                .debounce(500) // Debounce for 500 milliseconds
+                .distinctUntilChanged() // Ignore duplicate consecutive queries
+                .collect { query ->
+                    searchJob?.cancel() // Cancel any previous search job
+
+                    searchJob = viewModel.onSearchInputChange(query)
                 }
         }
     }

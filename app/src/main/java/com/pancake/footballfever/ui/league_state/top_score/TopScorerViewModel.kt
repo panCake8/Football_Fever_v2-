@@ -27,17 +27,24 @@ class TopScorerViewModel @Inject constructor(
     fun fetchData(leagues: Int, seasons: Int) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                fetchTopGoalsUseCase(leagues, seasons)
-
                 _uiState.update { it.copy(isLoading = true) }
+                val topScore = fetchTopGoalsUseCase(leagues, seasons)
+                if (topScore.isFailure) {
+                    _uiState.update { it.copy(error = "") }
+
+                    _uiState.update { it.copy(isLoading = false, error = "THERE IS NOTHING TO SHOW GO AWAY :P") }
+                }
+                if (getTopGoalsCachedDataUseCase(leagues, seasons).isEmpty()) {
+                    _uiState.update { it.copy(isLoading = false, errorMessage = "THERE IS NOTHING TO SHOW GO AWAY :P") }
+
+                }
                 _uiState.update {
                     it.copy(
-                        topGoalsList = getTopGoalsCachedDataUseCase(leagues, seasons),
+                        success = getTopGoalsCachedDataUseCase(leagues, seasons),
                         isLoading = false
                     )
                 }
 
-                _uiState.update { it.copy(error = "") }
 
             }
 

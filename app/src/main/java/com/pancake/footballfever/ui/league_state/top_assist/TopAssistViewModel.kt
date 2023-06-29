@@ -28,9 +28,16 @@ class TopAssistViewModel @Inject constructor(
     fun fetchData(leagues: Int, seasons: Int) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                fetchTopAssistsUseCase(leagues, seasons)
-
                 _uiState.update { it.copy(isLoading = true) }
+                val topAssist = fetchTopAssistsUseCase(leagues, seasons)
+                if (topAssist.isFailure) {
+
+                    _uiState.update { it.copy(isLoading = false, error = "THERE IS NOTHING TO SHOW GO AWAY :P") }
+                }
+                if (getTopAssistsCachedDataUseCase(leagues, seasons).isEmpty()) {
+                    _uiState.update { it.copy(isLoading = false, errorMessage = "THERE IS NOTHING TO SHOW GO AWAY :P") }
+
+                }
                 _uiState.update {
                     it.copy(
                         topAssistsList = getTopAssistsCachedDataUseCase(leagues, seasons),
@@ -38,10 +45,13 @@ class TopAssistViewModel @Inject constructor(
                     )
                 }
 
-                _uiState.update { it.copy(error = "THERE IS NOTHING TO SHOW GO AWAY :P") }
 
 
             }
         }
+    }
+
+    fun refreshData(leagues: Int, seasons: Int) {
+        fetchData(leagues, seasons)
     }
 }
