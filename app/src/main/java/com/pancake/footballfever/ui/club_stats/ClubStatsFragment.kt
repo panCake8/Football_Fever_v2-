@@ -1,6 +1,7 @@
 package com.pancake.footballfever.ui.club_stats
 
 
+import android.util.Log
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.fragment.app.viewModels
@@ -67,6 +68,7 @@ class ClubStatsFragment :BaseFragment<FragmentClubBinding, ClubViewModel>() {
             viewLifecycleOwner.lifecycleScope.launch {
             viewModel.leagueId
                 .collect{
+                    Log.i("TAG","$it")
                     clubStatsPagerAdapter
                     .addFragment(StandingFragment.newInstance(it,argument.season,3))}}
 
