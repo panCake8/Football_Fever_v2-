@@ -21,7 +21,7 @@ class FavouritesFragment : BaseFragment<FragmentFavouritesBinding, FavouritesVie
     override val viewModel: FavouritesViewModel by viewModels()
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private val season= Year.now().value
+    private val season= Year.now().value-1
 
 
     @RequiresApi(Build.VERSION_CODES.O)
