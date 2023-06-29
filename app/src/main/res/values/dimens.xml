@@ -74,4 +74,10 @@
     <dimen name="width_text_header_standings_table">32dp</dimen>
 
     <dimen name="nav_bottom_height">80dp</dimen>
+
+    <!--
+Refer to App Widget Documentation for margin information
+http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
+    -->
+    <dimen name="widget_margin">0dp</dimen>
 </resources>

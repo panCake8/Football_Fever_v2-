@@ -30,11 +30,13 @@
         <item name="android:textColor">@color/white87</item>
         <item name="fontFamily">@font/poppins_semibold</item>
     </style>
+
     <style name="club_name" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">@dimen/text_large</item>
         <item name="android:textColor">@color/white87</item>
         <item name="fontFamily">@font/poppins_medium</item>
     </style>
+
     <style name="venue_name" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">@dimen/text_small</item>
         <item name="android:textColor">@color/chip_text_color</item>
@@ -131,5 +133,15 @@
     <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
         <item name="android:color">@color/green</item>
 
+    </style>
+
+    <style name="Widget.FootballFever.AppWidget.Container" parent="android:Widget">
+        <item name="android:id">@android:id/background</item>
+        <item name="android:background">?android:attr/colorBackground</item>
+    </style>
+
+    <style name="Widget.FootballFever.AppWidget.InnerView" parent="android:Widget">
+        <item name="android:background">?android:attr/colorBackground</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>
 </resources>

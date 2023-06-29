@@ -15,6 +15,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FootballFever"
         tools:targetApi="31">
+        <receiver
+            android:name=".ui.widget.AppWidget"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/app_widget_info" />
+        </receiver>
+
         <activity
             android:name=".ui.HomeActivity"
             android:exported="true"

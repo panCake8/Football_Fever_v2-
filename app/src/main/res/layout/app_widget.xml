@@ -1,0 +1,21 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Widget.FootballFever.AppWidget.Container"
+    android:id="@+id/widgetLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.FootballFever.AppWidgetContainer">
+
+    <TextView
+        android:id="@+id/widgetTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:textSize="24sp"
+        android:text="No Matches today"
+        android:textColor="@color/white"
+        android:textStyle="bold|italic" />
+</RelativeLayout>
