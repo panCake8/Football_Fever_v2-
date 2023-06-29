@@ -34,7 +34,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
     override val viewModel: SearchViewModel by viewModels()
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private val season=Year.now().value
+    private val season=Year.now().value-1
 
     @SuppressLint("ResourceAsColor")
     @RequiresApi(Build.VERSION_CODES.O)
