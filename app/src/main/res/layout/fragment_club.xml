@@ -33,6 +33,9 @@
                 app:layout_constraintStart_toStartOf="parent"/>
             <TextView
                 android:id="@+id/club_name"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:maxWidth="150dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toEndOf="@+id/club_image"
@@ -40,7 +43,7 @@
                 style="@style/club_name"
                 android:layout_marginStart="@dimen/large_margin"
                 android:text="@{viewModel.clubUiState.success.teamName}"
-                tools:text="kareem"
+                tools:text="arsenal"
                 />
             <TextView
                 android:layout_width="wrap_content"
