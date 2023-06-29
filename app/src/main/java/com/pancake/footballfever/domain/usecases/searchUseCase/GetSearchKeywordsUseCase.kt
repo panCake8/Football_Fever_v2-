@@ -1,4 +1,4 @@
-package com.pancake.footballfever.domain.usecases
+package com.pancake.footballfever.domain.usecases.searchUseCase
 
 import com.pancake.footballfever.data.local.database.entity.SearchKeywordEntity
 import com.pancake.footballfever.data.repository.search.SearchKeywordsRepository
@@ -16,6 +16,12 @@ class GetSearchKeywordsUseCase @Inject constructor(
     suspend fun insertSearchKeywords(searchKeyword: SearchKeyword){
          searchKeywordsRepository.insertKeyword(searchKeyword.toSearchKeywordEntity())
     }
+
+    suspend fun deleteAllKeywords(){
+        searchKeywordsRepository.deleteAllKeyword()
+    }
+
+
     private fun SearchKeywordEntity.toSearchKeyword(): SearchKeyword {
         return SearchKeyword(
            this.keyword

@@ -21,7 +21,7 @@ class FavouritesFragment : BaseFragment<FragmentFavouritesBinding, FavouritesVie
     override val viewModel: FavouritesViewModel by viewModels()
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private val season= Year.now().value
+    private val season= Year.now().value-1
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -51,7 +51,7 @@ class FavouritesFragment : BaseFragment<FragmentFavouritesBinding, FavouritesVie
         when (event) {
             is FavoriteEvent.ClickFavoriteEvent -> {
                 val nav =
-                    FavouritesFragmentDirections.actionFavouritesFragmentToClubFragment(event.favoriteTeam.id!!,event.favoriteTeam.id,season)
+                    FavouritesFragmentDirections.actionFavouritesFragmentToClubFragment(event.favoriteTeam.id!!,0,season)
                 findNavController().navigate(nav)
             }
         }

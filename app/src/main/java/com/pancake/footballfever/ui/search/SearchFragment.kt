@@ -1,10 +1,17 @@
 package com.pancake.footballfever.ui.search
 
+import android.annotation.SuppressLint
+import android.opengl.Visibility
 import android.os.Build
 import android.util.Log
+
 import androidx.activity.addCallback
+
+import android.view.View
+
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.green
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -14,6 +21,7 @@ import com.pancake.footballfever.R
 import com.pancake.footballfever.databinding.FragmentSearchBinding
 import com.pancake.footballfever.domain.models.SearchKeyword
 import com.pancake.footballfever.ui.base.BaseFragment
+import com.pancake.footballfever.utilities.DataState
 import com.pancake.footballfever.utilities.collect
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.FlowPreview
@@ -30,19 +38,27 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
     override val viewModel: SearchViewModel by viewModels()
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private val season=Year.now().value
+    private val season=Year.now().value-1
 
+    @SuppressLint("ResourceAsColor")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun setup() {
         binding.searchRecycler.adapter = SearchAdapter(viewModel)
 
         lifecycleScope.launch {
             viewModel.searchKeyword.collect { searchKeywords ->
+                if(searchKeywords.isEmpty()){
+                    binding.clearText.text = ""
+                }else
+                    binding.clearText.text = "Clear All"
                 makeSuggestKeywordToChips(searchKeywords)
             }
         }
+
+
         doEvent()
         searchViewListener()
+
         handleOnBackPressed()
     }
 
@@ -51,6 +67,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             findNavController().navigate(R.id.homeFragment)
         }
+
+        clear()
+
     }
 
     @OptIn(FlowPreview::class)
@@ -63,6 +82,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
                         viewModel.showKeywordSuggests()
                         Log.i("x3x", viewModel.searchKeyword.value.toString())
                     }
+
                 }
                 awaitClose()
             }
@@ -80,7 +100,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
         }
     }
 
-    private fun makeSuggestKeywordToChips(items: List<SearchKeyword>?) {
+    private fun makeSuggestKeywordToChips(items: Set<SearchKeyword>?) {
         binding.searchSuggest.removeAllViews()
         items?.take(8)?.forEach { searchKeyword ->
             val chip = Chip(context).apply {
@@ -93,6 +113,12 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
                 }
             }
             binding.searchSuggest.addView(chip)
+        }
+    }
+
+    fun clear(){
+        binding.clearText.setOnClickListener {
+            viewModel.clearAllKeywords()
         }
     }
 
@@ -112,10 +138,12 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
             }
             is SearchUiEvent.ClickTeamEvent -> {
                 val nav =
-                    SearchFragmentDirections.actionHiltSearchFragmentToClubFragment(event.item.id!!,event.item.id!!,season)
+                    SearchFragmentDirections.actionHiltSearchFragmentToClubFragment(event.item.id!!,0,season)
                 findNavController().navigate(nav)
             }
-            else->{}
+            is SearchUiEvent.ClickClearAllEvent->{
+                viewModel.clearAllKeywords()
+            }
         }
     }
 

@@ -27,7 +27,7 @@ class InjuriesViewModel @Inject constructor(
     val injury: StateFlow<InjuriesUiState>
         get() = _injury
 
-    val injuryEvent = MutableLiveData<Event<Injuries>>()
+    val injuryEvent = MutableLiveData<Event<Unit>>()
 
     init {
         fetchInjuries()
@@ -62,8 +62,8 @@ class InjuriesViewModel @Inject constructor(
         }
     }
 
-    override fun onClickInjury(injuries: Injuries) {
-        injuryEvent.postValue(Event(injuries))
+    override fun onClickInjury() {
+        injuryEvent.postValue(Event(Unit))
     }
 
 }

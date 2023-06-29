@@ -2,9 +2,7 @@ package com.pancake.footballfever.ui.league_state.standing
 
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.pancake.footballfever.R
 import com.pancake.footballfever.databinding.FragmentStandingBinding
@@ -12,15 +10,11 @@ import com.pancake.footballfever.domain.Constants
 import com.pancake.footballfever.ui.base.BaseFragment
 import com.pancake.footballfever.ui.club_stats.ClubStatsFragmentDirections
 import com.pancake.footballfever.ui.fixture.FixtureFragmentDirections
-import com.pancake.footballfever.ui.fixture.head2head.uiState.HeadToHeadUiEvent
-import com.pancake.footballfever.ui.home.HomeFragmentDirections
 import com.pancake.footballfever.ui.league_state.LeagueStateFragmentDirections
 import com.pancake.footballfever.utilities.EventObserver
-import com.pancake.footballfever.utilities.collectLast
 
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
+
 
 @AndroidEntryPoint
 class StandingFragment : BaseFragment<FragmentStandingBinding, StandingsViewModel>() {
@@ -73,7 +67,7 @@ class StandingFragment : BaseFragment<FragmentStandingBinding, StandingsViewMode
 
     companion object {
         @JvmStatic
-        fun newInstance(leagueId: Int?, season: Int?,choose:Int): StandingFragment {
+         fun newInstance(leagueId: Int?, season: Int?,choose:Int): StandingFragment {
             val fragment = StandingFragment()
             val args = Bundle().apply {
                 leagueId?.let { putInt(Constants.LEAGUE_ID, it) }

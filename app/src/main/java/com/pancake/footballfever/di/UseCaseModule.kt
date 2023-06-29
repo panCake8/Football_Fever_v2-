@@ -7,10 +7,10 @@ import com.pancake.footballfever.data.repository.search.SearchKeywordsRepository
 import com.pancake.footballfever.data.repository.search.TeamSearchRepository
 import com.pancake.footballfever.domain.usecases.DeleteFromFavouriteTeamsUseCase
 import com.pancake.footballfever.domain.usecases.GetAllFavouriteTeams
-import com.pancake.footballfever.domain.usecases.GetCoachSearchUseCase
-import com.pancake.footballfever.domain.usecases.GetLeagueSearchUseCase
-import com.pancake.footballfever.domain.usecases.GetSearchKeywordsUseCase
-import com.pancake.footballfever.domain.usecases.GetTeamSearchUseCase
+import com.pancake.footballfever.domain.usecases.searchUseCase.GetCoachSearchUseCase
+import com.pancake.footballfever.domain.usecases.searchUseCase.GetLeagueSearchUseCase
+import com.pancake.footballfever.domain.usecases.searchUseCase.GetSearchKeywordsUseCase
+import com.pancake.footballfever.domain.usecases.searchUseCase.GetTeamSearchUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
