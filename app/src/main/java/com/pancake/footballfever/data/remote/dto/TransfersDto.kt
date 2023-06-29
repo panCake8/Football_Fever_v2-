@@ -1,6 +1,7 @@
 package com.example.footboolfever.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
+import com.pancake.footballfever.data.local.database.entity.TransferEntity
 
 data class TransfersDto(
 
@@ -68,3 +69,16 @@ data class TransfersTeams(
     @field:SerializedName("out")
     val out: Out? = null
 )
+
+fun TransfersDto.toTransfersEntity(): TransferEntity{
+    return TransferEntity(
+        id = player?.id,
+        playerName = player?.name,
+        date = transfers?.get(0)?.date,
+        transferType = transfers?.get(0)?.type,
+        clubNameIN = transfers?.get(0)?.teams?.on?.name,
+        clubLogoIN = transfers?.get(0)?.teams?.on?.logo,
+        clubNameOut = transfers?.get(0)?.teams?.out?.name,
+        clubLogoOut = transfers?.get(0)?.teams?.out?.logo,
+    )
+}
