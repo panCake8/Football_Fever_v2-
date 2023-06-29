@@ -17,4 +17,8 @@ class SearchKeywordsRepositoryImpl @Inject constructor(
       return footballDao.getAllSearchKeywords()
     }
 
+    override suspend fun deleteAllKeyword() {
+        footballDao.deleteAllSearchKeywords()
+    }
+
 }

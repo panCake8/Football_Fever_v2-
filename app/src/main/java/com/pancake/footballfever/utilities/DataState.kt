@@ -8,6 +8,8 @@ sealed class DataState<out T>{
 
     object Loading:DataState<Nothing>()
 
+    object Empty:DataState<Nothing>()
+
     fun toDate():List<T>? = if (this is Success) data else null
 
     object ShowKeywordSuggests : DataState<Nothing>()

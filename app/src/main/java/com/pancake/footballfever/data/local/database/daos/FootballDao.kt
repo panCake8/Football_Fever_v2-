@@ -62,4 +62,7 @@ interface FootballDao {
 
     @Query("SELECT * FROM KEYWORD_SEARCH_TABLE ORDER BY id DESC")
     suspend fun getAllSearchKeywords(): List<SearchKeywordEntity>
+
+    @Query("DELETE FROM KEYWORD_SEARCH_TABLE")
+    suspend fun deleteAllSearchKeywords()
 }

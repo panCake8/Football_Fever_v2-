@@ -1,4 +1,4 @@
-package com.pancake.footballfever.domain.usecases
+package com.pancake.footballfever.domain.usecases.searchUseCase
 
 import com.example.footboolfever.data.remote.dto.CoachsDto
 import com.pancake.footballfever.data.repository.search.CoachSearchRepository
