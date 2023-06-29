@@ -2,6 +2,7 @@ package com.pancake.footballfever.ui.leagues
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.addCallback
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -15,9 +16,7 @@ import com.pancake.footballfever.utilities.collectLast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
@@ -35,8 +34,12 @@ class LeagueFragment : BaseFragment<FragmentLeagueBinding, LeaguesViewModel>() {
         setRecyclerAdapter()
         collectEvent()
         getSearchResultsBySearchTerm()
-
-
+        handleOnBackPressed()
+    }
+    private fun handleOnBackPressed() {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            findNavController().navigate(R.id.homeFragment)
+        }
     }
 
     private fun setRecyclerAdapter() {
@@ -68,19 +71,13 @@ class LeagueFragment : BaseFragment<FragmentLeagueBinding, LeaguesViewModel>() {
         }
         lifecycleScope.launch {
             searchQueryFlow
-                .debounce(500) // Debounce for 500 milliseconds
-                .distinctUntilChanged() // Ignore duplicate consecutive queries
+                .debounce(500)
+                .distinctUntilChanged()
                 .collect { query ->
-                    searchJob?.cancel() // Cancel any previous search job
+                    searchJob?.cancel()
 
                     searchJob = viewModel.onSearchInputChange(query)
                 }
-        }
-    }
-
-    private fun makeSearch(text: String) {
-        if (text.isNotBlank()) {
-            viewModel.onSearchInputChange(text)
         }
     }
 

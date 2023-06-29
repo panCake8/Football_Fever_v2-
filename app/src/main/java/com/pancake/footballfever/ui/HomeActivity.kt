@@ -1,7 +1,10 @@
 package com.pancake.footballfever.ui
 
+import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.WindowInsetsController
+import androidx.annotation.RequiresApi
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -11,6 +14,9 @@ import com.pancake.footballfever.databinding.ActivityHomeBinding
 import com.pancake.footballfever.ui.base.BaseActivity
 import com.pancake.footballfever.utilities.SharedPrefManager
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeActivity : BaseActivity<ActivityHomeBinding>() {
@@ -20,11 +26,15 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var navController: NavController
 
+    @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         SharedPrefManager.getInit(applicationContext)
         navController()
+
+
     }
+
 
     private fun navController() {
         navHostFragment =

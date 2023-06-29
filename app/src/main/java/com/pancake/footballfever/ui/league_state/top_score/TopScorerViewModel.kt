@@ -32,10 +32,10 @@ class TopScorerViewModel @Inject constructor(
                 if (topScore.isFailure) {
                     _uiState.update { it.copy(error = "") }
 
-                    _uiState.update { it.copy(isLoading = false, error = "THERE IS NOTHING TO SHOW GO AWAY :P") }
+                    _uiState.update { it.copy(isLoading = false, errorMessage = null, error = "THERE IS NOTHING TO SEE GO AWAY :P") }
                 }
                 if (getTopGoalsCachedDataUseCase(leagues, seasons).isEmpty()) {
-                    _uiState.update { it.copy(isLoading = false, errorMessage = "THERE IS NOTHING TO SHOW GO AWAY :P") }
+                    _uiState.update { it.copy(isLoading = false, error = null, errorMessage = "THERE IS NOTHING TO SEE GO AWAY :P") }
 
                 }
                 _uiState.update {
@@ -51,4 +51,7 @@ class TopScorerViewModel @Inject constructor(
         }
     }
 
+    fun refreshData(leagues: Int, seasons: Int) {
+        fetchData(leagues, seasons)
+    }
 }

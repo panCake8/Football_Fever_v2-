@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">FootBall Fever</string>
     <string name="goal">Goal</string>
-    <string name="assist">Assist</string>
+    <string name="assist">Passes</string>
     <string name="choose_your_favorite_leagues">Choose your favorite leagues</string>
     <string name="choose_country">Choose country</string>
     <string name="back">Back</string>

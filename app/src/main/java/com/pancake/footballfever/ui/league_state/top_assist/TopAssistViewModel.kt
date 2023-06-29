@@ -32,10 +32,11 @@ class TopAssistViewModel @Inject constructor(
                 val topAssist = fetchTopAssistsUseCase(leagues, seasons)
                 if (topAssist.isFailure) {
 
-                    _uiState.update { it.copy(isLoading = false, error = "THERE IS NOTHING TO SHOW GO AWAY :P") }
+                    _uiState.update { it.copy(isLoading = false, error = "THERE IS NOTHING TO SEE GO AWAY :P",
+                    errorMessage = null) }
                 }
                 if (getTopAssistsCachedDataUseCase(leagues, seasons).isEmpty()) {
-                    _uiState.update { it.copy(isLoading = false, errorMessage = "THERE IS NOTHING TO SHOW GO AWAY :P") }
+                    _uiState.update { it.copy(isLoading = false, error = null, errorMessage = "THERE IS NOTHING TO SEE GO AWAY :P") }
 
                 }
                 _uiState.update {

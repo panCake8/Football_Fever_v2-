@@ -2,6 +2,7 @@ package com.pancake.footballfever.ui.search
 
 import android.os.Build
 import android.util.Log
+import androidx.activity.addCallback
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
@@ -42,6 +43,14 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
         }
         doEvent()
         searchViewListener()
+        handleOnBackPressed()
+    }
+
+
+    private fun handleOnBackPressed() {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            findNavController().navigate(R.id.homeFragment)
+        }
     }
 
     @OptIn(FlowPreview::class)

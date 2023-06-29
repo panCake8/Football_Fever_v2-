@@ -67,6 +67,11 @@
         <action
             android:id="@+id/action_favouritesFragment_to_clubFragment"
             app:destination="@id/clubFragment" />
+        <action
+            android:id="@+id/action_favouritesFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -156,6 +161,11 @@
         <action
             android:id="@+id/action_leagueFragment_to_leagueStateFragment"
             app:destination="@id/leagueStateFragment" />
+        <action
+            android:id="@+id/action_leagueFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -169,6 +179,11 @@
         <action
             android:id="@+id/action_hilt_SearchFragment_to_leagueStateFragment"
             app:destination="@id/leagueStateFragment" />
+        <action
+            android:id="@+id/action_SearchFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
