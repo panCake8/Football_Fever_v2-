@@ -53,9 +53,11 @@
 
                 <TextView
                     android:id="@+id/name_league"
-                    android:layout_width="wrap_content"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/elevation_giant"
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:text="@{item.name.toString()}"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_small"

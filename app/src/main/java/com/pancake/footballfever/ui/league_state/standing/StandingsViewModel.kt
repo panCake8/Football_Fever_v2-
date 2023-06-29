@@ -1,5 +1,6 @@
 package com.pancake.footballfever.ui.league_state.standing
 
+import android.accounts.NetworkErrorException
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,6 +14,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import java.io.IOException
 import javax.inject.Inject
 
 
@@ -29,16 +31,32 @@ class StandingsViewModel @Inject constructor(
 
     fun fetchData(leagueId: Int, season: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-
-            fetchStandingsAndCacheUseCase.invoke(leagueId, season)
-
-            _uiState.update {
-                it.copy(
-                    response = getCachedStandingsUseCase.invoke(leagueId, season),
-                    isLoading = false
-                )
+            try {
+                fetchStandingsAndCacheUseCase.invoke(leagueId, season)
+                if (getCachedStandingsUseCase(leagueId, season).isEmpty()) {
+                    _uiState.update {
+                        it.copy(
+                            errorMessage = "THERE IS NOTHING TO SEE GO AWAY :P",
+                            isLoading = false,
+                        )
+                    }
+                }
+                else {
+                    _uiState.update {
+                        it.copy(
+                            response = getCachedStandingsUseCase.invoke(leagueId, season),
+                            isLoading = false
+                        )
+                    }
+                }
+            } catch (e: NetworkErrorException) {
+                _uiState.update {
+                    it.copy(
+                        errors = "something bad",
+                        isLoading = false
+                    )
+                }
             }
-
         }
     }
 
@@ -46,5 +64,8 @@ class StandingsViewModel @Inject constructor(
         standingEvent.postValue(Event(standing))
     }
 
+    fun refreshData(leagueId: Int, season: Int) {
+        fetchData(leagueId, season)
+    }
 
 }

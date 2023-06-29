@@ -1,5 +1,6 @@
 package com.pancake.footballfever.ui.league_state.match
 
+import android.accounts.NetworkErrorException
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -17,6 +18,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -44,27 +46,39 @@ class LeagueMatchesViewModel @Inject constructor(private val leagueMatchesUseCas
                         _leagueMatches.update {
                             it.copy(
                                 isLoading = false,
-                                success = list
+                                success = list,
+                                error = null,
+                                errorMessage = null,
                             )
                         }
                         Log.i("TAG", "${list?.size}")
 
                     }
                 }
-            } catch (e: Exception) {
-                Log.i("ERROR", e.message.toString())
+                if (leagueMatchesUseCase.getLeagueMatches(season, league)?.isEmpty() == true) {
+                    _leagueMatches.update {
+                        it.copy(
+                            isLoading = false,
+                            error = null,
+                            errorMessage = "THERE IS NOTHING TO SEE GO AWAY :P",
+                        )
+                    }
+                }
+
+            } catch (e: IOException) {
                 _leagueMatches.update {
                     it.copy(
                         isLoading = false,
+                        errorMessage = null,
                         error = e.message,
                     )
                 }
             }
-
         }
-
     }
-
+    fun refreshData( seasons: Int,leagues: Int) {
+        getAllLeagueMatches(seasons, leagues)
+    }
 
     override fun onItemClick(leagueMatch: LeagueMatch) {
         _LeagueMatchEvent.update { Event(LeagueMatchUiEvent.LeagueMatchClickEvent(leagueMatch)) }

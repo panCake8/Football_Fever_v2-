@@ -19,14 +19,21 @@ class LeagueStateViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(LeagueUiState())
     val uiState = _uiState.asStateFlow()
 
-
+    fun refreshData(fixtureId: Int) {
+        getLeague(fixtureId)
+    }
 
 
     fun getLeague(id: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            val league = getCachedLeagueByIdUseCase(id)
             _uiState.update { it.copy(loading = true) }
-            _uiState.update { it.copy(success = league, loading = false) }
+            try {
+                val league = getCachedLeagueByIdUseCase(id)
+                _uiState.update { it.copy(success = league, loading = false) }
+            } catch (e: Exception) {
+                _uiState.update { it.copy(errorMessage = "something went wrong :(", loading = false) }
+
+            }
         }
     }
 

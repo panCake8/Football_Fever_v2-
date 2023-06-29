@@ -1,7 +1,6 @@
 package com.pancake.footballfever.ui.club_stats
 
 
-import android.util.Log
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.fragment.app.viewModels
@@ -18,7 +17,6 @@ import com.pancake.footballfever.ui.team_fixture.TeamFixtureFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ClubStatsFragment :BaseFragment<FragmentClubBinding, ClubViewModel>() {
@@ -63,19 +61,9 @@ class ClubStatsFragment :BaseFragment<FragmentClubBinding, ClubViewModel>() {
     private fun addFragmentsToViewPager() {
         clubStatsPagerAdapter.addFragment(PlayersFragment.newInstance(argument.season,argument.teamId))
         clubStatsPagerAdapter.addFragment(TeamFixtureFragment.newInstance(argument.season.toString(),argument.teamId.toString()))
-        if (argument.leagueId==0){
-            viewModel.getLeagueIdByCountryName()
-            viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.leagueId
-                .collect{
-                    Log.i("TAG","$it")
-                    clubStatsPagerAdapter
-                    .addFragment(StandingFragment.newInstance(it,argument.season,3))}}
-
-    }
-        else
-            clubStatsPagerAdapter.addFragment(StandingFragment.newInstance(argument.leagueId,argument.season,3))
-    }
+        if(argument.leagueId!=0){
+        clubStatsPagerAdapter.addFragment(StandingFragment.newInstance(argument.leagueId,argument.season,3))
+    }}
 
 
     private fun initTabLayout() {

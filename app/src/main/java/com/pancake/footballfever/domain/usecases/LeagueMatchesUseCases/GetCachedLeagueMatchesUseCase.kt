@@ -6,8 +6,8 @@ import javax.inject.Inject
 
 class GetCachedLeagueMatchesUseCase @Inject constructor(private val dao: LeagueMatchesDao) {
 
-    suspend fun getCachedLeagueMatches(): List<LeagueMatchEntity> {
-        return dao.getAllLeagueMatches()
+    suspend fun getCachedLeagueMatches(seasonId: Int, leagueId: Int): List<LeagueMatchEntity> {
+        return dao.getAllLeagueMatches(seasonId, leagueId)
 
     }
 }

@@ -31,7 +31,9 @@ class StandingFragment : BaseFragment<FragmentStandingBinding, StandingsViewMode
         val choose = requireArguments().getInt("choose")
         viewModel.fetchData(leagueId, season)
         observeEvents(choose)
+
     }
+
     private fun observeEvents(choose: Int) {
         when(choose){
             1->viewModel.standingEvent.observe(viewLifecycleOwner, EventObserver {

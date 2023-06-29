@@ -9,14 +9,56 @@
             name="viewModel"
             type="com.pancake.footballfever.ui.league_state.match.LeagueMatchesViewModel" />
     </data>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/parent_league_match_recycler"
-        app:setRecyclerItems="@{viewModel.leagueMatches.success}"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background_color"
-        tools:context=".ui.league_state.match.LeagueMatchesFragment"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        />
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/parent_league_match_recycler"
+            app:setRecyclerItems="@{viewModel.leagueMatches.success}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background_color"
+            tools:context=".ui.league_state.match.LeagueMatchesFragment"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            />
+        <TextView
+            android:id="@+id/errorr_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:errorMessage="@{viewModel.leagueMatches.errorMessage}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/error_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:showIfError="@{viewModel.leagueMatches.error}"
+                    app:srcCompat="@drawable/baseline_error_48" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/refresh_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/large_margin"
+                    android:background="@drawable/refresh_button_shape"
+                    android:paddingHorizontal="@dimen/large_padding"
+                    android:text="@string/refresh_data"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white87"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/error_icon"
+                    app:showIfError="@{viewModel.leagueMatches.error}" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

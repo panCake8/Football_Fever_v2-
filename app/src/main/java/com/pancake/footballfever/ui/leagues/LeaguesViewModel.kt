@@ -12,6 +12,7 @@ import com.pancake.footballfever.ui.leagues.uiState.LeagueUiEvent
 import com.pancake.footballfever.utilities.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -40,29 +41,51 @@ class LeaguesViewModel @Inject constructor(
         viewModelScope.launch {
             _uiState.update { it.copy(loading = true) }
             withContext(Dispatchers.IO) {
-                if(getCurrentLeagueCachedDataUseCase().isEmpty()) {
+                if (getCurrentLeagueCachedDataUseCase().isEmpty()) {
                     val result = fetchCurrentLeagueUseCase()
                     if (result.isSuccess) {
-                        _uiState.update { it.copy(leagueList = getCurrentLeagueCachedDataUseCase(), loading = false) }
+                        _uiState.update {
+                            it.copy(
+                                leagueList = getCurrentLeagueCachedDataUseCase(),
+                                loading = false
+                            )
+                        }
                     } else if (result.isFailure) {
-                        _uiState.update { it.copy(error = emptyList()) }
+                        _uiState.update { it.copy(error = "") }
                     }
                 } else {
-                    _uiState.update { it.copy(leagueList = getCurrentLeagueCachedDataUseCase(), loading = false) }
+                    _uiState.update {
+                        it.copy(
+                            leagueList = getCurrentLeagueCachedDataUseCase(),
+                            loading = false
+                        )
+                    }
                 }
             }
         }
     }
 
-    fun onSearchInputChange(searchTerm: CharSequence) {
+    fun onSearchInputChange(searchTerm: String) : Job {
         _uiState.update { it.copy(searchInput = searchTerm.toString(), loading = true) }
-        viewModelScope.launch {
+        return viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                _uiState.update {
-                    it.copy(
-                        leagueList = searchLeagueUseCase(it.searchInput),
-                        loading = false
-                    )
+                if (searchLeagueUseCase(searchTerm.toString()).isEmpty()) {
+                    _uiState.update {
+                        it.copy(
+                            error = "search for something that does exist :((((",
+                            leagueList = emptyList(),
+                            loading = false
+                        )
+                    }
+                }  else {
+                    _uiState.update { it.copy(loading = true) }
+                    _uiState.update {
+                        it.copy(
+                            error = null,
+                            leagueList = searchLeagueUseCase(it.searchInput),
+                            loading = false
+                        )
+                    }
                 }
             }
         }
@@ -70,6 +93,10 @@ class LeaguesViewModel @Inject constructor(
 
     override fun onClickLeague(league: League) {
         _leagueEvent.update { Event(LeagueUiEvent.ClickLeagueEvent(league)) }
+    }
+
+    fun refreshData() {
+        fetchData()
     }
 
     fun onClickBack() {
