@@ -123,7 +123,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
             }
             is SearchUiEvent.ClickTeamEvent -> {
                 val nav =
-                    SearchFragmentDirections.actionHiltSearchFragmentToClubFragment(event.item.id!!,event.item.id!!,season)
+                    SearchFragmentDirections.actionHiltSearchFragmentToClubFragment(event.item.id!!,0,season)
                 findNavController().navigate(nav)
             }
             is SearchUiEvent.ClickClearAllEvent->{

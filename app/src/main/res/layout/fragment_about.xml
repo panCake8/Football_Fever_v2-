@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.pancake.footballfever.ui.about.AboutViewModel" />
+
+    </data>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/Primary_color"
+        tools:context=".ui.about.AboutFragment">
+
+        <ImageView
+            android:id="@+id/injuries_back_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->viewModel.onBackEvent()}"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:src="@drawable/back_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/injuries_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:text="@string/about"
+            android:textColor="@color/text_title"
+            app:layout_constraintBottom_toBottomOf="@+id/injuries_back_icon"
+            app:layout_constraintStart_toEndOf="@+id/injuries_back_icon"
+            app:layout_constraintTop_toTopOf="@+id/injuries_back_icon" />
+
+
+        <TextView
+            android:id="@+id/text_title2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/large_margin"
+            android:layout_marginTop="@dimen/large_margin"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/description_of_app"
+            android:textColor="@color/white60"
+            android:textSize="@dimen/text_medium"
+            app:layout_constraintTop_toBottomOf="@id/injuries_text_view"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/text_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/large_margin"
+            android:layout_marginTop="@dimen/large_margin"
+            android:text="@string/feature_one"
+            android:textColor="@color/white60"
+            android:textSize="@dimen/text_small"
+            android:fontFamily="@font/poppins"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_title2" />
+
+        <TextView
+            android:id="@+id/text_body2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/large_margin"
+            android:layout_marginTop="@dimen/large_margin"
+            android:text="@string/feature_two"
+            android:textColor="@color/white60"
+            android:textSize="@dimen/text_small"
+            android:fontFamily="@font/poppins"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_body" />
+
+        <TextView
+            android:id="@+id/text_body3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/large_margin"
+            android:layout_marginTop="@dimen/large_margin"
+            android:text="@string/feature_three"
+            android:textColor="@color/white60"
+            android:textSize="@dimen/text_small"
+            android:fontFamily="@font/poppins"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_body2"
+            android:layout_marginBottom="@dimen/large_margin"/>
+
+        <TextView
+            android:id="@+id/text_body4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/large_margin"
+            android:layout_marginTop="@dimen/large_margin"
+            android:text="By incorporating these strong features, football applications provide a comprehensive and immersive experience for fans, allowing them to stay connected with the sport they love and enjoy a wide range of interactive and personalized content."
+            android:textColor="@color/white60"
+            android:textSize="@dimen/text_small"
+            android:fontFamily="@font/poppins"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_body3"
+            android:layout_marginBottom="@dimen/large_margin"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+</layout>
