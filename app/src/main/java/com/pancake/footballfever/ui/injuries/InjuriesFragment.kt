@@ -10,6 +10,7 @@ import com.pancake.footballfever.databinding.FragmentInjuriesBinding
 import com.pancake.footballfever.ui.base.BaseFragment
 import com.pancake.footballfever.ui.injuries.adapter.InjuriesAdapter
 import com.pancake.footballfever.utilities.EventObserver
+
 import dagger.hilt.android.AndroidEntryPoint
 
 
