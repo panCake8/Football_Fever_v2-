@@ -51,7 +51,7 @@ class FavouritesFragment : BaseFragment<FragmentFavouritesBinding, FavouritesVie
         when (event) {
             is FavoriteEvent.ClickFavoriteEvent -> {
                 val nav =
-                    FavouritesFragmentDirections.actionFavouritesFragmentToClubFragment(event.favoriteTeam.id!!,event.favoriteTeam.id,season)
+                    FavouritesFragmentDirections.actionFavouritesFragmentToClubFragment(event.favoriteTeam.id!!,0,season)
                 findNavController().navigate(nav)
             }
         }
