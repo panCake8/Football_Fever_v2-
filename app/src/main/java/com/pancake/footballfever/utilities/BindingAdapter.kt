@@ -10,6 +10,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.pancake.footballfever.R
+import com.pancake.footballfever.domain.models.FixtureHome
 import com.pancake.footballfever.domain.models.FixtureSummary
 import com.pancake.footballfever.ui.base.BaseAdapter
 import com.pancake.footballfever.ui.fixture.FixtureUiState

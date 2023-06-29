@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/large_margin"
                 android:layout_marginTop="@dimen/large_margin"
-                android:text="@string/choose_your_favorite_teams" />
+                android:text="@string/choose_your_favorite_leagues" />
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.recyclerview.widget.RecyclerView
