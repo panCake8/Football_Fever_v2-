@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.pancake.footballfever.ui.league_state.match.matchStanding.MatchStandingViewModel" />
+
+    </data>
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/Primary_color">
+
+        <TableRow
+            android:background="@drawable/table_header_background"
+            android:padding="@dimen/semi_large_padding">
+
+            <TextView
+                style="@style/table_column"
+                android:text="@string/pos" />
+
+            <TextView
+                android:layout_width="@dimen/no_width"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/semi_large_margin"
+                android:layout_weight="1"
+                android:text="@string/team"
+                android:textColor="@color/white87" />
+
+            <TextView
+                style="@style/table_column"
+                android:layout_marginStart="@dimen/semi_large_margin"
+                android:text="@string/p" />
+
+            <TextView
+                style="@style/table_column"
+                android:layout_marginStart="@dimen/semi_large_margin"
+                android:text="@string/w" />
+
+            <TextView
+                style="@style/table_column"
+                android:layout_marginStart="@dimen/semi_large_margin"
+                android:text="@string/pts" />
+
+        </TableRow>
+        <ProgressBar
+            android:id="@+id/progress_bar_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:showIfLoading="@{viewModel.uiState.loading}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_standing_league"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:setRecyclerItems="@{viewModel.uiState.standings}"
+            tools:listitem="@layout/item_match_standing" />
+    </TableLayout>
+
+</layout>

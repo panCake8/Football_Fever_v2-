@@ -132,6 +132,11 @@
             app:popUpTo="@+id/navigation"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/matchStandingFragment"
+        android:name="com.pancake.footballfever.ui.league_state.match.matchStanding.MatchStandingFragment"
+        android:label="fragment_match_standing"
+        tools:layout="@layout/fragment_match_standing" />
 
     <fragment
         android:id="@+id/leagueMatch"
